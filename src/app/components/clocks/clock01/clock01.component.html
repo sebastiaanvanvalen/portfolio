@@ -1,0 +1,171 @@
+<div class="container">
+    <div class="explanation">
+        <h2>Shifting Clock</h2>
+        Inspired by a real-life clock I tried to copy it to be suitable in a browser of application. For some reason I found the slow shifting numbers in this clock mezmarizing.
+    </div>
+    <div class="clock-container">
+        <div class="clock">
+            <div class="elem">
+                <div class='square active' id="year"></div>
+            </div>
+            <div class="elem">
+                <div class='square active' id="month"></div>
+            </div>
+            <div class="elem">
+                <div class='square active' id="day"></div>
+
+            </div>
+            <!-- seconds, minutes and hours not dynamicaly generated because css couldn't be added to elements afterwards -->
+            <div class="elem" id="hour-wrapper" [style.transform]="seconds('hour')">
+                <div class='hour square'>00</div>
+                <div class='hour square'>01</div>
+                <div class='hour square'>02</div>
+                <div class='hour square'>03</div>
+                <div class='hour square'>04</div>
+                <div class='hour square'>05</div>
+                <div class='hour square'>06</div>
+                <div class='hour square'>07</div>
+                <div class='hour square'>08</div>
+                <div class='hour square'>09</div>
+                <div class='hour square'>10</div>
+                <div class='hour square'>11</div>
+                <div class='hour square'>12</div>
+                <div class='hour square'>13</div>
+                <div class='hour square'>14</div>
+                <div class='hour square'>15</div>
+                <div class='hour square'>16</div>
+                <div class='hour square'>17</div>
+                <div class='hour square'>18</div>
+                <div class='hour square'>19</div>
+                <div class='hour square'>20</div>
+                <div class='hour square'>21</div>
+                <div class='hour square'>22</div>
+                <div class='hour square'>23</div>
+            </div>
+            <div class="elem" id="minute-wrapper" [style.transform]="seconds('minute')">
+                <div class='minute square'>00</div>
+                <div class='minute square'>01</div>
+                <div class='minute square'>02</div>
+                <div class='minute square'>03</div>
+                <div class='minute square'>04</div>
+                <div class='minute square'>05</div>
+                <div class='minute square'>06</div>
+                <div class='minute square'>07</div>
+                <div class='minute square'>08</div>
+                <div class='minute square'>09</div>
+                <div class='minute square'>10</div>
+                <div class='minute square'>11</div>
+                <div class='minute square'>12</div>
+                <div class='minute square'>13</div>
+                <div class='minute square'>14</div>
+                <div class='minute square'>15</div>
+                <div class='minute square'>16</div>
+                <div class='minute square'>17</div>
+                <div class='minute square'>18</div>
+                <div class='minute square'>19</div>
+                <div class='minute square'>20</div>
+                <div class='minute square'>21</div>
+                <div class='minute square'>22</div>
+                <div class='minute square'>23</div>
+                <div class='minute square'>24</div>
+                <div class='minute square'>25</div>
+                <div class='minute square'>26</div>
+                <div class='minute square'>27</div>
+                <div class='minute square'>28</div>
+                <div class='minute square'>29</div>
+                <div class='minute square'>30</div>
+                <div class='minute square'>31</div>
+                <div class='minute square'>32</div>
+                <div class='minute square'>33</div>
+                <div class='minute square'>34</div>
+                <div class='minute square'>35</div>
+                <div class='minute square'>36</div>
+                <div class='minute square'>37</div>
+                <div class='minute square'>38</div>
+                <div class='minute square'>39</div>
+                <div class='minute square'>40</div>
+                <div class='minute square'>41</div>
+                <div class='minute square'>42</div>
+                <div class='minute square'>43</div>
+                <div class='minute square'>44</div>
+                <div class='minute square'>45</div>
+                <div class='minute square'>46</div>
+                <div class='minute square'>47</div>
+                <div class='minute square'>48</div>
+                <div class='minute square'>49</div>
+                <div class='minute square'>50</div>
+                <div class='minute square'>51</div>
+                <div class='minute square'>52</div>
+                <div class='minute square'>53</div>
+                <div class='minute square'>54</div>
+                <div class='minute square'>55</div>
+                <div class='minute square'>56</div>
+                <div class='minute square'>57</div>
+                <div class='minute square'>58</div>
+                <div class='minute square'>59</div>
+            </div>
+            <div class="elem" id="second-wrapper" [style.transform]="seconds('second')">
+                <div class='second square'>00</div>
+                <div class='second square'>01</div>
+                <div class='second square'>02</div>
+                <div class='second square'>03</div>
+                <div class='second square'>04</div>
+                <div class='second square'>05</div>
+                <div class='second square'>06</div>
+                <div class='second square'>07</div>
+                <div class='second square'>08</div>
+                <div class='second square'>09</div>
+                <div class='second square'>10</div>
+                <div class='second square'>11</div>
+                <div class='second square'>12</div>
+                <div class='second square'>13</div>
+                <div class='second square'>14</div>
+                <div class='second square'>15</div>
+                <div class='second square'>16</div>
+                <div class='second square'>17</div>
+                <div class='second square'>18</div>
+                <div class='second square'>19</div>
+                <div class='second square'>20</div>
+                <div class='second square'>21</div>
+                <div class='second square'>22</div>
+                <div class='second square'>23</div>
+                <div class='second square'>24</div>
+                <div class='second square'>25</div>
+                <div class='second square'>26</div>
+                <div class='second square'>27</div>
+                <div class='second square'>28</div>
+                <div class='second square'>29</div>
+                <div class='second square'>30</div>
+                <div class='second square'>31</div>
+                <div class='second square'>32</div>
+                <div class='second square'>33</div>
+                <div class='second square'>34</div>
+                <div class='second square'>35</div>
+                <div class='second square'>36</div>
+                <div class='second square'>37</div>
+                <div class='second square'>38</div>
+                <div class='second square'>39</div>
+                <div class='second square'>40</div>
+                <div class='second square'>41</div>
+                <div class='second square'>42</div>
+                <div class='second square'>43</div>
+                <div class='second square'>44</div>
+                <div class='second square'>45</div>
+                <div class='second square'>46</div>
+                <div class='second square'>47</div>
+                <div class='second square'>48</div>
+                <div class='second square'>49</div>
+                <div class='second square'>50</div>
+                <div class='second square'>51</div>
+                <div class='second square'>52</div>
+                <div class='second square'>53</div>
+                <div class='second square'>54</div>
+                <div class='second square'>55</div>
+                <div class='second square'>56</div>
+                <div class='second square'>57</div>
+                <div class='second square'>58</div>
+                <div class='second square'>59</div>
+            </div>
+        </div>        
+    </div>
+</div>

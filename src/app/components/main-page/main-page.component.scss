@@ -1,0 +1,48 @@
+.main-page {
+    // position: relative;
+    text-align: center;
+    height: 100vh;
+    width: 100%;
+
+    h4 {
+        text-transform: uppercase;
+        color: red;
+        font-weight: bold;
+        background-color: rgb(96, 145, 161);
+        border: 3px solid red;
+    }
+    
+    .opening-text {
+        margin: 0 auto;
+        padding: 124px 10px 10px;
+        max-width: 400px;
+        
+        p {
+            color: rgb(53, 92, 53);
+            font-weight: bold;
+        }
+    }
+    
+    .quote {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 50px;
+        font-size: 10px;
+        
+        .line {
+            margin: 0 auto;
+            max-width: 280px;
+            padding-top: 32px;
+            color: rgb(190, 187, 187);
+        }
+        
+        .author {
+            // margin: 0 auto;
+            // width: 100%;
+            padding: 16px 0px;
+            color: rgb(190, 187, 187);
+            // border-bottom: 1px solid rgb(194, 193, 193);
+        }
+    }
+}

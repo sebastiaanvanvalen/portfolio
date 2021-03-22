@@ -1,0 +1,31 @@
+<div class="rps-container">
+    <div class="opening-text">
+        <p>Rock Paper Scissors</p>
+        <button (click)="resetScore()" class="resetbutton">reset</button>
+
+    </div>
+    <div class="score-board">
+        <div class="badges" id="user-label">user</div>
+        <div class="badges" id="comp-label">comp</div>
+        <span class="userscore">{{ userScore }}</span> : <span class="compscore">{{ compScore }}</span>
+    </div>
+
+    <div class="result">
+        {{ message }}
+    </div>
+
+    <div class="choices">
+        <div class="choice" id="rock" (click)="game('rock')">
+            <img src="../../../assets/pictures/rock.png" alt="rock">
+        </div>
+        <div class="choice" id="paper" (click)="game('paper')">
+            <img src="../../../assets/pictures/paper.png" alt="paper">
+        </div>
+        <div class="choice" id="scissors" (click)="game('scissors')">
+            <img src="../../../assets/pictures/scissors.png" alt="scissors">
+        </div>
+    </div>
+
+    <div class="action-message">Make your move!</div>
+
+</div>

@@ -1,0 +1,47 @@
+<div class="contact">
+    <div class="personal-info">
+        <div class="info-container">
+            <div class="types">
+                <div class="type">my name</div>
+                <div class="type">email</div>
+                <div class="type">telephone</div>
+            </div>
+            <div class="values">
+                <div class="value">Sebastiaan van Valen</div>
+                <div class="value">baxxieweb@gmail.com</div>
+                <div class="value">+316 - - - - - - - - -</div>
+            </div>
+        </div>
+        <div class="photo">
+            <img src="../../../assets/pictures/Philip-J-Fry.png" alt="moi">
+        </div>
+    </div>
+
+    <form [formGroup]="FormData" (ngSubmit)="submitToAPI(FormData.value)">
+        <div class="form-group">
+            <!-- <label for="Email">Email</label><br> -->
+            <input type="email" class="form-control" name="Email" aria-describedby="emailHelp" placeholder="Enter email"
+                formControlName="Email">
+        </div>
+        <div class="form-group">
+            <!-- <label for="fullname">Full Name</label> -->
+            <input type="text" class="form-control" name="Fullname" placeholder="Full Name" formControlName="Fullname">
+        </div>
+        <div class="form-group">
+            <!-- <label for="comment">Comment</label> -->
+            <textarea class="form-control" rows="3" formControlName="Comment" name="Comment">
+        </textarea>
+        </div>
+        <div class="form-group">
+            <button type="submit" class="submit" [disabled]="!FormData.valid">Submit</button>
+        </div>
+    </form>
+
+
+
+
+
+
+    <h3 class="info-message">Sending messages is under construction. Please feel free to send an email!</h3>
+
+</div>
