@@ -7,6 +7,7 @@ import { ClocksComponent } from './components/clocks/clocks.component';
 import { PokerComponent } from './components/poker/poker.component';
 import { CvComponent } from './components/cv/cv.component';
 import { AboutComponent } from './components/about/about.component';
+import { MastermindComponent } from './components/mastermind/mastermind.component';
 
 const routes: Routes = [
     {path: '', component: MainPageComponent},
@@ -15,7 +16,8 @@ const routes: Routes = [
     {path: 'poker', component: PokerComponent},
     {path: 'cv', component: CvComponent},
     {path: 'about', component: AboutComponent},
-    {path: 'contact', component: ContactComponent}
+    {path: 'contact', component: ContactComponent},
+    {path: 'mastermind', component: MastermindComponent}
 ];
 
 @NgModule({

@@ -1,1 +1,146 @@
-<p>mastermind works!</p>
+<div class="mastermind-container">
+
+    <!-- row one -->
+    <div class="text-wrapper">
+        <h3>MASTERMIND</h3>
+    </div>
+    <button class="new-game-btn btn" id="new-game-btn" (click)="startGame()">New Game</button>
+    <button class="help-btn btn" id="help-btn" (click)="toggleModal('help')">HELP</button>
+    <button class="hint-btn btn" id="hint-btn" (click)="hint()">Hint</button>
+    <button class="show-pins-btn btn" id="show-pinsbtn" (click)="showPins()">Show Pins</button>
+    <button class="cancel-btn btn" id="cancel-btn" (click)="cancel()">Empty row</button>
+    <button class="submit-btn btn" id="submit-btn" (click)="submit()">Submit</button>
+
+    <!-- row two -->
+    <div class="turn-counter" id="turn-counter">{{turn}}</div>
+
+
+    <div class="mymodal" id="mymodal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" [innerHTML]="modalTitle"></h5>
+                    <button type="button" class="close-modal"
+                        (click)="closeModalHard()">&#x2715;</button>
+                </div>
+                <div class="modal-body" id="modal-body" [innerHTML]="modalMessage">
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" id="modal-btn" data-bs-dismiss="modal"
+                        (click)="closeModal(modalBtnInfo)"> {{ modalButton }}</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="hidden-pins" id="hidden-pins">
+        <div class="hidden-pin" [ngStyle]="{'background-color': hiddenPins['hiddenPin1']}"></div>
+        <div class="hidden-pin" [ngStyle]="{'background-color': hiddenPins['hiddenPin2']}"></div>
+        <div class="hidden-pin" [ngStyle]="{'background-color': hiddenPins['hiddenPin3']}"></div>
+        <div class="hidden-pin" [ngStyle]="{'background-color': hiddenPins['hiddenPin4']}"></div>
+    </div>
+
+
+    <div class="user-board user-board-12" id="user-board-12">
+        <div class="pin" id="pin-45"></div>
+        <div class="pin" id="pin-46"></div>
+        <div class="pin" id="pin-47"></div>
+        <div class="pin" id="pin-48"></div>
+    </div>
+    <div class="user-board user-board-11" id="user-board-11">
+        <div class="pin" id="pin-41"></div>
+        <div class="pin" id="pin-42"></div>
+        <div class="pin" id="pin-43"></div>
+        <div class="pin" id="pin-44"></div>
+    </div>
+    <div class="user-board user-board-10" id="user-board-10">
+        <div class="pin" id="pin-37"></div>
+        <div class="pin" id="pin-38"></div>
+        <div class="pin" id="pin-39"></div>
+        <div class="pin" id="pin-40"></div>
+    </div>
+    <div class="user-board user-board-9" id="user-board-9">
+        <div class="pin" id="pin-33"></div>
+        <div class="pin" id="pin-34"></div>
+        <div class="pin" id="pin-35"></div>
+        <div class="pin" id="pin-36"></div>
+    </div>
+    <div class="user-board user-board-8" id="user-board-8">
+        <div class="pin" id="pin-29"></div>
+        <div class="pin" id="pin-30"></div>
+        <div class="pin" id="pin-31"></div>
+        <div class="pin" id="pin-32"></div>
+    </div>
+    <div class="user-board user-board-7" id="user-board-7">
+        <div class="pin" id="pin-25"></div>
+        <div class="pin" id="pin-26"></div>
+        <div class="pin" id="pin-27"></div>
+        <div class="pin" id="pin-28"></div>
+    </div>
+    <div class="user-board user-board-6" id="user-board-6">
+        <div class="pin" id="pin-21"></div>
+        <div class="pin" id="pin-22"></div>
+        <div class="pin" id="pin-23"></div>
+        <div class="pin" id="pin-24"></div>
+    </div>
+    <div class="user-board user-board-5" id="user-board-5">
+        <div class="pin" id="pin-17"></div>
+        <div class="pin" id="pin-18"></div>
+        <div class="pin" id="pin-19"></div>
+        <div class="pin" id="pin-20"></div>
+    </div>
+    <div class="user-board user-board-4" id="user-board-4">
+        <div class="pin" id="pin-13"></div>
+        <div class="pin" id="pin-14"></div>
+        <div class="pin" id="pin-15"></div>
+        <div class="pin" id="pin-16"></div>
+    </div>
+    <div class="user-board user-board-3" id="user-board-3">
+        <div class="pin" id="pin-9"></div>
+        <div class="pin" id="pin-10"></div>
+        <div class="pin" id="pin-11"></div>
+        <div class="pin" id="pin-12"></div>
+    </div>
+    <div class="user-board user-board-2" id="user-board-2">
+        <div class="pin" id="pin-5"></div>
+        <div class="pin" id="pin-6"></div>
+        <div class="pin" id="pin-7"></div>
+        <div class="pin" id="pin-8"></div>
+    </div>
+    <div class="user-board user-board-1" id="user-board-1">
+        <div class="pin" id="pin-1"></div>
+        <div class="pin" id="pin-2"></div>
+        <div class="pin" id="pin-3"></div>
+        <div class="pin" id="pin-4"></div>
+    </div>
+
+    <div class="check-box check-box-12" id="check-box-12"></div>
+    <div class="check-box check-box-11" id="check-box-11"></div>
+    <div class="check-box check-box-10" id="check-box-10"></div>
+    <div class="check-box check-box-9" id="check-box-9"></div>
+    <div class="check-box check-box-8" id="check-box-8"></div>
+    <div class="check-box check-box-7" id="check-box-7"></div>
+    <div class="check-box check-box-6" id="check-box-6"></div>
+    <div class="check-box check-box-5" id="check-box-5"></div>
+    <div class="check-box check-box-4" id="check-box-4"></div>
+    <div class="check-box check-box-3" id="check-box-3"></div>
+    <div class="check-box check-box-2" id="check-box-2"></div>
+    <div class="check-box check-box-1" id="check-box-1"></div>
+
+    <div class="selectors">
+        <div class="color-box">
+            <div class="color yellow" id="yellow" (click)="setColor('rgb(247, 247, 7)')"></div>
+            <div class="color red" id="red" (click)="setColor('rgb(240, 2, 2)')"></div>
+            <div class="color green" id="green" (click)="setColor('rgb(4, 161, 4)')"></div>
+            <div class="color purple" id="purple" (click)="setColor('rgb(146, 2, 146)')"></div>
+            <div class="color blue" id="blue" (click)="setColor('rgb(8, 8, 253)')"></div>
+            <div class="color orange" id="orange" (click)="setColor('rgb(240, 157, 2)')"></div>
+            <div class="color black" id="black" (click)="setColor('rgb(7, 7, 7)')"></div>
+            <div class="color white" id="white" (click)="setColor('rgb(255, 255, 255)')"></div>
+        </div>
+    </div>
+
+
+
+</div>
