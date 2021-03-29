@@ -1,0 +1,26 @@
+.sidenav-container {
+    height: 100%;
+}
+
+.sidenav {
+    width: 200px;
+    transition: 200ms ease;
+}
+
+.sidenav .mat-toolbar {
+    color: white;
+    background:  rgb(96, 145, 161);
+}
+
+.mat-toolbar.mat-primary {
+    padding: sticky;
+    top: 0;
+    z-index: 1;
+    background: linear-gradient(
+        to right,
+        rgb(96, 145, 161),
+        rgb(96, 145, 161),
+        rgb(96, 145, 161),
+        rgb(194, 136, 11)
+    );
+}

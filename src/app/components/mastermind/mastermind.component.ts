@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 @Component({
     selector: 'app-mastermind',
@@ -9,23 +8,18 @@ import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 export class MastermindComponent implements OnInit {
 
     colors = [
-        'rgb(255, 255, 255)', // white
-        'rgb(247, 247, 7)', // yellow
-        'rgb(240, 157, 2)', // orange
-        'rgb(146, 2, 146)', // purple
-        'rgb(4, 161, 4)', // green
-        'rgb(8, 8, 253)', // blue
-        'rgb(240, 2, 2)', // red
-        'rgb(7, 7, 7)', // black
+        'white',
+        'yellow',
+        'orange',
+        'purple',
+        'green',
+        'blue',
+        'red',
+        'black',
     ];
 
-    hiddenPins = {
-        hiddenPin1: 'white',
-        hiddenPin2: 'white',
-        hiddenPin3: 'white',
-        hiddenPin4: 'white',
-    };
     hiddenColors = [];
+    hiddenColorsInMode = [];
     userPins = [];
 
     turn = 0;
@@ -39,69 +33,136 @@ export class MastermindComponent implements OnInit {
     modalButton = '';
     modalBtnInfo = '';
 
-    helpTemplate = `You have 12 chances to quess the hidden colors. Be aware that colors are randomly generated so they can appear more than once.<br>We trust you know the <a href="https://www.spelregels.eu/mastermind/">basics</a> of the game so the only thing left are the markers:<br><br>a '\u2688' if you placed a color in the correct position<br><br> a 'o' : for each color quessed correct but in the wrong position<br>`
+    // CBModi = ['regular', 'colorBlind', 'greyTones', 'hyperActive'];
+    CBModi = ['RE', 'CB', 'GT', 'HA']
+    CBMode = '';
+    colorMode = '';
+    storedCBMode = localStorage.getItem('CBMode');
+
+    helpTemplate = `You have 12 chances to quess the hidden colors. Be aware that colors are randomly generated so they can appear more than once.<br>We trust you know the <a href="https://www.spelregels.eu/mastermind/">basics</a> of the game so the only thing left are the markers:<br><br>a '\u2688' if you placed a color in the correct position<br><br> a 'o' : for each color quessed correct but in the wrong position<br>`;
 
     constructor() {}
 
     ngOnInit(): void {
+        switch (this.storedCBMode) {
+            case null:
+                this.CBMode = 'RE';
+                this.colorMode = 'regular'
+                break;
+            case 'RE':
+                this.CBMode = 'RE';
+                this.colorMode = 'regular'
+                break;
+            case 'CB':
+                this.CBMode = 'CB';
+                this.colorMode = 'prot.'
+                break;
+            case 'GT':
+                this.CBMode = 'GT';
+                this.colorMode = 'grey'
+                break;
+            case 'HA':
+                this.CBMode = 'HA';
+                this.colorMode = 'hyper'
+                break;
+        
+            default:
+                break;
+        }
+        if (this.storedCBMode == null) {
+        } else {
+            this.CBMode = this.storedCBMode;
+        }
+
         this.startGame();
     }
 
-    setHiddenPins() {
-        for (var n = 0; n <= 3; n++) {
-            let i = Math.floor(Math.random() * 8);
-            this.hiddenColors.push(this.colors[i]);
+    toggleCBMode() {
+        let lastMode = '';
+        switch (this.CBMode) {
+            case 'RE':
+                this.CBMode = 'CB';
+                this.colorMode = 'prot.';
+                lastMode = 'RE';
+            break;
+            case 'CB':
+                this.CBMode = 'GT';
+                this.colorMode = 'grey.';
+                lastMode = 'CB';
+            break;
+            case 'GT':
+                this.CBMode = 'HA';
+                this.colorMode = 'hyper';
+                lastMode = 'GT';
+            break;
+            case 'HA':
+                this.CBMode = 'RE';
+                this.colorMode = 'regular';
+                lastMode = 'HA';
+            break;
+            default:
+                break;
         }
-
-        this.createColorNameArray()
-    }
-
-    createColorNameArray() {
-        let colors = [];
-        Object.values(this.hiddenColors).forEach(element =>{
-            switch (element) {
-                case 'rgb(255, 255, 255)':
-                    colors.push("white")
-                    break;
-                case 'rgb(7, 7, 7)':
-                    colors.push("black")
-                    break;
-                case 'rgb(240, 157, 2)':
-                    colors.push("orange")
-                    break;
-                case 'rgb(8, 8, 253)':
-                    colors.push("blue")
-                    break;
-                case 'rgb(146, 2, 146)':
-                    colors.push("purple")
-                    break;
-                case 'rgb(4, 161, 4)':
-                    colors.push("green")
-                    break;
-                case 'rgb(240, 2, 2)':
-                    colors.push("red")
-                    break;
-                case 'rgb(247, 247, 7)':
-                    colors.push("yellow")
-                    break;
-                default:
-                    break;
-            }
+        
+        this.hiddenColorsInMode.forEach((element, index) => {
+            this.hiddenColorsInMode[index] = this.CBMode + this.hiddenColors[index]
         })
-        // console.log(colors)
-    }
+        
+        // toggle all existing userColors
+        for (let z = 1; z <= 48; z++) {
+            this.colors.forEach((element, index) => {
+                if (
+                    document
+                    .getElementById('pin-' + z)
+                    .classList.contains(lastMode + element)
+                    ) {
+                        document
+                        .getElementById('pin-' + z)
+                        .classList.remove(lastMode + element);
+                        document
+                        .getElementById('pin-' + z)
+                        .classList.add(this.CBMode + element);
+                    }
+                });
+            }
+            
+            // toggle hidden pins
+            for (let v = 1; v <= 4; v++) {
+                if(!document.getElementById('hidden-pin-' + v).classList.contains('pin-background')) {
+                    document.getElementById('hidden-pin-' + v).removeAttribute('class');
+                    document.getElementById('hidden-pin-' + v).classList.add('hidden-pin', this.hiddenColorsInMode[v - 1]);
 
-    setColor(input) {
-        if (this.gameStopped === false) {
-            if (this.userPins.length >= 4) {
-                this.toggleModal('toMuchPins');
-                return;
-            } else {
-                this.userPins.push(input);
-                document.getElementById('pin-' + [4 * this.turn + 1]).style.backgroundColor = this.userPins[0];
-                document.getElementById('pin-' + [4 * this.turn + 2]).style.backgroundColor = this.userPins[1];
-                document.getElementById('pin-' + [4 * this.turn + 3]).style.backgroundColor = this.userPins[2];
-                document.getElementById('pin-' + [4 * this.turn + 4]).style.backgroundColor = this.userPins[3];
+                }
+            }
+            localStorage.setItem('CBMode', this.CBMode);
+        }
+        
+        setHiddenPins() {
+            for (var n = 0; n <= 3; n++) {
+                let i = Math.floor(Math.random() * 8);
+                this.hiddenColors.push(this.colors[i]);
+                this.hiddenColorsInMode.push(this.CBMode + this.colors[i]);
+            }
+            console.log(this.hiddenColors);
+        }
+        
+        setColor(input) {
+            if (this.gameStopped === false) {
+                if (this.userPins.length >= 4) {
+                    this.toggleModal('toMuchPins');
+                    return;
+                } else {
+                    let mode = '';
+                    // this.CBMode ? (mode = 'CB') : (mode = '');
+                    let num = this.userPins.length;
+                    
+                    this.userPins.push(input);
+                    document
+                    .getElementById('pin-' + [4 * this.turn + (num + 1)])
+                    .classList.remove('pin-background');
+                    document
+                    .getElementById('pin-' + [4 * this.turn + (num +1)])
+                    .classList.add(this.CBMode + this.userPins[num]);
             }
         }
     }
@@ -127,27 +188,29 @@ export class MastermindComponent implements OnInit {
             }
         }
 
-        for (let f = 0; f < x; f++){
-            document.getElementById('check-box-' + (this.turn + 1)).append("\u2688 ")
+        for (let f = 0; f < x; f++) {
+            document
+                .getElementById('check-box-' + (this.turn + 1))
+                .append('\u2688 ');
         }
 
-        for (let f = 0; f < y; f++){
-            document.getElementById('check-box-' + (this.turn + 1)).append('o')
+        for (let f = 0; f < y; f++) {
+            document.getElementById('check-box-' + (this.turn + 1)).append('o');
         }
 
         if (x === 4) {
             this.playerWins();
             x = 0;
             y = 0;
-            return
+            return;
         }
 
         this.turn++;
 
-        if (this.turn === 12 && x !==4) {
+        if (this.turn === 12 && x !== 4) {
             this.gameStopped = true;
             this.gameOver = true;
-            this.toggleModal('gameOver')
+            this.toggleModal('gameOver');
         }
 
         this.userPins = [];
@@ -157,70 +220,87 @@ export class MastermindComponent implements OnInit {
 
     eraseUserBoard() {
         for (let z = 1; z <= 48; z++) {
-            document.getElementById('pin-' + z).style.backgroundColor = 'white';
+            document.getElementById('pin-' + z).removeAttribute('class');
+            document
+                .getElementById('pin-' + z)
+                .classList.add('pin', 'pin-background');
         }
 
         for (let w = 1; w <= 12; w++) {
             document.getElementById('check-box-' + w).innerHTML = ``;
         }
 
-        Object.keys(this.hiddenPins).forEach((element) => {
-            this.hiddenPins[element] = 'white';
-        });
+        for (let v = 1; v <= 4; v++) {
+            document.getElementById('hidden-pin-' + v).removeAttribute('class');
+            document
+                .getElementById('hidden-pin-' + v)
+                .classList.add('hidden-pin', 'pin-background');
+        }
+
+        // Object.keys(this.hiddenPins).forEach((element) => {
+        //     this.hiddenPins[element] = 'rgb(218, 218, 218)';
+        // });
     }
 
     toggleModal(input) {
         this.modalMessage = '';
-        this.modalTitle   = '';
-        this.modalButton  = '';
+        this.modalTitle = '';
+        this.modalButton = '';
         this.modalBtnInfo = '';
 
         switch (input) {
             case 'help':
-                this.modalTitle   = 'The Rules!';
+                this.modalTitle = 'The Rules!';
                 this.modalMessage = this.helpTemplate;
-                this.modalButton  = `Check`;
+                this.modalButton = `Check`;
                 break;
             case 'newGame':
-                this.modalTitle   = 'Time for a new Game?';
-                this.modalMessage = 'You started a new game <br>4 new pins have been generated.<br>Good Luck!';
-                this.modalButton  = 'Play!';
+                this.modalTitle = 'Time for a new Game?';
+                this.modalMessage =
+                    'You started a new game <br>4 new pins have been generated.<br>Good Luck!';
+                this.modalButton = 'Play!';
                 break;
             case 'notEnoughPins':
-                this.modalTitle   = 'forgot something?';
-                this.modalMessage = 'You have to select 4 pins before submitting. Press "cancel" if you want to select new colors';
-                this.modalButton  = 'Continue';
+                this.modalTitle = 'forgot something?';
+                this.modalMessage =
+                    'You have to select 4 pins before submitting. Press "cancel" if you want to select new colors';
+                this.modalButton = 'Continue';
                 break;
             case 'toMuchPins':
-                this.modalTitle   = "you're going too fast!";
-                this.modalMessage = 'You allready selected 4 colors. Pleas press submit or cancel if you want to choose new colors.';
-                this.modalButton  = 'Continue';
+                this.modalTitle = "you're going too fast!";
+                this.modalMessage =
+                    'You allready selected 4 colors. Pleas press submit or cancel if you want to choose new colors.';
+                this.modalButton = 'Continue';
                 break;
             case 'noHint':
-                this.modalTitle   = 'muhaha';
-                this.modalMessage = 'the hint function only gives you one hint!<br>Good Luck!';
-                this.modalButton  = 'Continue';
+                this.modalTitle = 'muhaha';
+                this.modalMessage =
+                    'the hint function only gives you one hint!<br>Good Luck!';
+                this.modalButton = 'Continue';
                 break;
             case 'showPins':
-                this.modalTitle   = 'No problem';
+                this.modalTitle = 'No problem';
                 this.modalMessage = 'try just a little bit harder next time';
-                this.modalButton  = 'Close';
+                this.modalButton = 'Close';
                 break;
             case 'showPins':
-                this.modalTitle   = 'why was it to hard???';
-                this.modalMessage = "don't feel to bad. It happens to everybody.<br>You can allways try again ;-)";
-                this.modalButton  = 'Close';
+                this.modalTitle = 'why was it to hard???';
+                this.modalMessage =
+                    "don't feel to bad. It happens to everybody.<br>You can allways try again ;-)";
+                this.modalButton = 'Close';
                 break;
             case 'playerWon':
-                this.modalTitle   = 'Congratulations!';
-                this.modalMessage = 'Good job! You won this game.<br>Would you like to try again?';
-                this.modalButton  = 'try again!';
+                this.modalTitle = 'Congratulations!';
+                this.modalMessage =
+                    'Good job! You won this game.<br>Would you like to try again?';
+                this.modalButton = 'try again!';
                 this.modalBtnInfo = 'newGame';
                 break;
             case 'gameOver':
-                this.modalTitle   = 'Too bad...';
-                this.modalMessage = 'you are out of rows and pins.<br>hit the "show Pins" button to see the hidden pins if you want. Or just go ahead and start a new game';
-                this.modalButton  = 'Close';
+                this.modalTitle = 'Too bad...';
+                this.modalMessage =
+                    'you are out of rows and pins.<br>hit the "show Pins" button to see the hidden pins if you want. Or just go ahead and start a new game';
+                this.modalButton = 'Close';
                 break;
 
             default:
@@ -253,10 +333,30 @@ export class MastermindComponent implements OnInit {
     cancel() {
         this.userPins = [];
 
-        document.getElementById('pin-' + [4 * this.turn + 1]).style.backgroundColor = 'white';
-        document.getElementById('pin-' + [4 * this.turn + 2]).style.backgroundColor = 'white';
-        document.getElementById('pin-' + [4 * this.turn + 3]).style.backgroundColor = 'white';
-        document.getElementById('pin-' + [4 * this.turn + 4]).style.backgroundColor = 'white';
+        document
+            .getElementById('pin-' + [4 * this.turn + 1])
+            .removeAttribute('class');
+        document
+            .getElementById('pin-' + [4 * this.turn + 1])
+            .classList.add('pin', 'pin-background');
+        document
+            .getElementById('pin-' + [4 * this.turn + 2])
+            .removeAttribute('class');
+        document
+            .getElementById('pin-' + [4 * this.turn + 2])
+            .classList.add('pin', 'pin-background');
+        document
+            .getElementById('pin-' + [4 * this.turn + 3])
+            .removeAttribute('class');
+        document
+            .getElementById('pin-' + [4 * this.turn + 3])
+            .classList.add('pin', 'pin-background');
+        document
+            .getElementById('pin-' + [4 * this.turn + 4])
+            .removeAttribute('class');
+        document
+            .getElementById('pin-' + [4 * this.turn + 4])
+            .classList.add('pin', 'pin-background');
     }
 
     playerWins() {
@@ -269,29 +369,41 @@ export class MastermindComponent implements OnInit {
     }
 
     showPins() {
-        if(this.hiddenPinsShowing === false){
-
+        if (this.hiddenPinsShowing === false) {
             if (this.gameOver === true) {
-                this.toggleModal('showPins2')
+                this.toggleModal('showPins2');
             } else {
                 this.toggleModal('showPins');
             }
-            
+
             this.gameStopped = true;
-            
-            Object.keys(this.hiddenPins).forEach((element, index) => {
-                this.hiddenPins[element] = this.hiddenColors[index];
+
+
+            this.hiddenColorsInMode.forEach((element, index) => {
+                document
+                    .getElementById('hidden-pin-' + (index + 1))
+                    .classList.remove('pin-background');
+                document
+                    .getElementById('hidden-pin-' + (index + 1))
+                    .classList.add(element);
             });
             this.hiddenPinsShowing = true;
         }
-
     }
 
     hint() {
         if (this.hintedPin === false) {
             this.hintedPin = true;
             let selectedPin = Math.floor(Math.random() * 4);
-            this.hiddenPins[`hiddenPin${selectedPin + 1}`] = this.hiddenColors[selectedPin];
+            console.log(selectedPin);
+            
+
+            document
+                .getElementById('hidden-pin-' + (selectedPin + 1))
+                .classList.remove('pin-background');
+            document
+                .getElementById('hidden-pin-' + (selectedPin + 1))
+                .classList.add(this.hiddenColorsInMode[selectedPin]);
         } else {
             this.toggleModal('noHint');
         }
@@ -302,14 +414,14 @@ export class MastermindComponent implements OnInit {
             this.toggleModal('newGame');
         }
 
+        this.hiddenColorsInMode = [];
         this.hiddenColors = [];
         this.userPins = [];
         this.turn = 0;
         this.gameStopped = false;
         this.gameOver = false;
         this.hintedPin = false;
-    this.hiddenPinsShowing = false;
-
+        this.hiddenPinsShowing = false;
 
         this.setHiddenPins();
         this.eraseUserBoard();

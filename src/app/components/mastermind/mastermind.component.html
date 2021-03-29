@@ -7,8 +7,9 @@
     <button class="new-game-btn btn" id="new-game-btn" (click)="startGame()">New Game</button>
     <button class="help-btn btn" id="help-btn" (click)="toggleModal('help')">HELP</button>
     <button class="hint-btn btn" id="hint-btn" (click)="hint()">Hint</button>
+    <button class="cb-mode-btn btn" id="cb-mode" (click)="toggleCBMode()">Color Mode: {{ colorMode }}</button>
     <button class="show-pins-btn btn" id="show-pinsbtn" (click)="showPins()">Show Pins</button>
-    <button class="cancel-btn btn" id="cancel-btn" (click)="cancel()">Empty row</button>
+    <button class="cancel-btn btn" id="cancel-btn" (click)="cancel()">Clear</button>
     <button class="submit-btn btn" id="submit-btn" (click)="submit()">Submit</button>
 
     <!-- row two -->
@@ -35,12 +36,15 @@
     </div>
 
     <div class="hidden-pins" id="hidden-pins">
-        <div class="hidden-pin" [ngStyle]="{'background-color': hiddenPins['hiddenPin1']}"></div>
+        <div class="hidden-pin" id="hidden-pin-1"></div>
+        <div class="hidden-pin" id="hidden-pin-2"></div>
+        <div class="hidden-pin" id="hidden-pin-3"></div>
+        <div class="hidden-pin" id="hidden-pin-4"></div>
+        <!-- <div class="hidden-pin" [ngStyle]="{'background-color': hiddenPins['hiddenPin1']}"></div>
         <div class="hidden-pin" [ngStyle]="{'background-color': hiddenPins['hiddenPin2']}"></div>
         <div class="hidden-pin" [ngStyle]="{'background-color': hiddenPins['hiddenPin3']}"></div>
-        <div class="hidden-pin" [ngStyle]="{'background-color': hiddenPins['hiddenPin4']}"></div>
+        <div class="hidden-pin" [ngStyle]="{'background-color': hiddenPins['hiddenPin4']}"></div> -->
     </div>
-
 
     <div class="user-board user-board-12" id="user-board-12">
         <div class="pin" id="pin-45"></div>
@@ -128,7 +132,7 @@
     <div class="check-box check-box-2" id="check-box-2"></div>
     <div class="check-box check-box-1" id="check-box-1"></div>
 
-    <div class="selectors">
+    <!-- <div class="selectors">
         <div class="color-box">
             <div class="color yellow" id="yellow" (click)="setColor('rgb(247, 247, 7)')"></div>
             <div class="color red" id="red" (click)="setColor('rgb(240, 2, 2)')"></div>
@@ -139,8 +143,33 @@
             <div class="color black" id="black" (click)="setColor('rgb(7, 7, 7)')"></div>
             <div class="color white" id="white" (click)="setColor('rgb(255, 255, 255)')"></div>
         </div>
-    </div>
+    </div> -->
 
+    <!-- <div class="selectors">
+        <div class="color-box">
+            <div class="color yellow" id="yellow" (click)="setColor('yellow')"></div>
+            <div class="color red" id="red" (click)="setColor('red')"></div>
+            <div class="color green" id="green" (click)="setColor('green')"></div>
+            <div class="color purple" id="purple" (click)="setColor('purple')"></div>
+            <div class="color blue" id="blue" (click)="setColor('blue')"></div>
+            <div class="color orange" id="orange" (click)="setColor('orange')"></div>
+            <div class="color black" id="black" (click)="setColor('black')"></div>
+            <div class="color white" id="white" (click)="setColor('white')"></div>
+        </div>
+    </div> -->
+
+    <div class="selectors">
+        <div class="color-box">
+            <div class="color" [ngClass]="CBMode + 'white'" id="white" (click)="setColor('white')"></div>
+            <div class="color" [ngClass]="CBMode + 'yellow'" id="yellow" (click)="setColor('yellow')"></div>
+            <div class="color" [ngClass]="CBMode + 'orange'" id="orange" (click)="setColor('orange')"></div>
+            <div class="color" [ngClass]="CBMode + 'red'" id="red" (click)="setColor('red')"></div>
+            <div class="color" [ngClass]="CBMode + 'purple'" id="purple" (click)="setColor('purple')"></div>
+            <div class="color" [ngClass]="CBMode + 'green'" id="green" (click)="setColor('green')"></div>
+            <div class="color" [ngClass]="CBMode + 'blue'" id="blue" (click)="setColor('blue')"></div>
+            <div class="color" [ngClass]="CBMode + 'black'" id="black" (click)="setColor('black')"></div>
+        </div>
+    </div>
 
 
 </div>
