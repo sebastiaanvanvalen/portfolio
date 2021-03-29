@@ -360,7 +360,7 @@ export class MastermindComponent implements OnInit {
     }
 
     playerWins() {
-        this.showPins();
+        this.showPins("win");
         this.gameStopped = true;
 
         setTimeout(() => {
@@ -368,8 +368,8 @@ export class MastermindComponent implements OnInit {
         }, 2000);
     }
 
-    showPins() {
-        if (this.hiddenPinsShowing === false) {
+    showPins(input = '') {
+        if (this.hiddenPinsShowing === false && input === '') {
             if (this.gameOver === true) {
                 this.toggleModal('showPins2');
             } else {
