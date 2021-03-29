@@ -360,7 +360,7 @@ export class MastermindComponent implements OnInit {
     }
 
     playerWins() {
-        this.showPins("win");
+        this.showPins("show no 'showPins modal'");
         this.gameStopped = true;
 
         setTimeout(() => {

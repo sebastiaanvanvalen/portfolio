@@ -1,4 +1,5 @@
 .navbar {
+    z-index: 10;
     position: fixed;
     display: flex;
     align-items: center;
@@ -16,9 +17,9 @@
         var(--global-primary),
         var(--global-secondary)
     );
-    z-index: 10;
-
+    
     .nav-header {
+        z-index: 10;
         display: flex;
         justify-content: space-between;
         width: 100%;
@@ -31,6 +32,8 @@
             align-items: center;
             color: var(--global-logo);
             .icon {
+                z-index: 10;
+                
                 .x1 {
                     transform: rotateX(0);
                     transform-origin: center;
@@ -85,6 +88,7 @@
         }
 
         .menu-items {
+            // z-index: 10;
             display: flex;
             align-items: center;
             justify-content: space-around;
@@ -92,11 +96,13 @@
             width: 100%;
 
             .nav-item {
+                // z-index: 10; 
                 display: flex;
                 height: 100%;
                 width: 25%;
 
                 .nav-link {
+                    z-index: 10;
                     display: flex;
                     justify-content: center;
                     align-items: center;
@@ -119,8 +125,10 @@
                 }
 
                 .dropdown {
+                    // above page/content but below navbar
+                    z-index: 5;
                     position: absolute;
-                    height: auto;
+                    height: 230px;
                     width: 100%;
                     text-align: left;
                     top: 56px;
@@ -135,11 +143,11 @@
                         rgb(96, 145, 161, 0.98),
                         rgb(194, 136, 11, 0.98)
                     );
-                    transition: 200ms ease-in-out;
-                    z-index: 15;
                     box-shadow: 0 8px 8px -2px grey;
                     
-                    a {
+                    .dropdown-item {
+                        z-index: 5;
+                        height: 13.5%;
                         color: white;
                     }
                 }

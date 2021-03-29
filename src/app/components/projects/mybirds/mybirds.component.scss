@@ -1,0 +1,44 @@
+.mybirds-container {
+    width: 100vw;
+    height: 100vh;
+    padding: 76px 12px 0;
+    background-image: url("../../../../assets/pictures/birds/20190424_132421.jpg");
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    .opening-text {
+        text-align: center;
+        .header {
+            color: white;
+        }
+
+        .text {
+            color: white;
+        }
+    }
+
+    .binocular-container {
+        .binocular-one-wrapper {
+            .image-wrapper {
+                img {
+                    
+                }
+            }
+            .text-wrapper {
+
+            }
+        }
+        .binocular-two-wrapper {
+            .image-wrapper {
+                img {
+                    
+                }
+            }
+            .text-wrapper {
+
+            }
+        }
+    }
+}
