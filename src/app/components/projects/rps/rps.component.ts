@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 
 @Component({
     selector: 'app-rps',
@@ -13,7 +14,9 @@ export class RpsComponent implements OnInit {
     compClass = "";
 
 
-    constructor() {}
+    constructor(private TitleService: Title) {
+        this.TitleService.setTitle('Rock Paper Scissors / baxxie.nl')
+    }
 
     ngOnInit(): void {  
     }

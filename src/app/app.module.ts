@@ -26,6 +26,14 @@ import { ContactComponent } from './components/contact/contact.component';
 // services
 import { ContactService } from './services/contact.service';
 import { MybirdsComponent } from './components/projects/mybirds/mybirds.component';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
+import { MyBirdTableComponent } from './mat-components/my-bird-table/my-bird-table.component';
+import { ModalService } from './services/modal.service';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { HttpService } from './services/http.service';
+
 
 
 @NgModule({
@@ -43,6 +51,8 @@ import { MybirdsComponent } from './components/projects/mybirds/mybirds.componen
     AboutComponent,
     MastermindComponent,
     MybirdsComponent,
+    MyBirdTableComponent,
+    // HttpService
   ],
   imports: [
     BrowserModule,
@@ -53,9 +63,13 @@ import { MybirdsComponent } from './components/projects/mybirds/mybirds.componen
     ClickOutsideModule,
     BrowserAnimationsModule,
     MaterialModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
+    NgbModule,
 
   ],
-  providers: [ContactService],
+  providers: [ContactService, ModalService, HttpService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

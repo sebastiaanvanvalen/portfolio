@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Title } from '@angular/platform-browser';
 
 import {
     FormBuilder,
@@ -20,7 +21,13 @@ export class ContactComponent implements OnInit {
     constructor(
         private builder: FormBuilder,
         private contact: ContactService,
-    ) {}
+        private TitleService: Title
+    ) {
+        this.TitleService.setTitle('Contact - baxxie.nl')
+    }
+
+
+
 
     ngOnInit(): void {
         this.FormData = this.builder.group({

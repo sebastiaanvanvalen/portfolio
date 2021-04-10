@@ -22,6 +22,17 @@
             .modal-header {
                 height: 42px;
             }
+
+            .modal-body {
+                display: flex;
+                text-align: center;
+                justify-content: center;
+                flex-direction: column;
+                height: 50%;
+                img {
+                    height: 50%;
+                }
+            }
         }
 
         // upper right corner x

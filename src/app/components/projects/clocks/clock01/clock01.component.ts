@@ -6,6 +6,9 @@ import { Component, OnInit } from '@angular/core';
     styleUrls: ['./clock01.component.scss'],
 })
 export class Clock01Component implements OnInit {
+    
+    interval;
+    
     constructor() {}
 
     
@@ -32,7 +35,7 @@ export class Clock01Component implements OnInit {
     }
 
     runClock() {
-        setInterval(() => {
+        this.interval = setInterval(() => {
             let clock = new Date();
             
             document.getElementById('year').innerText = `${this.convertNumber(clock.getFullYear())}`;
@@ -47,4 +50,10 @@ export class Clock01Component implements OnInit {
         }
         return number;
     }
+
+    ngOnDestroy() {
+        if (this.interval) {
+          clearInterval(this.interval);
+        }
+      }
 }

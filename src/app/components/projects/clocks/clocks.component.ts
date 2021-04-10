@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-clocks',
@@ -7,7 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ClocksComponent implements OnInit {
 
-  constructor() { }
+    constructor(private TitleService: Title) {
+        this.TitleService.setTitle('Clocks - baxxie.nl')
+    }
 
   ngOnInit(): void {
   }

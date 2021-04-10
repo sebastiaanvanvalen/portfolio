@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 
 @Component({
     selector: 'app-mastermind',
@@ -41,7 +42,9 @@ export class MastermindComponent implements OnInit {
 
     helpTemplate = `You have 12 chances to quess the hidden colors. Be aware that colors are randomly generated so they can appear more than once.<br>We trust you know the <a href="https://www.spelregels.eu/mastermind/">basics</a> of the game so the only thing left are the markers:<br><br>a '\u2688' if you placed a color in the correct position<br><br> a 'o' : for each color quessed correct but in the wrong position<br>`;
 
-    constructor() {}
+    constructor(private TitleService: Title) {
+        this.TitleService.setTitle('Mastermind - baxxie.nl')
+    }
 
     ngOnInit(): void {
         switch (this.storedCBMode) {
@@ -143,6 +146,7 @@ export class MastermindComponent implements OnInit {
                 this.hiddenColors.push(this.colors[i]);
                 this.hiddenColorsInMode.push(this.CBMode + this.colors[i]);
             }
+            console.log('yes! You can cheat and look up the hidden colors right here. ;-)')
             console.log(this.hiddenColors);
         }
         
@@ -278,21 +282,10 @@ export class MastermindComponent implements OnInit {
                     'the hint function only gives you one hint!<br>Good Luck!';
                 this.modalButton = 'Continue';
                 break;
-            case 'showPins':
-                this.modalTitle = 'No problem';
-                this.modalMessage = 'try just a little bit harder next time';
-                this.modalButton = 'Close';
-                break;
-            case 'showPins':
-                this.modalTitle = 'why was it to hard???';
-                this.modalMessage =
-                    "don't feel to bad. It happens to everybody.<br>You can allways try again ;-)";
-                this.modalButton = 'Close';
-                break;
             case 'playerWon':
                 this.modalTitle = 'Congratulations!';
                 this.modalMessage =
-                    'Good job! You won this game.<br>Would you like to try again?';
+                    'Good job! <br> <img src="../../../../assets/pictures/celebration.webp" alt="A picture of You winning!"/>';
                 this.modalButton = 'try again!';
                 this.modalBtnInfo = 'newGame';
                 break;
@@ -360,21 +353,16 @@ export class MastermindComponent implements OnInit {
     }
 
     playerWins() {
-        this.showPins("show no 'showPins modal'");
+        this.showPins("showem");
         this.gameStopped = true;
 
-        setTimeout(() => {
             this.toggleModal('playerWon');
-        }, 2000);
+
     }
 
     showPins(input = '') {
-        if (this.hiddenPinsShowing === false && input === '') {
-            if (this.gameOver === true) {
-                this.toggleModal('showPins2');
-            } else {
-                this.toggleModal('showPins');
-            }
+
+
 
             this.gameStopped = true;
 
@@ -388,7 +376,6 @@ export class MastermindComponent implements OnInit {
                     .classList.add(element);
             });
             this.hiddenPinsShowing = true;
-        }
     }
 
     hint() {
