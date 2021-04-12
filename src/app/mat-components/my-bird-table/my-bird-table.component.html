@@ -17,6 +17,13 @@
             <td class="mat-row-center mat-cell" *matCellDef="let row">
                 {{row.date}} </td>
         </ng-container>
+        <ng-container matColumnDef="picture">
+            <th class="text-right" mat-header-cell *matHeaderCellDef mat-sort-header>Photo</th>
+            <td class="mat-row-center mat-cell" *matCellDef="let row">
+                <img (click)="openModal(row)"
+                    [src]="row.picture ? photoPicUrl : 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7'"
+                    alt="camera-icon"></td>
+        </ng-container>
 
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
@@ -25,4 +32,17 @@
     <mat-paginator #paginator [length]="dataSource?.data?.length" [pageIndex]="0" [pageSize]="5"
         [pageSizeOptions]="[5, 10, 20]">
     </mat-paginator>
+
+    <div class="bird-modal" *ngIf="modal">
+        <div class="modal-image">
+        <button type="button" class="close" aria-label="Close" (click)="closeModal()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+            <a [href]="modalImage" target="_blank"><img [src]="modalImage" alt=""></a>
+        </div>
+        <div class="modal-text">
+            {{modalText}}
+        </div>
+
+    </div>
 </div>

@@ -1,8 +1,10 @@
 .mybirds-container {
-    width: 100vw;
+    width: 100%;
     height: 100%;
-    padding: 76px 12px 12px;
-    background-image: url("../../../../assets/pictures/birds/20190424_132421.jpg");
+    padding: 76px 0px 12px;
+    overflow: hidden;
+    // background-image: url("../../../../assets/pictures/birds/20190424_132421.jpg");
+    background: linear-gradient(rgb(135, 133, 133),rgb(46, 45, 45));
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
@@ -182,7 +184,7 @@
     .mybirds-container {
         // width: 100vw;
         // height: 100%;
-        // padding: 76px 12px 12px;
+        padding: 76px 0 12px;
         // background-image: url("../../../../assets/pictures/birds/20190424_132421.jpg");
         // background-attachment: fixed;
         // background-position: center;

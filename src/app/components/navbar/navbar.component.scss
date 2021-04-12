@@ -39,6 +39,7 @@
                     transform-origin: center;
                     transition: all 800ms cubic-bezier(0.55, -0.79, 0.5, 1.71);
                 }
+                
                 .turn1 {
                     transform: rotate(-360deg);
                     color: var(--logo-X);
@@ -145,10 +146,14 @@
                     );
                     box-shadow: 0 8px 8px -2px grey;
                     
-                    .dropdown-item {
+                    a.dropdown-item {
                         z-index: 5;
                         height: 13.5%;
                         color: white;
+
+                        &:hover {
+                            background-color: rgba(80, 125, 139, 0.98);
+                        }
                     }
                 }
             }
