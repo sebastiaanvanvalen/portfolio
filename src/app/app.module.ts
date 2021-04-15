@@ -22,6 +22,7 @@ import { PokerComponent } from './components/projects/poker/poker.component';
 import { CvComponent } from './components/cv/cv.component';
 import { AboutComponent } from './components/about/about.component';
 import { ContactComponent } from './components/contact/contact.component';
+import { MyformsComponent } from './components/projects/myforms/myforms.component';
 
 // services
 import { ContactService } from './services/contact.service';
@@ -52,7 +53,8 @@ import { HttpService } from './services/http.service';
     MastermindComponent,
     MybirdsComponent,
     MyBirdTableComponent,
-    // HttpService
+    MyformsComponent,
+
   ],
   imports: [
     BrowserModule,

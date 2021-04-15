@@ -37,7 +37,7 @@ export class MyBirdTableComponent implements AfterViewInit {
         let nr = 1;
         this.httpService.makeGetAllRequest(this.url).subscribe(res => {
             res['birds'].forEach(element => {
-                element['birdId'] = nr;git s
+                element['birdId'] = nr;
                 nr ++;
             });
             this.dataSource.data = res['birds'];

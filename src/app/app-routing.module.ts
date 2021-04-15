@@ -9,6 +9,7 @@ import { CvComponent } from './components/cv/cv.component';
 import { AboutComponent } from './components/about/about.component';
 import { MastermindComponent } from './components/projects/mastermind/mastermind.component';
 import { MybirdsComponent } from './components/projects/mybirds/mybirds.component';
+import { MyformsComponent } from './components/projects/myforms/myforms.component';
 
 const routes: Routes = [
     { path: '', component: MainPageComponent },
@@ -19,7 +20,8 @@ const routes: Routes = [
     { path: 'about', component: AboutComponent },
     { path: 'contact', component: ContactComponent },
     { path: 'mastermind', component: MastermindComponent },
-    { path: 'mybirds', component: MybirdsComponent }
+    { path: 'mybirds', component: MybirdsComponent },
+    { path: 'myforms', component: MyformsComponent}
 ];
 
 @NgModule({

@@ -5,7 +5,6 @@
     background-color: rgba(211, 209, 209);
     border-bottom: 5px solid var(--global-primary);
 
-
     .mat-table {
         width: 100%;
         background-color: rgba(211, 209, 209);
@@ -16,7 +15,7 @@
             vertical-align: middle;
             color: rgb(145, 143, 143);
         }
-        
+
         .mat-cell {
             font-size: 11px;
             color: rgb(145, 143, 143);
@@ -75,43 +74,39 @@
                 background-color: black;
                 span {
                     text-shadow: 1px 3px 3px solid black;
-
                 }
             }
-            
+
             img {
-                
                 width: 100%;
                 height: 100%;
             }
-
         }
-                .modal-text {
-                    color: white;
-                    padding: 8px;
-                    text-align: center;
-                }
+        .modal-text {
+            color: white;
+            padding: 8px;
+            text-align: center;
+        }
     }
 }
 
 @media (min-width: 500px) {
     .bird-table-container {
         width: 100%;
-        padding: 10px 0 10px;
+        padding: 10px 0 0;
         border-bottom: 10px solid var(--global-primary);
 
-    
         .mat-table {
             width: 100%;
             background-color: rgba(211, 209, 209, 0.79);
             box-shadow: 1px 0px 6x 1px black;
-    
+
             .mat-sort-header {
                 font-size: 14px;
                 vertical-align: middle;
                 color: rgb(145, 143, 143);
             }
-            
+
             .mat-cell {
                 font-size: 14px;
                 color: rgb(145, 143, 143);
@@ -121,7 +116,7 @@
             .mat-column-birdId {
                 width: 10%;
             }
-            
+
             .mat-column-birdName {
                 width: 70%;
             }
@@ -129,9 +124,7 @@
             .mat-column-location {
                 width: 20%;
             }
-    
         }
-    
     }
 
     .bird-modal {
@@ -148,14 +141,12 @@
             width: 100%;
             max-width: 860px;
             height: 100%;
-            
+
             img {
-                
                 width: 90%;
                 max-width: 860px;
                 height: 100%;
             }
         }
     }
-
 }
