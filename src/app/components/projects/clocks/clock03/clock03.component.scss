@@ -1,0 +1,631 @@
+.container {
+    width: 100%;
+    height: 100vh;
+    margin-top: 40px;
+    padding-top: 8px;
+    
+    .flickr {
+        // background-color: black;
+    }
+
+    .explanation {
+        border-top: 1px solid grey;
+        padding-top: 24px;
+        width: 90%;
+        max-width: 480px;
+        margin: 0 auto;
+    }
+
+    .clock-container {
+        margin-top: 12px;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        width: 90%;
+        // min-height: 240px;
+        font-size: 12px;
+        overflow: hidden;
+        margin: 0 auto;
+
+        .form-style-container {
+            width: 90%;
+            max-width: 480px;
+            margin: 12px auto;
+
+            .button-wrapper {
+                display: flex;
+                justify-content: space-between;
+                width: 100%;
+
+                .btn {
+                    padding: 4px;
+                    font-size: 10px;
+                    width: 19%;
+                }
+
+                .act {
+                    background-color: var(--global-primary);
+                    font-weight: bold;
+                    color: white;
+                }
+            }
+        }
+
+        .time-wrapper {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            max-width: 480px;
+            // align-items: flex-end;
+            height: 180px;
+            width: 90%;
+            margin: 0 auto;
+            font-family: "Pacifico", cursive;
+            
+            .clock {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding-top: 52px;
+                font-size: 32px;
+                letter-spacing: 0.4em;
+                padding-bottom: 8px;
+                background-color: black;
+                height: 100%;
+
+                .clock-wrapper {
+                    height: 100%;
+                }
+                
+                .material {
+                    color: grey;
+                }
+                
+                .colors {
+                    color: transparent;
+                    animation: effect 2s linear infinite;
+                }
+                
+                .flickr {
+                    color: white;
+                    opacity: 0.15;
+                }
+
+                .flickr.hour-wrapper  {
+                    animation: flickerLG 2s linear reverse infinite;
+                    position: relative;
+
+                    &::after, &::before {
+                        content:' ';
+                        width: 180px;
+                        height: 100px;
+                        background: #f1f1f1;
+                        position: absolute;
+                        top: -15%;
+                        left: -10%;
+                        border-radius: 100%;
+                        opacity: 0.09;
+                        filter: blur(20px);
+                    }
+                } 
+
+                .flickr.minute-wrapper {
+                    animation: flickerLG 2s linear reverse infinite;
+                    position: relative;
+                }
+                
+                .flickr.second-wrapper {
+                    animation: flickerH 2s linear reverse infinite;
+                }
+                
+                .flickr.divider-2 {
+                    animation: flickerLG 2s linear reverse infinite;
+                }
+                
+                .flickr.divider-1 {
+                    animation: flickerI 2s linear  reverse infinite;
+                    position: relative;
+
+                    &::after {
+                        content: ' ';
+                        position: absolute;
+                        top: 10%;
+                        right: -80%;
+                        width: 15%;
+                        -webkit-box-shadow: -35px 0px 60px 12px rgba(255,255,255,1);
+                        -moz-box-shadow: -35px 0px 60px 12px rgba(255,255,255,1);
+                        box-shadow: -35px 0px 60px 12px rgba(255,255,255,1);
+                    }
+                }
+
+                .tremor {
+                    color: white;
+                    
+                }
+                .tremor.hour-wrapper {
+                    animation: tremorA 1s linear reverse infinite;
+                    
+                }
+                .tremor.minute-wrapper {
+                    animation: tremorA 1.5s linear infinite;
+                    
+                }
+                .tremor.second-wrapper {
+                    animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both infinite;
+                    transform: translate3d(0, 0, 0);
+                    backface-visibility: hidden;
+                    perspective: 1000px;
+                    
+                }
+                .tremor.divider-1 {
+                    animation: tremorB 1.5s linear reverse infinite;
+                    
+                }
+                .tremor.divider-2 {
+                    animation: tremorB 1.5s ease-in-out infinite;
+                }
+            }
+
+            .date {
+                position: absolute;
+                display: flex;
+                justify-content: center;
+                bottom: 0;
+                width: 100%;
+                transform: translateX(32px);
+                transform: translateY(-32px);
+                font-size: 14px;
+
+                .material {
+                    color: grey;
+                }
+
+                .colors {
+                    color: transparent;
+                    animation: effect 2s linear infinite;
+                }
+
+                .flickr.date-wrapper {
+                    color: rgb(58, 56, 56);
+                    text-shadow: 0 -1px 0 rgb(150, 148, 148);
+                    animation: flickerI 2s linear reverse infinite;
+                }
+
+                .tremor {
+                    color: white;
+                }
+
+                .tremor.day-wrapper {
+                    animation: tremorB 2s ease-in-out infinite;
+                }
+
+                .tremor.month-wrapper {
+                    animation: tremorB 2s linear reverse infinite;
+                }
+
+                .tremor.year-wrapper {
+                    animation: tremorA 2s linear infinite;
+                }
+            }
+
+
+        }     
+    }
+}
+
+@keyframes effect {
+    0% {
+        background: var(--global-primary);
+        -webkit-background-clip: text;
+    }
+
+    20% {
+        background: rgb(101, 137, 101);
+        -webkit-background-clip: text;
+    }
+
+    40% {
+        background: var(--global-primary);
+        -webkit-background-clip: text;
+    }
+
+    60% {
+        background: var(--global-secondary);
+        -webkit-background-clip: text;
+    }
+
+    80% {
+        background: rgb(148, 81, 81);
+        -webkit-background-clip: text;
+    }
+
+    100% {
+        background: var(--global-primary);
+        -webkit-background-clip: text;
+    }
+}
+
+@keyframes flickerI {
+    0% {
+        opacity: 0.4;
+    }
+    5% {
+        opacity: 0.5;
+    }
+    10% {
+        opacity: 0.6;
+    }
+    15% {
+        opacity: 0.85;
+    }
+    25% {
+        opacity: 0.5;
+    }
+    30% {
+        opacity: 1;
+    }
+    35% {
+        opacity: 0.1;
+    }
+    40% {
+        opacity: 0.25;
+    }
+    45% {
+        opacity: 0.5;
+    }
+    60% {
+        opacity: 1;
+    }
+    70% {
+        opacity: 0.85;
+    }
+    80% {
+        opacity: 0.4;
+    }
+    90% {
+        opacity: 0.5;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes flickerLG {
+    0% {
+        opacity: 0.19;
+    }
+    5% {
+        opacity: 0.2;
+    }
+    10% {
+        opacity: 0.25;
+    }
+    15% {
+        opacity: 0.35;
+    }
+    25% {
+        opacity: 0.2;
+    }
+    30% {
+        opacity: 0.4;
+    }
+    35% {
+        opacity: 0.1;
+    }
+    40% {
+        opacity: 0.25;
+    }
+    45% {
+        opacity: 0.2;
+    }
+    60% {
+        opacity: 0.4;
+    }
+    70% {
+        opacity: 0.35;
+    }
+    80% {
+        opacity: 0.4;
+    }
+    90% {
+        opacity: 0.2;
+    }
+    100% {
+        opacity: 0.4;
+    }
+}
+
+@keyframes flickerH {
+    0% {
+        opacity: 0.15;
+    }
+    5% {
+        opacity: 0.2;
+    }
+    10% {
+        opacity: 0.12;
+    }
+    15% {
+        opacity: 0.2;
+    }
+    25% {
+        opacity: 0.15;
+    }
+    30% {
+        opacity: 0.4;
+    }
+    35% {
+        opacity: 0.05;
+    }
+    40% {
+        opacity: 0.12;
+    }
+    45% {
+        opacity: 0.15;
+    }
+    60% {
+        opacity: 0.3;
+    }
+    70% {
+        opacity: 0.2;
+    }
+    80% {
+        opacity: 0.3;
+    }
+    90% {
+        opacity: 0.18;
+    }
+    100% {
+        opacity: 0.3;
+    }
+}
+
+@keyframes flickerT {
+    0% {
+        opacity: 0.01;
+    }
+    5% {
+        opacity: 0.05;
+    }
+    10% {
+        opacity: 0.03;
+    }
+    15% {
+        opacity: 0.1;
+    }
+    25% {
+        opacity: 0.07;
+    }
+    30% {
+        opacity: 0.1;
+    }
+    35% {
+        opacity: 0.05;
+    }
+    40% {
+        opacity: 0.06;
+    }
+    45% {
+        opacity: 0.1;
+    }
+    60% {
+        opacity: 0;
+    }
+    70% {
+        opacity: 0.1;
+    }
+    80% {
+        opacity: 0;
+    }
+    90% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 0.1;
+    }
+}
+
+@keyframes tremorA {
+    0% {
+        transform: translate(0px, 0px);
+    }
+    5% {
+        transform: translate(6px, 7px);
+    }
+    10% {
+        transform: translate(4px, 3px);
+    }
+    15% {
+        transform: translate(3px, 1px);
+    }
+    25% {
+        transform: translate(3px, 1px);
+    }
+    30% {
+        transform: translate(5px, 4px);
+    }
+    35% {
+        transform: translate(1px, -1px);
+    }
+    40% {
+        transform: translate(-1px, 1px);
+    }
+    45% {
+        transform: translate(7px, 4px);
+    }
+    50% {
+        transform: translate(3px, -2px);
+    }
+    55% {
+        transform: translate(-3px, 2px);
+    }
+    60% {
+        transform: translate(-2px, -5px);
+    }
+    70% {
+        transform: translate(-3px, 3px);
+    }
+    80% {
+        transform: translate(-4px, 2px);
+    }
+    90% {
+        transform: translate(-5px, 0px);
+    }
+    100% {
+        transform: translate(0px, 0px);
+    }
+}
+
+@keyframes tremorB {
+    0% {
+        transform: translate(1px, 0px);
+    }
+    5% {
+        transform: translate(2px, 7px);
+    }
+    10% {
+        transform: translate(1px, -3px);
+    }
+    15% {
+        transform: translate(0px, 4px);
+    }
+    25% {
+        transform: translate(-1px, -1px);
+    }
+    30% {
+        transform: translate(-2px, 8px);
+    }
+    35% {
+        transform: translate(-1px, 2px);
+    }
+    40% {
+        transform: translate(-0x, 6px);
+    }
+    45% {
+        transform: translate(1px, -4px);
+    }
+    50% {
+        transform: translate(2px, -2px);
+    }
+    55% {
+        transform: translate(1px, 2px);
+    }
+    60% {
+        transform: translate(0px, -5px);
+    }
+    70% {
+        transform: translate(-1px, 3px);
+    }
+    80% {
+        transform: translate(-2px, 2px);
+    }
+    90% {
+        transform: translate(-1px, -3px);
+    }
+    100% {
+        transform: translate(0px, 0px);
+    }
+}
+
+@keyframes tremorC {
+    0% {
+        transform: translate(7px, 0px);
+        transform: rotate(20deg);
+    }
+    3% {
+        transform: translate(-6px, 7px);
+        transform: rotate(-22deg);
+    }
+    6% {
+        transform: translate(6px, 7px);
+        transform: rotate(13deg);
+    }
+    9% {
+        transform: translate(-7px, 7px);
+        transform: rotate(-13deg);
+    }
+    12% {
+        transform: translate(8px, 7px);
+        transform: rotate(13deg);
+    }
+    15% {
+        transform: translate(-8px, 4px);
+        transform: rotate(-1deg);
+    }
+    20% {
+        transform: translate(-8px, 4px);
+        transform: rotate(15deg);
+    }
+    25% {
+        transform: translate(-1px, -1px);
+        transform: rotate(-15deg);
+    }
+    30% {
+        transform: translate(-2px, 8px);
+        transform: rotate(5deg);
+    }
+    35% {
+        transform: translate(-1px, 2px);
+        transform: rotate(-15deg);
+    }
+    40% {
+        transform: translate(-0x, 6px);
+        transform: rotate(15deg);
+    }
+    45% {
+        transform: translate(1px, -4px);
+        transform: rotate(-1deg);
+    }
+    50% {
+        transform: translate(2px, -2px);
+        transform: rotate(11deg);
+    }
+    55% {
+        transform: translate(1px, 2px);
+    }
+    60% {
+        transform: translate(0px, -5px);
+    }
+    65% {
+        transform: translate(0px, -5px);
+    }
+    70% {
+        transform: translate(-1px, 3px);
+    }
+    75% {
+        transform: translate(-1px, 3px);
+    }
+    80% {
+        transform: translate(-2px, 2px);
+    }
+    85% {
+        transform: translate(-2px, 2px);
+    }
+    90% {
+        transform: translate(-1px, -3px);
+    }
+    95% {
+        transform: translate(-1px, -3px);
+    }
+    100% {
+        transform: translate(0px, 0px);
+    }
+}
+
+@keyframes shake {
+    10%, 90% {
+      transform: translate3d(-1px, 0, 0);
+    }
+    
+    20%, 80% {
+      transform: translate3d(2px, 0, 0);
+    }
+  
+    30%, 50%, 70% {
+      transform: translate3d(-4px, 0, 0);
+    }
+  
+    40%, 60% {
+      transform: translate3d(4px, 0, 0);
+    }
+  }
