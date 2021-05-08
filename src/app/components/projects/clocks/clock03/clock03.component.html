@@ -1,7 +1,7 @@
 <div class="container" id="container">
     <div class="explanation">
         <h2>Customizable Clock</h2>
-        This very basic clock was my very first finished javascript project. I used it to experiment with transform possibilities and css-styling. 
+        A clock with some different css animations 
     </div>
     <div class="clock-container">
         <div class="form-style-container">
@@ -17,32 +17,33 @@
         <div class="time-wrapper">
 
             <div class="clock">
-                <!-- <div class="clock-wrapper hour-wrapper flickr">14</div> -->
-                <div class="clock-wrapper hour-wrapper material">{{ hour }}</div>
-                <!-- <div class="clock-wrapper divider divider-1 flickr">:</div> -->
-                <div class="clock-wrapper divider divider-1 material">:</div>
-                <!-- <div class="clock-wrapper minute-wrapper flickr">46</div> -->
-                <div class="clock-wrapper minute-wrapper material">{{ min }}</div>
-                <!-- <div class="clock-wrapper divider divider-2 flickr">:</div> -->
-                <div class="clock-wrapper divider divider-2 material">:</div>
-                <!-- <div class="clock-wrapper second-wrapper flickr">07</div> -->
-                <div class="clock-wrapper second-wrapper material">{{ sec }}</div>
+                <div class="clock-wrapper">
+
+                    <!-- <div class="clock-wrapper hour-wrapper flickr">14</div> -->
+                    <div class="clock-item hour-wrapper material">{{ hour }}</div>
+                    <!-- <div class="clock-wrapper divider divider-1 flickr">:</div> -->
+                    <div class="clock-item divider divider-1 material">:</div>
+                    <!-- <div class="clock-wrapper minute-wrapper flickr">46</div> -->
+                    <div class="clock-item minute-wrapper material">{{ min }}</div>
+                    <!-- <div class="clock-wrapper divider divider-2 flickr">:</div> -->
+                    <div class="clock-item divider divider-2 material">:</div>
+                    <!-- <div class="clock-wrapper second-wrapper flickr">07</div> -->
+                    <div class="clock-item second-wrapper material">{{ sec }}</div>
+                </div>
             </div>
 
             <!-- <div class="date date-flickr"> -->
             <div class="date">
                 <div class="date-wrapper day-wrapper material">{{ day }}</div>
                 <div class="date-wrapper divider material">&nbsp;&nbsp;</div>
-                <div class="date-wrapper month-wrapper material">{{ date }}</div>
+                <div class="date-wrapper month01-wrapper material">{{ date }}</div>
                 <div class="date-wrapper divider material">&nbsp;&nbsp;</div>
-                <div class="date-wrapper month-wrapper material">{{ month }}</div>
+                <div class="date-wrapper month02-wrapper material">{{ month }}</div>
                 <div class="date-wrapper divider material">&nbsp;&nbsp;</div>
                 <div class="date-wrapper year-wrapper material">{{ year }}</div>
             </div>
 
         </div>
-
-
 
     </div>
 </div>

@@ -3,7 +3,7 @@
     height: 100vh;
     margin-top: 40px;
     padding-top: 8px;
-    
+
     .flickr {
         // background-color: black;
     }
@@ -61,108 +61,123 @@
             width: 90%;
             margin: 0 auto;
             font-family: "Pacifico", cursive;
-            
+
             .clock {
                 display: flex;
                 align-items: center;
-                justify-content: center;
+                width: 100%;
                 padding-top: 52px;
                 font-size: 32px;
-                letter-spacing: 0.4em;
+                margin: 0 auto;
+                letter-spacing: 0.35em;
                 padding-bottom: 8px;
                 background-color: black;
                 height: 100%;
-
+                
                 .clock-wrapper {
                     height: 100%;
-                }
-                
-                .material {
-                    color: grey;
-                }
-                
-                .colors {
-                    color: transparent;
-                    animation: effect 2s linear infinite;
-                }
-                
-                .flickr {
-                    color: white;
-                    opacity: 0.15;
-                }
+                    width: 100%;
+                    transform: translateX(5%);;
+                    display: flex;
+                    align-items: center;
 
-                .flickr.hour-wrapper  {
-                    animation: flickerLG 2s linear reverse infinite;
-                    position: relative;
 
-                    &::after, &::before {
-                        content:' ';
-                        width: 180px;
-                        height: 100px;
-                        background: #f1f1f1;
-                        position: absolute;
-                        top: -15%;
-                        left: -10%;
-                        border-radius: 100%;
-                        opacity: 0.09;
-                        filter: blur(20px);
+                    .clock-item {
+                        height: 100%;
                     }
-                } 
 
-                .flickr.minute-wrapper {
-                    animation: flickerLG 2s linear reverse infinite;
-                    position: relative;
-                }
-                
-                .flickr.second-wrapper {
-                    animation: flickerH 2s linear reverse infinite;
-                }
-                
-                .flickr.divider-2 {
-                    animation: flickerLG 2s linear reverse infinite;
-                }
-                
-                .flickr.divider-1 {
-                    animation: flickerI 2s linear  reverse infinite;
-                    position: relative;
-
-                    &::after {
-                        content: ' ';
-                        position: absolute;
-                        top: 10%;
-                        right: -80%;
-                        width: 15%;
-                        -webkit-box-shadow: -35px 0px 60px 12px rgba(255,255,255,1);
-                        -moz-box-shadow: -35px 0px 60px 12px rgba(255,255,255,1);
-                        box-shadow: -35px 0px 60px 12px rgba(255,255,255,1);
+                    .material {
+                        color: grey;
                     }
-                }
 
-                .tremor {
-                    color: white;
-                    
-                }
-                .tremor.hour-wrapper {
-                    animation: tremorA 1s linear reverse infinite;
-                    
-                }
-                .tremor.minute-wrapper {
-                    animation: tremorA 1.5s linear infinite;
-                    
-                }
-                .tremor.second-wrapper {
-                    animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both infinite;
-                    transform: translate3d(0, 0, 0);
-                    backface-visibility: hidden;
-                    perspective: 1000px;
-                    
-                }
-                .tremor.divider-1 {
-                    animation: tremorB 1.5s linear reverse infinite;
-                    
-                }
-                .tremor.divider-2 {
-                    animation: tremorB 1.5s ease-in-out infinite;
+                    .colors {
+                        color: transparent;
+                        animation: effect 2s linear infinite;
+                    }
+
+                    .flickr {
+                        color: white;
+                        opacity: 0.15;
+                    }
+
+                    .flickr.hour-wrapper {
+                        animation: flickerLG 2s linear reverse infinite;
+                        position: relative;
+
+                        &::after,
+                        &::before {
+                            content: " ";
+                            width: 180px;
+                            height: 100px;
+                            background: #f1f1f1;
+                            position: absolute;
+                            top: -15%;
+                            left: -10%;
+                            border-radius: 100%;
+                            opacity: 0.09;
+                            filter: blur(20px);
+                        }
+                    }
+
+                    .flickr.minute-wrapper {
+                        animation: flickerLG 2s linear reverse infinite;
+                        position: relative;
+                    }
+
+                    .flickr.second-wrapper {
+                        animation: flickerH 2s linear reverse infinite;
+                    }
+
+                    .flickr.divider-2 {
+                        animation: flickerLG 2s linear reverse infinite;
+                    }
+
+                    .flickr.divider-1 {
+                        animation: flickerI 2s linear reverse infinite;
+                        position: relative;
+
+                        &::after {
+                            content: " ";
+                            position: absolute;
+                            top: 10%;
+                            right: -80%;
+                            width: 15%;
+                            -webkit-box-shadow: -35px 0px 60px 12px
+                                rgba(255, 255, 255, 1);
+                            -moz-box-shadow: -35px 0px 60px 12px
+                                rgba(255, 255, 255, 1);
+                            box-shadow: -35px 0px 60px 12px
+                                rgba(255, 255, 255, 1);
+                        }
+                    }
+
+                    .tremor {
+                        color: white;
+                    }
+
+                    .tremor.hour-wrapper {
+                        animation: tremorA 1s linear reverse infinite;
+                    }
+
+                    .tremor.minute-wrapper {
+                        animation: tremorA 1.5s linear infinite;
+                    }
+
+                    .tremor.second-wrapper {
+                        animation: shake 0.82s
+                            cubic-bezier(0.36, 0.07, 0.19, 0.97) both infinite;
+                        transform: translate3d(0, 0, 0);
+                        backface-visibility: hidden;
+                        perspective: 1000px;
+                    }
+
+                    .tremor.divider-1 {
+                        animation: tremorB 1.5s linear reverse infinite;
+                    }
+
+                    .tremor.divider-2 {
+                        animation: tremorB 1.5s ease-in-out infinite;
+                    }
                 }
             }
 
@@ -172,6 +187,7 @@
                 justify-content: center;
                 bottom: 0;
                 width: 100%;
+                height: 30px;
                 transform: translateX(32px);
                 transform: translateY(-32px);
                 font-size: 14px;
@@ -199,7 +215,12 @@
                     animation: tremorB 2s ease-in-out infinite;
                 }
 
-                .tremor.month-wrapper {
+                .tremor.month01-wrapper {
+                    animation: rotateA 3s ease-in-out infinite;
+                    transform-origin: center;
+                }
+
+                .tremor.month02-wrapper {
                     animation: tremorB 2s linear reverse infinite;
                 }
 
@@ -207,9 +228,7 @@
                     animation: tremorA 2s linear infinite;
                 }
             }
-
-
-        }     
+        }
     }
 }
 
@@ -613,19 +632,101 @@
 }
 
 @keyframes shake {
-    10%, 90% {
-      transform: translate3d(-1px, 0, 0);
+    10%,
+    90% {
+        transform: translate3d(-1px, 0, 0);
     }
-    
-    20%, 80% {
-      transform: translate3d(2px, 0, 0);
+
+    20%,
+    80% {
+        transform: translate3d(2px, 0, 0);
     }
-  
-    30%, 50%, 70% {
-      transform: translate3d(-4px, 0, 0);
+
+    30%,
+    50%,
+    70% {
+        transform: translate3d(-4px, 0, 0);
     }
-  
-    40%, 60% {
-      transform: translate3d(4px, 0, 0);
+
+    40%,
+    60% {
+        transform: translate3d(4px, 0, 0);
     }
-  }
+}
+
+@keyframes rotateA {
+    0% {
+        transform: rotate(0deg);
+    }
+    5% {
+        transform: rotate(180deg);
+    }
+    10% {
+        transform: rotate(360deg);
+    }
+    15% {
+        transform: rotate(540deg);
+    }
+    25% {
+        transform: rotate(720deg);
+    }
+    30% {
+        transform: rotate(900deg);
+    }
+    35% {
+        transform: rotate(1080deg);
+    }
+    40% {
+        transform: rotate(1260deg);
+    }
+    45% {
+        transform: rotate(1440deg);
+    }
+    50% {
+        transform: rotate(1620deg);
+    }
+    55% {
+        transform: rotate(1800deg);
+    }
+    60% {
+        transform: rotate(1980deg);
+    }
+    65% {
+        transform: rotate(2160deg);
+    }
+    70% {
+        transform: rotate(2340deg);
+    }
+    75% {
+        transform: rotate(2520deg);
+    }
+    80% {
+        transform: rotate(2700deg);
+    }
+    85% {
+        transform: rotate(2880deg);
+    }
+    90% {
+        transform: rotate(3100deg);
+    }
+    95% {
+        transform: rotate(3300deg);
+    }
+    100% {
+        transform: rotate(3600deg);
+    }
+}
+
+@media (min-width: 450px) {
+    .container {
+        .clock-container {
+            .time-wrapper {
+                .clock {
+                    .clock-wrapper {
+                        transform: translateX(30%);
+                    }
+                }
+            }
+        }
+    }
+}

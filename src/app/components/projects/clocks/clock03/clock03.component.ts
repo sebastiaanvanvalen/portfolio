@@ -36,7 +36,7 @@ export class Clock03Component implements OnInit {
 
     changeClass(button) {
         let clockWrapper = Array.from(
-            document.getElementsByClassName('clock-wrapper')
+            document.getElementsByClassName('clock-item')
         );
         let dateWrapper = Array.from(
             document.getElementsByClassName('date-wrapper')
