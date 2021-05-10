@@ -1,31 +1,42 @@
 <nav class="navbar">
     <div class="nav-header">
         <div class="icons">
-            <div class="smallIcon icon">
-                ba<span [ngClass]="showBox ? 'turn1' : 'x1'">x</span><span [ngClass]="showBox ? 'turn2' : 'x2'">x</span>ie
-            </div>
-            <div class="bigIcon icon">
-                BA<span [ngClass]="showBox ? 'turn1' : 'x1'">X</span><span [ngClass]="showBox ? 'turn2' : 'x2'">X</span>IE
-            </div>
+            <a routerLink="/">
+                <div class="smallIcon icon">
+                    ba<span [ngClass]="showBox ? 'turn1' : 'x1'">x</span><span [ngClass]="showBox ? 'turn2' : 'x2'">x</span>ie
+                </div>
+                <div class="bigIcon icon">
+                    BA<span [ngClass]="showBox ? 'turn1' : 'x1'">X</span><span [ngClass]="showBox ? 'turn2' : 'x2'">X</span>IE
+                </div>
+            </a>
         </div>
         <div class="menu-items">
             <div class="nav-item">
                 <a class="nav-link" routerLink="/">
                     <p>Home <span class="sr-only">(current)</span></p>
-                    <img src="../../../assets/pictures/icons/home-1.png" alt="home">
+                    <!-- <img src="../../../assets/pictures/icons/home-1.png" alt="home"> -->
+                    <span class="material-icons">
+                        home
+                        </span>
                 </a>
             </div>
             <div class="nav-item">
                 <a class="nav-link btns" data-toggle="collapse" routerLink="about">
                     <p>About</p>
-                    <img src="../../../assets/pictures/icons/id-card.png" alt="">
+                    <!-- <img src="../../../assets/pictures/icons/id-card.png" alt=""> -->
+                    <span class="material-icons">
+                        fingerprint
+                        </span>
                 </a>
             </div>
             <div class="nav-item">
                 <a class="nav-link dropdown-toggle" id="navbarDropdown" (clickOutside)="onClickedOutside($event)"
                     (click)="showBox = !showBox">
                     <p>Portfolio</p>
-                    <img src="../../../assets/pictures/icons/folder-19.png" />
+                    <!-- <img src="../../../assets/pictures/icons/folder-19.png" /> -->
+                    <span class="material-icons">
+                        folder_open
+                        </span>
                 </a>
                 <div class="dropdown" [@enterAnimation] *ngIf="showBox" id="dropdown">
                     <a class="dropdown-item" routerLink="rps">Rock Paper Scisors</a>
@@ -41,7 +52,10 @@
             <div class="nav-item">
                 <a class="nav-link btns" href="#" routerLink="contact" data-toggle="collapse">
                     <p>contact</p>
-                    <img src="../../../assets/pictures/icons/smartphone.png" alt="">
+                    <!-- <img src="../../../assets/pictures/icons/smartphone.png" alt=""> -->
+                    <span class="material-icons">
+                        phone_in_talk
+                        </span>
                 </a>
             </div>
         </div>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { trigger, style, animate, transition } from '@angular/animations';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
     selector: 'app-navbar',
