@@ -11,7 +11,6 @@ export class Clock01Component implements OnInit {
     
     constructor() {}
 
-    
 
     ngOnInit(): void {
         this.runClock();

@@ -1,0 +1,13 @@
+<div class="color-theme-container" (clickOutside)="onClickedOutside($event)">
+<!-- <div class="color-theme-container"> -->
+    <div class="dropdown" id="dropdown" >
+        <div class="themes" [@enterAnimation] *ngIf="showBox" (click)="setColorTheme()">
+            <span class="material-icons icon1">L</span>
+            <!-- <span class="material-icons icon1">light_mode</span> -->
+            <span class="material-icons icon2">D</span>
+            <!-- <span class="material-icons icon2">dark_mode</span> -->
+            <!-- <div class="color" (click)="showBox = !showBox">light</div> -->
+        </div>
+        <div class="activeTheme" (click)="showBox = !showBox">{{ theme }}</div>
+    </div>
+</div>

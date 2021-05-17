@@ -1,17 +1,22 @@
 .about-container {
     padding-top: 76px;
     width: 100vw;
+    height: 100%;
+    min-height: 100vh;
+    background-color: var(--backgroundColor1);
     
     .header {
         padding: 8px;
         max-width: 624px;
         margin: 4px auto;
         text-align: center;
+        color: var(--textColor1);
+
         
         p {
             font-size: 8px;
             font-style: italic;
-            color: grey;
+            color: var(--textColor1);
         }   
     }
     .info {
@@ -20,6 +25,8 @@
         padding: 4px 8px;
         max-width: 624px;
         text-align: center;
+        color: var(--textColor1);
+
 
         .grid-container {
             display: flex;
@@ -52,7 +59,7 @@
                     font-size: 14px;
 
                     .under {
-                        color: grey;
+                        color: var(--textColor1);
                         font-size: 10px;
                         // line-height: 80%;
                         margin-bottom: 4px;

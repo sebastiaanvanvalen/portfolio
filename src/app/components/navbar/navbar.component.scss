@@ -143,14 +143,15 @@
                     right: 0;
                     padding: 8px;
                     color: white;
+                    opacity: 0.98;
                     background: linear-gradient(
                         to right,
-                        rgba(96, 145, 161, 0.98),
-                        rgb(96, 145, 161, 0.98),
-                        rgb(96, 145, 161, 0.98),
-                        rgb(194, 136, 11, 0.98)
+                        var(--global-primary),
+                        var(--global-primary),
+                        var(--global-primary),
+                        var(--global-secondary),
                     );
-                    box-shadow: 0 8px 8px -2px grey;
+                    box-shadow: var(--boxShadowColorDD);
                     
                     a.dropdown-item {
                         z-index: 5;
@@ -158,7 +159,7 @@
                         color: white;
 
                         &:hover {
-                            background-color: rgba(80, 125, 139, 0.98);
+                            background-color: var(--global-primary);
                         }
                     }
                 }

@@ -1,59 +1,61 @@
-<div class="contact">
-    <div class="personal-info">
-        <div class="info-container">
-            <div class="types">
-                <div class="type">my name</div>
-                <div class="type">email</div>
-                <div class="type">telephone</div>
+<div class="contact-wrapper">
+    <div class="contact">
+
+        <div class="personal-info">
+            <div class="info-container">
+                <div class="types">
+                    <div class="type">my name</div>
+                    <div class="type">email</div>
+                    <div class="type">telephone</div>
+                </div>
+                <div class="values">
+                    <div class="value">Sebastiaan van Valen</div>
+                    <div class="value">baxxieweb@gmail.com</div>
+                    <div class="value">+316 - - - - - - - - -</div>
+                </div>
             </div>
-            <div class="values">
-                <div class="value">Sebastiaan van Valen</div>
-                <div class="value">baxxieweb@gmail.com</div>
-                <div class="value">+316 - - - - - - - - -</div>
+            <div class="photo">
+                <img src="../../../assets/pictures/Philip-J-Fry.png" alt="moi">
             </div>
         </div>
-        <div class="photo">
-            <img src="../../../assets/pictures/Philip-J-Fry.png" alt="moi">
-        </div>
+
+        <form class="text-center" [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+
+            <p class="h4 mb-4">Contact me</p>
+
+            <input type="text" formControlName="name" id="defaultContactFormName" mdbInput class="form-control mb-4"
+                placeholder="Name">
+
+            <input type="email" formControlName="email" id="defaultContactFormEmail" mdbInput class="form-control mb-4"
+                placeholder="E-mail">
+
+            <label>Subject</label>
+            <select formControlName="subject" class="browser-default custom-select mb-4">
+                <option value="" disabled>Choose option</option>
+                <option value="feeback" selected>Feedback</option>
+                <option value="bugs">Report a bug</option>
+                <option value="message">Personl Message</option>
+
+            </select>
+
+            <div class="form-group">
+                <textarea formControlName="message" class="form-control rounded-0" mdbInput
+                    id="exampleFormControlTextarea2" rows="3" placeholder="Message"></textarea>
+            </div>
+
+            <mat-checkbox class="mb-4" formControlName="copy">Send a copy to your email</mat-checkbox>
+
+            <!-- <button class="btn btn-secondary" type="submit" [disabled]="disabledSubmitButton">Send</button> -->
+            <button class="btn btn-secondary" type="submit">Send</button>
+
+
+        </form>
+
+
+
+
+
+        <!-- <h3 class="info-message">Sending messages is under construction. Please feel free to send an email!</h3> -->
     </div>
-
-    <form class="text-center border border-light" [formGroup]="contactForm"
-        (ngSubmit)="onSubmit()">
-
-        <p class="h4 mb-4">Contact me</p>
-
-        <input type="text" formControlName="name" id="defaultContactFormName" mdbInput
-            class="form-control mb-4" placeholder="Name">
-
-        <input type="email" formControlName="email" id="defaultContactFormEmail" mdbInput
-            class="form-control mb-4" placeholder="E-mail">
-
-        <label>Subject</label>
-        <select formControlName="subject" class="browser-default custom-select mb-4">
-            <option value="" disabled>Choose option</option>
-            <option value="feeback" selected>Feedback</option>
-            <option value="bugs">Report a bug</option>
-            <option value="message">Personl Message</option>
-
-        </select>
-
-        <div class="form-group">
-            <textarea formControlName="message" class="form-control rounded-0" mdbInput
-                id="exampleFormControlTextarea2" rows="3" placeholder="Message"></textarea>
-        </div>
-
-        <mat-checkbox class="mb-4" formControlName="copy">Send a copy to your email</mat-checkbox>
-
-        <!-- <button class="btn btn-secondary" type="submit" [disabled]="disabledSubmitButton">Send</button> -->
-        <button class="btn btn-secondary" type="submit">Send</button>
-        
-
-    </form>
-
-
-
-
-
-    <!-- <h3 class="info-message">Sending messages is under construction. Please feel free to send an email!</h3> -->
 
 </div>

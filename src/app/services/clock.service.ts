@@ -24,9 +24,9 @@ year = this.clock.getFullYear();
             const secondsRatio = currentDate.getSeconds() / 60;
             const minutesRatio = (secondsRatio + currentDate.getMinutes()) / 60;
             const hoursRatio = (minutesRatio + currentDate.getHours()) / 12;
-            this.secondHand =  secondsRatio * 360;
-            this.minuteHand =  minutesRatio * 360;
-            this.hourHand =  hoursRatio * 360;
+            // this.secondHand =  secondsRatio * 360;
+            // this.minuteHand =  minutesRatio * 360;
+            // this.hourHand =  hoursRatio * 360;
         }, 1000);
     }
 

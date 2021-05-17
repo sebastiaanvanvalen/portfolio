@@ -35,6 +35,7 @@ import { MyBirdTableComponent } from './mat-components/my-bird-table/my-bird-tab
 import { ModalService } from './services/modal.service';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HttpService } from './services/http.service';
+import { ColorThemeComponent } from './components/color-theme/color-theme.component';
 
 
 
@@ -56,6 +57,7 @@ import { HttpService } from './services/http.service';
     MybirdsComponent,
     MyBirdTableComponent,
     MyformsComponent,
+    ColorThemeComponent,
 
   ],
   imports: [

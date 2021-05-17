@@ -1,0 +1,36 @@
+.color-theme-container {
+    position: absolute;
+    bottom: -10px;
+    right: 10px;
+    
+    .dropdown {
+        height: 10px;
+        width: 36px;
+        .themes {
+            padding: 4px 4px 0 4px;
+            background-color: var(--colorThemeCompBG);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+
+
+            .material-icons {
+                background-color: rgb(220, 221, 221);
+                font-size: 26px;
+                margin-top: 6px;
+            }
+        }
+    }
+
+    .activeTheme {
+        font-size: 9px;
+        color: var(--colorThemeCompText);
+        letter-spacing: 1px;
+        line-height: 12px;
+        margin: 0;
+        padding: 0;
+        width: auto;
+        text-align: center;
+        background-color: var(--colorThemeCompBG);
+    }
+}
