@@ -36,6 +36,9 @@ import { ModalService } from './services/modal.service';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HttpService } from './services/http.service';
 import { ColorThemeComponent } from './components/color-theme/color-theme.component';
+import { GadgetsComponent } from './components/projects/gadgets/gadgets.component';
+import { CalculatorComponent } from './components/projects/gadgets/calculator/calculator.component';
+import { UnitconvertorComponent } from './components/projects/gadgets/unitconvertor/unitconvertor.component';
 
 
 
@@ -58,6 +61,9 @@ import { ColorThemeComponent } from './components/color-theme/color-theme.compon
     MyBirdTableComponent,
     MyformsComponent,
     ColorThemeComponent,
+    GadgetsComponent,
+    CalculatorComponent,
+    UnitconvertorComponent,
 
   ],
   imports: [

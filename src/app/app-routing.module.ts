@@ -10,6 +10,7 @@ import { AboutComponent } from './components/about/about.component';
 import { MastermindComponent } from './components/projects/mastermind/mastermind.component';
 import { MybirdsComponent } from './components/projects/mybirds/mybirds.component';
 import { MyformsComponent } from './components/projects/myforms/myforms.component';
+import { GadgetsComponent } from './components/projects/gadgets/gadgets.component';
 
 const routes: Routes = [
     { path: '', component: MainPageComponent },
@@ -21,7 +22,8 @@ const routes: Routes = [
     { path: 'contact', component: ContactComponent },
     { path: 'mastermind', component: MastermindComponent },
     { path: 'mybirds', component: MybirdsComponent },
-    { path: 'myforms', component: MyformsComponent}
+    { path: 'myforms', component: MyformsComponent},
+    { path: 'gadgets', component: GadgetsComponent},
 ];
 
 @NgModule({

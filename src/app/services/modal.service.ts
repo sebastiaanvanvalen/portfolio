@@ -81,8 +81,8 @@ export class ModalService {
             });
 
             this.modalRef.componentInstance.setDialogProps({
-                title: 'BaxxieTitle',
-                body: 'a story about this subject',
+                title: 'Dark Mode',
+                body: 'not parts of this website and colors for the dark- and lightMode are set yet.',
             });
         } else {
             this.modalRef = this.ngbModal.open(MyModalTemplateComponent, {
