@@ -1,0 +1,59 @@
+.dashboard-wrapper {
+    width: 100vw;
+    height: 100%;
+    min-height: 100vh;
+    background-color: var(--backgroundColor1);
+    padding: 60px;
+
+    h2 {
+        width: 100%;
+        background-color: rgb(65, 63, 63);
+        color: red;
+        text-align: center;
+    }
+
+    h3 {
+        font-size: 14px;
+        color: rgb(91, 91, 92);
+
+        span {
+            font-style: italic;
+        }
+    }
+
+
+    .current-numbers-container {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        height: auto;
+
+        .cont {
+            display: flex;
+            flex-direction: column;
+            background: lightgrey;
+            box-shadow: 0 0 4px 1px lightgrey;
+            border-radius: 4px;
+            width: 30%;
+            text-align: center;
+            // padding: 8px;
+
+            .box {
+                padding: 8px;
+            }
+
+            .value-box {
+                color: rgb(247, 77, 4);
+                font-weight: bold;
+                font-size: 18px;
+                letter-spacing: 1px;
+                background: white;
+            }
+
+            .description-box {
+                color: rgb(85, 151, 85);
+                border-top: 3px solid green;
+            }
+        }
+    }
+}

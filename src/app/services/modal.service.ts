@@ -82,7 +82,7 @@ export class ModalService {
 
             this.modalRef.componentInstance.setDialogProps({
                 title: 'Dark Mode',
-                body: 'not parts of this website and colors for the dark- and lightMode are set yet.',
+                body: 'some parts of this website and colors for the dark- and lightMode are set yet.',
             });
         } else {
             this.modalRef = this.ngbModal.open(MyModalTemplateComponent, {

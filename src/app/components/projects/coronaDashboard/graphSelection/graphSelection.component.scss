@@ -1,0 +1,50 @@
+.graph-selection-container {
+    width: 100%;
+    padding-top: 64px;
+
+    .select-container {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+
+        .select {
+            width: 30%;
+        }
+
+        .world-map-small {
+            border: 2px solid rgba(79, 130, 240, 0.877);
+            padding: 2px 4px;
+            height: 52px;
+            background: url(/assets/pictures/world-map-blue.jpg);
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+
+    }
+
+    #graph-params {
+        .btn {
+            margin: 0 16px 8px 0;
+        }
+
+        .confirmed.checked {
+            background-color: rgb(127, 23, 31);
+            color: white;
+        }
+        .recovered.checked {
+            background-color: rgb(23, 127, 117);
+            color: white;
+        }
+        .deceased.checked {
+            background-color: rgb(127, 84, 23);
+            color: white;
+        }
+
+        .unchecked {
+            color: rgb(96, 89, 89);
+            background-color: rgb(185, 185, 184);
+        }
+    }
+}

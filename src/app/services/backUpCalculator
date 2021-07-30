@@ -1,0 +1,391 @@
+import { Injectable } from '@angular/core';
+import { Calculation } from '../models/calculation';
+import { Decimal } from 'decimal.js';
+
+@Injectable({
+    providedIn: 'root',
+})
+export class CalculatorService {
+    // numeral = require('numeral');
+
+    CalcData: Calculation = {
+        mainDisplay: '0',
+        arrayToDisplay: '',
+        arrayToCalculate: [],
+        answer: '',
+        operation: '',
+    };
+
+    showAnswer: boolean = false;
+    lastIsOperate: boolean = false;
+    hasDecimal: boolean = false;
+    
+    arrayToCalculate: any[] = [];
+
+
+    tempNumber: Decimal = new Decimal(0);
+
+    constructor() {}
+
+    public pushButton(btn): Calculation {
+        switch (btn) {
+            case '1':
+            case '2':
+            case '3':
+            case '4':
+            case '5':
+            case '6':
+            case '7':
+            case '8':
+            case '9':
+            case '0':
+            case ',':
+                this.createNumber(btn);
+
+                break;
+            case 'sin':
+            case 'tan':
+            case 'cos':
+            case 'log':
+            case 'x2':
+            case 'v':
+            case '/':
+            case '*':
+            case '+':
+            case '-':
+                this.enterOperation(btn);
+
+                break;
+            case '=':
+            case 'Enter':
+                this.calculate();
+
+                break;
+            case 'del':
+            case 'Escape':
+                this.delete();
+
+                break;
+            case "bs":
+                // backspace
+                this.backSpace();
+            break;
+            default:
+                return;
+        }
+        return this.CalcData;
+    }
+
+    // PRIVATE FUNCTIONS
+
+    private createNumber(num) {
+        // when a answer is produced only an operation
+        if (this.CalcData.answer !== '') {
+            return;
+        }
+
+        if (num === ',') {
+            if (this.CalcData.mainDisplay.includes('.')) {
+                return;
+            } else if (this.CalcData.mainDisplay === '') {
+                this.CalcData.mainDisplay = this.CalcData.mainDisplay.concat(
+                    '0.'
+                );
+            } else {
+                this.CalcData.mainDisplay = this.CalcData.mainDisplay.concat(
+                    '.'
+                );
+            }
+        } else if (num === '0') {
+            if (this.CalcData.mainDisplay[0] === '0') {
+                return;
+            }
+        } else {
+            if (
+                this.CalcData.mainDisplay === '' ||
+                this.CalcData.mainDisplay === '0'
+            ) {
+                this.CalcData.mainDisplay = num;
+
+                return;
+            }
+            this.CalcData.mainDisplay = this.CalcData.mainDisplay.concat(num);
+        }
+    }
+
+    private enterOperation(func) {
+        this.CalcData.answer = "";
+
+        switch (func) {
+            case 'x2':
+                this.CalcData.arrayToCalculate.push(
+                    '(',
+                    new Decimal(this.CalcData.mainDisplay),
+                    '&#178;',
+                    ')'
+                );
+                this.CalcData.arrayToDisplay += this.CalcData.mainDisplay;
+                this.CalcData.arrayToDisplay += '&#178;';
+                this.CalcData.mainDisplay = '';
+
+                break;
+            case 'v':
+                this.CalcData.arrayToCalculate.push(
+                    '(',
+                    '&#8730;',
+                    new Decimal(this.CalcData.mainDisplay),
+                    ')'
+                );
+                let num = this.CalcData.arrayToDisplay.substring(
+                    0,
+                    this.CalcData.arrayToDisplay.length - 1
+                );
+                this.CalcData.arrayToDisplay += '&#8730;';
+                this.CalcData.arrayToDisplay += this.CalcData.mainDisplay;
+                this.CalcData.mainDisplay = '';
+                break;
+            case '*':
+            case '/':
+            case '+':
+            case '-':
+                if (this.CalcData.answer !== '') {
+                    // operation after pushing "="
+
+                    this.CalcData.arrayToCalculate.push(func);
+                    this.CalcData.answer = '';
+                } else if (this.CalcData.mainDisplay !== '') {
+                    // operation after numbers are entered
+
+                    this.CalcData.arrayToDisplay += this.CalcData.mainDisplay;
+                    this.CalcData.arrayToCalculate.push(
+                        new Decimal(this.CalcData.mainDisplay),
+                        func
+                    );
+                    this.CalcData.mainDisplay = '';
+                } else if (
+                    this.CalcData.arrayToDisplay[
+                        this.CalcData.arrayToDisplay.length - 1
+                    ] === ')'
+                ) {
+                    // operation after a (x2) or (v)
+
+                    this.CalcData.arrayToCalculate.push(func);
+                } else if (
+                    this.CalcData.arrayToDisplay[
+                        this.CalcData.arrayToDisplay.length - 1
+                    ] === '+' ||
+                    this.CalcData.arrayToDisplay[
+                        this.CalcData.arrayToDisplay.length - 1
+                    ] === '-' ||
+                    this.CalcData.arrayToDisplay[
+                        this.CalcData.arrayToDisplay.length - 1
+                    ] === '*' ||
+                    this.CalcData.arrayToDisplay[
+                        this.CalcData.arrayToDisplay.length - 1
+                    ] === '/'
+                ) {
+                    // if last command was an operator
+
+                    return;
+                } else {
+                    // replace operation
+
+                    this.CalcData.arrayToCalculate.push(func);
+                }
+
+                this.CalcData.arrayToDisplay += func;
+
+            default:
+                break;
+        }
+        console.log(this.CalcData)
+    }
+
+    private calculate() {
+        // only if:
+        // - currentAnswer !== infinite
+        console.log(this.CalcData);
+        let lastChar = this.CalcData.arrayToCalculate[this.CalcData.arrayToCalculate.length - 1];
+        console.log('hi');
+
+
+
+        if (this.CalcData.arrayToCalculate.length === 0){
+                // in case of no (or hidden 0) entered number || in case last btn was an operator
+            console.log('noNumbers...');
+            return;
+        } else if (
+            lastChar === '+' ||
+            lastChar === '-' ||
+            lastChar === '*' ||
+            lastChar === '/'
+            
+        ) {
+            if (this.CalcData.mainDisplay === ""){
+                console.log('catch')
+                return;
+            } else {
+            console.log('go')
+            this.CalcData.arrayToCalculate.push(new Decimal(this.CalcData.mainDisplay));
+            }
+        } 
+
+        while (this.CalcData.arrayToCalculate.includes('&#8730;')) {
+            // sqrt
+            this.CalcData.arrayToCalculate.forEach((element, index) => {
+                if (element === '&#8730;') {
+                    this.tempNumber = this.operate(
+                        parseFloat(this.CalcData.arrayToCalculate[index + 1]),
+                        this.CalcData.arrayToCalculate[index],
+                        null
+                    );
+
+                    this.CalcData.arrayToCalculate.splice(index - 1, 4);
+                    this.CalcData.arrayToCalculate.splice(
+                        index - 1,
+                        0,
+                        this.tempNumber
+                    );
+                    this.tempNumber = new Decimal(0);
+                }
+            });
+        }
+        while (this.CalcData.arrayToCalculate.includes('&#178;')) {
+            // power
+            this.CalcData.arrayToCalculate.forEach((element, index) => {
+                if (element === '&#178;') {
+                    this.tempNumber = this.operate(
+                        parseFloat(this.CalcData.arrayToCalculate[index - 1]),
+                        this.CalcData.arrayToCalculate[index],
+                        2
+                    );
+
+                    this.CalcData.arrayToCalculate.splice(index - 2, 4);
+                    this.CalcData.arrayToCalculate.splice(
+                        index - 2,
+                        0,
+                        this.tempNumber
+                    );
+                    this.tempNumber = new Decimal(0);
+                }
+            });
+        }
+        while (this.CalcData.arrayToCalculate.includes('*')) {
+            this.CalcData.arrayToCalculate.forEach((element, index) => {
+                if (element === '*') {
+                    this.tempNumber = this.operate(
+                        parseFloat(this.CalcData.arrayToCalculate[index - 1]),
+                        this.CalcData.arrayToCalculate[index],
+                        parseFloat(this.CalcData.arrayToCalculate[index + 1])
+                    );
+                    this.CalcData.arrayToCalculate.splice(index - 1, 3);
+                    this.CalcData.arrayToCalculate.splice(
+                        index - 1,
+                        0,
+                        this.tempNumber
+                    );
+                    this.tempNumber = new Decimal(0);
+                }
+            });
+        }
+        while (this.CalcData.arrayToCalculate.includes('/')) {
+            this.CalcData.arrayToCalculate.forEach((element, index) => {
+                if (element === '/') {
+                    this.tempNumber = this.operate(
+                        parseFloat(this.CalcData.arrayToCalculate[index - 1]),
+                        this.CalcData.arrayToCalculate[index],
+                        parseFloat(this.CalcData.arrayToCalculate[index + 1])
+                    );
+
+                    this.CalcData.arrayToCalculate.splice(index - 1, 3);
+                    this.CalcData.arrayToCalculate.splice(
+                        index - 1,
+                        0,
+                        this.tempNumber
+                    );
+                    this.tempNumber = new Decimal(0);
+                }
+            });
+        }
+        while (this.CalcData.arrayToCalculate.includes('+') || this.CalcData.arrayToCalculate.includes('-')) {
+            this.CalcData.arrayToCalculate.forEach((element, index) => {
+                if (element === '+' || element === '-') {
+                    this.tempNumber = this.operate(
+                        parseFloat(this.CalcData.arrayToCalculate[index - 1]),
+                        this.CalcData.arrayToCalculate[index],
+                        parseFloat(this.CalcData.arrayToCalculate[index + 1])
+                    );
+
+                    this.CalcData.arrayToCalculate.splice(index - 1, 3);
+                    this.CalcData.arrayToCalculate.splice(
+                        index - 1,
+                        0,
+                        this.tempNumber
+                    );
+                    this.tempNumber = new Decimal(0);
+                }
+            });
+        }
+
+        this.CalcData.answer = new Decimal(this.CalcData.arrayToCalculate[0])
+            .toDecimalPlaces(12)
+            .toString();
+
+        this.CalcData.arrayToDisplay += this.CalcData.mainDisplay + '=' + this.CalcData.answer;
+        this.CalcData.mainDisplay = '';
+    }
+
+    private operate(operand1, operator, operand2) {
+        switch (operator) {
+            case '&#8730;':
+                return Decimal.sqrt(operand1);
+            case '&#178;':
+                return Decimal.pow(operand1, operand2);
+                break;
+            case '/':
+                return Decimal.div(operand1, operand2);
+                break;
+            case '*':
+                return Decimal.mul(operand1, operand2);
+                break;
+            case '+':
+                return Decimal.add(operand1, operand2);
+                break;
+            case '-':
+                return Decimal.sub(operand1, operand2);
+                break;
+            default:
+                break;
+        }
+    }
+
+    // private convertArrayToDisplay() {
+    //     this.CalcData.arrayToDisplay = this.CalcData.arrayToCalculate
+    //         .join('')
+    //         .toString();
+    // }
+
+    private backSpace() {
+        if (this.CalcData.mainDisplay.length < 1) {
+            console.log("noting to backspace")
+            return
+        } else {
+            console.log("backspace")
+            this.CalcData.mainDisplay = this.CalcData.mainDisplay.slice(0, -1)
+        }
+
+        console.log(this.CalcData.mainDisplay.length)
+    }
+
+    private delete() {
+        this.CalcData = {
+            mainDisplay: '0',
+            arrayToDisplay: '',
+            arrayToCalculate: [],
+            answer: '',
+            operation: '',
+        };
+
+        this.tempNumber = new Decimal(0);
+    }
+}

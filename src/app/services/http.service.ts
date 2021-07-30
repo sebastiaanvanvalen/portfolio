@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { MyBirdTableItem } from '../mat-components/my-bird-table/my-bird-table-datasource';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpInterceptor } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
 import { MyMessage } from '../models/my-message';
@@ -11,33 +11,47 @@ import { MyMessage } from '../models/my-message';
 export class HttpService {
 
     // time for tokens
-    httpOptions = {
+    optionsSet1 = {
+
         headers: new HttpHeaders({
             'Content-Type': 'application/json',
             'Access-Control-Allow-Origin':'*',
             "Access-Control-Allow-Methods": "POST, GET, PUT, OPTIONS, DELETE",
-            "Access-Control-Allow-Headers": "x-requested-with, content-type"
-        }),
-    };
-
+            "Access-Control-Allow-Headers": "x-requested-with, content-type",
+            'Connection': 'keep-alive',
+            'Cache-Control': 'Public',
+            'ETag': 'W/"e4-hFc9aHGYZmwXvrBC8byswCwD+x0d'
+        })
+    }
+        
     constructor(private http: HttpClient) {}
 
-    makeGetAllRequest(url): Observable<any> {
-
+        
+    makeGetRequest(url, headerId) {
+        const headers = new HttpHeaders()
+        .set('Content-Type', 'application/json')
+        .set('Access-Control-Allow-Origin','*')
+        .set('Cache-Control', 'Public')
+        .set('ETag', 'W/"e4-hFc9aHGYZmwXvrBC8byswCwD+x0d')
+        .set('Cache-Control', 'no-cache')
         return this.http
-            .get<any>(url)
+            .get<any>(url, {headers})
             .pipe(retry(1), catchError(this.handleError));
     }
 
-    makeGetRequest(url, id) {
 
+
+
+    makeGetAllRequest(url): Observable<any> {
+        
         return this.http
-            .get<any>(url)
-            .pipe(retry(1), catchError(this.handleError));
+        .get<any>(url)
+        .pipe(retry(1), catchError(this.handleError));
     }
 
     makePostRequest(url: string, body: MyMessage) {
         console.log(body)
+
         return this.http
             .post(url, body)
             .pipe(retry(1), catchError(this.handleError));

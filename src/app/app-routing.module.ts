@@ -11,6 +11,7 @@ import { MastermindComponent } from './components/projects/mastermind/mastermind
 import { MybirdsComponent } from './components/projects/mybirds/mybirds.component';
 import { MyformsComponent } from './components/projects/myforms/myforms.component';
 import { GadgetsComponent } from './components/projects/gadgets/gadgets.component';
+import { CoronaDashboardComponent } from './components/projects/coronaDashboard/coronaDashboard.component';
 
 const routes: Routes = [
     { path: '', component: MainPageComponent },
@@ -24,6 +25,7 @@ const routes: Routes = [
     { path: 'mybirds', component: MybirdsComponent },
     { path: 'myforms', component: MyformsComponent},
     { path: 'gadgets', component: GadgetsComponent},
+    { path: 'coronaDashboard', component: CoronaDashboardComponent},
 ];
 
 @NgModule({

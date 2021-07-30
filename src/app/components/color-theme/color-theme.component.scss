@@ -15,9 +15,11 @@
 
 
             .material-icons {
-                background-color: rgb(220, 221, 221);
+                opacity: .9;
+                background-color: rgb(255, 255, 255);
                 font-size: 26px;
                 margin-top: 6px;
+                transition: all 150ms ease-out;
             }
         }
     }
@@ -33,4 +35,56 @@
         text-align: center;
         background-color: var(--colorThemeCompBG);
     }
+}
+
+@media (min-width: 768px) {
+    .color-theme-container {
+        // position: absolute;
+        // bottom: -10px;
+        // right: 10px;
+        
+        .dropdown {
+            // height: 10px;
+            width: 46px;
+            .themes {
+                padding: 4px 4px 0 4px;
+                background-color: var(--colorThemeCompBG);
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+    
+                .material-icons {
+                    text-align: center;
+                    padding: 4px 0;
+                    opacity: .9;
+                    background-color: rgb(255, 255, 255);
+                    font-size: 26px;
+                    margin-top: 6px;
+                    transition: all 150ms ease-out;
+                }
+
+                .icon1 {
+                    color: orange;
+                }
+
+                .icon2 {
+                    color: rgb(75, 119, 216);
+                    background-color: rgb(201, 197, 197);
+                }
+            }
+        }
+    
+        .activeTheme {
+            font-size: 11px;
+            color: var(--colorThemeCompText);
+            letter-spacing: 2px;
+            line-height: 14px;
+            margin: 0;
+            padding: 0;
+            width: auto;
+            text-align: center;
+            background-color: var(--colorThemeCompBG);
+        }
+    }
+
 }

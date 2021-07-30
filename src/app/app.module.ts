@@ -7,6 +7,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ClickOutsideModule } from 'ng-click-outside';
 import { MaterialModule } from './modules/material/material.module';
+import * as d3 from 'node_modules/d3';
 
 
 // components
@@ -39,6 +40,11 @@ import { ColorThemeComponent } from './components/color-theme/color-theme.compon
 import { GadgetsComponent } from './components/projects/gadgets/gadgets.component';
 import { CalculatorComponent } from './components/projects/gadgets/calculator/calculator.component';
 import { UnitconvertorComponent } from './components/projects/gadgets/unitconvertor/unitconvertor.component';
+import { CoronaDashboardComponent } from './components/projects/coronaDashboard/coronaDashboard.component';
+import { WorldSituationComponent } from './components/projects/coronaDashboard/world-situation/world-situation.component';
+import { GraphSelectionComponent } from './components/projects/coronaDashboard/graphSelection/graphSelection.component';
+import { BarChartService } from './services/bar-chart.service';
+
 
 
 
@@ -64,6 +70,11 @@ import { UnitconvertorComponent } from './components/projects/gadgets/unitconver
     GadgetsComponent,
     CalculatorComponent,
     UnitconvertorComponent,
+    CoronaDashboardComponent,
+    WorldSituationComponent,
+    GraphSelectionComponent,
+
+
 
   ],
   imports: [
@@ -79,9 +90,10 @@ import { UnitconvertorComponent } from './components/projects/gadgets/unitconver
     MatPaginatorModule,
     MatSortModule,
     NgbModule,
+    
 
   ],
-  providers: [ContactService, ModalService, HttpService],
+  providers: [ContactService, ModalService, HttpService, BarChartService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

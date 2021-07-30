@@ -10,11 +10,11 @@ import { ColorThemeService } from 'src/app/services/color-theme.service';
         trigger('enterAnimation', [
             transition(':enter', [
                 style({ height: '0px',  opacity: 0 }),
-                animate('150ms', style({ height: '54px', opacity: 1 })),
+                animate('0ms', style({ height: '34px', opacity: 1 })),
             ]),
             transition(':leave', [
-                style({ height: '54px', opacity: 1 }),
-                animate('150ms', style({ height: '0px', opacity: 0 })),
+                style({ height: '34px', opacity: 1 }),
+                animate('0ms', style({ height: '0px', opacity: 0 })),
             ]),
         ]),
     ],
@@ -22,7 +22,7 @@ import { ColorThemeService } from 'src/app/services/color-theme.service';
 
 export class ColorThemeComponent implements OnInit {
     showBox = false;
-    theme;
+    theme = this.colorThemeService.getStoredTheme();
     constructor(private colorThemeService: ColorThemeService) {}
 
     ngOnInit() {

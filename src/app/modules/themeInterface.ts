@@ -12,8 +12,8 @@ export const light: ThemeInterface = {
         "--textColor1": "grey",
         "--textColor2": "black",
 
-        "--colorThemeCompText": "rgb(200, 177, 177)",
-        "--colorThemeCompBG": "rgb(140, 74, 74)",
+        "--colorThemeCompText": "white",
+        "--colorThemeCompBG": "var(--global-primary)",
 
         "--buttonBGColor": "rgb(96, 145, 161)",
         "--buttonTextColor": "white",

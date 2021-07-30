@@ -1,0 +1,24 @@
+<div class="dashboard-wrapper">
+    <h2>Under construction / not for mobile</h2>
+
+
+    <h3 class="text">more features and better visualisations are comming soon</h3>
+
+        <app-world-situation (sendDate)="setDate($event)" *ngIf=!select></app-world-situation>
+
+        <div class="current-numbers-container">
+            <div class="cont confirmed-container">
+                <div class="box value-box">{{ this.confirmed}}</div>
+                <div class="box description-box">world wide<br>confirmed cases</div>
+            </div>
+            <div class="cont confirmed-delta-container">
+                <div class="box value-box">{{ this.recovered }}</div>
+                <div class="box description-box">world wide<br>recovery cases</div>
+            </div>
+            <div class="cont deaths-container">
+                <div class="box value-box">{{ this.deceased }}</div>
+                <div class="box description-box">world wide<br>deceased</div>
+            </div>
+
+        </div>
+    </div>

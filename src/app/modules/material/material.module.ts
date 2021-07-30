@@ -16,6 +16,7 @@ import { FormsModule } from '@angular/forms';
 import { MatRippleModule, MatNativeDateModule } from '@angular/material/core';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatSelectModule} from '@angular/material/select';
 
 
 const MaterialComponents = [
@@ -37,6 +38,7 @@ const MaterialComponents = [
     MatDatepickerModule,
     MatNativeDateModule,
     MatCheckboxModule,
+    MatSelectModule,
 ]
 
 @NgModule({
