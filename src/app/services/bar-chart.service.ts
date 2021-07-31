@@ -13,7 +13,7 @@ export class BarChartService {
     private processedData = [];
     private updateDate = '';
 
-    private dataModel: DataModel;
+    public dataModel: DataModel;
     private svg;
     private margin = 70;
     private width = 800 - this.margin * 2;
@@ -76,7 +76,6 @@ export class BarChartService {
     public adjustMinBar() {
         // this.minBar = event;
         let tempData = [];
-        console.log(this.dataModel.minBar);
 
         // tempData = this.rawData.filter((obj) => obj.param === this.dataModel.minBar);
         this.rawData.map((d) => {
@@ -124,7 +123,7 @@ export class BarChartService {
             default:
                 break;
         }
-        console.log(this.processedData);
+
     }
 
     private setXaxisText() {
@@ -132,79 +131,84 @@ export class BarChartService {
     }
 
     private createGraph(): void {
-        document.getElementById('vis-holder').innerHTML = '';
+        let dataModel = this.dataModel;
+        document.getElementById('svg-container').innerHTML = '';
         this.svg = d3
-            .select('.vis-holder')
+            .select('.svg-container')
             .append('svg')
-            .attr('width', this.width + this.margin * 2)
-            .attr('height', this.height + this.margin * 2)
+            .classed("svg-content", true) 
+            // Responsive SVG needs these 2 attributes and no width and height attr.
+            .attr('preserveAspectRatio', 'xMinYMin meet')
+            .attr('viewBox', '-70 -50 800 450')
+            .attr('padding', 50)
+            // Class to make it responsive.
+            .classed('svg-content-responsive', true)
+            // .attr('width', this.width + this.margin * 2)
+            // .attr('height', this.height + this.margin * 2)
             .append('g')
-            .attr(
-                'transform',
-                'translate(' + this.margin + ',' + this.margin + ')'
-            );
+            // .attr(
+            //     'transform',
+            //     'translate(' + this.margin + ',' + this.margin + ')'
+            // );
 
         let showParam = this.dataModel.dataParams.filter(
             (obj) => obj.value === true
         );
 
-        // let tooltip = d3
-        //     .select('.vis-holder')
-        //     .append('div')
-        //     .attr('id', 'tooltip')
-        //     .style('opacity', 0);
+        let tooltip = d3
+            .select('.svg-container')
+            .append('div')
+            .attr('class', 'tooltip')
+            .style('z-index', '10')
+            .style('opacity', 0)
 
-        // let overlay = d3
-        //     .select('.vis-holder')
-        //     .append('div')
-        //     .attr('class', 'overlay')
-        //     .style('opacity', 0);
+            .style('padding', '10px')
+            .style('background', 'rgba(0,0,0,0.6)')
+            .style('color', '#fff')
+            .text('a simple tooltip');
+
 
         let x;
         if (this.dataModel.selectedCountry === 'world') {
-
             x = d3
-            .scaleBand()
-            .range([0, this.width])
-            .domain(this.processedData.map((d) => d.Country))
-            .padding(0.2)
+                .scaleBand()
+                .range([0, this.width])
+                .domain(this.processedData.map((d) => d.Country))
+                .padding(0.2);
 
             this.svg
-            .append('g')
-            .attr('transform', 'translate(0,' + this.height + ')')
-            .call(d3.axisBottom(x))
-            .selectAll("text")
-            .attr('transform', 'translate(-10,0)rotate(-35)')
-            .style('text-anchor', 'end')
-
+                .append('g')
+                .attr('transform', 'translate(0,' + this.height + ')')
+                .call(d3.axisBottom(x))
+                .selectAll('text')
+                .attr('transform', 'translate(-10,0)rotate(-35)')
+                .style('text-anchor', 'end');
         } else {
-
             x = d3
-            .scaleBand()
-            .range([0, this.width])
-            .domain(this.processedData.map((d) => d.Date))
+                .scaleBand()
+                .range([0, this.width])
+                .domain(this.processedData.map((d) => d.Date));
             // .padding(0.2)
 
             this.svg
-            .append('g')
-            .attr('transform', 'translate(0,' + this.height + ')')
-            .call(d3.axisBottom(x))
-            .selectAll('text').remove()
+                .append('g')
+                .attr('transform', 'translate(0,' + this.height + ')')
+                .call(d3.axisBottom(x))
+                .selectAll('text')
+                .remove();
         }
-
-            
 
         // Create the Y-axis band scale
         const y = d3
             .scaleLinear()
-            .domain([0, d3.max(this.processedData, (d) => d[showParam[0].param])])
+            .domain([
+                0,
+                d3.max(this.processedData, (d) => d[showParam[0].param]),
+            ])
             .range([this.height, 0]);
 
         // Draw the Y-axis on the DOM
         this.svg.append('g').call(d3.axisLeft(y));
-
-        
-
         // Create and fill the bars
         this.svg
             .selectAll('.bar')
@@ -215,61 +219,53 @@ export class BarChartService {
             .attr('width', x.bandwidth())
             .attr('height', (data) => this.height - y(data[showParam[0].param]))
             .attr('x', (data) => {
-                if (this.dataModel.selectedCountry === "world") {
-                    return x(data.Country)
+                if (this.dataModel.selectedCountry === 'world') {
+                    return x(data.Country);
                 } else {
-                    return x(data.Date)
+                    return x(data.Date);
                 }
             })
             .attr('y', (data) => y(data[showParam[0].param]))
             .attr('fill', showParam[0].color)
-            // .axis().tickFormat("")
+        // .axis().tickFormat("")
 
-        // .on('mouseover', function (d, i) {
-        //     // console.log(deaths[scaledDeaths.indexOf(i)])
-        //     // console.log(scaledDeaths.indexOf(i))
-        //     console.log(d);
-        //     console.log(i);
+        .on('mouseover', function (d, i) {
+            console.log(this.dataModel)
 
-        //     overlay
-        //         .transition()
-        //         .duration(0)
-        //         .style(
-        //             'height',
-        //             d.target.height.baseVal.valueAsString + 'px'
-        //         )
-        //         .style('width', x.bandwidth() + 'px')
-        //         .style('opacity', 0.9)
-        //         .style(
-        //             'left',
-        //             showParam[0].param + x.bandwidth() + 0 + 'px'
-        //         )
-        //         .style(
-        //             'top',
-        //             this.height -
-        //                 d.target.height.baseVal.valueAsString +
-        //                 'px'
-        //         )
-        //         .style('transform', 'translateX(60px)');
+            console.log(i)
+            console.log(showParam)
+            d3.select(this).transition().attr('fill', 'red');
+            tooltip
+            .style('pointer-events', 'none')
+            .style("opacity", 1)
+            .style('width', 100)
+            .style('height', 100)
+            
+            if (dataModel.selectedCountry === 'world') {
+                tooltip
+                .html(`<div>Country: ${i.Country}<br> ${showParam[0].name}: ${i[showParam[0].param]}</div>`)
+                
+            } else {
+                
+                tooltip
+                .html(`<div>Date: ${i.Date.substring(0, 10)}<br> ${showParam[0].name}: ${i[showParam[0].param]}</div>`)
+            }
 
-        //     tooltip.transition().duration(200).style('opacity', 0.9);
-        //     tooltip
-        //         .html(
-        //             d[showParam[0].param] +
-        //                 '<br>' +
-        //                 d[showParam[0].param].value
-        //         )
-        //         .attr('data-deaths', d[showParam[0].param][0])
-        //         .style(
-        //             'left',
-        //             d[showParam[0].param] * x.bandwidth() + 30 + 'px'
-        //         )
-        //         .style('top', this.height - 100 + 'px')
-        //         .style('transform', 'translateX(60px)');
-        // })
-        // .on('mouseout', function () {
-        //     tooltip.transition().duration(200).style('opacity', 0);
-        //     overlay.transition().duration(200).style('opacity', 0);
-        // });
+
+      })
+      .on('mousemove', function (event, i) {
+        const[x, y] = d3.pointer(event);
+          tooltip
+          .style('left', x + 10 + 'px')
+          .style('top', y - 10 + 'px');
+
+      })
+
+        .on('mouseout', function () {
+            tooltip.html(``)
+            .style('opacity', 0)
+            d3.select(this).transition().attr('fill', showParam[0].color);
+
+        });
     }
 }

@@ -1,9 +1,15 @@
 <!-- <h3>Data was updated: <span>{{ updateDate }}</span> </h3> -->
+<div class="situation-wrapper">
 
-<app-graphSelection  (sendDataModel)="buildGraph($event)" ></app-graphSelection>
-<div class="main">
-    <div class="container">
-        <div class="vis-holder" id="vis-holder">
+    <app-graphSelection  (sendDataModel)="buildGraph($event)" ></app-graphSelection>
+
+    <div class="graph-container">
+        <div class="svg-container" id="svg-container">
         </div>
+
     </div>
-  </div>
+
+    
+
+    </div>
+
