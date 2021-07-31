@@ -173,7 +173,7 @@ export class BarChartService {
             x = d3
                 .scaleBand()
                 .range([0, this.width])
-                .domain(this.processedData.map((d) => d.Country))
+                .domain(this.processedData.map((d) => d.Slug))
                 .padding(0.2);
 
             this.svg
