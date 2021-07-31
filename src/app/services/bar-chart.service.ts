@@ -220,7 +220,7 @@ export class BarChartService {
             .attr('height', (data) => this.height - y(data[showParam[0].param]))
             .attr('x', (data) => {
                 if (this.dataModel.selectedCountry === 'world') {
-                    return x(data.Country);
+                    return x(data.Slug);
                 } else {
                     return x(data.Date);
                 }
