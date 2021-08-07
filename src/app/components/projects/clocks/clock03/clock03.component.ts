@@ -29,7 +29,6 @@ export class Clock03Component implements OnInit {
             .forEach((button) => button.classList.remove('act'));
 
         button.target.classList.add('act');
-        console.log(button);
 
         this.changeClass(button);
     }

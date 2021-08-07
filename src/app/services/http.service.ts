@@ -31,9 +31,8 @@ export class HttpService {
         const headers = new HttpHeaders()
         .set('Content-Type', 'application/json')
         .set('Access-Control-Allow-Origin','*')
-        .set('Cache-Control', 'Public')
         .set('ETag', 'W/"e4-hFc9aHGYZmwXvrBC8byswCwD+x0d')
-        .set('Cache-Control', 'no-cache')
+        .set('Cache-Control', 'public')
         return this.http
             .get<any>(url, {headers})
             .pipe(retry(1), catchError(this.handleError));

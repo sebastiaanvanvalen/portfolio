@@ -56,8 +56,7 @@ export class GraphSelectionComponent implements OnInit {
 
     ngOnInit() {
         this.getCountries();
-        this.sendDataModel.emit(this.dataModel);
-        
+        this.sendDataModel.emit(this.dataModel);    
     }
     
     private getCountries() {
@@ -65,16 +64,16 @@ export class GraphSelectionComponent implements OnInit {
         this.HttpService.makeGetRequest(this.countriesUrl, null).subscribe((res) => {
             res.sort((a, b) => {
                 if (a.Slug < b.Slug) {
+
                     return -1;
                 } else if (a.Slug > b.Slug) {
+
                     return 1;
                 }
                 return 0;
             });
 
             this.covidCountries = res
-
-        
         });
     }
 
@@ -95,19 +94,12 @@ export class GraphSelectionComponent implements OnInit {
         this.dataModel.selectedCountry = country;
         
         if (country === "world") {
-            this.dataModel.minBar = 15000
+            this.dataModel.minBar = 15000;
         } else {
-            this.dataModel.minBar = 0
-            
+            this.dataModel.minBar = 0;
         }
 
-
-
-
-
-
         this.sendDataModel.emit(this.dataModel);
-
     }
 
     public selectSortType(sortType) {

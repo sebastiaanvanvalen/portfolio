@@ -1,0 +1,360 @@
+.lower-machine-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: rgb(49, 37, 23);
+    width: 760px;
+    height: 380px;
+    padding: 8px;
+    margin: 0 auto;
+
+    .message-container {
+        width: 100%;
+        height: 10%;
+        background-color: black;
+        .message {
+            padding: 0 0 0 8px;
+            display: flex;
+            align-items: center;
+            width: 95%;
+            height: 90%;
+            color: white;
+            font-family: monospace;
+            font-size: 28px;
+        }
+    }
+
+    .score-reel-container {
+        display: flex;
+        justify-content: space-between;
+        // padding-top: 6px;
+        height: 75%;
+        width: 100%;
+
+        .score-container {
+            display: flex;
+            justify-content: space-between;
+            flex-direction: column;
+            width: 15%;
+            height: 100%;
+            
+            img {
+                width: 100%;
+                filter: invert(0.1);
+            }
+
+            .win {
+                border-radius: 50%;
+                animation: win 2s linear;
+            }
+
+        }
+        
+        .reels-container {
+            display: flex;
+            justify-content: space-between;
+            width: 40%;
+            padding: 8px;
+            height: 100%;
+            // height: 70%;
+
+            .reel-cont {
+                display: flex;
+                flex-direction: column;
+                justify-items: center;
+                background-color: white;
+                box-shadow: inset 0 0 8px 1px rgb(77, 74, 74);
+                width: 33.3%;
+                height: 100%;
+                padding: 6px;
+                overflow: hidden;
+
+                img {
+                }
+                
+                .win {
+                    border-radius: 50%;
+                    animation: win 2s linear;
+                }
+
+            }
+        }
+
+        .message-board {
+            width: 25%;
+
+            .brand-container {
+                // height: 45%;
+                // background-color: red;
+            }
+
+            .questionmark-container {
+                height: 55%;
+                // background-color: green;
+
+                .grid-container {
+                    height: 100%;
+                    background-image: url(/assets/pictures/slotsScores/questionGrid.png);
+                    background-size: contain;
+                    background-repeat: no-repeat;
+                    background-position: center;
+
+                    .qRow {
+                        width: 100%;
+                        height: 33.3%;
+                        
+                        img {
+                             width: 33.3%;
+                            //  opacity: 0.6;
+                            filter: invert(0.7);
+                        }
+                        
+                        .shine {
+                            filter: invert(0);
+
+                        }
+                        
+                    }
+                }
+            }
+        }
+    }   
+
+    .button-container {
+        display: flex;
+        justify-content: space-around;
+        height: 10%;
+        // padding: 12px 0;
+
+        .btn {
+            // width: 8%;
+            color: white;
+            background-color: rgb(151, 73, 73);
+        }
+
+        .onHold {
+            background-color: orange;
+        }
+
+        .noHold {
+            background-color: rgb(151, 73, 73);
+            // animation: blink 2s linear reverse infinite;
+        }
+
+        .active {
+            background-color: yellow;
+            color: black;
+        }
+
+        .active-1 {
+            animation: active-1 0.3s linear reverse infinite;
+        }
+
+        .active-2 {
+            animation: active-2 0.3s linear reverse infinite;
+        }
+
+        .winGamble {
+            animation: winGamble 2s;
+        }
+    }
+}
+
+@keyframes active-1 {
+    0% {
+        color: white;
+        background-color: red;
+    }
+    25% {
+        color: black;
+        background-color: yellow;
+    }
+    50% {
+        color: white;
+        background-color: red;
+    }
+    75% {
+        color: black;
+        background-color: yellow;
+    }
+    100% {
+        color: white;
+        background-color: red;
+    }
+}
+
+@keyframes active-2 {
+    0% {
+        color: black;
+        background-color: yellow;
+    }
+    25% {
+        color: white;
+        background-color: red;
+    }
+    50% {
+        color: black;
+        background-color: yellow;
+    }
+    75% {
+        color: white;
+        background-color: red;
+    }
+    100% {
+        color: black;
+        background-color: yellow;
+    }
+}
+
+@keyframes win-message {
+    0% {
+        color: white;
+        background-color: rgb(151, 73, 73);
+    }
+    10% {
+        color: black;
+        background-color: rgb(151, 133, 73);
+    }
+    20% {
+        color: white;
+        background-color: rgb(151, 73, 73);
+    }
+    30% {
+        color: black;
+        background-color: rgb(151, 133, 73);
+    }
+    40% {
+        color: white;
+        background-color: rgb(151, 73, 73);
+    }
+    50% {
+        color: black;
+        background-color: rgb(151, 133, 73);
+    }
+    60% {
+        color: white;
+        background-color: rgb(151, 73, 73);
+    }
+    70% {
+        color: black;
+        background-color: rgb(151, 133, 73);
+    }
+    80% {
+        color: white;
+        background-color: rgb(151, 73, 73);
+    }
+    90% {
+        color: black;
+        background-color: rgb(151, 133, 73);
+    }
+    100% {
+        color: white;
+        background-color: rgb(151, 73, 73);
+    }
+}
+
+@keyframes win {
+    0% {
+        filter: invert(100%)
+    }
+    10% {
+        filter: invert(0%)
+    }
+    20% {
+        filter: invert(100%)
+    }
+    30% {
+        filter: invert(0%)
+    }
+    40% {
+        filter: invert(100%)   
+    }
+    50% {
+        filter: invert(0%)
+    }
+    60% {
+        filter: invert(100%)
+    }
+    70% {
+        filter: invert(0%)
+    }
+    80% {
+        filter: invert(100%)
+    }
+    90% {
+        filter: invert(0)
+    }
+    100% {
+        filter: invert(0%)
+    }  
+}
+
+@keyframes blink {
+    0% {
+        opacity: 1;
+        background-color: rgb(151, 73, 73);
+    }
+    25% {
+        opacity: 0.6;
+        background-color: rgb(245, 150, 150);
+    }
+    50% {
+        opacity: 0.9;
+        background-color: rgb(143, 5, 5);
+    }
+    75% {
+        opacity: 0.5;
+        background-color: rgb(231, 47, 47);
+    }
+    100% {
+        opacity: 1;
+        background-color: rgb(151, 73, 73);
+    }
+}
+
+@keyframes winGamble {
+    0% {
+        color: black;
+        background-color: rgb(245, 9, 9);
+    }
+    10% {
+        color: white;
+        background-color: rgb(27, 13, 13);
+    }
+    20% {
+        color: black;
+        background-color: rgb(245, 9, 9);
+    }
+    30% {
+        color: white;
+        background-color: rgb(27, 13, 13);
+    }
+    40% {
+        color: black;
+        background-color: rgb(245, 9, 9);
+    }
+    50% {
+        color: white;
+        background-color: rgb(27, 13, 13);
+    }
+    60% {
+        color: black;
+        background-color: rgb(245, 9, 9);
+    }
+    70% {
+        color: white;
+        background-color: rgb(27, 13, 13);
+    }
+    80% {
+        color: black;
+        background-color: rgb(245, 9, 9);
+    }
+    90% {
+        color: white;
+        background-color: rgb(27, 13, 13);
+    }
+    100% {
+        color: black;
+        background-color: rgb(245, 9, 9);
+    }
+}

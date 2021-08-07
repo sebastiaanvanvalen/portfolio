@@ -15,8 +15,6 @@ export class WorldSituationComponent implements OnInit {
     private dataModel: DataModel;
     public updateDate;
 
-
-    // current values per country
     worldSituationURL: string = 'https://api.covid19api.com/summary';
     countryURL: string = 'https://api.covid19api.com/country/';
 
@@ -24,9 +22,7 @@ export class WorldSituationComponent implements OnInit {
         private BarChartService: BarChartService
     ) {}
 
-    ngOnInit() {
-
-    }
+    ngOnInit() {}
 
     public buildGraph(dataModel) {
         // buildGraph inits after childComp sends its first datamodel. standard or preset it gives the buildgraph the parameters on which the graph should be build
@@ -35,7 +31,4 @@ export class WorldSituationComponent implements OnInit {
         this.BarChartService.getGraph(this.dataModel);
         this.updateDate = this.dataModel.updatedOn
     }
-
-
-
 }

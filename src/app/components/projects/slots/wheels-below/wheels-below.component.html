@@ -1,0 +1,96 @@
+<div class="lower-machine-container">
+    <div class="message-container">
+        <div class="message">bet: 100</div>
+    </div>
+    <div class="score-reel-container">
+        <div class="score-container score-container-1">
+            <img id="diamonds" src="assets/pictures/slotsScores/diamonds.png" alt="">
+            <img id="melons" src="assets/pictures/slotsScores/melons.png" alt="">
+            <img id="grapes" src="assets/pictures/slotsScores/grapes.png" alt="">
+            <img id="bells" src="assets/pictures/slotsScores/bells.png" alt="">
+            <img id="plums" src="assets/pictures/slotsScores/plums.png" alt="">
+            <img id="plumBar" src="assets/pictures/slotsScores/plumBar.png" alt="">
+            <img id="peaches" src="assets/pictures/slotsScores/peaches.png" alt="">
+            <img id="peachBar" src="assets/pictures/slotsScores/peachBar.png" alt="">
+        </div>
+        <div class="reels-container">
+            <div class="reel-cont reel-cont-1" id="reel-cont-1">
+                <img src="" alt="">
+                <img src="" alt="">
+                <img src="" alt="">
+            </div>
+            <div class="reel-cont reel-cont-2" id="reel-cont-2">
+                <img src="" alt="">
+                <img src="" alt="">
+                <img src="" alt="">
+            </div>
+            <div class="reel-cont reel-cont-3" id="reel-cont-3">
+                <img src="" alt="">
+                <img src="" alt="">
+                <img src="" alt="">
+            </div>
+        </div>
+        <div class="score-container score-container-2">
+            <img id="oranges" src="assets/pictures/slotsScores/oranges.png" alt="">
+            <img id="orangeBar" src="assets/pictures/slotsScores/orangeBar.png" alt="">
+            <img id="lemons" src="assets/pictures/slotsScores/lemons.png" alt="">
+            <img id="lemonBar" src="assets/pictures/slotsScores/lemonBar.png" alt="">
+            <img id="cherries" src="assets/pictures/slotsScores/cherries.png" alt="">
+            <img id="cherryBar" src="assets/pictures/slotsScores/cherryBar.png" alt="">
+            <img id="twoCherries" src="assets/pictures/slotsScores/twoCherries.png" alt="">
+            <img id="oneCherry" src="assets/pictures/slotsScores/oneCherry.png" alt="">
+        </div>
+        <div class="message-board" id="message-board">
+            <div class="brand-container">picture / brand</div>
+            <div class="questionmark-container">
+                <div class="grid-container">
+                    <div class="qRow qRow-1">
+                        <img id="q0" src="assets/pictures/slotsScores/questionMark.png" alt="">
+                        <img id="q1" src="assets/pictures/slotsScores/questionMark.png" alt="">
+                        <img id="q2" src="assets/pictures/slotsScores/questionMark.png" alt="">
+                    </div>
+                    <div class="qRow qRow-2">
+                        <img id="q3" src="assets/pictures/slotsScores/questionMark.png" alt="">
+                        <img id="q4" src="assets/pictures/slotsScores/questionMark.png" alt="">
+                        <img id="q5" src="assets/pictures/slotsScores/questionMark.png" alt="">
+                    </div>
+                    <div class="qRow qRow-3">
+                        <img id="q6" src="assets/pictures/slotsScores/questionMark.png" alt="">
+                        <img id="q7" src="assets/pictures/slotsScores/questionMark.png" alt="">
+                        <img id="q8" src="assets/pictures/slotsScores/questionMark.png" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="button-container">
+        <button class="btn cancel" (click)="cancel()">cancel</button>
+
+        <button class="btn hold btn-1" [ngClass]="holdedReels[0] === false ? 'noHold' : 'onHold'"
+            (click)="holdReel(0)">HOLD</button>
+
+        <button class="btn hold btn-2" [ngClass]="holdedReels[1] === false ? 'noHold' : 'onHold'"
+            (click)="holdReel(1)">HOLD</button>
+
+        <button class="btn hold btn-3" [ngClass]="holdedReels[2] === false ? 'noHold' : 'onHold'"
+            (click)="holdReel(2)">HOLD</button>
+
+        <button class="btn coin head" id="heads" (click)="gamble('heads')">Head</button>
+
+        <button class="btn coin tail" id="tails" (click)="gamble('tails')">Tail</button>
+
+        <button class="btn play" (click)="play()">Play</button>
+    </div>
+
+
+</div>
+<div class="wallet">
+    <span>coins: {{ wallet }}</span>
+    <br>
+    <span>bet: {{ bet }}</span>
+    <br>
+    <span>win: {{ wins }}</span>
+</div>
+<div class="message" id="message"></div>

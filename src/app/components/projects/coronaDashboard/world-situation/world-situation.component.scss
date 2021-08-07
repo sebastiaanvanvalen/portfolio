@@ -9,18 +9,27 @@
 
 
             .svg-container {
-                // display: inline-block;
-                width: 80%;
-                // padding-bottom: 100%; /* aspect ratio */
+                display: flex;
+                width: 100%;
                 vertical-align: top;
+                justify-content: center;
                 overflow: scroll;
                 
                 .svg-content {
-                    position: absolute;
-
+                    position: relative;
 
                     
-
+                    .tooltip {	
+                        position: absolute;			
+                        text-align: center;			
+                        width: 100px;					
+                        height: 28px;					
+                        padding: 2px;				
+                        border-radius: 8px;			
+                        pointer-events: none;	
+                        background-color: red;
+                        
+                    }
                     
                 }
                 .svg-content-responsive {
@@ -28,15 +37,6 @@
                     position: absolute;
                     top: 10px;
                     left: 0;
-                }
-                
-                .tooltip {	
-                    position: absolute;			
-                    text-align: center;							
-                    padding: 2px;				
-                    border-radius: 8px;			
-                    pointer-events: none;	
-                    background-color: orange;
                 }
             }
 

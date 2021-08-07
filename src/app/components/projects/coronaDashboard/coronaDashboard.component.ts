@@ -4,6 +4,7 @@ import { HttpService } from 'src/app/services/http.service';
 import { CovidSummary } from './world-situation/modals/covidSummary';
 import { CovidWorldTotal } from './modals/covidWorldTotal';
 import { CovidCountryTimeline } from './modals/covidCountryTimeline';
+import { Title } from '@angular/platform-browser';
 
 @Component({
     selector: 'app-coronaDashboard',
@@ -28,7 +29,9 @@ export class CoronaDashboardComponent implements OnInit {
 
     select = false;
 
-    constructor(private httpService: HttpService) {}
+    constructor(private httpService: HttpService, private TitleService: Title) {
+        this.TitleService.setTitle('Corona Dashboard - baxxie.nl');
+    }
 
     ngOnInit() {
         this.getData(this.worldtotalUrl);
@@ -42,9 +45,7 @@ export class CoronaDashboardComponent implements OnInit {
         });
     }
     setDate(event) {
-        console.log(event)
-        this.updateDate =
-            event.substring(0, 10) + ' (at ' + event.substring(11, 19) + ')';
+        this.updateDate = event.substring(0, 10) + ' (at ' + event.substring(11, 19) + ')';
     }
 
     private procesWorldTotal() {

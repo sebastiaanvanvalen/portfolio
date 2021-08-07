@@ -44,6 +44,8 @@ import { CoronaDashboardComponent } from './components/projects/coronaDashboard/
 import { WorldSituationComponent } from './components/projects/coronaDashboard/world-situation/world-situation.component';
 import { GraphSelectionComponent } from './components/projects/coronaDashboard/graphSelection/graphSelection.component';
 import { BarChartService } from './services/bar-chart.service';
+import { SlotsComponent } from './components/projects/slots/slots.component';
+import { WheelsBelowComponent } from './components/projects/slots/wheels-below/wheels-below.component';
 
 
 
@@ -73,8 +75,8 @@ import { BarChartService } from './services/bar-chart.service';
     CoronaDashboardComponent,
     WorldSituationComponent,
     GraphSelectionComponent,
-
-
+    SlotsComponent,
+    WheelsBelowComponent,
 
   ],
   imports: [
@@ -91,7 +93,6 @@ import { BarChartService } from './services/bar-chart.service';
     MatSortModule,
     NgbModule,
     
-
   ],
   providers: [ContactService, ModalService, HttpService, BarChartService],
   bootstrap: [AppComponent]
