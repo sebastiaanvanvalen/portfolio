@@ -16,19 +16,19 @@
         </div>
         <div class="reels-container">
             <div class="reel-cont reel-cont-1" id="reel-cont-1">
-                <img src="" alt="">
-                <img src="" alt="">
-                <img src="" alt="">
+                <img id="00" src="" alt="">
+                <img id="01" src="" alt="">
+                <img id="02" src="" alt="">
             </div>
             <div class="reel-cont reel-cont-2" id="reel-cont-2">
-                <img src="" alt="">
-                <img src="" alt="">
-                <img src="" alt="">
+                <img id="10" src="" alt="">
+                <img id="11" src="" alt="">
+                <img id="12" src="" alt="">
             </div>
             <div class="reel-cont reel-cont-3" id="reel-cont-3">
-                <img src="" alt="">
-                <img src="" alt="">
-                <img src="" alt="">
+                <img id="20" src="" alt="">
+                <img id="21" src="" alt="">
+                <img id="22" src="" alt="">
             </div>
         </div>
         <div class="score-container score-container-2">
@@ -42,7 +42,8 @@
             <img id="oneCherry" src="assets/pictures/slotsScores/oneCherry.png" alt="">
         </div>
         <div class="message-board" id="message-board">
-            <div class="brand-container">picture / brand</div>
+            <div class="brand-container"></div>
+            <div class="question-prize" id="question-prize"></div>
             <div class="questionmark-container">
                 <div class="grid-container">
                     <div class="qRow qRow-1">
@@ -66,7 +67,7 @@
     </div>
 
     <div class="button-container">
-        <button class="btn cancel" (click)="cancel()">cancel</button>
+        <button class="btn cancel" (click)="cancel()">CANCEL</button>
 
         <button class="btn hold btn-1" [ngClass]="slotsAccount.holdedReels[0] === false ? 'noHold' : 'onHold'"
             (click)="holdReel(0)">HOLD</button>
@@ -77,10 +78,10 @@
         <button class="btn hold btn-3" [ngClass]="slotsAccount.holdedReels[2] === false ? 'noHold' : 'onHold'"
             (click)="holdReel(2)">HOLD</button>
 
-        <button class="btn coin head" id="heads" (click)="gamble('heads')">Head</button>
+        <button class="btn coin head" id="heads" (click)="gamble('heads')">HEADS</button>
 
-        <button class="btn coin tail" id="tails" (click)="gamble('tails')">Tail</button>
+        <button class="btn coin tail" id="tails" (click)="gamble('tails')">TAILS</button>
 
-        <button class="btn play" (click)="play()">Play</button>
+        <button class="btn play" (click)="play()">PLAY</button>
     </div>
 </div>

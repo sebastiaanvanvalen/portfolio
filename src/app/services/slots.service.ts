@@ -441,6 +441,375 @@ export class SlotsService {
         ],
     ];
 
+    reelsTry = [
+        [
+            {
+                name: 'question',
+                image: '../assets/pictures/reelIcons/questionmark01.png',
+                value: 11,
+            },
+            {
+                name: 'grapes',
+                image: 'assets/pictures/reelIcons/grapes01.png',
+                value: 8,
+            },
+            {
+                name: 'lemon',
+                image: '../assets/pictures/reelIcons/lemon01.png',
+                value: 2,
+            },
+            {
+                name: 'question',
+                image: '../assets/pictures/reelIcons/questionmark01.png',
+                value: 11,
+            },
+            {
+                name: 'plum',
+                image: '../assets/pictures/reelIcons/plum01.png',
+                value: 5,
+            },
+            {
+                name: 'orange',
+                image: '../assets/pictures/reelIcons/orange01.png',
+                value: 3,
+            },
+            {
+                name: 'question',
+                image: '../assets/pictures/reelIcons/questionmark01.png',
+                value: 11,
+            },
+            {
+                name: 'melon',
+                image: '../assets/pictures/reelIcons/melon01.png',
+                value: 7,
+            },
+            {
+                name: 'bell',
+                image: '../assets/pictures/reelIcons/bell01.png',
+                value: 6,
+            },
+            {
+                name: 'question',
+                image: '../assets/pictures/reelIcons/questionmark01.png',
+                value: 11,
+            },
+            {
+                name: 'peach',
+                image: '../assets/pictures/reelIcons/peach01.png',
+                value: 4,
+            },
+            {
+                name: 'question',
+                image: '../assets/pictures/reelIcons/questionmark01.png',
+                value: 11,
+            },
+            {
+                name: 'plum',
+                image: '../assets/pictures/reelIcons/plum01.png',
+                value: 5,
+            },
+            {
+                name: 'orange',
+                image: '../assets/pictures/reelIcons/orange01.png',
+                value: 3,
+            },
+            {
+                name: 'lemon',
+                image: '../assets/pictures/reelIcons/lemon01.png',
+                value: 2,
+            },
+            {
+                name: 'cherry',
+                image: '../assets/pictures/reelIcons/cherry01.png',
+                value: 1,
+            },
+            {
+                name: 'peach',
+                image: '../assets/pictures/reelIcons/peach01.png',
+                value: 4,
+            },
+            {
+                name: 'bell',
+                image: '../assets/pictures/reelIcons/bell01.png',
+                value: 6,
+            },
+            {
+                name: 'grapes',
+                image: '../assets/pictures/reelIcons/grapes01.png',
+                value: 8,
+            },
+            {
+                name: 'diamond',
+                image: '../assets/pictures/reelIcons/diamond01.png',
+                value: 9,
+            },
+            {
+                name: 'lemon',
+                image: '../assets/pictures/reelIcons/lemon01.png',
+                value: 2,
+            },
+            {
+                name: 'orange',
+                image: '../assets/pictures/reelIcons/orange01.png',
+                value: 3,
+            },
+            {
+                name: 'plum',
+                image: '../assets/pictures/reelIcons/plum01.png',
+                value: 5,
+            },
+            {
+                name: 'melon',
+                image: '../assets/pictures/reelIcons/melon01.png',
+                value: 7,
+            },
+        ],
+        [
+            {
+                name: 'question',
+                image: '../assets/pictures/reelIcons/questionmark01.png',
+                value: 11,
+            },
+            {
+                name: 'cherry',
+                image: '../assets/pictures/reelIcons/cherry01.png',
+                value: 1,
+            },
+            {
+                name: 'grapes',
+                image: '../assets/pictures/reelIcons/grapes01.png',
+                value: 8,
+            },
+            {
+                name: 'question',
+                image: '../assets/pictures/reelIcons/questionmark01.png',
+                value: 11,
+            },
+            {
+                name: 'lemon',
+                image: '../assets/pictures/reelIcons/lemon01.png',
+                value: 2,
+            },
+            {
+                name: 'cherry',
+                image: '../assets/pictures/reelIcons/cherry01.png',
+                value: 1,
+            },
+            {
+                name: 'question',
+                image: '../assets/pictures/reelIcons/questionmark01.png',
+                value: 11,
+            },
+            {
+                name: 'orange',
+                image: '../assets/pictures/reelIcons/orange01.png',
+                value: 3,
+            },
+            {
+                name: 'peach',
+                image: '../assets/pictures/reelIcons/peach01.png',
+                value: 4,
+            },
+            {
+                name: 'question',
+                image: '../assets/pictures/reelIcons/questionmark01.png',
+                value: 11,
+            },
+            {
+                name: 'plum',
+                image: '../assets/pictures/reelIcons/plum01.png',
+                value: 5,
+            },
+            {
+                name: 'melon',
+                image: '../assets/pictures/reelIcons/melon01.png',
+                value: 7,
+            },
+            {
+                name: 'question',
+                image: '../assets/pictures/reelIcons/questionmark01.png',
+                value: 11,
+            },
+            {
+                name: 'cherry',
+                image: '../assets/pictures/reelIcons/cherry01.png',
+                value: 1,
+            },
+            {
+                name: 'orange',
+                image: '../assets/pictures/reelIcons/orange01.png',
+                value: 3,
+            },
+            {
+                name: 'question',
+                image: '../assets/pictures/reelIcons/questionmark01.png',
+                value: 11,
+            },
+            {
+                name: 'lemon',
+                image: '../assets/pictures/reelIcons/lemon01.png',
+                value: 2,
+            },
+            {
+                name: 'cherry',
+                image: '../assets/pictures/reelIcons/cherry01.png',
+                value: 1,
+            },
+            {
+                name: 'question',
+                image: '../assets/pictures/reelIcons/questionmark01.png',
+                value: 11,
+            },
+            {
+                name: 'plum',
+                image: '../assets/pictures/reelIcons/plum01.png',
+                value: 5,
+            },
+            {
+                name: 'peach',
+                image: '../assets/pictures/reelIcons/peach01.png',
+                value: 4,
+            },
+            {
+                name: 'question',
+                image: '../assets/pictures/reelIcons/questionmark01.png',
+                value: 11,
+            },
+            {
+                name: 'bell',
+                image: '../assets/pictures/reelIcons/bell01.png',
+                value: 6,
+            },
+            {
+                name: 'plum',
+                image: '../assets/pictures/reelIcons/plum01.png',
+                value: 5,
+            },
+        ],
+        [
+            {
+                name: 'question',
+                image: '../assets/pictures/reelIcons/questionmark01.png',
+                value: 11,
+            },
+            {
+                name: 'cherry',
+                image: '../assets/pictures/reelIcons/cherry01.png',
+                value: 1,
+            },
+            {
+                name: 'grapes',
+                image: '../assets/pictures/reelIcons/grapes01.png',
+                value: 8,
+            },
+            {
+                name: 'question',
+                image: '../assets/pictures/reelIcons/questionmark01.png',
+                value: 11,
+            },
+            {
+                name: 'bar',
+                image: '../assets/pictures/reelIcons/bar01.png',
+                value: 10,
+            },
+            {
+                name: 'diamond',
+                image: '../assets/pictures/reelIcons/diamond01.png',
+                value: 9,
+            },
+            {
+                name: 'question',
+                image: '../assets/pictures/reelIcons/questionmark01.png',
+                value: 11,
+            },
+            {
+                name: 'cherry',
+                image: '../assets/pictures/reelIcons/cherry01.png',
+                value: 1,
+            },
+            {
+                name: 'peach',
+                image: '../assets/pictures/reelIcons/peach01.png',
+                value: 4,
+            },
+            {
+                name: 'question',
+                image: '../assets/pictures/reelIcons/questionmark01.png',
+                value: 11,
+            },
+            {
+                name: 'plum',
+                image: '../assets/pictures/reelIcons/plum01.png',
+                value: 5,
+            },
+            {
+                name: 'cherry',
+                image: '../assets/pictures/reelIcons/cherry01.png',
+                value: 1,
+            },
+            {
+                name: 'question',
+                image: '../assets/pictures/reelIcons/questionmark01.png',
+                value: 11,
+            },
+            {
+                name: 'orange',
+                image: '../assets/pictures/reelIcons/orange01.png',
+                value: 3,
+            },
+            {
+                name: 'lemon',
+                image: '../assets/pictures/reelIcons/lemon01.png',
+                value: 2,
+            },
+            {
+                name: 'cherry',
+                image: '../assets/pictures/reelIcons/cherry01.png',
+                value: 1,
+            },
+            {
+                name: 'plum',
+                image: '../assets/pictures/reelIcons/plum01.png',
+                value: 5,
+            },
+            {
+                name: 'question',
+                image: '../assets/pictures/reelIcons/questionmark01.png',
+                value: 11,
+            },
+            {
+                name: 'bell',
+                image: '../assets/pictures/reelIcons/bell01.png',
+                value: 6,
+            },
+            {
+                name: 'cherry',
+                image: '../assets/pictures/reelIcons/cherry01.png',
+                value: 1,
+            },
+            {
+                name: 'question',
+                image: '../assets/pictures/reelIcons/questionmark01.png',
+                value: 11,
+            },
+            {
+                name: 'orange',
+                image: '../assets/pictures/reelIcons/orange01.png',
+                value: 3,
+            },
+            {
+                name: 'grapes',
+                image: '../assets/pictures/reelIcons/grapes01.png',
+                value: 8,
+            },
+            {
+                name: 'question',
+                image: '../assets/pictures/reelIcons/questionmark01.png',
+                value: 11,
+            },
+        ],
+    ];
+
     scores = [
         { name: 'diamonds', slots: [9, 9, 9], value: 200 },
         { name: 'melons', slots: [8, 8, 8], value: 100 },
@@ -484,6 +853,14 @@ export class SlotsService {
     // when headsOrTails (hOrT) is true, the game stops until the player made a gamble.
     hOrT = false;
 
+
+    spinReel = {
+        reel0: false,
+        reel1: false,
+        reel2: false,
+
+    }
+
     constructor() {}
 
     public updateWallet(): slotsAccount {
@@ -502,11 +879,14 @@ export class SlotsService {
             this.slotsAccount.bet -= 1;
             this.spinReels('inGame');
             this.win = false;
-            console.log(this.slotsAccount.holdedReels);
+
             // if you held a button => reset all holdBtns but reset this.holding the next round
             if (this.slotsAccount.holdedReels.includes(true)) {
                 this.holding = true;
-                this.slotsAccount.holdedReels = [false, false, false];
+                setTimeout(() => {
+                    this.slotsAccount.holdedReels = [false, false, false];
+
+                }, 1800)
             } else {
                 this.cancelQuestionMarks();
                 this.holding = false;
@@ -518,60 +898,67 @@ export class SlotsService {
     public spinReels(context) {
         if (context === 'start') {
             this.reels.forEach((element, index) => {
-                let positions: number[] = this.setPositions();
-                // console.log(positions);
+            // this.reelsTry.forEach((element, index) => {
 
+                let positions: number[] = this.setPositions();
                 let reel = document.getElementById('reel-cont-' + (index + 1));
                 let reelNr = index;
                 let allSlots = reel.getElementsByTagName('img');
-                positions.forEach((element, index) => {
-                    allSlots[index].id = reelNr.toString() + index.toString();
 
+                positions.forEach((element, index) => {
                     allSlots[index].src = this.reels[reelNr][element].image;
                     allSlots[index].alt = this.reels[reelNr][element].name;
-                    // reel.appendChild(slot);
-                    this.reelChart[index][reelNr] = this.reels[reelNr][
-                        element
-                    ].value;
+                    this.reelChart[index][reelNr] = this.reels[reelNr][element].value;
+
+                    // allSlots[index].src = this.reelsTry[reelNr][element].image;
+                    // allSlots[index].alt = this.reelsTry[reelNr][element].name;
+                    // this.reelChart[index][reelNr] = this.reelsTry[reelNr][element].value;
                 });
             });
         } else if (context === 'inGame') {
             this.reels.forEach((element, index) => {
+            // this.reelsTry.forEach((element, index) => {
+
                 if (this.slotsAccount.holdedReels[index] !== true) {
                     let positions: number[] = this.setPositions();
-                    let reel = document.getElementById(
-                        'reel-cont-' + (index + 1)
-                    );
-                    
+                    let reel = document.getElementById('reel-cont-' + (index + 1));
                     let reelNr = index;
                     let allSlots = reel.getElementsByTagName('img');
 
+                    positions.forEach((element, index) => {
+                        this.spinReel[index] = true
+                        allSlots[index].src = "";
+                        allSlots[index].alt = ""
+                    })
+                    
                     setTimeout(() => {
                         positions.forEach((element, index) => {
-                            allSlots[index].id = reelNr.toString() + index.toString();
+                            this.spinReel[index] = false
                             allSlots[index].src = this.reels[reelNr][element].image;
                             allSlots[index].alt = this.reels[reelNr][element].name;
-
                             this.reelChart[index][reelNr] = this.reels[reelNr][element].value;
+
+                            // allSlots[index].src = this.reelsTry[reelNr][element].image;
+                            // allSlots[index].alt = this.reelsTry[reelNr][element].name;
+                            // this.reelChart[index][reelNr] = this.reelsTry[reelNr][element].value;
                         });
-                    }, index * 400);
+                    }, (index + 1) * 600);
                 }
             });
         }
 
         setTimeout(() => {
             this.checkForWin();
-        }, 1250);
-        // console.log(this.reelChart)
+        }, 2000);
     }
 
     public holdReel(reel): slotsAccount {
         if (this.holding === false) {
-            this.slotsAccount.holdedReels[reel] = !this.slotsAccount
-                .holdedReels[reel];
+            this.slotsAccount.holdedReels[reel] = !this.slotsAccount.holdedReels[reel];
         } else {
             console.log('not this round');
         }
+
         return this.slotsAccount;
     }
 
@@ -582,20 +969,18 @@ export class SlotsService {
     }
 
     public gamble(choice) {
-
         if (this.hOrT === false) {
+
             return;
         }
 
         this.hOrT = false;
+        let chance = Math.floor(Math.random() * 2);
         let heads = document.getElementById('heads')
         let tails = document.getElementById('tails');
-        heads.classList.remove('active', 'active-1');
-        // heads.classList.remove('active-1');
-        tails.classList.remove('active', 'active-2');
-        // tails.classList.remove('active-2');
 
-        let chance = Math.floor(Math.random() * 2);
+        heads.classList.remove('active', 'active-1');
+        tails.classList.remove('active', 'active-2');
 
         if (chance === 0 && choice === 'heads') {
             heads.classList.add('winGamble');
@@ -607,8 +992,8 @@ export class SlotsService {
 
         } else {
             this.processWin('noCherry', null)
-
         }
+
         setTimeout(() => {
             heads.classList.remove('winGamble');
             tails.classList.remove('winGamble');
@@ -619,14 +1004,12 @@ export class SlotsService {
     private checkForWin() {
         // check for three questionmarks
         let nrOfQuestionmarks = 0;
-        this.allSlots = this.reelChart[0]
-            .concat(this.reelChart[1])
-            .concat(this.reelChart[2]);
+        this.allSlots = this.reelChart[0].concat(this.reelChart[1]).concat(this.reelChart[2]);
 
         this.allSlots.forEach((element) => {
             if (element === 11) {
                 nrOfQuestionmarks++;
-                // this.spin = false;
+
             }
             this.visualizeQuestionmarks(nrOfQuestionmarks);
         });
@@ -642,6 +1025,7 @@ export class SlotsService {
             this.scores.map((items) => {
                 if (items.slots.toString() === winRow.toString()) {
                     this.processWin("reels", items)
+
                     return;
                 }
             });
@@ -652,6 +1036,7 @@ export class SlotsService {
             if (this.holding === true) {
                 this.processWin("twoCherries", null)
             }
+
             // this return is placed  here in case two cherries fall in place and you want to hold them
             this.spin = false;
             return;
@@ -665,16 +1050,28 @@ export class SlotsService {
 
             return;
         }
+
+        // if a cherry is on HOLD and (only) the third reel gets a cherry. The player still gets a gamble for the first cherry
+        if (winRow[0] === 1 && this.win === false && this.holding === true) {
+            this.holding = true;
+            this.initHeadsOrTails();
+            this.hOrT = true;
+
+            return;
+        }
         this.spin = false;
     }
 
     private setPositions(): number[] {
         let pos = Math.floor(Math.random() * 23);
         if (pos === 22) {
+
             return [22, 23, 0];
         } else if (pos === 23) {
+
             return [23, 0, 1];
         } else {
+
             return [pos, pos + 1, pos + 2];
         }
     }
@@ -682,6 +1079,7 @@ export class SlotsService {
     private initHeadsOrTails() {
         let heads = document.getElementById('heads');
         let tails = document.getElementById('tails');
+
         heads.classList.add('active');
         heads.classList.add('active-1');
         tails.classList.add('active');
@@ -693,80 +1091,54 @@ export class SlotsService {
         switch (context) {
             case "questionMarks":
                 let value = this.getQuestionMarkPrize();
-
                 this.playWinMessage(value);
                 this.visualizeWin('questionMark', null);
+
                 break;
-            
             case "reels":
                 this.slotsAccount.currentAccount += item.value;
                 this.playWinMessage(item.value);
                 this.visualizeWin('score', item);
-            break;
 
+                break;
             case "twoCherries":
                 this.playWinMessage(4);
                 this.visualizeWin('twoCherries', null);
+
                 break;
-            
             case "oneCherry":
                 this.playWinMessage(4);
                 this.visualizeWin('oneCherry', null);
 
-            break;
-
+                break;
             case "noCherry":
                 this.playWinMessage(0);
+            
+                break;
             default:
                 break;
         }
 
         this.holding = true;
         this.win = true;
-        
-        setTimeout(() => {
-        }, 2000)
-
     }
 
     private getQuestionMarkPrize() {
-        let values = [
-            20,
-            20,
-            20,
-            20,
-            20,
-            20,
-            20,
-            20,
-            20,
-            20,
-            20,
-            20,
-            40,
-            40,
-            40,
-            40,
-            60,
-            60,
-            60,
-            80,
-            80,
-            100,
-        ];
+        let values = [20,20,20,20,20,20,20,20,20,20,20,20,
+            40,40,40,40,60,60,60,80,80,100,];
+
         return values[Math.floor(Math.random() * 22)];
     }
 
-
-
-
     private visualizeWin(type, item) {
         let score;
+
         if(item !== null) {
             score = document.getElementById(item.name);
         } else {
             score = document.getElementById(type);
         }
+
         let slot1 = document.getElementById('01');
         let slot2 = document.getElementById('11');
         let slot3 = document.getElementById('21');
@@ -784,6 +1156,7 @@ export class SlotsService {
                 slot3.classList.remove('win');
             }, 2000);
         }
+
         if (type === 'oneCherry') {
             score.classList.add('win');
             slot1.classList.add('win');
@@ -793,18 +1166,19 @@ export class SlotsService {
                 slot1.classList.remove('win');
             }, 2000);
         }
+
         if (type === 'twoCherries') {
             score.classList.add('win');
             slot1.classList.add('win');
             slot2.classList.add('win');
 
-            // console.log(slot1)
             setTimeout(() => {
                 score.classList.remove('win');
                 slot1.classList.remove('win');
                 slot2.classList.remove('win');
             }, 2000);
         }
+
         if (type === 'questionMark') {
             let slot = "";
             this.allSlots.forEach((element, index)=> {
@@ -856,6 +1230,28 @@ export class SlotsService {
                     document.getElementById(slot).classList.remove("win")
                 }, 2000)
             })
+
+            document.getElementById("q0").classList.add("qWin012");
+            document.getElementById("q1").classList.add("qWin012");
+            document.getElementById("q2").classList.add("qWin012");
+            document.getElementById("q3").classList.add("qWin35");
+            document.getElementById("q4").classList.add("qWin4");
+            document.getElementById("q5").classList.add("qWin35");
+            document.getElementById("q6").classList.add("qWin678");
+            document.getElementById("q7").classList.add("qWin678");
+            document.getElementById("q8").classList.add("qWin678");
+
+            setTimeout(() => {
+            document.getElementById("q0").classList.remove("qWin012");
+            document.getElementById("q1").classList.remove("qWin012");
+            document.getElementById("q2").classList.remove("qWin012");
+            document.getElementById("q3").classList.remove("qWin35");
+            document.getElementById("q4").classList.remove("qWin4");
+            document.getElementById("q5").classList.remove("qWin35");
+            document.getElementById("q6").classList.remove("qWin678");
+            document.getElementById("q7").classList.remove("qWin678");
+            document.getElementById("q8").classList.remove("qWin678");
+            }, 2000)
         }
     }
 
@@ -871,7 +1267,6 @@ export class SlotsService {
     }
 
     private cancelQuestionMarks() {
-        console.log(this.allSlots);
         this.allSlots.forEach((element, index) => {
             document.getElementById('q' + index).classList.remove('shine');
         });
@@ -885,19 +1280,20 @@ export class SlotsService {
             winBar.innerText = 'YOU LOST...';
         } else {
             winBar.classList.add('win-message');
-            winBar.innerText =
-                'YOU WON ' + amount + ' ' + this.slotsAccount.currency;
+            winBar.innerText = 'YOU WON ' + amount + ' ' + this.slotsAccount.currency;
         }
 
-        setTimeout(() => {
-            winBar.classList.remove('win-message');
-            winBar.classList.add('throw-prize');
-            winBar.innerText = amount.toString();
-            // winBar.innerText = "more animation";
-            this.deleteWinMessage(amount);
-
-        }, 2000);
-
+        if (amount === 0) {
+            this.spin = false;
+        } else {   
+            setTimeout(() => {
+                winBar.classList.remove('win-message');
+                winBar.classList.add('throw-prize');
+                winBar.innerText = amount.toString();
+                this.deleteWinMessage(amount);
+                
+            }, 2000);
+        }
     }
 
     private deleteWinMessage(prize) {
