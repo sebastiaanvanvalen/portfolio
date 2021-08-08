@@ -9,38 +9,18 @@
     margin: 0 auto;
 
     .message-container {
-        display: flex;
         width: 100%;
         height: 10%;
         background-color: black;
-
-        .info {
+        .message {
             padding: 0 0 0 8px;
             display: flex;
             align-items: center;
-            // width: 95%;
+            width: 95%;
             height: 90%;
             color: white;
             font-family: monospace;
             font-size: 28px;
-        }
-
-        .account {
-            width: 35%;
-        }
-
-        .win-message {
-            width: 65%;
-            text-align: center;
-            filter: invert(0);
-        }
-        
-        .play-win-message {
-            animation: win-message 2s linear;
-        }
-
-        .throw-prize {
-            animation: throw-prize 1s linear;
         }
     }
 
@@ -64,6 +44,7 @@
             }
 
             .win {
+                border-radius: 50%;
                 animation: win 2s linear;
             }
 
@@ -100,16 +81,16 @@
         }
 
         .message-board {
-            display: flex;
-            flex-direction: column;
             width: 25%;
 
             .brand-container {
-                height: 40%;
+                // height: 45%;
+                // background-color: red;
             }
 
             .questionmark-container {
                 height: 55%;
+                // background-color: green;
 
                 .grid-container {
                     height: 100%;
@@ -132,6 +113,7 @@
                             filter: invert(0);
 
                         }
+                        
                     }
                 }
             }
@@ -224,88 +206,51 @@
     }
 }
 
-@keyframes win-2b-used {
-    0% {
-        color: white;
-        background-color: rgb(151, 73, 73);
-    }
-    10% {
-        color: black;
-        background-color: rgb(151, 133, 73);
-    }
-    20% {
-        color: white;
-        background-color: rgb(151, 73, 73);
-    }
-    30% {
-        color: black;
-        background-color: rgb(151, 133, 73);
-    }
-    40% {
-        color: white;
-        background-color: rgb(151, 73, 73);
-    }
-    50% {
-        color: black;
-        background-color: rgb(151, 133, 73);
-    }
-    60% {
-        color: white;
-        background-color: rgb(151, 73, 73);
-    }
-    70% {
-        color: black;
-        background-color: rgb(151, 133, 73);
-    }
-    80% {
-        color: white;
-        background-color: rgb(151, 73, 73);
-    }
-    90% {
-        color: black;
-        background-color: rgb(151, 133, 73);
-    }
-    100% {
-        color: white;
-        background-color: rgb(151, 73, 73);
-    }
-}
-
 @keyframes win-message {
     0% {
-        filter: invert(100%);
+        color: white;
+        background-color: rgb(151, 73, 73);
     }
     10% {
-        filter: invert(0%);
+        color: black;
+        background-color: rgb(151, 133, 73);
     }
     20% {
-        filter: invert(100%);
+        color: white;
+        background-color: rgb(151, 73, 73);
     }
     30% {
-        filter: invert(0%);
+        color: black;
+        background-color: rgb(151, 133, 73);
     }
     40% {
-        filter: invert(100%);
+        color: white;
+        background-color: rgb(151, 73, 73);
     }
     50% {
-        filter: invert(0%);
+        color: black;
+        background-color: rgb(151, 133, 73);
     }
     60% {
-        filter: invert(100%);
+        color: white;
+        background-color: rgb(151, 73, 73);
     }
     70% {
-        filter: invert(0%);
+        color: black;
+        background-color: rgb(151, 133, 73);
     }
     80% {
-        filter: invert(100%);
+        color: white;
+        background-color: rgb(151, 73, 73);
     }
     90% {
-        filter: invert(0);
+        color: black;
+        background-color: rgb(151, 133, 73);
     }
     100% {
-        filter: invert(0%);
-
-    }  
+        color: white;
+        background-color: rgb(151, 73, 73);
+    }
 }
 
 @keyframes win {
@@ -341,16 +286,6 @@
     }
     100% {
         filter: invert(0%)
-    }  
-}
-
-@keyframes throw-prize {
-    0% {
-        transform: translateX(400px);
-    }
-    100% {
-        transform: translateX(-100px);
-
     }  
 }
 

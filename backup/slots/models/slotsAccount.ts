@@ -4,5 +4,4 @@ export interface slotsAccount {
     bet: number;
     win: number;
     currency: string;
-    holdedReels: boolean[];
 }
