@@ -1,6 +1,7 @@
 import { Component, OnInit, HostListener } from '@angular/core';
 import { SlotsService } from 'src/app/services/slots.service';
 import { slotsAccount } from '../models/slotsAccount';
+import { ModalService } from 'src/app/services/modal.service';
 
 @Component({
     selector: 'app-wheels-below',
@@ -24,7 +25,7 @@ export class WheelsBelowComponent implements OnInit {
 
     // is set to true when a winning combi is found to stop looking further. Is set to false when pushing "play"
     win = false;
-
+    wins = 0;
     hOrT = false;
     holding = false;
     reelChart = [
@@ -37,15 +38,30 @@ export class WheelsBelowComponent implements OnInit {
 
     allSlots = [];
 
-    constructor(private slotService: SlotsService) {}
+    constructor(
+        private slotService: SlotsService,
+        private modalService: ModalService
+        ) {}
 
     ngOnInit() {
+        
+    
         this.slotsAccount = this.slotService.updateWallet();
-        this.slotService.spinReels('start');
+        this.slotService.setReels();
+        this.slotService.spinReels();
+    }
+
+    private placeSlots() {
+
     }
 
     public play() {
-        this.slotService.play()
+
+        if (this.slotsAccount.currentAccount > 0) {
+            this.slotService.play()
+        } else {
+this.modalService.createModal("Unfortunately, you are BROKE!")
+        }
     }
 
     public gamble(choice) {

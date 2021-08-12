@@ -4,13 +4,10 @@ import { slotsAccount } from '../components/projects/slots/models/slotsAccount';
 @Injectable({
     providedIn: 'root',
 })
-
-
-
 export class SlotsService {
     slotsAccount: slotsAccount = {
         startingAccount: 100,
-        currentAccount: 1,
+        currentAccount: 100,
         bet: 0,
         win: 0,
         currency: 'coins',
@@ -834,12 +831,10 @@ export class SlotsService {
     ];
 
     reelChart = [
-        [],
-        [],
-        [],
+        [0, 0, 0],
+        [0, 0, 0],
+        [0, 0, 0],
     ];
-
-    reelSpin = [0,0,0]
 
     // holding is set when you push HOLD. But also after a win so you cant "auto-win" for ever
     holding = false;
@@ -873,40 +868,6 @@ export class SlotsService {
         return this.slotsAccount;
     }
 
-    public setReels() {
-
-        this.reels.forEach((element, index) => {
-            this.reels[index] = this.reels[index].concat(this.reels[index], this.reels[index]);
-        })
-
-        this.reels.forEach((element, index) => {
-            // this.reels[index] = this.reels[index].concat(this.reels[index], this.reels[index]);
-            let reel = document.getElementById("reel-" + (index + 1))
-            
-            let spinValue = Math.floor(Math.random() * 23)
-            let partArray = element.splice(spinValue)
-            this.reels[index] = [...partArray, ...element]
-
-            this.reelChart[0][index] = this.reels[index][0].value
-            this.reelChart[1][index] = this.reels[index][1].value
-            this.reelChart[2][index] = this.reels[index][2].value
-            this.reels[index].forEach((element, i) => {
-                let slot = document.createElement("img");
-                slot.src = element.image
-                slot.classList.add(element.name)
-                slot.style.width = "80px";
-                slot.style.height = "80px";
-
-                slot.id = index.toString() + "-" + i.toString()
-
-
-                reel.appendChild(slot)
-            })
-        })
-        console.log(this.reelChart)
-        console.log(this.reelSpin)
-    }
-
     public play(): slotsAccount {
         if (
             this.spin === false &&
@@ -917,7 +878,7 @@ export class SlotsService {
             this.spin = true;
             this.slotsAccount.currentAccount -= 1;
             this.slotsAccount.bet -= 1;
-            this.spinReels();
+            this.spinReels('inGame');
             this.win = false;
 
             // if you held a button => reset all holdBtns but reset this.holding the next round
@@ -935,55 +896,80 @@ export class SlotsService {
         return this.slotsAccount;
     }
 
-    public spinReels() {
+    public spinReels(context) {
+        if (context === 'start') {
+            this.reels.forEach((element, index) => {
+            // this.reelsTry.forEach((element, index) => {
 
-        // animation that gives the reel a "buggy" start before spinning (commonly seen in slots machines)
-        // if(this.holding === false) {
-        //     console.log(" start bug");
+                let positions: number[] = this.setPositions();
+                let reel = document.getElementById('reel-cont-' + (index + 1));
+                let reelNr = index;
+                let allSlots = reel.getElementsByTagName('img');
+
+                positions.forEach((element, index) => {
+                    allSlots[index].src = this.reels[reelNr][element].image;
+                    allSlots[index].alt = this.reels[reelNr][element].name;
+                    this.reelChart[index][reelNr] = this.reels[reelNr][element].value;
+
+                    // allSlots[index].src = this.reelsTry[reelNr][element].image;
+                    // allSlots[index].alt = this.reelsTry[reelNr][element].name;
+                    // this.reelChart[index][reelNr] = this.reelsTry[reelNr][element].value;
+                });
+            });
+        } else if (context === 'inGame') {
             
-        //     let reel = document.getElementById("reel-1")
-        //     let interval = Math.floor(Math.random() * 1)
-        //     if (interval === 0) {
-        //         reel.classList.add("bug")
-        //     }
-        //     setTimeout(() => {
-        //         reel.classList.remove("bug")
+            // animation that gives the reel a "buggy" start before spinning (commonly seen in slots machines)
+            if(this.holding === false) {
+                console.log(" start bug");
                 
-        //     }, 300)
-        // }
-        
-        this.reels.forEach((element, index) => {
-            if (this.slotsAccount.holdedReels[index] !== true) {
-
-
-                    let reel = document.getElementById("reel-" + (index + 1))
-                    let spinValue = this.getSpinValue();
-                    let spin = spinValue * 80
-
-                    this.reelSpin[index] = spinValue;
-                    
-                    this.reelChart[0][index] = this.reels[index][spinValue].value
-                    this.reelChart[1][index] = this.reels[index][spinValue + 1].value
-                    this.reelChart[2][index] = this.reels[index][spinValue + 2].value
-
-                    reel.style.transform = 'translateY(0)';
-                    
-                    setTimeout(() => {
-                        reel.style.transform = "translateY(-" + spin + "px)";
-            
-                    }, 200)
+                let reel = document.getElementById("reel-1")
+                let interval = Math.floor(Math.random() * 7)
+                if (interval === 0) {
+                    reel.classList.add("bug")
                 }
-            })
+                setTimeout(() => {
+                    reel.classList.remove("bug")
+                    
+                }, 300)
+            }
+            setTimeout(() => {
+
+                this.reels.forEach((element, index) => {
+                // this.reelsTry.forEach((element, index) => {
+
+                    if (this.slotsAccount.holdedReels[index] !== true) {
+                        let positions: number[] = this.setPositions();
+                        let reel = document.getElementById('reel-cont-' + (index + 1));
+                        let reelNr = index;
+                        let allSlots = reel.getElementsByTagName('img');
+
+                        positions.forEach((element, index) => {
+                            this.spinReel[index] = true
+                            allSlots[index].src = "";
+                            allSlots[index].alt = ""
+                        })
+                        
+                        setTimeout(() => {
+                            positions.forEach((element, index) => {
+                                this.spinReel[index] = false
+                                allSlots[index].src = this.reels[reelNr][element].image;
+                                allSlots[index].alt = this.reels[reelNr][element].name;
+                                this.reelChart[index][reelNr] = this.reels[reelNr][element].value;
+
+                                // allSlots[index].src = this.reelsTry[reelNr][element].image;
+                                // allSlots[index].alt = this.reelsTry[reelNr][element].name;
+                                // this.reelChart[index][reelNr] = this.reelsTry[reelNr][element].value;
+                            });
+                        }, (index + 1) * 600);
+                    }
+                });
+
+            }, 300)
+        }
 
         setTimeout(() => {
             this.checkForWin();
-        }, 2000);
-    }
-
-    private getSpinValue() {
-       let spinValue = (Math.floor(Math.random() * 24) + 24)
-    
-       return spinValue
+        }, 2300);
     }
 
     public holdReel(reel): slotsAccount {
@@ -1031,14 +1017,11 @@ export class SlotsService {
         setTimeout(() => {
             heads.classList.remove('winGamble');
             tails.classList.remove('winGamble');
-            let slot1 = document.getElementById("0-" + (this.reelSpin[0] + 1));
-            slot1.animate({ filter: [ 'brightness(1)', 'brightness(1.5)' ], opacity: ["1", ".5"]  },
-            { duration: 400, iterations: 1 })
+
         }, 2000);
     }
 
     private checkForWin() {
-
         // check for three questionmarks
         let nrOfQuestionmarks = 0;
         this.allSlots = this.reelChart[0].concat(this.reelChart[1]).concat(this.reelChart[2]);
@@ -1079,18 +1062,9 @@ export class SlotsService {
             return;
         }
 
-        // check for cherries on outer reels 
-
-        if (winRow[0] === 1 && winRow[2] === 1&& this.win === false) {
-            this.slotsAccount.holdedReels = [true, false, true]
-
-        }
-
         // check for one cherry
-        if (winRow[0] === 1 && winRow[1] !== 1 && winRow[2] !== 1 && this.win === false && this.holding === false) {
+        if (winRow[0] === 1 && winRow[1] !== 1 && winRow[2] !== 1 && this.win === false) {
             this.holding = true;
-            this.slotsAccount.holdedReels = [false, false, false]
-            
             this.initHeadsOrTails();
             this.hOrT = true;
 
@@ -1100,14 +1074,26 @@ export class SlotsService {
         // if a cherry is on HOLD and (only) the third reel gets a cherry. The player still gets a gamble for the first cherry
         if (winRow[0] === 1 && this.win === false && this.holding === true) {
             this.holding = true;
-            this.slotsAccount.holdedReels = [false, false, false]
-
             this.initHeadsOrTails();
             this.hOrT = true;
 
             return;
         }
         this.spin = false;
+    }
+
+    private setPositions(): number[] {
+        let pos = Math.floor(Math.random() * 23);
+        if (pos === 22) {
+
+            return [22, 23, 0];
+        } else if (pos === 23) {
+
+            return [23, 0, 1];
+        } else {
+
+            return [pos, pos + 1, pos + 2];
+        }
     }
 
     private initHeadsOrTails() {
@@ -1118,16 +1104,9 @@ export class SlotsService {
         heads.classList.add('active-1');
         tails.classList.add('active');
         tails.classList.add('active-2');
-
-        let slot1 = document.getElementById("0-" + (this.reelSpin[0] + 1));
-        slot1.animate({ filter: [ 'brightness(1)', 'brightness(1.5)' ], opacity: ["1", ".5"]  },
-        { duration: 400, iterations: Infinity })
-
     }
 
     private processWin(context, item) {
-
-
 
         switch (context) {
             case "questionMarks":
@@ -1172,7 +1151,6 @@ export class SlotsService {
     }
 
     private visualizeWin(type, item) {
-
         let score;
 
         if(item !== null) {
@@ -1181,119 +1159,96 @@ export class SlotsService {
             score = document.getElementById(type);
         }
 
-        let slot1 = document.getElementById("0-" + (this.reelSpin[0] + 1));
-        let slot2 = document.getElementById("1-" + (this.reelSpin[1] + 1));
-        let slot3 = document.getElementById("2-" + (this.reelSpin[2] + 1));
+        let slot1 = document.getElementById('01');
+        let slot2 = document.getElementById('11');
+        let slot3 = document.getElementById('21');
 
         if (type === 'score') {
             score.classList.add('win');
-            slot1.style.borderRadius = "50%";
-            slot1.animate({ filter: [ 'brightness(1)', 'brightness(1.5)' ], opacity: ["1", ".5"]  },
-                    { duration: 400, iterations: 5 })
-            slot2.style.borderRadius = "50%";
-            slot2.animate({ filter: [ 'brightness(1)', 'brightness(1.5)' ], opacity: ["1", ".5"]  },
-            { duration: 400, iterations: 5 })
-            slot3.style.borderRadius = "50%";
-            slot3.animate({ filter: [ 'brightness(1)', 'brightness(1.5)' ], opacity: ["1", ".5"]  },
-            { duration: 400, iterations: 5 })
-
+            slot1.classList.add('win');
+            slot2.classList.add('win');
+            slot3.classList.add('win');
 
             setTimeout(() => {
                 score.classList.remove('win');
-                slot1.style.borderRadius = "none";
-                slot2.style.borderRadius = "none";
-                slot3.style.borderRadius = "none";
+                slot1.classList.remove('win');
+                slot2.classList.remove('win');
+                slot3.classList.remove('win');
             }, 2000);
         }
 
         if (type === 'oneCherry') {
             score.classList.add('win');
-            slot1.style.borderRadius = "50%";
-            slot1.animate({ filter: [ 'brightness(1)', 'brightness(1.5)' ], opacity: ["1", ".5"]  },
-            { duration: 400, iterations: 5 })
+            slot1.classList.add('win');
 
             setTimeout(() => {
                 score.classList.remove('win');
-                slot1.style.borderRadius = "none";
-
+                slot1.classList.remove('win');
             }, 2000);
         }
 
         if (type === 'twoCherries') {
             score.classList.add('win');
-            slot1.style.borderRadius = "50%";
-            slot1.animate({ filter: [ 'brightness(1)', 'brightness(1.5)' ], opacity: ["1", ".5"]  },
-            { duration: 400, iterations: 5 })
-            slot2.style.borderRadius = "50%";
-            slot2.animate({ filter: [ 'brightness(1)', 'brightness(1.5)' ], opacity: ["1", ".5"]  },
-            { duration: 400, iterations: 5 })
+            slot1.classList.add('win');
+            slot2.classList.add('win');
 
             setTimeout(() => {
                 score.classList.remove('win');
-                slot1.style.borderRadius = "none";
-                slot2.style.borderRadius = "none";
+                slot1.classList.remove('win');
+                slot2.classList.remove('win');
             }, 2000);
         }
 
         if (type === 'questionMark') {
-            let slot;
-            let virtSlot;
-            console.log(this.reelSpin)
+            let slot = "";
             this.allSlots.forEach((element, index)=> {
                 if(element === 11) {
                     switch (index) {
                         case 0:
-                            slot = "0-" + (this.reelSpin[0])
+                            slot = "00"
                             break;
                         case 1:
-                            slot = "1-" + (this.reelSpin[1])
+                            slot = "10"
                             
                             break;
                         case 2:
-                            slot = "2-" + (this.reelSpin[2])
+                            slot = "20"
                             
                             break;
                         case 3:
-                            slot = "0-" + (this.reelSpin[0] + 1)
+                            slot = "01"
                             
                             break;
                         case 4:
-                            slot = "1-" + (this.reelSpin[1] + 1)
+                            slot = "11"
                             
                             break;
                         case 5:
-                            slot = "2-" + (this.reelSpin[2] + 1)
+                            slot = "21"
                             
                             break;
                         case 6:
-                            slot = "0-" + (this.reelSpin[0] + 2)
+                            slot = "02"
                             
                             break;
                         case 7:
-                            slot = "1-" + (this.reelSpin[1] + 2)
+                            slot = "12"
                             
                             break;
                         case 8:
-                            slot = "2-" + (this.reelSpin[2] + 2)
+                            slot = "22"
                             
                             break;
                     
                         default:
                             break;
                     }
-
-                    console.log(slot)
-                    virtSlot = document.getElementById(slot)
-                    virtSlot.style.borderRadius = "50%";
-                    virtSlot.animate({ filter: [ 'brightness(1)', 'brightness(1.5)' ], opacity: ["1", ".5"]  },
-                    { duration: 400, iterations: 5 })
-
-    
-                    setTimeout(() => {
-                        virtSlot.style.borderRadius =  "none";
-                    }, 2000)
+                    document.getElementById(slot).classList.add("win")
                 }
 
+                setTimeout(() => {
+                    document.getElementById(slot).classList.remove("win")
+                }, 2000)
             })
 
             document.getElementById("q0").classList.add("qWin012");

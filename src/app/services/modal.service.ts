@@ -90,8 +90,8 @@ export class ModalService {
             });
 
             this.modalRef.componentInstance.setDialogProps({
-                title: 'BaxxieTitle',
-                body: 'hi',
+                title: 'title',
+                body: input,
             });
         }
 

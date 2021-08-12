@@ -72,7 +72,6 @@ export class GraphSelectionComponent implements OnInit {
                 }
                 return 0;
             });
-
             this.covidCountries = res
         });
     }

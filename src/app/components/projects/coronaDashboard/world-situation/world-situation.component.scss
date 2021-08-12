@@ -1,12 +1,11 @@
 .situation-wrapper {
     width: 100%;
-    height: 800px;
+
+    display: inline-block;
 
     .graph-container {
         width: 100%;
         position: relative;
-
-
 
             .svg-container {
                 display: flex;
@@ -18,7 +17,6 @@
                 .svg-content {
                     position: relative;
 
-                    
                     .tooltip {	
                         position: absolute;			
                         text-align: center;			
@@ -27,10 +25,8 @@
                         padding: 2px;				
                         border-radius: 8px;			
                         pointer-events: none;	
-                        background-color: red;
-                        
-                    }
-                    
+                        background-color: red;   
+                    }  
                 }
                 .svg-content-responsive {
                     display: inline-block;

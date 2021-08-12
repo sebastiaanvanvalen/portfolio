@@ -1,10 +1,11 @@
 <div class="dashboard-wrapper">
     <h2>Under construction / not for mobile</h2>
+    * data provided by covid19api.com Will be looking for new dataSource for this one has gaps and incidental "0" values which changed overnight
 
 
     <h3 class="text">more features and better visualisations are comming soon</h3>
 
-        <app-world-situation (sendDate)="setDate($event)" *ngIf=!select></app-world-situation>
+        <app-world-situation id="app-world-situation" (sendDate)="setDate($event)" *ngIf=!select></app-world-situation>
 
         <div class="current-numbers-container">
             <div class="cont confirmed-container">

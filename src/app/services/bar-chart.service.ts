@@ -30,6 +30,7 @@ export class BarChartService {
 
         if (this.dataModel.selectedCountry === 'world') {
             this.HttpService.makeGetRequest(this.worldSituationURL, null).subscribe((res) => {
+
                 this.rawData = res.Countries;
                 this.dataModel.updatedOn = res.Date;
                 

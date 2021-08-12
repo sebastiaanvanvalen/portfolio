@@ -7,8 +7,6 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ClickOutsideModule } from 'ng-click-outside';
 import { MaterialModule } from './modules/material/material.module';
-import * as d3 from 'node_modules/d3';
-
 
 // components
 import { AppComponent } from './app.component';
@@ -20,7 +18,6 @@ import { ClocksComponent } from './components/projects/clocks/clocks.component';
 import { Clock01Component } from './components/projects/clocks/clock01/clock01.component';
 import { Clock02Component } from './components/projects/clocks/clock02/clock02.component';
 import { Clock03Component } from './components/projects/clocks/clock03/clock03.component';
-import { PokerComponent } from './components/projects/poker/poker.component';
 import { CvComponent } from './components/cv/cv.component';
 import { AboutComponent } from './components/about/about.component';
 import { ContactComponent } from './components/contact/contact.component';
@@ -48,8 +45,6 @@ import { SlotsComponent } from './components/projects/slots/slots.component';
 import { WheelsBelowComponent } from './components/projects/slots/wheels-below/wheels-below.component';
 
 
-
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -61,7 +56,6 @@ import { WheelsBelowComponent } from './components/projects/slots/wheels-below/w
     Clock01Component,
     Clock02Component,
     Clock03Component,
-    PokerComponent,
     CvComponent,
     AboutComponent,
     MastermindComponent,
