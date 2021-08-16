@@ -10,7 +10,7 @@ import { slotsAccount } from '../components/projects/slots/models/slotsAccount';
 export class SlotsService {
     slotsAccount: slotsAccount = {
         startingAccount: 100,
-        currentAccount: 1,
+        currentAccount: 100,
         bet: 0,
         win: 0,
         currency: 'coins',
@@ -814,6 +814,7 @@ export class SlotsService {
         ],
     ];
 
+    // summary of the possible winning combinations on this.reelChart[1]
     scores = [
         { name: 'diamonds', slots: [9, 9, 9], value: 200 },
         { name: 'melons', slots: [8, 8, 8], value: 100 },
@@ -839,7 +840,7 @@ export class SlotsService {
         [],
     ];
 
-    reelSpin = [0,0,0]
+    reelSpin = [0,0,0];
 
     // holding is set when you push HOLD. But also after a win so you cant "auto-win" for ever
     holding = false;
@@ -859,13 +860,8 @@ export class SlotsService {
     // when headsOrTails (hOrT) is true, the game stops until the player made a gamble.
     hOrT = false;
 
-
-    spinReel = {
-        reel0: false,
-        reel1: false,
-        reel2: false,
-
-    }
+    imageWidth;
+    translateYadjust;
 
     constructor() {}
 
@@ -874,45 +870,17 @@ export class SlotsService {
     }
 
     public setReels() {
-
         this.reels.forEach((element, index) => {
             this.reels[index] = this.reels[index].concat(this.reels[index], this.reels[index]);
         })
+    }
 
-        this.reels.forEach((element, index) => {
-            // this.reels[index] = this.reels[index].concat(this.reels[index], this.reels[index]);
-            let reel = document.getElementById("reel-" + (index + 1))
-            
-            let spinValue = Math.floor(Math.random() * 23)
-            let partArray = element.splice(spinValue)
-            this.reels[index] = [...partArray, ...element]
-
-            this.reelChart[0][index] = this.reels[index][0].value
-            this.reelChart[1][index] = this.reels[index][1].value
-            this.reelChart[2][index] = this.reels[index][2].value
-            this.reels[index].forEach((element, i) => {
-                let slot = document.createElement("img");
-                slot.src = element.image
-                slot.classList.add(element.name)
-                slot.style.width = "80px";
-                slot.style.height = "80px";
-
-                slot.id = index.toString() + "-" + i.toString()
-
-
-                reel.appendChild(slot)
-            })
-        })
-        console.log(this.reelChart)
-        console.log(this.reelSpin)
+    public setRatio(imageWidth) {
+        this.imageWidth = imageWidth
     }
 
     public play(): slotsAccount {
-        if (
-            this.spin === false &&
-            this.playing === true &&
-            this.slotsAccount.holdedReels !== [true, true, true]
-        ) {
+        if (this.spin === false && this.playing === true && this.slotsAccount.holdedReels !== [true, true, true]) {
 
             this.spin = true;
             this.slotsAccount.currentAccount -= 1;
@@ -925,13 +893,15 @@ export class SlotsService {
                 this.holding = true;
                 setTimeout(() => {
                     this.slotsAccount.holdedReels = [false, false, false];
+                }, 1800);
 
-                }, 1800)
             } else {
                 this.cancelQuestionMarks();
                 this.holding = false;
             }
         }
+
+
         return this.slotsAccount;
     }
 
@@ -954,24 +924,26 @@ export class SlotsService {
         
         this.reels.forEach((element, index) => {
             if (this.slotsAccount.holdedReels[index] !== true) {
-
-
                     let reel = document.getElementById("reel-" + (index + 1))
+
                     let spinValue = this.getSpinValue();
-                    let spin = spinValue * 80
+                    console.log("spinValue: " + spinValue)
+                    let spin = spinValue * this.imageWidth;
 
                     this.reelSpin[index] = spinValue;
                     
-                    this.reelChart[0][index] = this.reels[index][spinValue].value
-                    this.reelChart[1][index] = this.reels[index][spinValue + 1].value
-                    this.reelChart[2][index] = this.reels[index][spinValue + 2].value
+                    this.reelChart[0][index] = this.reels[index][spinValue].value;
+                    this.reelChart[1][index] = this.reels[index][spinValue + 1].value;
+                    this.reelChart[2][index] = this.reels[index][spinValue + 2].value;
 
                     reel.style.transform = 'translateY(0)';
+                    console.log(spin)
+                    console.log(this.imageWidth)
                     
                     setTimeout(() => {
                         reel.style.transform = "translateY(-" + spin + "px)";
             
-                    }, 200)
+                    }, 200);
                 }
             })
 
@@ -981,9 +953,9 @@ export class SlotsService {
     }
 
     private getSpinValue() {
-       let spinValue = (Math.floor(Math.random() * 24) + 24)
+       let spinValue = (Math.floor(Math.random() * 24) + 42);
     
-       return spinValue
+       return spinValue;
     }
 
     public holdReel(reel): slotsAccount {
@@ -1018,22 +990,20 @@ export class SlotsService {
 
         if (chance === 0 && choice === 'heads') {
             heads.classList.add('winGamble');
-            this.processWin("oneCherry", null)
+            this.processWin("oneCherry", null);
 
         } else if (chance === 1 && choice === 'tails') {
             tails.classList.add('winGamble');
-            this.processWin("oneCherry", null)
+            this.processWin("oneCherry", null);
 
         } else {
-            this.processWin('noCherry', null)
+            this.processWin('noCherry', null);
         }
 
         setTimeout(() => {
             heads.classList.remove('winGamble');
             tails.classList.remove('winGamble');
-            let slot1 = document.getElementById("0-" + (this.reelSpin[0] + 1));
-            slot1.animate({ filter: [ 'brightness(1)', 'brightness(1.5)' ], opacity: ["1", ".5"]  },
-            { duration: 400, iterations: 1 })
+
         }, 2000);
     }
 
@@ -1052,7 +1022,7 @@ export class SlotsService {
         });
 
         if (nrOfQuestionmarks === 3) {
-            this.processWin("questionMarks", null)
+            this.processWin("questionMarks", null);
             return;
         }
 
@@ -1061,7 +1031,7 @@ export class SlotsService {
         if (this.win === false) {
             this.scores.map((items) => {
                 if (items.slots.toString() === winRow.toString()) {
-                    this.processWin("reels", items)
+                    this.processWin("reels", items);
 
                     return;
                 }
@@ -1071,7 +1041,7 @@ export class SlotsService {
         // check for two cherrys
         if (winRow[0] === 1 && winRow[1] === 1 && this.win === false) {
             if (this.holding === true) {
-                this.processWin("twoCherries", null)
+                this.processWin("twoCherries", null);
             }
 
             // this return is placed  here in case two cherries fall in place and you want to hold them
@@ -1079,17 +1049,15 @@ export class SlotsService {
             return;
         }
 
-        // check for cherries on outer reels 
-
+        // check for cherries on outer reels and auto-HOLD
         if (winRow[0] === 1 && winRow[2] === 1&& this.win === false) {
-            this.slotsAccount.holdedReels = [true, false, true]
-
+            this.slotsAccount.holdedReels = [true, false, true];
         }
 
         // check for one cherry
         if (winRow[0] === 1 && winRow[1] !== 1 && winRow[2] !== 1 && this.win === false && this.holding === false) {
             this.holding = true;
-            this.slotsAccount.holdedReels = [false, false, false]
+            this.slotsAccount.holdedReels = [false, false, false];
             
             this.initHeadsOrTails();
             this.hOrT = true;
@@ -1100,7 +1068,7 @@ export class SlotsService {
         // if a cherry is on HOLD and (only) the third reel gets a cherry. The player still gets a gamble for the first cherry
         if (winRow[0] === 1 && this.win === false && this.holding === true) {
             this.holding = true;
-            this.slotsAccount.holdedReels = [false, false, false]
+            this.slotsAccount.holdedReels = [false, false, false];
 
             this.initHeadsOrTails();
             this.hOrT = true;
@@ -1121,13 +1089,10 @@ export class SlotsService {
 
         let slot1 = document.getElementById("0-" + (this.reelSpin[0] + 1));
         slot1.animate({ filter: [ 'brightness(1)', 'brightness(1.5)' ], opacity: ["1", ".5"]  },
-        { duration: 400, iterations: Infinity })
-
+        { duration: 500, iterations: 6 });
     }
 
     private processWin(context, item) {
-
-
 
         switch (context) {
             case "questionMarks":
@@ -1165,14 +1130,12 @@ export class SlotsService {
     }
 
     private getQuestionMarkPrize() {
-        let values = [20,20,20,20,20,20,20,20,20,20,20,20,
-            40,40,40,40,60,60,60,80,80,100,];
+        let values = [20,20,20,20,20,20,20,20,20,20,20,20,40,40,40,40,60,60,60,80,80,100];
 
         return values[Math.floor(Math.random() * 22)];
     }
 
     private visualizeWin(type, item) {
-
         let score;
 
         if(item !== null) {
@@ -1189,13 +1152,13 @@ export class SlotsService {
             score.classList.add('win');
             slot1.style.borderRadius = "50%";
             slot1.animate({ filter: [ 'brightness(1)', 'brightness(1.5)' ], opacity: ["1", ".5"]  },
-                    { duration: 400, iterations: 5 })
+            { duration: 400, iterations: 5 });
             slot2.style.borderRadius = "50%";
             slot2.animate({ filter: [ 'brightness(1)', 'brightness(1.5)' ], opacity: ["1", ".5"]  },
-            { duration: 400, iterations: 5 })
+            { duration: 400, iterations: 5 });
             slot3.style.borderRadius = "50%";
             slot3.animate({ filter: [ 'brightness(1)', 'brightness(1.5)' ], opacity: ["1", ".5"]  },
-            { duration: 400, iterations: 5 })
+            { duration: 400, iterations: 5 });
 
 
             setTimeout(() => {
@@ -1210,7 +1173,7 @@ export class SlotsService {
             score.classList.add('win');
             slot1.style.borderRadius = "50%";
             slot1.animate({ filter: [ 'brightness(1)', 'brightness(1.5)' ], opacity: ["1", ".5"]  },
-            { duration: 400, iterations: 5 })
+            { duration: 400, iterations: 5 });
 
             setTimeout(() => {
                 score.classList.remove('win');
@@ -1223,10 +1186,10 @@ export class SlotsService {
             score.classList.add('win');
             slot1.style.borderRadius = "50%";
             slot1.animate({ filter: [ 'brightness(1)', 'brightness(1.5)' ], opacity: ["1", ".5"]  },
-            { duration: 400, iterations: 5 })
+            { duration: 400, iterations: 5 });
             slot2.style.borderRadius = "50%";
             slot2.animate({ filter: [ 'brightness(1)', 'brightness(1.5)' ], opacity: ["1", ".5"]  },
-            { duration: 400, iterations: 5 })
+            { duration: 400, iterations: 5 });
 
             setTimeout(() => {
                 score.classList.remove('win');
@@ -1238,43 +1201,44 @@ export class SlotsService {
         if (type === 'questionMark') {
             let slot;
             let virtSlot;
-            console.log(this.reelSpin)
+
             this.allSlots.forEach((element, index)=> {
                 if(element === 11) {
                     switch (index) {
                         case 0:
-                            slot = "0-" + (this.reelSpin[0])
+                            slot = "0-" + (this.reelSpin[0]);
+
                             break;
                         case 1:
-                            slot = "1-" + (this.reelSpin[1])
+                            slot = "1-" + (this.reelSpin[1]);
                             
                             break;
                         case 2:
-                            slot = "2-" + (this.reelSpin[2])
+                            slot = "2-" + (this.reelSpin[2]);
                             
                             break;
                         case 3:
-                            slot = "0-" + (this.reelSpin[0] + 1)
+                            slot = "0-" + (this.reelSpin[0] + 1);
                             
                             break;
                         case 4:
-                            slot = "1-" + (this.reelSpin[1] + 1)
+                            slot = "1-" + (this.reelSpin[1] + 1);
                             
                             break;
                         case 5:
-                            slot = "2-" + (this.reelSpin[2] + 1)
+                            slot = "2-" + (this.reelSpin[2] + 1);
                             
                             break;
                         case 6:
-                            slot = "0-" + (this.reelSpin[0] + 2)
+                            slot = "0-" + (this.reelSpin[0] + 2);
                             
                             break;
                         case 7:
-                            slot = "1-" + (this.reelSpin[1] + 2)
+                            slot = "1-" + (this.reelSpin[1] + 2);
                             
                             break;
                         case 8:
-                            slot = "2-" + (this.reelSpin[2] + 2)
+                            slot = "2-" + (this.reelSpin[2] + 2);
                             
                             break;
                     
@@ -1282,11 +1246,10 @@ export class SlotsService {
                             break;
                     }
 
-                    console.log(slot)
-                    virtSlot = document.getElementById(slot)
+                    virtSlot = document.getElementById(slot);
                     virtSlot.style.borderRadius = "50%";
                     virtSlot.animate({ filter: [ 'brightness(1)', 'brightness(1.5)' ], opacity: ["1", ".5"]  },
-                    { duration: 400, iterations: 5 })
+                    { duration: 400, iterations: 5 });
 
     
                     setTimeout(() => {
@@ -1324,7 +1287,6 @@ export class SlotsService {
         if (amount < 3) {
             this.allSlots.forEach((element, index) => {
                 if (element === 11) {
-                    // console.log(document.getElementById("q" + index))
                     document.getElementById('q' + index).classList.add('shine');
                 }
             });
@@ -1352,12 +1314,13 @@ export class SlotsService {
             winBar.classList.remove('win-message');
             this.deleteWinMessage(amount);
             this.spin = false;
+
         } else {   
             setTimeout(() => {
                 if (amount === 0) {
                     winBar.classList.remove('win-message');
                     winBar.classList.add('throw-prize');
-                    winBar.innerText = ""
+                    winBar.innerText = "";
                     this.deleteWinMessage(amount);
 
                 } else {
@@ -1365,9 +1328,7 @@ export class SlotsService {
                     winBar.classList.add('throw-prize');
                     winBar.innerText = amount.toString();
                     this.deleteWinMessage(amount);
-                
                 }
-                
             }, 2000);
         }
     }
@@ -1377,9 +1338,9 @@ export class SlotsService {
         setTimeout(() => {
             winBar.classList.remove('throw-prize');
             winBar.innerText = "";
-            this.addPrizeToAccount(prize)
+            this.addPrizeToAccount(prize);
             this.spin = false;
-        }, 1000)
+        }, 1000);
     }
 
     private addPrizeToAccount(prize) {

@@ -1,275 +1,592 @@
-.lower-machine-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    background-color: rgb(49, 37, 23);
-    width: 760px;
-    height: 380px;
-    padding: 8px;
-    margin: 0 auto;
-    box-sizing: border-box;
-    
-    .message-container {
-        position: relative;
+// p {
+//     width: 760px;
+//     margin: 0 auto;
+//     font-weight: bold;
+//     color: rgb(148, 37, 37);
+// }
+
+    .lower-machine-container {
         display: flex;
-        width: 100%;
-        height: 10%;
-        background-color: rgb(31, 29, 29);
-        border-bottom: 3px solid rgb(255,215,0);
-        background-color: black;
-        background-image: linear-gradient(rgb(31, 30, 30), rgb(6, 5, 5));
-        box-shadow: 0px 1px 4px -2px rgb(255,215,0);
-        text-shadow: 0px -1px rgb(255,215,0);
-
-        .info {
-            position: relative;
-            padding: 0 0 0 8px;
-            display: flex;
-            align-items: center;
-            height: 90%;
-            color: rgb(247, 231, 162);
-            font-family: monospace;
-            font-size: 28px;
-        }
-
-        .account {
-            width: 35%;
-        }
-
-        .win-message {
-            width: 65%;
-            text-align: center;
-            filter: invert(0);
-        }
-
-        .play-win-message {
-            animation: win-message 2s linear;
-        }
-
-        .throw-prize {
-            animation: throw-prize 1s linear;
-        }
-    }
-
-    .message-container:after {
-        content: '';
-        position: absolute;
-        top: 2px;
-        left: 2px;
-        width: calc(100% - 4px);
-        height: 50%;
-        background: linear-gradient(rgba(121, 118, 118, 0.8), rgba(255,255,255,0.2));
-    }
-
-    .score-reel-container {
-        display: flex;
+        flex-direction: column;
         justify-content: space-between;
-        height: 75%;
-        width: 100%;
+        background-color: rgb(49, 37, 23);
+        width: 768px;
+        height: 380px;
+        transform-origin: left top;
 
-        .score-container {
-            display: flex;
-            justify-content: space-between;
-            flex-direction: column;
-            width: 15%;
-            height: 100%;
-            
-            img {
-                width: 100%;
-                height: 27px;
-                filter: invert(0.1);
-            }
+        padding: 8px;
+        margin: 0 auto;
+        box-sizing: border-box;
+        z-index: 1000;
 
-            .win {
-                animation: win 2s linear;
-            }
-
-            .falling {
-                animation: falling .2s linear;
-            }
-        }
-
-        .score-container-1 {
-            border-right: 3px solid rgb(255,215,0);
-        }
-
-        .score-container-2 {
-            padding-left: 4px;
-            border-left: 3px solid rgb(255,215,0);
-            // border-right: 3px solid rgb(255,215,0);
-        }
-        
-        .reels-container {
-            display: flex;
-            justify-content: space-between;
-            border: 3px solid rgb(255,215,0);
-            width: 40%;
-            height: 262px;
-
-            .reel-cont {
-                position: relative;
-                display: flex;
-                justify-content: center;
-                background-color: white;
-                width: auto;
-                height: 256px;
-                padding: 0 6px;
-                overflow: hidden;
-
-                .reel {
-                    display: flex;
-                    flex-direction: column;
-                    justify-items: center;
-                    opacity: 1;
-                    transform: translateY(0);
-                    background-color: white;
-                    width: 80px;
-                    transition: 1500ms cubic-bezier(.05,1.06,1,1);
-                }
-
-                .bug {
-
-                    animation: bug 0.3s linear;
-                    transition: 200 ease-in-out;
-                }
-            }
-
-            .reel-cont:after {
-                content: '';
-                position: absolute;
-                width: 100%;
-                height: 100%;
-                box-shadow: inset 0 0 8px 1px rgb(77, 74, 74);
-            }
-        }
-
-        .message-board {
-            display: flex;
-            flex-direction: column;
-            width: 25%;
-
-            .brand-container {
-                height: 30%;
-                background-image: url(/assets/pictures/slotsScores/randomBaxxie2.png);
-                background-size: contain;
-                background-repeat: no-repeat;
-                background-position: center;
-                filter: invert(10%);
-                transform: translateY(-10px);
-                border-bottom: 3px solid rgb(255,215,0)
-            }
-
-            .question-prize {
-                height: 10%;
-                background-image: url(/assets/pictures/slotsScores/20-100.png);
-                background-size: contain;
-                background-repeat: no-repeat;
-                background-position: center;
-            }
-
-            .questionmark-container {
-                height: 55%;
-
-                .grid-container {
-                    height: 100%;
-                    background-image: url(/assets/pictures/slotsScores/questionGrid.png);
-                    background-size: contain;
-                    background-repeat: no-repeat;
-                    background-position: center;
-
-                    .qRow {
-                        width: 100%;
-                        height: 33.3%;
-                        
-                        img {
-                             width: 33.3%;
-                            filter: invert(.3);
-                        }
-                        
-                        .shine {
-                            filter: invert(0);
-                        }
-
-                        .qWin012 {
-                            animation: qWin012 2s linear;
-                        }
-                        .qWin35 {
-                            animation: qWin35 2s linear;
-                        }
-                        .qWin4 {
-                            animation: qWin4 2s linear;
-                        }
-                        .qWin678 {
-                            animation: qWin678 2s linear;
-                        }
-
-                    }
-                }
-            }
-        }
-    }   
-
-    .button-container {
-        display: flex;
-        justify-content: space-around;
-        height: 10%;
-
-        .btn {
+        .message-container {
             position: relative;
-            color: black;
-            font-family: Verdana, Geneva, Tahoma, sans-serif;
-            border: 3px solid rgb(255,215,0);
-            border-radius: 3px;
-            background-color: rgb(151, 73, 73);
-            background-image: linear-gradient(rgb(151, 73, 73),rgb(107, 48, 48));
-            box-shadow: 0px 1px 4px -2px #333;
-            text-shadow: 0px -1px #333;
+            display: flex;
+            width: 100%;
+            height: 10%;
+            background-color: rgb(31, 29, 29);
+            border-bottom: 3px solid rgb(255, 215, 0);
+            background-color: black;
+            background-image: linear-gradient(rgb(31, 30, 30), rgb(6, 5, 5));
+            box-shadow: 0px 1px 4px -2px rgb(255, 215, 0);
+            text-shadow: 0px -1px rgb(255, 215, 0);
+
+            .info {
+                position: relative;
+                padding: 0 0 0 8px;
+                display: flex;
+                align-items: center;
+                height: 90%;
+                color: rgb(247, 231, 162);
+                font-family: monospace;
+                font-size: 28px;
+            }
+
+            .account {
+                width: 35%;
+            }
+
+            .win-message {
+                width: 65%;
+                text-align: center;
+            }
+
+            .play-win-message {
+                animation: win-message 2s linear;
+            }
+
+            .throw-prize {
+                animation: throw-prize 1s linear;
+            }
         }
 
-        .btn:after {
-            content: '';
+        .message-container:after {
+            content: "";
             position: absolute;
             top: 2px;
             left: 2px;
             width: calc(100% - 4px);
             height: 50%;
-            background: linear-gradient(rgba(255,255,255,0.8), rgba(255,255,255,0.2));
-        }
-        
-        .btn:hover {
-            color: white;
-            background: linear-gradient(rgb(194, 91, 91), rgb(88, 42, 42));
-        }
-        
-        .onHold {
-            color: white;
-            background: linear-gradient(rgb(248, 171, 27),rgb(114, 80, 17));
+            background: linear-gradient(
+                rgba(121, 118, 118, 0.8),
+                rgba(255, 255, 255, 0.2)
+            );
         }
 
-        .onHold:hover {
-            color: white;
-            background: linear-gradient(orange,rgb(124, 81, 0));
+        .score-reel-container {
+            display: flex;
+            justify-content: space-between;
+            height: 75%;
+            width: 100%;
+
+            .score-container {
+                display: flex;
+                justify-content: space-between;
+                flex-direction: column;
+                width: 15%;
+                height: 100%;
+
+                img {
+                    width: 100%;
+                    height: 10%;
+                    filter: brightness(0.95);
+                }
+
+                .win {
+                    animation: win 2s linear;
+                }
+
+                .falling {
+                    animation: falling 0.2s linear;
+                }
+            }
+
+            .score-container-1 {
+                border-right: 3px solid rgb(255, 215, 0);
+            }
+
+            .score-container-2 {
+                padding-left: 4px;
+                border-left: 3px solid rgb(255, 215, 0);
+                // border-right: 3px solid rgb(255,215,0);
+            }
+
+            .reels-container {
+                display: flex;
+                justify-content: space-between;
+                border: 3px solid rgb(255, 215, 0);
+                width: 40%;
+                height: 96%;
+
+                .reel-cont {
+                    position: relative;
+                    display: flex;
+                    justify-content: center;
+                    background-color: white;
+                    width: 32%;
+                    height: 100%;
+                    padding: 0 6px;
+                    overflow: hidden;
+                    
+                    .reel {
+                        // padding: 6px 0;
+                        display: flex;
+                        flex-direction: column;
+                        justify-items: center;
+                        opacity: 1;
+                        transform: translateY(0);
+                        background-color: white;
+                        width: 100%;
+                        transition: 1500ms cubic-bezier(0.05, 1.06, 1, 1);
+                        
+                        img {
+                            width: 100%;
+                            height: 100%;
+                        }
+                    }
+
+                    .bug {
+                        animation: bug 0.3s linear;
+                        transition: 200 ease-in-out;
+                    }
+                }
+
+                .reel-cont:after {
+                    content: "";
+                    position: absolute;
+                    width: 100%;
+                    height: 100%;
+                    box-shadow: inset 0 0 8px 1px rgb(77, 74, 74);
+                }
+            }
+
+            .message-board {
+                display: flex;
+                flex-direction: column;
+                width: 25%;
+
+                .brand-container {
+                    height: 30%;
+                    background-image: url(/assets/pictures/slotsScores/randomBaxxie2.png);
+                    background-size: contain;
+                    background-repeat: no-repeat;
+                    background-position: center;
+                    animation: brand 4s infinite;
+                    transform: translateY(-10px);
+                    border-bottom: 3px solid rgb(255, 215, 0);
+                }
+
+                .question-prize {
+                    height: 10%;
+                    background-image: url(/assets/pictures/slotsScores/20-100.png);
+                    background-size: contain;
+                    background-repeat: no-repeat;
+                    background-position: center;
+                }
+
+                .questionmark-container {
+                    height: 55%;
+
+                    .grid-container {
+                        height: 100%;
+                        background-image: url(/assets/pictures/slotsScores/questionGrid.png);
+                        background-size: contain;
+                        background-repeat: no-repeat;
+                        background-position: center;
+
+                        .qRow {
+                            width: 100%;
+                            height: 33.3%;
+
+                            img {
+                                width: 33.3%;
+                                filter: brightness(0.5);
+                            }
+
+                            .shine {
+                                filter: brightness(1.15);
+                            }
+
+                            .qWin012 {
+                                animation: qWin012 2s linear;
+                            }
+                            .qWin35 {
+                                animation: qWin35 2s linear;
+                            }
+                            .qWin4 {
+                                animation: qWin4 2s linear;
+                            }
+                            .qWin678 {
+                                animation: qWin678 2s linear;
+                            }
+                        }
+                    }
+                }
+            }
         }
 
-        .noHold {
-            background-color: rgb(151, 73, 73);
+        .button-container {
+            display: flex;
+            justify-content: space-around;
+            height: 10%;
+
+            .btn {
+                position: relative;
+                color: rgb(179, 173, 173);
+                font-family: Verdana, Geneva, Tahoma, sans-serif;
+                border: 3px solid rgb(255, 215, 0);
+                border-radius: 3px;
+                background-color: rgb(151, 73, 73);
+                background-image: linear-gradient(
+                    rgb(197, 83, 83),
+                    rgb(126, 39, 39)
+                );
+                box-shadow: 0px 1px 4px -2px #333;
+                text-shadow: 0px -1px #333;
+            }
+
+            .btn:after {
+                content: "";
+                position: absolute;
+                top: 2px;
+                left: 2px;
+                width: calc(100% - 4px);
+                height: 50%;
+                background: linear-gradient(
+                    rgba(255, 255, 255, 0.8),
+                    rgba(255, 255, 255, 0.2)
+                );
+            }
+
+            .btn:hover {
+                color: white;
+                background: linear-gradient(rgb(194, 91, 91), rgb(88, 42, 42));
+            }
+
+            .btn:active {
+                background: linear-gradient(rgb(245, 71, 71), rgb(141, 43, 43));
+                filter: brightness(1.25);
+            }
+
+            .onHold {
+                color: white;
+                background: linear-gradient(
+                    rgb(248, 171, 27),
+                    rgb(114, 80, 17)
+                );
+            }
+
+            .onHold:hover {
+                color: white;
+                background: linear-gradient(orange, rgb(124, 81, 0));
+            }
+
+            .noHold {
+                background-color: rgb(151, 73, 73);
+            }
+
+            .active {
+                background-color: rgb(255, 215, 0);
+                color: black;
+            }
+
+            .active-1 {
+                animation: active-1 0.3s linear reverse infinite;
+            }
+
+            .active-2 {
+                animation: active-2 0.3s linear reverse infinite;
+            }
+
+            .winGamble {
+                animation: winGamble 2s;
+            }
+        }
+    }
+
+
+@media (max-width: 768px) {
+    .lower-machine-container {
+        // max-width: 100vw;
+        // max-height: 100vh;
+        padding: 8px;
+        // margin: 0 auto;
+        // display: flex;
+        // flex-direction: column;
+        // justify-content: space-between;
+        // background-color: rgb(49, 37, 23);
+        // box-sizing: border-box;
+
+        .message-container {
+            width: 100%;
+            height: 10%;
+            // position: relative;
+            // display: flex;
+            // background-color: rgb(31, 29, 29);
+            // border-bottom: 3px solid rgb(255,215,0);
+            // background-color: black;
+            // background-image: linear-gradient(rgb(31, 30, 30), rgb(6, 5, 5));
+            // box-shadow: 0px 1px 4px -2px rgb(255,215,0);
+            // text-shadow: 0px -1px rgb(255,215,0);
+
+            .info {
+                // font-size: 10px;
+                height: 90%;
+                // position: relative;
+                // padding: 0 0 0 8px;
+                // display: flex;
+                // align-items: center;
+                // color: rgb(247, 231, 162);
+                // font-family: monospace;
+            }
+
+            .account {
+                width: 35%;
+            }
+
+            .win-message {
+                width: 65%;
+                // text-align: center;
+                // filter: invert(0);
+            }
+
+            // .play-win-message {
+            //     animation: win-message 2s linear;
+            // }
+
+            // .throw-prize {
+            //     animation: throw-prize 1s linear;
+            // }
         }
 
-        .active {
-            background-color: rgb(255,215,0);
-            color: black;
+        .message-container:after {
+            top: 2px;
+            left: 2px;
+            // content: '';
+            // position: absolute;
+            // width: calc(100% - 4px);
+            // height: 50%;
+            // background: linear-gradient(rgba(121, 118, 118, 0.8), rgba(255,255,255,0.2));
         }
 
-        .active-1 {
-            animation: active-1 0.3s linear reverse infinite;
+        .score-reel-container {
+            height: 75%;
+            width: 100%;
+            // display: flex;
+            // justify-content: space-between;
+
+            .score-container {
+                width: 15%;
+                height: 100%;
+                // display: flex;
+                // justify-content: space-between;
+                // flex-direction: column;
+
+                img {
+                    width: 100%;
+                    // height: 27px;
+                    // filter: invert(0.1);
+                }
+
+                // .win {
+                //     animation: win 2s linear;
+                // }
+
+                // .falling {
+                //     animation: falling .2s linear;
+                // }
+            }
+
+            .score-container-1 {
+                // border-right: 3px solid rgb(255,215,0);
+            }
+
+            .score-container-2 {
+                padding-left: 4px;
+                // border-left: 3px solid rgb(255,215,0);
+                // border-right: 3px solid rgb(255,215,0);
+            }
+
+            .reels-container {
+                // width: 40%;
+                // height: 262px;
+                // display: flex;
+                // justify-content: space-between;
+                // border: 3px solid rgb(255,215,0);
+
+                .reel-cont {
+                    // width: auto;
+                    // height: 256px;
+                    // position: relative;
+                    // display: flex;
+                    // justify-content: center;
+                    // background-color: white;
+                    // overflow: hidden;
+
+                    .reel {
+                        // width: 80px;
+                        // display: flex;
+                        // flex-direction: column;
+                        // justify-items: center;
+                        // opacity: 1;
+                        // transform: translateY(0);
+                        // background-color: white;
+                        // transition: 1500ms cubic-bezier(.05,1.06,1,1);
+                    }
+
+                    // .bug {
+
+                    //     animation: bug 0.3s linear;
+                    //     transition: 200 ease-in-out;
+                    // }
+                }
+
+                // .reel-cont:after {
+                //     content: '';
+                //     position: absolute;
+                //     width: 100%;
+                //     height: 100%;
+                //     box-shadow: inset 0 0 8px 1px rgb(77, 74, 74);
+                // }
+            }
+
+            .message-board {
+                width: 25%;
+                // display: flex;
+                // flex-direction: column;
+
+                .brand-container {
+                    height: 30%;
+                    // background-image: url(/assets/pictures/slotsScores/randomBaxxie2.png);
+                    // background-size: contain;
+                    // background-repeat: no-repeat;
+                    // background-position: center;
+                    // filter: invert(10%);
+                    // transform: translateY(-10px);
+                    // border-bottom: 3px solid rgb(255,215,0)
+                }
+
+                .question-prize {
+                    height: 10%;
+                    // background-image: url(/assets/pictures/slotsScores/20-100.png);
+                    // background-size: contain;
+                    // background-repeat: no-repeat;
+                    // background-position: center;
+                }
+
+                .questionmark-container {
+                    height: 55%;
+
+                    .grid-container {
+                        height: 100%;
+                        // background-image: url(/assets/pictures/slotsScores/questionGrid.png);
+                        // background-size: contain;
+                        // background-repeat: no-repeat;
+                        // background-position: center;
+
+                        .qRow {
+                            width: 100%;
+                            // height: 33.3%;
+
+                            img {
+                                // width: 33.3%;
+                                // filter: invert(.3);
+                            }
+
+                            // .shine {
+                            //     filter: invert(0);
+                            // }
+
+                            // .qWin012 {
+                            //     animation: qWin012 2s linear;
+                            // }
+                            // .qWin35 {
+                            //     animation: qWin35 2s linear;
+                            // }
+                            // .qWin4 {
+                            //     animation: qWin4 2s linear;
+                            // }
+                            // .qWin678 {
+                            //     animation: qWin678 2s linear;
+                            // }
+                        }
+                    }
+                }
+            }
         }
 
-        .active-2 {
-            animation: active-2 0.3s linear reverse infinite;
-        }
+        .button-container {
+            height: 10%;
+            // display: flex;
+            // justify-content: space-around;
 
-        .winGamble {
-            animation: winGamble 2s;
+            .btn {
+                padding: 0;
+                margin: 0;
+                width: 12%;
+                font-size: 14px;
+                text-align: center;
+                // position: relative;
+                // color: black;
+                // font-family: Verdana, Geneva, Tahoma, sans-serif;
+                // border: 3px solid rgb(255,215,0);
+                // border-radius: 3px;
+                // background-color: rgb(151, 73, 73);
+                // background-image: linear-gradient(rgb(197, 83, 83),rgb(126, 39, 39));
+                // box-shadow: 0px 1px 4px -2px #333;
+                // text-shadow: 0px -1px #333;
+            }
+
+            // .btn:after {
+            //     content: '';
+            //     position: absolute;
+            //     top: 2px;
+            //     left: 2px;
+            //     width: calc(100% - 4px);
+            //     height: 50%;
+            //     background: linear-gradient(rgba(255,255,255,0.8), rgba(255,255,255,0.2));
+            // }
+
+            // .btn:hover {
+            //     color: white;
+            //     background: linear-gradient(rgb(194, 91, 91), rgb(88, 42, 42));
+            // }
+
+            // .btn:active {
+            //     background: linear-gradient(rgb(245, 71, 71), rgb(141, 43, 43));
+            //     filter: brightness(1.25)
+            // }
+
+            // .onHold {
+            //     color: white;
+            //     background: linear-gradient(rgb(248, 171, 27),rgb(114, 80, 17));
+            // }
+
+            // .onHold:hover {
+            //     color: white;
+            //     background: linear-gradient(orange,rgb(124, 81, 0));
+            // }
+
+            // .noHold {
+            //     background-color: rgb(151, 73, 73);
+            // }
+
+            // .active {
+            //     background-color: rgb(255,215,0);
+            //     color: black;
+            // }
+
+            // .active-1 {
+            //     animation: active-1 0.3s linear reverse infinite;
+            // }
+
+            // .active-2 {
+            //     animation: active-2 0.3s linear reverse infinite;
+            // }
+
+            // .winGamble {
+            //     animation: winGamble 2s;
+            // }
         }
     }
 }
@@ -317,6 +634,24 @@
     100% {
         color: black;
         background-color: yellow;
+    }
+}
+
+@keyframes brand {
+    0% {
+        filter: brightness(0.75);
+    }
+    25% {
+        filter: brightness(1.25);
+    }
+    50% {
+        filter: brightness(0.75);
+    }
+    75% {
+        filter: brightness(1.25);
+    }
+    100% {
+        filter: brightness(0.75);
     }
 }
 
@@ -400,43 +735,43 @@
     }
     100% {
         filter: invert(0%);
-    }  
+    }
 }
 
 @keyframes win {
     0% {
-        filter: invert(100%)
+        filter: brightness(1.5);
     }
     10% {
-        filter: invert(0%)
+        filter: brightness(0.5);
     }
     20% {
-        filter: invert(100%)
+        filter: brightness(1.5);
     }
     30% {
-        filter: invert(0%)
+        filter: brightness(0.5);
     }
     40% {
-        filter: invert(100%)   
+        filter: brightness(1.5);
     }
     50% {
-        filter: invert(0%)
+        filter: brightness(0.5);
     }
     60% {
-        filter: invert(100%)
+        filter: brightness(1.5);
     }
     70% {
-        filter: invert(0%)
+        filter: brightness(0.5);
     }
     80% {
-        filter: invert(100%)
+        filter: brightness(1.5);
     }
     90% {
-        filter: invert(0)
+        filter: brightness(0.5);
     }
     100% {
-        filter: invert(0%)
-    }  
+        filter: brightness(0.5);
+    }
 }
 
 @keyframes throw-prize {
@@ -445,7 +780,7 @@
     }
     100% {
         transform: translateX(-100px);
-    }  
+    }
 }
 
 @keyframes falling {
@@ -454,7 +789,7 @@
     }
     100% {
         transform: translateY(-100%);
-    }  
+    }
 }
 
 @keyframes winGamble {
@@ -506,162 +841,162 @@
 
 @keyframes qWin012 {
     0% {
-        filter: invert(0);
+        filter: brightness(1.15);
     }
     10% {
-        filter: invert(.3);
+        filter: brightness(0.75);
     }
     20% {
-        filter: invert(.3);
+        filter: brightness(0.75);
     }
     30% {
-        filter: invert(.3);
+        filter: brightness(0.75);
     }
     40% {
-        filter: invert(.0);
+        filter: brightness(1.15);
     }
     50% {
-        filter: invert(.0);
+        filter: brightness(1.15);
     }
     60% {
-        filter: invert(.3);
+        filter: brightness(0.75);
     }
     70% {
-        filter: invert(0);
+        filter: brightness(1.15);
     }
     80% {
-        filter: invert(.3);
+        filter: brightness(0.75);
     }
     90% {
-        filter: invert(0);
+        filter: brightness(1.15);
     }
     100% {
-        filter: invert(.3);
-    }  
+        filter: brightness(0.75);
+    }
 }
 
 @keyframes qWin35 {
     0% {
-        filter: invert(.3);
+        filter: brightness(0.75);
     }
     10% {
-        filter: invert(0);
+        filter: brightness(1.15);
     }
     20% {
-        filter: invert(.3);
+        filter: brightness(0.75);
     }
     30% {
-        filter: invert(0);
+        filter: brightness(1.15);
     }
     40% {
-        filter: invert(.3);
+        filter: brightness(0.75);
     }
     50% {
-        filter: invert(0);
+        filter: brightness(1.15);
     }
     60% {
-        filter: invert(.3);
+        filter: brightness(0.75);
     }
     70% {
-        filter: invert(0);
+        filter: brightness(1.15);
     }
     80% {
-        filter: invert(.3);
+        filter: brightness(0.75);
     }
     90% {
-        filter: invert(0);
+        filter: brightness(1.15);
     }
     100% {
-        filter: invert(.3);
-    }  
+        filter: brightness(0.75);
+    }
 }
 
 @keyframes qWin4 {
     0% {
-        filter: invert(.3);
+        filter: brightness(0.75);
     }
     10% {
-        filter: invert(0);
+        filter: brightness(1.15);
     }
     20% {
-        filter: invert(.3);
+        filter: brightness(0.75);
     }
     30% {
-        filter: invert(0);
+        filter: brightness(1.15);
     }
     40% {
-        filter: invert(.3);
+        filter: brightness(0.75);
     }
     50% {
-        filter: invert(.3);
+        filter: brightness(0.75);
     }
     60% {
-        filter: invert(0);
+        filter: brightness(1.15);
     }
     70% {
-        filter: invert(.3);
+        filter: brightness(0.75);
     }
     80% {
-        filter: invert(0);
+        filter: brightness(1.15);
     }
     90% {
-        filter: invert(.3);
+        filter: brightness(0.75);
     }
     100% {
-        filter: invert(0);
-    }  
+        filter: brightness(1.15);
+    }
 }
 
 @keyframes qWin678 {
     0% {
-        filter: invert(.3);
+        filter: brightness(0.75);
     }
     10% {
-        filter: invert(.3);
+        filter: brightness(0.75);
     }
     20% {
-        filter: invert(0);
+        filter: brightness(1.15);
     }
     30% {
-        filter: invert(.3);
+        filter: brightness(0.75);
     }
     40% {
-        filter: invert(.3);
+        filter: brightness(0.75);
     }
     50% {
-        filter: invert(0);
+        filter: brightness(1.15);
     }
     60% {
-        filter: invert(.3);
+        filter: brightness(0.75);
     }
     70% {
-        filter: invert(0);
+        filter: brightness(1.15);
     }
     80% {
-        filter: invert(.3);
+        filter: brightness(0.75);
     }
     90% {
-        filter: invert(0);
+        filter: brightness(1.15);
     }
     100% {
-        filter: invert(.3);
-    }  
+        filter: brightness(0.75);
+    }
 }
 
 @keyframes bug {
     0% {
-        transform: translateY(0)
+        transform: translateY(0);
     }
     25% {
-        transform: translateY(-11%)
+        transform: translateY(-11%);
     }
     35% {
-        transform: translateY(-8%)
+        transform: translateY(-8%);
     }
     45% {
-        transform: translateY(-10%)
+        transform: translateY(-10%);
     }
     100% {
-        transform: translateY(-10%)
+        transform: translateY(-10%);
     }
 }

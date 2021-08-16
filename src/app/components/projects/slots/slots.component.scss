@@ -1,6 +1,14 @@
 .slots-container {
-    width: 100%;
+    width: 100vw;
     height: 100vh;
-    padding: 76px 0px 12px;
-    background-color: var(--backgroundColor1)
+    padding-top: 76px;
+    background-color: var(--backgroundColor1);
+    // z-index: 999;
+}
+@media (max-width: 768px) {
+    .slots-container{
+        position: relative;
+        padding-top: 56px;
+    }
+
 }

@@ -2,6 +2,7 @@ import { Component, OnInit, HostListener } from '@angular/core';
 import { SlotsService } from 'src/app/services/slots.service';
 import { slotsAccount } from '../models/slotsAccount';
 import { ModalService } from 'src/app/services/modal.service';
+import { image } from 'd3';
 
 @Component({
     selector: 'app-wheels-below',
@@ -14,29 +15,17 @@ export class WheelsBelowComponent implements OnInit {
         this.pushButton(event.key);
     }
 
+    @HostListener('window:resize', ['$event'])
+    onresize(event) {
+        // innerWidth of window
+        this.setDimensions(event.target.innerWidth)
+        // console.log(event.target.innerWidth)
+    }
+
+    ratio = 100;
+
+
     slotsAccount: slotsAccount;
-
-    playing = true;
-    spin = false;
-
-    reel0 = true;
-    reel1 = true;
-    reel2 = true;
-
-    // is set to true when a winning combi is found to stop looking further. Is set to false when pushing "play"
-    win = false;
-    wins = 0;
-    hOrT = false;
-    holding = false;
-    reelChart = [
-        [0, 0, 0],
-        [0, 0, 0],
-        [0, 0, 0],
-    ];
-    wallet = 100;
-    bet = 1;
-
-    allSlots = [];
 
     constructor(
         private slotService: SlotsService,
@@ -44,36 +33,65 @@ export class WheelsBelowComponent implements OnInit {
         ) {}
 
     ngOnInit() {
+        this.setDimensions();
         
-    
-        this.slotsAccount = this.slotService.updateWallet();
         this.slotService.setReels();
         this.slotService.spinReels();
-    }
+        this.slotsAccount = this.slotService.updateWallet();
 
-    private placeSlots() {
 
     }
 
     public play() {
 
         if (this.slotsAccount.currentAccount > 0) {
-            this.slotService.play()
+            this.slotService.play();
         } else {
-this.modalService.createModal("Unfortunately, you are BROKE!")
+            this.modalService.createModal("Unfortunately, you are BROKE!");
         }
     }
 
     public gamble(choice) {
-        this.slotService.gamble(choice)
+        this.slotService.gamble(choice);
     }
 
     public holdReel(reel) {
-        this.slotsAccount = this.slotService.holdReel(reel)
+        this.slotsAccount = this.slotService.holdReel(reel);
     }
 
     public cancel() {
         this.slotService.cancel()
+    }
+
+    private setDimensions(widthInput = null) {
+        let windowWidth;
+        let widthPercentage
+        if(widthInput === null) {
+            windowWidth = document.getElementsByTagName("html")[0].offsetWidth
+        } else {
+            windowWidth = widthInput
+        }
+
+        if (windowWidth < 768) {
+            widthPercentage = ((windowWidth / 768) * 100);
+        } else {
+            widthPercentage = 100;
+        }
+        let reel = document.getElementById("reel-1")
+        let reel1Transform = window.getComputedStyle(reel).transform
+        console.log(reel1Transform)
+
+        let container = document.getElementById("lower-machine-container")
+        container.style.transform = "scale(" + widthPercentage + "%)"
+
+        let imageWidth = document.getElementById("0-0").offsetWidth
+        this.slotService.setRatio(imageWidth)
+
+
+        console.log("windowWidth: " + windowWidth)
+        console.log("windowPercentage: " + widthPercentage)
+
+
     }
 
     private pushButton(event) {
