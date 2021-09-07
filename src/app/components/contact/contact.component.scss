@@ -1,6 +1,5 @@
 .contact-wrapper {
     width: 100vw;
-    height: 100%;
     min-height: 100vh;
     background-color: var(--backgroundColor1);
     
@@ -11,45 +10,54 @@
         margin: 0 auto;
         color: var(--textColor1);
         background-color: var(--backgroundColor1);
-    // background-color: var(--backgroundColor1);
-
-    .personal-info {
-        display: flex;
-        flex-direction: column;
-        justify-items: center;
-        width: 100%;
-        padding: 32px 0 8px 0px;
-
-        .info-container {
-            transform: translateX(-6px);
-            display: flex;
-            justify-content: center;
-            width: 100%;
-            max-width: 480px;
-            margin: 0 auto;
-            font-size: 14px;
-
-            .types {
-                text-align: right;
-                border-right: 3px groove rebeccapurple;
-                padding: 4px 12px;
-                margin-right: 4px;
-            }
-
-            .values {
-                border-left: 3px groove --global-secondary;
-                text-align: left;
-                padding: 4px 12px;
-            }
+        text-align: center;
+        
+        .portfolio-button {
+            border: 1px solid var(--global-secondary);
+            border-bottom: 2px solid var(--global-secondary);
+            background-color: var(--global-primary);
+            color: var(--buttonTextColor);
+            margin: 4px;
         }
 
-        .photo {
-            margin: 0 auto;
-            height: 100px;
-            padding-top: 16px;
+        .personal-info {
+            display: flex;
+            flex-direction: column;
+            justify-items: center;
+            width: 100%;
+            padding: 32px 0 8px 0px;
 
-            img {
-                height: 100%;
+            .info-container {
+                transform: translateX(-6px);
+                display: flex;
+                justify-content: center;
+                width: 100%;
+                max-width: 480px;
+                margin: 0 auto;
+                font-size: 14px;
+
+                .types {
+                    text-align: right;
+                    border-right: 3px groove rebeccapurple;
+                    padding: 4px 12px;
+                    margin-right: 4px;
+                }
+
+                .values {
+                    border-left: 3px groove --global-secondary;
+                    text-align: left;
+                    padding: 4px 12px;
+                }
+            }
+
+            .photo {
+                margin: 0 auto;
+                height: 100px;
+                padding-top: 16px;
+
+                img {
+                    height: 100%;
+                }
             }
         }
     }
@@ -89,4 +97,4 @@
         // padding: 10px;
     }
 }
-}
+

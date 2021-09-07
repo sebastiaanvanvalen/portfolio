@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
+import { ModalService } from 'src/app/services/modal.service';
 
 @Component({
     selector: 'app-about',
@@ -9,7 +10,14 @@ import { Title } from '@angular/platform-browser';
 export class AboutComponent implements OnInit {
     age: number;
 
-    constructor(private TitleService: Title) {
+    modalObject = {
+        about: {
+            title: "about...",
+            body: "well...<br> my age changes every birthday and the pictures are flexbox. "
+        },
+    }
+
+    constructor(private TitleService: Title, private ModalService: ModalService) {
         this.TitleService.setTitle('About - baxxie.nl');
     }
 
@@ -28,4 +36,11 @@ export class AboutComponent implements OnInit {
 
         this.age = age;
     }
+
+    showModal(type): void {
+        this.ModalService.setTitle(this.modalObject[type]['title']);
+        this.ModalService.setBody(this.modalObject[type]['body']);
+        this.ModalService.createModal()
+    }
+
 }

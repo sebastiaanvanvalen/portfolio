@@ -12,6 +12,7 @@ import { MyformsComponent } from './components/projects/myforms/myforms.componen
 import { GadgetsComponent } from './components/projects/gadgets/gadgets.component';
 import { CoronaDashboardComponent } from './components/projects/coronaDashboard/coronaDashboard.component';
 import { SlotsComponent } from './components/projects/slots/slots.component';
+import { MemoryComponent } from './components/projects/memory/memory.component';
 
 const routes: Routes = [
     { path: '', component: MainPageComponent },
@@ -26,6 +27,7 @@ const routes: Routes = [
     { path: 'myforms', component: MyformsComponent},
     { path: 'gadgets', component: GadgetsComponent},
     { path: 'coronaDashboard', component: CoronaDashboardComponent},
+    { path: 'memory', component: MemoryComponent},
 ];
 
 @NgModule({

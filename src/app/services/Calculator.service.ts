@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Calculation } from '../models/calculation';
+import { Calculation } from '../components/projects/gadgets/calculator/modals/calculation';
 import { Decimal } from 'decimal.js';
 import { NgControlStatus } from '@angular/forms';
 

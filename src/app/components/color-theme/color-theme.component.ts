@@ -22,11 +22,11 @@ import { ColorThemeService } from 'src/app/services/color-theme.service';
 
 export class ColorThemeComponent implements OnInit {
     showBox = false;
-    theme = this.colorThemeService.getStoredTheme();
-    constructor(private colorThemeService: ColorThemeService) {}
+    theme;
+    constructor(private ColorThemeService: ColorThemeService) {}
 
     ngOnInit() {
-        this.theme = this.colorThemeService.getStoredTheme();
+        this.theme = this.ColorThemeService.getStoredTheme();
     }
 
     onClickedOutside(event: Event) {
@@ -39,6 +39,6 @@ export class ColorThemeComponent implements OnInit {
         } else {
             this.theme = 'light'
         }
-        this.colorThemeService.storeTheme(this.theme);
+        this.ColorThemeService.storeTheme(this.theme);
     }
 }

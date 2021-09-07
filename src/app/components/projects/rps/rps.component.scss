@@ -1,7 +1,7 @@
 .rps-container {
     width: 100%;
     height: 100vh;
-    background-image: url("../../../../assets/pictures/background-farm.jpg");
+    background-image: url("/assets/rps/background-farm.jpg");
     background-attachment: fixed;
     background-repeat: no-repeat;
     background-size: cover;
@@ -17,7 +17,7 @@
 
         .resetbutton {
             position: absolute;
-            right: 6px;
+            left: 6px;
             top: 88px;
             height: 60px;
             width: 60px;
@@ -27,6 +27,15 @@
             color: white;
             background-color: rgb(96, 145, 161);
         }
+    }
+
+    .portfolio-button {
+        position: absolute;
+        right: 10px;
+        top: 90px;
+        border: 3px solid var(--global-primary);
+        background-color: rgb(69, 137, 168);
+        color: white;
     }
 
     .score-board {
@@ -134,13 +143,6 @@
 @media screen and (min-width: 680px) {
 
     .rps-container {
-        // width: 100%;
-        // height: 100vh;
-        // background-image: url("../../../assets/pictures/background-farm.jpg");
-        // background-attachment: fixed;
-        // background-repeat: no-repeat;
-        // background-size: cover;
-        
         .opening-text {
             text-align: center;
             padding: 92px 0 28px;

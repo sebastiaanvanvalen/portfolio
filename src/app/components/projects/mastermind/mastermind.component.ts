@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
+import { ModalService } from 'src/app/services/modal.service';
 
 @Component({
     selector: 'app-mastermind',
@@ -7,6 +8,21 @@ import { Title } from '@angular/platform-browser';
     styleUrls: ['./mastermind.component.scss'],
 })
 export class MastermindComponent implements OnInit {
+
+    modalObject = {
+        mastermind: {
+            title: "mastermind",
+            body: "Mastermind seemed a good place to start when I wanted to code my first game. It turned out to be a good place to experiment with things like a game flow, css-grid and shuffling an array."
+        },
+        colors: {
+            title: "about the colors",
+            body: "There is a possibility to change the colors of the pins. It also changes the colors of pins in the game and the hidden pins.<br>This Mastermind project was a good opportunity to experiment with saving and retrieving from <span style='color: rebeccapurple; font-weight: bold;'>LocalStorage</span>.<br>In this case not only the dark/light website colors are used but also the color settings of the pins are stored for the next time you visit this part of the website.<br>In the future I want to look further into the options for color settings that are better for color-blind people."
+        },
+        OOP: {
+            title: "No OOP",
+            body: "Since Mastermind was my first real project I didn't want to make to many changes to it when I copied into this Angular project. So for this project there are no classes, interfaces or services being used. Just plain functional code with a lot of global variables. The game-related modals are not using Angular Material but are hard coded."
+        },
+    }
 
     colors = [
         'white',
@@ -42,7 +58,7 @@ export class MastermindComponent implements OnInit {
 
     helpTemplate = `You have 12 chances to quess the hidden colors. Be aware that colors are randomly generated so they can appear more than once.<br>We trust you know the <a href="https://www.spelregels.eu/mastermind/">basics</a> of the game so the only thing left are the markers:<br><br>a '\u2688' if you placed a color in the correct position<br><br> a 'o' : for each color quessed correct but in the wrong position<br>`;
 
-    constructor(private TitleService: Title) {
+    constructor(private TitleService: Title, private ModalService: ModalService) {
         this.TitleService.setTitle('Mastermind - baxxie.nl')
     }
 
@@ -138,35 +154,46 @@ export class MastermindComponent implements OnInit {
                 }
             }
             localStorage.setItem('CBMode', this.CBMode);
-        }
+    }
         
-        setHiddenPins() {
-            for (var n = 0; n <= 3; n++) {
-                let i = Math.floor(Math.random() * 8);
-                this.hiddenColors.push(this.colors[i]);
-                this.hiddenColorsInMode.push(this.CBMode + this.colors[i]);
-            }
-            console.log('yes! You can cheat and look up the hidden colors right here. ;-)')
-            console.log(this.hiddenColors);
+    setHiddenPins() {
+        for (var n = 0; n <= 3; n++) {
+            let i = Math.floor(Math.random() * 8);
+            this.hiddenColors.push(this.colors[i]);
+            this.hiddenColorsInMode.push(this.CBMode + this.colors[i]);
         }
-        
-        setColor(input) {
-            if (this.gameStopped === false) {
-                if (this.userPins.length >= 4) {
-                    this.toggleModal('toMuchPins');
-                    return;
-                } else {
-                    let mode = '';
-                    // this.CBMode ? (mode = 'CB') : (mode = '');
-                    let num = this.userPins.length;
-                    
-                    this.userPins.push(input);
-                    document
-                    .getElementById('pin-' + [4 * this.turn + (num + 1)])
-                    .classList.remove('pin-background');
-                    document
-                    .getElementById('pin-' + [4 * this.turn + (num +1)])
-                    .classList.add(this.CBMode + this.userPins[num]);
+        console.log('yes! You can cheat and look up the hidden colors right here. ;-)')
+        console.log(`%c${this.hiddenColors[0]}` + 
+        "%c || " + `%c${this.hiddenColors[1]}` + 
+        "%c || " + `%c${this.hiddenColors[2]}` + 
+        "%c || " + `%c${this.hiddenColors[3]}`,
+        `font-weight: bold; color: ${this.hiddenColors[0]}`,
+        `font-weight: bold; color: white`,
+        `font-weight: bold; color: ${this.hiddenColors[1]}`,
+        `font-weight: bold; color: white`,
+        `font-weight: bold; color: ${this.hiddenColors[2]}`,
+        `font-weight: bold; color: white`,
+        `font-weight: bold; color: ${this.hiddenColors[3]}`,
+        )
+    }
+    
+    setColor(input) {
+        if (this.gameStopped === false) {
+            if (this.userPins.length >= 4) {
+                this.toggleModal('toMuchPins');
+                return;
+            } else {
+                let mode = '';
+                // this.CBMode ? (mode = 'CB') : (mode = '');
+                let num = this.userPins.length;
+                
+                this.userPins.push(input);
+                document
+                .getElementById('pin-' + [4 * this.turn + (num + 1)])
+                .classList.remove('pin-background');
+                document
+                .getElementById('pin-' + [4 * this.turn + (num +1)])
+                .classList.add(this.CBMode + this.userPins[num]);
             }
         }
     }
@@ -244,6 +271,12 @@ export class MastermindComponent implements OnInit {
         // Object.keys(this.hiddenPins).forEach((element) => {
         //     this.hiddenPins[element] = 'rgb(218, 218, 218)';
         // });
+    }
+
+    showModal(type): void {
+        this.ModalService.setTitle(this.modalObject[type]['title']);
+        this.ModalService.setBody(this.modalObject[type]['body']);
+        this.ModalService.createModal()
     }
 
     toggleModal(input) {
@@ -355,17 +388,11 @@ export class MastermindComponent implements OnInit {
     playerWins() {
         this.showPins("showem");
         this.gameStopped = true;
-
-            this.toggleModal('playerWon');
-
+        this.toggleModal('playerWon');
     }
 
     showPins(input = '') {
-
-
-
             this.gameStopped = true;
-
 
             this.hiddenColorsInMode.forEach((element, index) => {
                 document
@@ -381,9 +408,7 @@ export class MastermindComponent implements OnInit {
     hint() {
         if (this.hintedPin === false) {
             this.hintedPin = true;
-            let selectedPin = Math.floor(Math.random() * 4);
-            console.log(selectedPin);
-            
+            let selectedPin = Math.floor(Math.random() * 4);            
 
             document
                 .getElementById('hidden-pin-' + (selectedPin + 1))

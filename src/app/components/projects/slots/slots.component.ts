@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
+import { ModalService } from 'src/app/services/modal.service';
 
 @Component({
   selector: 'app-slots',
@@ -8,11 +9,10 @@ import { Title } from '@angular/platform-browser';
 })
 export class SlotsComponent implements OnInit {
 
-  constructor(private TitleService: Title) {
+  constructor(private TitleService: Title, private ModalService: ModalService) {
     this.TitleService.setTitle('Slots Machine - baxxie.nl')
    }
 
   ngOnInit() {
   }
-
 }

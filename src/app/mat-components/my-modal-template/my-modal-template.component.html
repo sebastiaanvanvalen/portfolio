@@ -1,14 +1,14 @@
 
 
 <div class="modal-header">
-    <h5 class="modal-title">{{title}} </h5>
+    <p class="modal-title">{{title}} </p>
     <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss()">
         <span aria-hidden="true">&times;</span>
     </button>
 </div>
 
 <div class="modal-body">
-    <p>{{body}}</p>
+    <p id="body"></p>
     <div class="modal-footer">
         <button class="btn portfolio-button btn-sm" (click)="activeModal.dismiss()">Close</button>
     </div>

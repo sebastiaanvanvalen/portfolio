@@ -1,0 +1,156 @@
+<div class="rotate-screen">
+    <span>Please rotate your screen</span>
+</div>
+
+<div class="memory-container">
+
+    <div class="info-container">
+        <div class="points-container"><span>collected pairs: </span>{{ memoryAccount.points || 0 }}</div>
+        <div class="attempts-container"><span>cards flipped: </span>{{ memoryAccount.attempts || 0 }}</div>
+        <div class="button-container">
+            <button class="btn primaryButton" id="btn-primary">{{ memoryAccount.primaryButtonFunction }}</button>
+            <button class="btn secondaryButton" id="btn-secondary" (click)="showModal('landScape')">{{ memoryAccount.secondaryButtonFunction }}</button>
+        </div>
+    </div>
+
+    <div class="select-theme-container" id="select-theme-container">
+        <div class="title-container">Choose a Theme</div>
+        <div class="all-themes" id="all-themes"></div>
+
+    </div>
+
+    <div class="game-container" id="game-container">
+        <div class="card-holder" id="card-holder-1" style="--aspect-ratio: 2/1;">
+            <img class="card open" id="card-01" src="assets/memorythemes/diamond.png" alt="diamond">
+            <img class="card close" id="back-01" src="" alt="">
+        </div>
+        <div class="card-holder" id="card-holder-2">
+            <img class="card open" id="card-02" src="assets/memorythemes/diamond.png" alt="diamond">
+            <img class="card close" id="back-02" src="" alt="">
+        </div>
+        <div class="card-holder" id="card-holder-3">
+            <img class="card open" id="card-03" src="assets/memorythemes/diamond.png" alt="diamond">
+            <img class="card close" id="back-03" src="" alt="">
+        </div>
+        <div class="card-holder" id="card-holder-4">
+            <img class="card open" id="card-04" src="assets/memorythemes/diamond.png" alt="diamond">
+            <img class="card close" id="back-04" src="" alt="">
+        </div>
+        <div class="card-holder" id="card-holder-5">
+            <img class="card open" id="card-05" src="assets/memorythemes/diamond.png" alt="diamond">
+            <img class="card close" id="back-05" src="" alt="">
+        </div>
+        <div class="card-holder" id="card-holder-6">
+            <img class="card open" id="card-06" src="assets/memorythemes/diamond.png" alt="diamond">
+            <img class="card close" id="back-06" src="" alt="">
+        </div>
+        <div class="card-holder" id="card-holder-7">
+            <img class="card open" id="card-07" src="assets/memorythemes/diamond.png" alt="diamond">
+            <img class="card close" id="back-07" src="" alt="">
+        </div>
+        <div class="card-holder" id="card-holder-8">
+            <img class="card open" id="card-08" src="assets/memorythemes/diamond.png" alt="diamond">
+            <img class="card card close" id="back-08" src="" alt="">
+        </div>
+        <div class="card-holder" id="card-holder-9">
+            <img class="card open" id="card-09" src="assets/memorythemes/diamond.png" alt="diamond">
+            <img class="card close" id="back-09" src="" alt="">
+        </div>
+        <div class="card-holder" id="card-holder-10">
+            <img class="card open" id="card-10" src="assets/memorythemes/diamond.png" alt="diamond">
+            <img class="card close" id="back-10" src="" alt="">
+        </div>
+        <div class="card-holder" id="card-holder-11">
+            <img class="card open" id="card-11" src="assets/memorythemes/diamond.png" alt="diamond">
+            <img class="card close" id="back-11" src="" alt="">
+        </div>
+        <div class="card-holder" id="card-holder-12">
+            <img class="card open" id="card-12" src="assets/memorythemes/diamond.png" alt="diamond">
+            <img class="card close" id="back-12" src="" alt="">
+        </div>
+        <div class="card-holder" id="card-holder-13">
+            <img class="card open" id="card-13" src="assets/memorythemes/diamond.png" alt="diamond">
+            <img class="card close" id="back-13" src="" alt="">
+        </div>
+        <div class="card-holder" id="card-holder-14">
+            <img class="card open" id="card-14" src="assets/memorythemes/diamond.png" alt="diamond">
+            <img class="card close" id="back-14" src="" alt="">
+        </div>
+        <div class="card-holder" id="card-holder-15">
+            <img class="card open" id="card-15" src="assets/memorythemes/diamond.png" alt="diamond">
+            <img class="card close" id="back-15" src="" alt="">
+        </div>
+        <div class="card-holder" id="card-holder-16">
+            <img class="card open" id="card-16" src="assets/memorythemes/diamond.png" alt="diamond">
+            <img class="card close" id="back-16" src="" alt="">
+        </div>
+    </div>
+    <!-- <div class="game-container" id="game-container">
+        <div class="card-holder" id="card-holder-1" value="cherry01">
+            <img class="card open" id="card-01" src="../assets/pictures/reelIcons/diamond01.png" alt="">
+            <img class="card close" id="back-01" src="../assets/pictures/reelIcons/cherry01.png" alt="">
+        </div>
+        <div class="card-holder" id="card-holder-2" value="cherry01">
+            <img class="card open" id="card-02" src="../assets/pictures/reelIcons/diamond01.png" alt="">
+            <img class="card close" id="back-02" src="../assets/pictures/reelIcons/cherry01.png" alt="">
+        </div>
+        <div class="card-holder" id="card-holder-3" value="lemon01">
+            <img class="card open" id="card-03" src="../assets/pictures/reelIcons/diamond01.png" alt="">
+            <img class="card close" id="back-03" src="../assets/pictures/reelIcons/lemon01.png" alt="">
+        </div>
+        <div class="card-holder" id="card-holder-4" value="lemon01">
+            <img class="card open" id="card-04" src="../assets/pictures/reelIcons/diamond01.png" alt="">
+            <img class="card close" id="back-04" src="../assets/pictures/reelIcons/lemon01.png" alt="">
+        </div>
+        <div class="card-holder" id="card-holder-5" value="orange01">
+            <img class="card open" id="card-05" src="../assets/pictures/reelIcons/diamond01.png" alt="">
+            <img class="card close" id="back-05" src="../assets/pictures/reelIcons/orange01.png" alt="">
+        </div>
+        <div class="card-holder" id="card-holder-6" value="orange01">
+            <img class="card open" id="card-06" src="../assets/pictures/reelIcons/diamond01.png" alt="">
+            <img class="card close" id="back-06" src="../assets/pictures/reelIcons/orange01.png" alt="">
+        </div>
+        <div class="card-holder" id="card-holder-7" value="peach01">
+            <img class="card open" id="card-07" src="../assets/pictures/reelIcons/diamond01.png" alt="">
+            <img class="card close" id="back-07" src="../assets/pictures/reelIcons/peach01.png" alt="">
+        </div>
+        <div class="card-holder" id="card-holder-8" value="peach01">
+            <img class="card open" id="card-08" src="../assets/pictures/reelIcons/diamond01.png" alt="">
+            <img class="card card close" id="back-08" src="../assets/pictures/reelIcons/peach01.png" alt="">
+        </div>
+        <div class="card-holder" id="card-holder-9" value="plum01">
+            <img class="card open" id="card-09" src="../assets/pictures/reelIcons/diamond01.png" alt="">
+            <img class="card close" id="back-09" src="../assets/pictures/reelIcons/plum01.png" alt="">
+        </div>
+        <div class="card-holder" id="card-holder-10" value="plum01">
+            <img class="card open" id="card-10" src="../assets/pictures/reelIcons/diamond01.png" alt="">
+            <img class="card close" id="back-10" src="../assets/pictures/reelIcons/plum01.png" alt="">
+        </div>
+        <div class="card-holder" id="card-holder-11" value="bell01">
+            <img class="card open" id="card-11" src="../assets/pictures/reelIcons/diamond01.png" alt="">
+            <img class="card close" id="back-11" src="../assets/pictures/reelIcons/bell01.png" alt="">
+        </div>
+        <div class="card-holder" id="card-holder-12" value="bell01">
+            <img class="card open" id="card-12" src="../assets/pictures/reelIcons/diamond01.png" alt="">
+            <img class="card close" id="back-12" src="../assets/pictures/reelIcons/bell01.png" alt="">
+        </div>
+        <div class="card-holder" id="card-holder-13" value="grapes01">
+            <img class="card open" id="card-13" src="../assets/pictures/reelIcons/diamond01.png" alt="">
+            <img class="card close" id="back-13" src="../assets/pictures/reelIcons/grapes01.png" alt="">
+        </div>
+        <div class="card-holder" id="card-holder-14" value="grapes01">
+            <img class="card open" id="card-14" src="../assets/pictures/reelIcons/diamond01.png" alt="">
+            <img class="card close" id="back-14" src="../assets/pictures/reelIcons/grapes01.png" alt="">
+        </div>
+        <div class="card-holder" id="card-holder-15" value="melon01">
+            <img class="card open" id="card-15" src="../assets/pictures/reelIcons/diamond01.png" alt="">
+            <img class="card close" id="back-15" src="../assets/pictures/reelIcons/melon01.png" alt="">
+        </div>
+        <div class="card-holder" id="card-holder-16" value="melon01">
+            <img class="card open" id="card-16" src="../assets/pictures/reelIcons/diamond01.png" alt="">
+            <img class="card close" id="back-16" src="../assets/pictures/reelIcons/melon01.png" alt="">
+        </div>
+    </div> -->
+
+</div>
+

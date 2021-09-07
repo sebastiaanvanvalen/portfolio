@@ -3,21 +3,21 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
-import { SlotsComponent } from './slots.component';
+import { MemoryComponent } from './memory.component';
 
-describe('SlotsComponent', () => {
-  let component: SlotsComponent;
-  let fixture: ComponentFixture<SlotsComponent>;
+describe('MemoryComponent', () => {
+  let component: MemoryComponent;
+  let fixture: ComponentFixture<MemoryComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SlotsComponent ]
+      declarations: [ MemoryComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SlotsComponent);
+    fixture = TestBed.createComponent(MemoryComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

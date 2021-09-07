@@ -1,3 +1,5 @@
+import { rgb } from 'd3'
+
 export interface ThemeInterface {
     name: string;
     properties: any;
@@ -18,11 +20,21 @@ export const light: ThemeInterface = {
         "--buttonBGColor": "rgb(96, 145, 161)",
         "--buttonTextColor": "white",
 
+        "--buttonInfoBGColor": "#1E65A7",
+
         "--boxShadowColor": "0px 0px 20px 1px grey",
         "--boxShadowColorDD": "0 8px 8px -2px grey",
 
         "--backgroundColor1": "white",
         "--backgroundColor2": "lightgrey",
+
+        "--slotBackgroundColor": "#9b9b7a",
+        // "--slotMessageBackground": "linear-gradient(#f3e9dc, #ccd5ae)",
+        "--slotMessageBackground": "linear-gradient(#709775, #415d43)",
+        "--messageColor": "rgb(73, 60, 2)",
+        "--buttonColor": "linear-gradient(#709775, #415d43)",
+        "--buttonHoverColor": "linear-gradient(#4d6a6d, #798478)",
+        "--slotAccent": "rgb(248, 171, 27)",
     }
 }
 
@@ -41,11 +53,20 @@ export const dark: ThemeInterface = {
         "--buttonBGColor": "grey",
         "--buttonTextColor": "white",
 
+        "--buttonInfoBGColor": "#699FA1",
+
+
         "--boxShadowColor": "0px 0px 10px 5px rgb(68, 68, 68)",
         "--boxShadowColorDD": "0 8px 8px -2px rgb(68, 68, 68)",
 
         "--backgroundColor1": "#121212",
         "--backgroundColor2": "#121212",
-    }
 
+        "--slotBackgroundColor": "rgb(49, 37, 23)",
+        "--slotMessageBackground": "linear-gradient(rgb(31, 30, 30), rgb(6, 5, 5))",
+        "--messageColor": "rgb(247, 231, 162)",
+        "--buttonColor": "linear-gradient(rgb(197, 83, 83),rgb(126, 39, 39))",
+        "--buttonHoverColor": "linear-gradient(orange, rgb(124, 81, 0))",
+        "--slotAccent": "rgb(255, 215, 0)",
+    }
 }

@@ -1,5 +1,5 @@
-<div class="mastermind-container">
 
+<div class="mastermind-container">
     <div class="text-wrapper">
         <h3>MASTERMIND</h3>
     </div>
@@ -21,9 +21,7 @@
                     <button type="button" class="close-modal"
                         (click)="closeModalHard()">&#x2715;</button>
                 </div>
-                <div class="modal-body" id="modal-body" [innerHTML]="modalMessage">
-
-                </div>
+                <div class="modal-body" id="modal-body" [innerHTML]="modalMessage"></div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" id="modal-btn" data-bs-dismiss="modal"
                         (click)="closeModal(modalBtnInfo)"> {{ modalButton }}</button>
@@ -37,10 +35,6 @@
         <div class="hidden-pin" id="hidden-pin-2"></div>
         <div class="hidden-pin" id="hidden-pin-3"></div>
         <div class="hidden-pin" id="hidden-pin-4"></div>
-        <!-- <div class="hidden-pin" [ngStyle]="{'background-color': hiddenPins['hiddenPin1']}"></div>
-        <div class="hidden-pin" [ngStyle]="{'background-color': hiddenPins['hiddenPin2']}"></div>
-        <div class="hidden-pin" [ngStyle]="{'background-color': hiddenPins['hiddenPin3']}"></div>
-        <div class="hidden-pin" [ngStyle]="{'background-color': hiddenPins['hiddenPin4']}"></div> -->
     </div>
 
     <div class="user-board user-board-12" id="user-board-12">
@@ -115,6 +109,10 @@
         <div class="pin" id="pin-3"></div>
         <div class="pin" id="pin-4"></div>
     </div>
+    <button class="btn btn-sm portfolio-button btn1" (click)="showModal('mastermind')">mastermind</button>
+    <button class="btn btn-sm portfolio-button btn2" (click)="showModal('colors')">colors</button>
+    <button class="btn btn-sm portfolio-button btn3" (click)="showModal('OOP')">no OOP</button>
+
 
     <div class="check-box check-box-12" id="check-box-12"></div>
     <div class="check-box check-box-11" id="check-box-11"></div>
@@ -129,31 +127,6 @@
     <div class="check-box check-box-2" id="check-box-2"></div>
     <div class="check-box check-box-1" id="check-box-1"></div>
 
-    <!-- <div class="selectors">
-        <div class="color-box">
-            <div class="color yellow" id="yellow" (click)="setColor('rgb(247, 247, 7)')"></div>
-            <div class="color red" id="red" (click)="setColor('rgb(240, 2, 2)')"></div>
-            <div class="color green" id="green" (click)="setColor('rgb(4, 161, 4)')"></div>
-            <div class="color purple" id="purple" (click)="setColor('rgb(146, 2, 146)')"></div>
-            <div class="color blue" id="blue" (click)="setColor('rgb(8, 8, 253)')"></div>
-            <div class="color orange" id="orange" (click)="setColor('rgb(240, 157, 2)')"></div>
-            <div class="color black" id="black" (click)="setColor('rgb(7, 7, 7)')"></div>
-            <div class="color white" id="white" (click)="setColor('rgb(255, 255, 255)')"></div>
-        </div>
-    </div> -->
-
-    <!-- <div class="selectors">
-        <div class="color-box">
-            <div class="color yellow" id="yellow" (click)="setColor('yellow')"></div>
-            <div class="color red" id="red" (click)="setColor('red')"></div>
-            <div class="color green" id="green" (click)="setColor('green')"></div>
-            <div class="color purple" id="purple" (click)="setColor('purple')"></div>
-            <div class="color blue" id="blue" (click)="setColor('blue')"></div>
-            <div class="color orange" id="orange" (click)="setColor('orange')"></div>
-            <div class="color black" id="black" (click)="setColor('black')"></div>
-            <div class="color white" id="white" (click)="setColor('white')"></div>
-        </div>
-    </div> -->
 
     <div class="selectors">
         <div class="color-box">

@@ -2,8 +2,10 @@
     <div class="opening-text">
         <p>Rock Paper Scissors</p>
         <button (click)="resetScore()" class="resetbutton">reset</button>
-
     </div>
+
+    <button class="btn btn-sm portfolio-button" (click)="showModal('rps')">R P S</button>
+
     <div class="score-board">
         <div class="badges" id="user-label">user</div>
         <div class="badges" id="comp-label">comp</div>
@@ -16,13 +18,13 @@
 
     <div class="choices">
         <div class="choice" id="rock" (click)="game('rock')">
-            <img src="../../../assets/pictures/rock.png" alt="rock">
+            <img src="assets/rps/rock.png" alt="rock">
         </div>
         <div class="choice" id="paper" (click)="game('paper')">
-            <img src="../../../assets/pictures/paper.png" alt="paper">
+            <img src="assets/rps/paper.png" alt="paper">
         </div>
         <div class="choice" id="scissors" (click)="game('scissors')">
-            <img src="../../../assets/pictures/scissors.png" alt="scissors">
+            <img src="assets/rps/scissors.png" alt="scissors">
         </div>
     </div>
 

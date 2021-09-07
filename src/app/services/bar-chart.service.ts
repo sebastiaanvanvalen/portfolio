@@ -7,7 +7,7 @@ import { HttpService } from './http.service';
     providedIn: 'root',
 })
 export class BarChartService {
-    dataModelChange: EventEmitter<DataModel> = new EventEmitter();
+    // dataModelChange: EventEmitter<DataModel> = new EventEmitter();
 
     public rawData = [];
     private processedData = [];
@@ -38,7 +38,7 @@ export class BarChartService {
                 this.sortData();
                 
                 this.createGraph();
-                this.dataModelChange.emit(this.dataModel);
+                // this.dataModelChange.emit(this.dataModel);
             });
         } else {
             let URL = this.countryURL + this.dataModel.selectedCountry;
@@ -63,7 +63,7 @@ export class BarChartService {
                 this.sortData();
                 this.createGraph();
 
-                this.dataModelChange.emit(this.dataModel);
+                // this.dataModelChange.emit(this.dataModel);
             });
         }
     }

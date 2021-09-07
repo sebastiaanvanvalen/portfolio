@@ -1,6 +1,6 @@
 import { Component, OnInit, HostListener } from '@angular/core';
 import { CalculatorService } from 'src/app/services/Calculator.service';
-import { Calculation } from 'src/app/models/calculation';
+import { Calculation } from 'src/app/components/projects/gadgets/calculator/modals/calculation';
 
 @Component({
     selector: 'app-calculator',

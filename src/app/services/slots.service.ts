@@ -1,5 +1,6 @@
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter, Output } from '@angular/core';
 import { slotsAccount } from '../components/projects/slots/models/slotsAccount';
+
 
 @Injectable({
     providedIn: 'root',
@@ -8,69 +9,79 @@ import { slotsAccount } from '../components/projects/slots/models/slotsAccount';
 
 
 export class SlotsService {
+    updateSlotsAccount: EventEmitter<slotsAccount> = new EventEmitter();
+
     slotsAccount: slotsAccount = {
         startingAccount: 100,
         currentAccount: 100,
         bet: 0,
-        win: 0,
+        currentWin: 0,
         currency: 'coins',
+        holding: false,
         holdedReels: [false, false, false],
+        spin: false,
+        win: false,
+        hOrT: false,
+        playing: true,
+        reelSpin: [],
+        reelChart: [[], [], []],
+        allSlots: [],
     };
 
     slots = [
         {
             name: 'cherry',
-            image: '../assets/pictures/reelIcons/cherry01.png',
+            image: '../assets/pictures/reelIcons/cherry.png',
             value: 1,
         },
         {
             name: 'lemon',
-            image: '../assets/pictures/reelIcons/lemon01.png',
+            image: '../assets/pictures/reelIcons/lemon.png',
             value: 2,
         },
         {
             name: 'orange',
-            image: '../assets/pictures/reelIcons/orange01.png',
+            image: '../assets/pictures/reelIcons/orange.png',
             value: 3,
         },
         {
             name: 'peach',
-            image: '../assets/pictures/reelIcons/peach01.png',
+            image: '../assets/pictures/reelIcons/peach.png',
             value: 4,
         },
         {
             name: 'plum',
-            image: '../assets/pictures/reelIcons/plum01.png',
+            image: '../assets/pictures/reelIcons/plum.png',
             value: 5,
         },
         {
             name: 'bell',
-            image: '../assets/pictures/reelIcons/bell01.png',
+            image: '../assets/pictures/reelIcons/bell.png',
             value: 6,
         },
         {
             name: 'grapes',
-            image: '../assets/pictures/reelIcons/grapes01.png',
+            image: '../assets/pictures/reelIcons/grapes.png',
             value: 7,
         },
         {
             name: 'melon',
-            image: '../assets/pictures/reelIcons/melon01.png',
+            image: '../assets/pictures/reelIcons/melon.png',
             value: 8,
         },
         {
             name: 'diamond',
-            image: '../assets/pictures/reelIcons/diamond01.png',
+            image: '../assets/pictures/reelIcons/diamond.png',
             value: 9,
         },
         {
             name: 'bar',
-            image: '../assets/pictures/reelIcons/bar01.png',
+            image: '../assets/pictures/reelIcons/bar.png',
             value: 10,
         },
         {
             name: 'question',
-            image: '../assets/pictures/reelIcons/questionmark01.png',
+            image: '../assets/pictures/reelIcons/questionmark.png',
             value: 11,
         },
     ];
@@ -79,737 +90,367 @@ export class SlotsService {
         [
             {
                 name: 'bell',
-                image: 'assets/pictures/reelIcons/bell01.png',
+                image: 'assets/pictures/reelIcons/bell.png',
                 value: 6,
             },
             {
                 name: 'grapes',
-                image: 'assets/pictures/reelIcons/grapes01.png',
-                value: 8,
+                image: 'assets/pictures/reelIcons/grapes.png',
+                value: 7,
             },
             {
                 name: 'lemon',
-                image: '../assets/pictures/reelIcons/lemon01.png',
+                image: '../assets/pictures/reelIcons/lemon.png',
                 value: 2,
             },
             {
                 name: 'cherry',
-                image: '../assets/pictures/reelIcons/cherry01.png',
+                image: '../assets/pictures/reelIcons/cherry.png',
                 value: 1,
             },
             {
                 name: 'plum',
-                image: '../assets/pictures/reelIcons/plum01.png',
+                image: '../assets/pictures/reelIcons/plum.png',
                 value: 5,
             },
             {
                 name: 'orange',
-                image: '../assets/pictures/reelIcons/orange01.png',
+                image: '../assets/pictures/reelIcons/orange.png',
                 value: 3,
             },
             {
                 name: 'peach',
-                image: '../assets/pictures/reelIcons/peach01.png',
+                image: '../assets/pictures/reelIcons/peach.png',
                 value: 4,
             },
             {
                 name: 'melon',
-                image: '../assets/pictures/reelIcons/melon01.png',
-                value: 7,
+                image: '../assets/pictures/reelIcons/melon.png',
+                value: 8,
             },
             {
                 name: 'bell',
-                image: '../assets/pictures/reelIcons/bell01.png',
+                image: '../assets/pictures/reelIcons/bell.png',
                 value: 6,
             },
             {
                 name: 'grapes',
-                image: '../assets/pictures/reelIcons/grapes01.png',
-                value: 8,
+                image: '../assets/pictures/reelIcons/grapes.png',
+                value: 7,
             },
             {
                 name: 'peach',
-                image: '../assets/pictures/reelIcons/peach01.png',
+                image: '../assets/pictures/reelIcons/peach.png',
                 value: 4,
             },
             {
                 name: 'question',
-                image: '../assets/pictures/reelIcons/questionmark01.png',
+                image: '../assets/pictures/reelIcons/questionmark.png',
                 value: 11,
             },
             {
                 name: 'plum',
-                image: '../assets/pictures/reelIcons/plum01.png',
+                image: '../assets/pictures/reelIcons/plum.png',
                 value: 5,
             },
             {
                 name: 'orange',
-                image: '../assets/pictures/reelIcons/orange01.png',
+                image: '../assets/pictures/reelIcons/orange.png',
                 value: 3,
             },
             {
                 name: 'lemon',
-                image: '../assets/pictures/reelIcons/lemon01.png',
+                image: '../assets/pictures/reelIcons/lemon.png',
                 value: 2,
             },
             {
                 name: 'cherry',
-                image: '../assets/pictures/reelIcons/cherry01.png',
+                image: '../assets/pictures/reelIcons/cherry.png',
                 value: 1,
             },
             {
                 name: 'peach',
-                image: '../assets/pictures/reelIcons/peach01.png',
+                image: '../assets/pictures/reelIcons/peach.png',
                 value: 4,
             },
             {
                 name: 'bell',
-                image: '../assets/pictures/reelIcons/bell01.png',
+                image: '../assets/pictures/reelIcons/bell.png',
                 value: 6,
             },
             {
                 name: 'grapes',
-                image: '../assets/pictures/reelIcons/grapes01.png',
-                value: 8,
+                image: '../assets/pictures/reelIcons/grapes.png',
+                value: 7,
             },
             {
                 name: 'diamond',
-                image: '../assets/pictures/reelIcons/diamond01.png',
+                image: '../assets/pictures/reelIcons/diamond.png',
                 value: 9,
             },
             {
                 name: 'lemon',
-                image: '../assets/pictures/reelIcons/lemon01.png',
+                image: '../assets/pictures/reelIcons/lemon.png',
                 value: 2,
             },
             {
                 name: 'orange',
-                image: '../assets/pictures/reelIcons/orange01.png',
+                image: '../assets/pictures/reelIcons/orange.png',
                 value: 3,
             },
             {
                 name: 'plum',
-                image: '../assets/pictures/reelIcons/plum01.png',
+                image: '../assets/pictures/reelIcons/plum.png',
                 value: 5,
             },
             {
                 name: 'melon',
-                image: '../assets/pictures/reelIcons/melon01.png',
-                value: 7,
+                image: '../assets/pictures/reelIcons/melon.png',
+                value: 8,
             },
         ],
         [
             {
                 name: 'lemon',
-                image: '../assets/pictures/reelIcons/lemon01.png',
+                image: '../assets/pictures/reelIcons/lemon.png',
                 value: 2,
             },
             {
                 name: 'cherry',
-                image: '../assets/pictures/reelIcons/cherry01.png',
+                image: '../assets/pictures/reelIcons/cherry.png',
                 value: 1,
             },
             {
                 name: 'grapes',
-                image: '../assets/pictures/reelIcons/grapes01.png',
-                value: 8,
+                image: '../assets/pictures/reelIcons/grapes.png',
+                value: 7,
             },
             {
                 name: 'question',
-                image: '../assets/pictures/reelIcons/questionmark01.png',
+                image: '../assets/pictures/reelIcons/questionmark.png',
                 value: 11,
             },
             {
                 name: 'lemon',
-                image: '../assets/pictures/reelIcons/lemon01.png',
+                image: '../assets/pictures/reelIcons/lemon.png',
                 value: 2,
             },
             {
                 name: 'cherry',
-                image: '../assets/pictures/reelIcons/cherry01.png',
+                image: '../assets/pictures/reelIcons/cherry.png',
                 value: 1,
             },
             {
                 name: 'bell',
-                image: '../assets/pictures/reelIcons/bell01.png',
+                image: '../assets/pictures/reelIcons/bell.png',
                 value: 6,
             },
             {
                 name: 'orange',
-                image: '../assets/pictures/reelIcons/orange01.png',
+                image: '../assets/pictures/reelIcons/orange.png',
                 value: 3,
             },
             {
                 name: 'peach',
-                image: '../assets/pictures/reelIcons/peach01.png',
+                image: '../assets/pictures/reelIcons/peach.png',
                 value: 4,
             },
             {
                 name: 'cherry',
-                image: '../assets/pictures/reelIcons/cherry01.png',
+                image: '../assets/pictures/reelIcons/cherry.png',
                 value: 1,
             },
             {
                 name: 'plum',
-                image: '../assets/pictures/reelIcons/plum01.png',
+                image: '../assets/pictures/reelIcons/plum.png',
                 value: 5,
             },
             {
                 name: 'melon',
-                image: '../assets/pictures/reelIcons/melon01.png',
-                value: 7,
+                image: '../assets/pictures/reelIcons/melon.png',
+                value: 8,
             },
             {
                 name: 'peach',
-                image: '../assets/pictures/reelIcons/peach01.png',
+                image: '../assets/pictures/reelIcons/peach.png',
                 value: 4,
             },
             {
                 name: 'cherry',
-                image: '../assets/pictures/reelIcons/cherry01.png',
+                image: '../assets/pictures/reelIcons/cherry.png',
                 value: 1,
             },
             {
                 name: 'orange',
-                image: '../assets/pictures/reelIcons/orange01.png',
+                image: '../assets/pictures/reelIcons/orange.png',
                 value: 3,
             },
             {
                 name: 'diamond',
-                image: '../assets/pictures/reelIcons/diamond01.png',
+                image: '../assets/pictures/reelIcons/diamond.png',
                 value: 9,
             },
             {
                 name: 'lemon',
-                image: '../assets/pictures/reelIcons/lemon01.png',
+                image: '../assets/pictures/reelIcons/lemon.png',
                 value: 2,
             },
             {
                 name: 'cherry',
-                image: '../assets/pictures/reelIcons/cherry01.png',
+                image: '../assets/pictures/reelIcons/cherry.png',
                 value: 1,
             },
             {
                 name: 'orange',
-                image: '../assets/pictures/reelIcons/orange01.png',
+                image: '../assets/pictures/reelIcons/orange.png',
                 value: 3,
             },
             {
                 name: 'plum',
-                image: '../assets/pictures/reelIcons/plum01.png',
+                image: '../assets/pictures/reelIcons/plum.png',
                 value: 5,
             },
             {
                 name: 'peach',
-                image: '../assets/pictures/reelIcons/peach01.png',
+                image: '../assets/pictures/reelIcons/peach.png',
                 value: 4,
             },
             {
                 name: 'cherry',
-                image: '../assets/pictures/reelIcons/cherry01.png',
+                image: '../assets/pictures/reelIcons/cherry.png',
                 value: 1,
             },
             {
                 name: 'bell',
-                image: '../assets/pictures/reelIcons/bell01.png',
+                image: '../assets/pictures/reelIcons/bell.png',
                 value: 6,
             },
             {
                 name: 'plum',
-                image: '../assets/pictures/reelIcons/plum01.png',
+                image: '../assets/pictures/reelIcons/plum.png',
                 value: 5,
             },
         ],
         [
             {
                 name: 'peach',
-                image: '../assets/pictures/reelIcons/peach01.png',
+                image: '../assets/pictures/reelIcons/peach.png',
                 value: 4,
             },
             {
                 name: 'cherry',
-                image: '../assets/pictures/reelIcons/cherry01.png',
+                image: '../assets/pictures/reelIcons/cherry.png',
                 value: 1,
             },
             {
                 name: 'grapes',
-                image: '../assets/pictures/reelIcons/grapes01.png',
-                value: 8,
+                image: '../assets/pictures/reelIcons/grapes.png',
+                value: 7,
             },
             {
                 name: 'melon',
-                image: '../assets/pictures/reelIcons/melon01.png',
-                value: 7,
+                image: '../assets/pictures/reelIcons/melon.png',
+                value: 8,
             },
             {
                 name: 'bar',
-                image: '../assets/pictures/reelIcons/bar01.png',
+                image: '../assets/pictures/reelIcons/bar.png',
                 value: 10,
             },
             {
                 name: 'diamond',
-                image: '../assets/pictures/reelIcons/diamond01.png',
+                image: '../assets/pictures/reelIcons/diamond.png',
                 value: 9,
             },
             {
                 name: 'lemon',
-                image: '../assets/pictures/reelIcons/lemon01.png',
+                image: '../assets/pictures/reelIcons/lemon.png',
                 value: 2,
             },
             {
                 name: 'cherry',
-                image: '../assets/pictures/reelIcons/cherry01.png',
+                image: '../assets/pictures/reelIcons/cherry.png',
                 value: 1,
             },
             {
                 name: 'peach',
-                image: '../assets/pictures/reelIcons/peach01.png',
+                image: '../assets/pictures/reelIcons/peach.png',
                 value: 4,
             },
             {
                 name: 'orange',
-                image: '../assets/pictures/reelIcons/orange01.png',
+                image: '../assets/pictures/reelIcons/orange.png',
                 value: 3,
             },
             {
                 name: 'plum',
-                image: '../assets/pictures/reelIcons/plum01.png',
+                image: '../assets/pictures/reelIcons/plum.png',
                 value: 5,
             },
             {
                 name: 'cherry',
-                image: '../assets/pictures/reelIcons/cherry01.png',
+                image: '../assets/pictures/reelIcons/cherry.png',
                 value: 1,
             },
             {
                 name: 'bell',
-                image: '../assets/pictures/reelIcons/bell01.png',
+                image: '../assets/pictures/reelIcons/bell.png',
                 value: 6,
             },
             {
                 name: 'orange',
-                image: '../assets/pictures/reelIcons/orange01.png',
+                image: '../assets/pictures/reelIcons/orange.png',
                 value: 3,
             },
             {
                 name: 'lemon',
-                image: '../assets/pictures/reelIcons/lemon01.png',
+                image: '../assets/pictures/reelIcons/lemon.png',
                 value: 2,
             },
             {
                 name: 'cherry',
-                image: '../assets/pictures/reelIcons/cherry01.png',
+                image: '../assets/pictures/reelIcons/cherry.png',
                 value: 1,
             },
             {
                 name: 'plum',
-                image: '../assets/pictures/reelIcons/plum01.png',
+                image: '../assets/pictures/reelIcons/plum.png',
                 value: 5,
             },
             {
                 name: 'question',
-                image: '../assets/pictures/reelIcons/questionmark01.png',
+                image: '../assets/pictures/reelIcons/questionmark.png',
                 value: 11,
             },
             {
                 name: 'bell',
-                image: '../assets/pictures/reelIcons/bell01.png',
+                image: '../assets/pictures/reelIcons/bell.png',
                 value: 6,
             },
             {
                 name: 'cherry',
-                image: '../assets/pictures/reelIcons/cherry01.png',
+                image: '../assets/pictures/reelIcons/cherry.png',
                 value: 1,
             },
             {
                 name: 'lemon',
-                image: '../assets/pictures/reelIcons/lemon01.png',
+                image: '../assets/pictures/reelIcons/lemon.png',
                 value: 2,
             },
             {
                 name: 'orange',
-                image: '../assets/pictures/reelIcons/orange01.png',
+                image: '../assets/pictures/reelIcons/orange.png',
                 value: 3,
             },
             {
                 name: 'grapes',
-                image: '../assets/pictures/reelIcons/grapes01.png',
-                value: 8,
-            },
-            {
-                name: 'cherry',
-                image: '../assets/pictures/reelIcons/cherry01.png',
-                value: 1,
-            },
-        ],
-    ];
-
-    // used for testing (add specific slots so we don't have to wait 5 minutes for 3 questionmarks)
-    reelsTry = [
-        [
-            {
-                name: 'question',
-                image: '../assets/pictures/reelIcons/questionmark01.png',
-                value: 11,
-            },
-            {
-                name: 'grapes',
-                image: 'assets/pictures/reelIcons/grapes01.png',
-                value: 8,
-            },
-            {
-                name: 'lemon',
-                image: '../assets/pictures/reelIcons/lemon01.png',
-                value: 2,
-            },
-            {
-                name: 'question',
-                image: '../assets/pictures/reelIcons/questionmark01.png',
-                value: 11,
-            },
-            {
-                name: 'plum',
-                image: '../assets/pictures/reelIcons/plum01.png',
-                value: 5,
-            },
-            {
-                name: 'orange',
-                image: '../assets/pictures/reelIcons/orange01.png',
-                value: 3,
-            },
-            {
-                name: 'question',
-                image: '../assets/pictures/reelIcons/questionmark01.png',
-                value: 11,
-            },
-            {
-                name: 'melon',
-                image: '../assets/pictures/reelIcons/melon01.png',
+                image: '../assets/pictures/reelIcons/grapes.png',
                 value: 7,
             },
             {
-                name: 'bell',
-                image: '../assets/pictures/reelIcons/bell01.png',
-                value: 6,
-            },
-            {
-                name: 'question',
-                image: '../assets/pictures/reelIcons/questionmark01.png',
-                value: 11,
-            },
-            {
-                name: 'peach',
-                image: '../assets/pictures/reelIcons/peach01.png',
-                value: 4,
-            },
-            {
-                name: 'question',
-                image: '../assets/pictures/reelIcons/questionmark01.png',
-                value: 11,
-            },
-            {
-                name: 'plum',
-                image: '../assets/pictures/reelIcons/plum01.png',
-                value: 5,
-            },
-            {
-                name: 'orange',
-                image: '../assets/pictures/reelIcons/orange01.png',
-                value: 3,
-            },
-            {
-                name: 'lemon',
-                image: '../assets/pictures/reelIcons/lemon01.png',
-                value: 2,
-            },
-            {
                 name: 'cherry',
-                image: '../assets/pictures/reelIcons/cherry01.png',
+                image: '../assets/pictures/reelIcons/cherry.png',
                 value: 1,
-            },
-            {
-                name: 'peach',
-                image: '../assets/pictures/reelIcons/peach01.png',
-                value: 4,
-            },
-            {
-                name: 'bell',
-                image: '../assets/pictures/reelIcons/bell01.png',
-                value: 6,
-            },
-            {
-                name: 'grapes',
-                image: '../assets/pictures/reelIcons/grapes01.png',
-                value: 8,
-            },
-            {
-                name: 'diamond',
-                image: '../assets/pictures/reelIcons/diamond01.png',
-                value: 9,
-            },
-            {
-                name: 'lemon',
-                image: '../assets/pictures/reelIcons/lemon01.png',
-                value: 2,
-            },
-            {
-                name: 'orange',
-                image: '../assets/pictures/reelIcons/orange01.png',
-                value: 3,
-            },
-            {
-                name: 'plum',
-                image: '../assets/pictures/reelIcons/plum01.png',
-                value: 5,
-            },
-            {
-                name: 'melon',
-                image: '../assets/pictures/reelIcons/melon01.png',
-                value: 7,
-            },
-        ],
-        [
-            {
-                name: 'question',
-                image: '../assets/pictures/reelIcons/questionmark01.png',
-                value: 11,
-            },
-            {
-                name: 'cherry',
-                image: '../assets/pictures/reelIcons/cherry01.png',
-                value: 1,
-            },
-            {
-                name: 'grapes',
-                image: '../assets/pictures/reelIcons/grapes01.png',
-                value: 8,
-            },
-            {
-                name: 'question',
-                image: '../assets/pictures/reelIcons/questionmark01.png',
-                value: 11,
-            },
-            {
-                name: 'lemon',
-                image: '../assets/pictures/reelIcons/lemon01.png',
-                value: 2,
-            },
-            {
-                name: 'cherry',
-                image: '../assets/pictures/reelIcons/cherry01.png',
-                value: 1,
-            },
-            {
-                name: 'question',
-                image: '../assets/pictures/reelIcons/questionmark01.png',
-                value: 11,
-            },
-            {
-                name: 'orange',
-                image: '../assets/pictures/reelIcons/orange01.png',
-                value: 3,
-            },
-            {
-                name: 'peach',
-                image: '../assets/pictures/reelIcons/peach01.png',
-                value: 4,
-            },
-            {
-                name: 'question',
-                image: '../assets/pictures/reelIcons/questionmark01.png',
-                value: 11,
-            },
-            {
-                name: 'plum',
-                image: '../assets/pictures/reelIcons/plum01.png',
-                value: 5,
-            },
-            {
-                name: 'melon',
-                image: '../assets/pictures/reelIcons/melon01.png',
-                value: 7,
-            },
-            {
-                name: 'question',
-                image: '../assets/pictures/reelIcons/questionmark01.png',
-                value: 11,
-            },
-            {
-                name: 'cherry',
-                image: '../assets/pictures/reelIcons/cherry01.png',
-                value: 1,
-            },
-            {
-                name: 'orange',
-                image: '../assets/pictures/reelIcons/orange01.png',
-                value: 3,
-            },
-            {
-                name: 'question',
-                image: '../assets/pictures/reelIcons/questionmark01.png',
-                value: 11,
-            },
-            {
-                name: 'lemon',
-                image: '../assets/pictures/reelIcons/lemon01.png',
-                value: 2,
-            },
-            {
-                name: 'cherry',
-                image: '../assets/pictures/reelIcons/cherry01.png',
-                value: 1,
-            },
-            {
-                name: 'question',
-                image: '../assets/pictures/reelIcons/questionmark01.png',
-                value: 11,
-            },
-            {
-                name: 'plum',
-                image: '../assets/pictures/reelIcons/plum01.png',
-                value: 5,
-            },
-            {
-                name: 'peach',
-                image: '../assets/pictures/reelIcons/peach01.png',
-                value: 4,
-            },
-            {
-                name: 'question',
-                image: '../assets/pictures/reelIcons/questionmark01.png',
-                value: 11,
-            },
-            {
-                name: 'bell',
-                image: '../assets/pictures/reelIcons/bell01.png',
-                value: 6,
-            },
-            {
-                name: 'plum',
-                image: '../assets/pictures/reelIcons/plum01.png',
-                value: 5,
-            },
-        ],
-        [
-            {
-                name: 'question',
-                image: '../assets/pictures/reelIcons/questionmark01.png',
-                value: 11,
-            },
-            {
-                name: 'cherry',
-                image: '../assets/pictures/reelIcons/cherry01.png',
-                value: 1,
-            },
-            {
-                name: 'grapes',
-                image: '../assets/pictures/reelIcons/grapes01.png',
-                value: 8,
-            },
-            {
-                name: 'question',
-                image: '../assets/pictures/reelIcons/questionmark01.png',
-                value: 11,
-            },
-            {
-                name: 'bar',
-                image: '../assets/pictures/reelIcons/bar01.png',
-                value: 10,
-            },
-            {
-                name: 'diamond',
-                image: '../assets/pictures/reelIcons/diamond01.png',
-                value: 9,
-            },
-            {
-                name: 'question',
-                image: '../assets/pictures/reelIcons/questionmark01.png',
-                value: 11,
-            },
-            {
-                name: 'cherry',
-                image: '../assets/pictures/reelIcons/cherry01.png',
-                value: 1,
-            },
-            {
-                name: 'peach',
-                image: '../assets/pictures/reelIcons/peach01.png',
-                value: 4,
-            },
-            {
-                name: 'question',
-                image: '../assets/pictures/reelIcons/questionmark01.png',
-                value: 11,
-            },
-            {
-                name: 'plum',
-                image: '../assets/pictures/reelIcons/plum01.png',
-                value: 5,
-            },
-            {
-                name: 'cherry',
-                image: '../assets/pictures/reelIcons/cherry01.png',
-                value: 1,
-            },
-            {
-                name: 'question',
-                image: '../assets/pictures/reelIcons/questionmark01.png',
-                value: 11,
-            },
-            {
-                name: 'orange',
-                image: '../assets/pictures/reelIcons/orange01.png',
-                value: 3,
-            },
-            {
-                name: 'lemon',
-                image: '../assets/pictures/reelIcons/lemon01.png',
-                value: 2,
-            },
-            {
-                name: 'cherry',
-                image: '../assets/pictures/reelIcons/cherry01.png',
-                value: 1,
-            },
-            {
-                name: 'plum',
-                image: '../assets/pictures/reelIcons/plum01.png',
-                value: 5,
-            },
-            {
-                name: 'question',
-                image: '../assets/pictures/reelIcons/questionmark01.png',
-                value: 11,
-            },
-            {
-                name: 'bell',
-                image: '../assets/pictures/reelIcons/bell01.png',
-                value: 6,
-            },
-            {
-                name: 'cherry',
-                image: '../assets/pictures/reelIcons/cherry01.png',
-                value: 1,
-            },
-            {
-                name: 'question',
-                image: '../assets/pictures/reelIcons/questionmark01.png',
-                value: 11,
-            },
-            {
-                name: 'orange',
-                image: '../assets/pictures/reelIcons/orange01.png',
-                value: 3,
-            },
-            {
-                name: 'grapes',
-                image: '../assets/pictures/reelIcons/grapes01.png',
-                value: 8,
-            },
-            {
-                name: 'question',
-                image: '../assets/pictures/reelIcons/questionmark01.png',
-                value: 11,
             },
         ],
     ];
@@ -834,122 +475,139 @@ export class SlotsService {
         { name: 'oneCherry', slots: [1, 0, 0], value: 4 },
     ];
 
-    reelChart = [
-        [],
-        [],
-        [],
-    ];
-
-    reelSpin = [0,0,0];
-
-    // holding is set when you push HOLD. But also after a win so you cant "auto-win" for ever
-    holding = false;
-
-    // is set when game starts with more than 1 coin. Is set to false when account is empty
-    playing = true;
-
-    // is set when reels are turning, when hOrT is initiatied and when a message is played. At this time the player cant use the PLAY button so messages e.g have the time to play in good order.
-    spin = false;
-
-    // shows which reels are on HOLD
-    allSlots = [];
-
-    // is set somewhere in the hierarchy tree. When a win is found other checks are stopped from being excecuted.
-    win = false;
-
-    // when headsOrTails (hOrT) is true, the game stops until the player made a gamble.
-    hOrT = false;
-
     imageWidth;
-    translateYadjust;
 
     constructor() {}
 
-    public updateWallet(): slotsAccount {
+    public getSlotsAccount(): slotsAccount {
         return this.slotsAccount;
     }
 
+    public getSlotsAccountEmitter() {
+        return this.slotsAccount
+    }
+    
     public setReels() {
         this.reels.forEach((element, index) => {
             this.reels[index] = this.reels[index].concat(this.reels[index], this.reels[index]);
         })
+    }
+    
+    public rebuildMachine(slotsAccount) {
+        this.slotsAccount = slotsAccount;
+        if (this.slotsAccount.holding === true) {
+            this.slotsAccount.holdedReels = [false, false, false]
+        }
+        this.slotsAccount.spin = false;
+
+
+        this.reels.forEach((element, index) => {
+            let reel = document.getElementById("reel-" + (index + 1))
+            let spin = this.slotsAccount.reelSpin[index] * this.imageWidth;
+            reel.style.webkitTransform = "translateY(-" + spin + "px)";
+            reel.style.transform = "translateY(-" + spin + "px)";
+            })
+            // this.slotsAccount.holding = true;
+
+            this.updateSlotsAccount.emit(this.slotsAccount)
+
+
     }
 
     public setRatio(imageWidth) {
         this.imageWidth = imageWidth
     }
 
-    public play(): slotsAccount {
-        if (this.spin === false && this.playing === true && this.slotsAccount.holdedReels !== [true, true, true]) {
+    public resetGame() {
+        this.slotsAccount.currentAccount = 100;
+        this.updateSlotsAccount.emit(this.slotsAccount)
 
-            this.spin = true;
+    }
+
+    public playRebuildMessage() {
+        let winBar = document.getElementById('message');
+        this.checkForWin()
+
+        if(this.slotsAccount.hOrT === true) {
+            this.initHeadsOrTails()
+        }
+
+        winBar.classList.add('win-message');
+        winBar.innerText = 'your game has been rebuild';
+        winBar.style.fontSize = "16px"
+        
+        setTimeout(() => {
+            winBar.classList.remove('win-message');
+            winBar.innerText = "";
+            winBar.style.fontSize = "28px"
+            
+        }, 3000)
+    }
+
+    public play() {
+        // console.log(this.slotsAccount)
+        if(!this.slotsAccount.holdedReels.includes(false)) {
+            this.slotsAccount.holdedReels = [false, false, false]
+            // play reset message
+            this.updateSlotsAccount.emit(this.slotsAccount)
+
+        }
+
+        
+        if (this.slotsAccount.spin === false && this.slotsAccount.playing === true) {
+
+            this.slotsAccount.spin = true;
             this.slotsAccount.currentAccount -= 1;
             this.slotsAccount.bet -= 1;
             this.spinReels();
-            this.win = false;
+            this.slotsAccount.win = false;
 
             // if you held a button => reset all holdBtns but reset this.holding the next round
             if (this.slotsAccount.holdedReels.includes(true)) {
-                this.holding = true;
+                this.slotsAccount.holding = true;
                 setTimeout(() => {
                     this.slotsAccount.holdedReels = [false, false, false];
                 }, 1800);
 
             } else {
                 this.cancelQuestionMarks();
-                this.holding = false;
+                this.slotsAccount.holding = false;
             }
         }
 
+        this.updateSlotsAccount.emit(this.slotsAccount)
 
-        return this.slotsAccount;
     }
 
-    public spinReels() {
-
-        // animation that gives the reel a "buggy" start before spinning (commonly seen in slots machines)
-        // if(this.holding === false) {
-        //     console.log(" start bug");
-            
-        //     let reel = document.getElementById("reel-1")
-        //     let interval = Math.floor(Math.random() * 1)
-        //     if (interval === 0) {
-        //         reel.classList.add("bug")
-        //     }
-        //     setTimeout(() => {
-        //         reel.classList.remove("bug")
-                
-        //     }, 300)
-        // }
-        
+    public spinReels() {       
         this.reels.forEach((element, index) => {
             if (this.slotsAccount.holdedReels[index] !== true) {
                     let reel = document.getElementById("reel-" + (index + 1))
 
                     let spinValue = this.getSpinValue();
-                    console.log("spinValue: " + spinValue)
                     let spin = spinValue * this.imageWidth;
 
-                    this.reelSpin[index] = spinValue;
+                    this.slotsAccount.reelSpin[index] = spinValue;
+                    this.updateSlotsAccount.emit(this.slotsAccount)
+                    // this.slotsAccount.spinValues[index] = spinValue;
                     
-                    this.reelChart[0][index] = this.reels[index][spinValue].value;
-                    this.reelChart[1][index] = this.reels[index][spinValue + 1].value;
-                    this.reelChart[2][index] = this.reels[index][spinValue + 2].value;
+                    this.slotsAccount.reelChart[0][index] = this.reels[index][spinValue].value;
+                    this.slotsAccount.reelChart[1][index] = this.reels[index][spinValue + 1].value;
+                    this.slotsAccount.reelChart[2][index] = this.reels[index][spinValue + 2].value;
 
                     reel.style.transform = 'translateY(0)';
-                    console.log(spin)
-                    console.log(this.imageWidth)
                     
                     setTimeout(() => {
                         reel.style.transform = "translateY(-" + spin + "px)";
             
                     }, 200);
                 }
+                
             })
-
-        setTimeout(() => {
-            this.checkForWin();
-        }, 2000);
+            
+            setTimeout(() => {
+                this.checkForWin();
+            }, 2000);
     }
 
     private getSpinValue() {
@@ -958,29 +616,31 @@ export class SlotsService {
        return spinValue;
     }
 
-    public holdReel(reel): slotsAccount {
-        if (this.holding === false) {
+    public holdReel(reel) {
+        if (this.slotsAccount.holding === false) {
             this.slotsAccount.holdedReels[reel] = !this.slotsAccount.holdedReels[reel];
         } else {
             console.log('not this round');
         }
 
-        return this.slotsAccount;
+        this.updateSlotsAccount.emit(this.slotsAccount)
     }
 
     public cancel() {
-        if (this.holding === false) {
+        if (this.slotsAccount.holding === false) {
             this.slotsAccount.holdedReels = [false, false, false];
         }
+
+        this.updateSlotsAccount.emit(this.slotsAccount)
     }
 
     public gamble(choice) {
-        if (this.hOrT === false) {
+        if (this.slotsAccount.hOrT === false) {
 
             return;
         }
 
-        this.hOrT = false;
+        this.slotsAccount.hOrT = false;
         let chance = Math.floor(Math.random() * 2);
         let heads = document.getElementById('heads')
         let tails = document.getElementById('tails');
@@ -1005,15 +665,17 @@ export class SlotsService {
             tails.classList.remove('winGamble');
 
         }, 2000);
+
+        this.updateSlotsAccount.emit(this.slotsAccount)
     }
 
     private checkForWin() {
 
         // check for three questionmarks
         let nrOfQuestionmarks = 0;
-        this.allSlots = this.reelChart[0].concat(this.reelChart[1]).concat(this.reelChart[2]);
+        this.slotsAccount.allSlots = this.slotsAccount.reelChart[0].concat(this.slotsAccount.reelChart[1]).concat(this.slotsAccount.reelChart[2]);
 
-        this.allSlots.forEach((element) => {
+        this.slotsAccount.allSlots.forEach((element) => {
             if (element === 11) {
                 nrOfQuestionmarks++;
 
@@ -1027,11 +689,12 @@ export class SlotsService {
         }
 
         // check reelChart for scores
-        let winRow = this.reelChart[1];
-        if (this.win === false) {
+        let winRow = this.slotsAccount.reelChart[1];
+        if (this.slotsAccount.win  === false) {
             this.scores.map((items) => {
                 if (items.slots.toString() === winRow.toString()) {
                     this.processWin("reels", items);
+                    this.updateSlotsAccount.emit(this.slotsAccount)
 
                     return;
                 }
@@ -1039,43 +702,49 @@ export class SlotsService {
         }
 
         // check for two cherrys
-        if (winRow[0] === 1 && winRow[1] === 1 && this.win === false) {
-            if (this.holding === true) {
+        if (winRow[0] === 1 && winRow[1] === 1 &&  this.slotsAccount.win  === false) {
+            if (this.slotsAccount.holding === true) {
                 this.processWin("twoCherries", null);
             }
 
             // this return is placed  here in case two cherries fall in place and you want to hold them
-            this.spin = false;
+            this.slotsAccount.spin = false;
+        this.updateSlotsAccount.emit(this.slotsAccount)
+
             return;
         }
 
         // check for cherries on outer reels and auto-HOLD
-        if (winRow[0] === 1 && winRow[2] === 1&& this.win === false) {
+        if (winRow[0] === 1 && winRow[2] === 1&& this.slotsAccount.win  === false) {
             this.slotsAccount.holdedReels = [true, false, true];
+        this.updateSlotsAccount.emit(this.slotsAccount)
         }
 
         // check for one cherry
-        if (winRow[0] === 1 && winRow[1] !== 1 && winRow[2] !== 1 && this.win === false && this.holding === false) {
-            this.holding = true;
+        if (winRow[0] === 1 && winRow[1] !== 1 && winRow[2] !== 1 && this.slotsAccount.win  === false && this.slotsAccount.holding === false) {
+            this.slotsAccount.holding = true;
             this.slotsAccount.holdedReels = [false, false, false];
             
             this.initHeadsOrTails();
-            this.hOrT = true;
+            this.slotsAccount.hOrT = true;
+            this.updateSlotsAccount.emit(this.slotsAccount)
 
             return;
         }
 
         // if a cherry is on HOLD and (only) the third reel gets a cherry. The player still gets a gamble for the first cherry
-        if (winRow[0] === 1 && this.win === false && this.holding === true) {
-            this.holding = true;
+        if (winRow[0] === 1 && this.slotsAccount.win  === false && this.slotsAccount.holding === true) {
+            this.slotsAccount.holding = true;
             this.slotsAccount.holdedReels = [false, false, false];
 
             this.initHeadsOrTails();
-            this.hOrT = true;
+            this.slotsAccount.hOrT = true;
+            this.updateSlotsAccount.emit(this.slotsAccount)
 
             return;
         }
-        this.spin = false;
+        this.slotsAccount.spin = false;
+        this.updateSlotsAccount.emit(this.slotsAccount)
     }
 
     private initHeadsOrTails() {
@@ -1087,7 +756,7 @@ export class SlotsService {
         tails.classList.add('active');
         tails.classList.add('active-2');
 
-        let slot1 = document.getElementById("0-" + (this.reelSpin[0] + 1));
+        let slot1 = document.getElementById("0-" + (this.slotsAccount.reelSpin[0] + 1));
         slot1.animate({ filter: [ 'brightness(1)', 'brightness(1.5)' ], opacity: ["1", ".5"]  },
         { duration: 500, iterations: 6 });
     }
@@ -1125,8 +794,10 @@ export class SlotsService {
                 break;
         }
 
-        this.holding = true;
-        this.win = true;
+        this.slotsAccount.holding = true;
+        this.slotsAccount.win  = true;
+        this.updateSlotsAccount.emit(this.slotsAccount)
+
     }
 
     private getQuestionMarkPrize() {
@@ -1144,9 +815,9 @@ export class SlotsService {
             score = document.getElementById(type);
         }
 
-        let slot1 = document.getElementById("0-" + (this.reelSpin[0] + 1));
-        let slot2 = document.getElementById("1-" + (this.reelSpin[1] + 1));
-        let slot3 = document.getElementById("2-" + (this.reelSpin[2] + 1));
+        let slot1 = document.getElementById("0-" + (this.slotsAccount.reelSpin[0] + 1));
+        let slot2 = document.getElementById("1-" + (this.slotsAccount.reelSpin[1] + 1));
+        let slot3 = document.getElementById("2-" + (this.slotsAccount.reelSpin[2] + 1));
 
         if (type === 'score') {
             score.classList.add('win');
@@ -1202,43 +873,43 @@ export class SlotsService {
             let slot;
             let virtSlot;
 
-            this.allSlots.forEach((element, index)=> {
+            this.slotsAccount.allSlots.forEach((element, index)=> {
                 if(element === 11) {
                     switch (index) {
                         case 0:
-                            slot = "0-" + (this.reelSpin[0]);
+                            slot = "0-" + (this.slotsAccount.reelSpin[0]);
 
                             break;
                         case 1:
-                            slot = "1-" + (this.reelSpin[1]);
+                            slot = "1-" + (this.slotsAccount.reelSpin[1]);
                             
                             break;
                         case 2:
-                            slot = "2-" + (this.reelSpin[2]);
+                            slot = "2-" + (this.slotsAccount.reelSpin[2]);
                             
                             break;
                         case 3:
-                            slot = "0-" + (this.reelSpin[0] + 1);
+                            slot = "0-" + (this.slotsAccount.reelSpin[0] + 1);
                             
                             break;
                         case 4:
-                            slot = "1-" + (this.reelSpin[1] + 1);
+                            slot = "1-" + (this.slotsAccount.reelSpin[1] + 1);
                             
                             break;
                         case 5:
-                            slot = "2-" + (this.reelSpin[2] + 1);
+                            slot = "2-" + (this.slotsAccount.reelSpin[2] + 1);
                             
                             break;
                         case 6:
-                            slot = "0-" + (this.reelSpin[0] + 2);
+                            slot = "0-" + (this.slotsAccount.reelSpin[0] + 2);
                             
                             break;
                         case 7:
-                            slot = "1-" + (this.reelSpin[1] + 2);
+                            slot = "1-" + (this.slotsAccount.reelSpin[1] + 2);
                             
                             break;
                         case 8:
-                            slot = "2-" + (this.reelSpin[2] + 2);
+                            slot = "2-" + (this.slotsAccount.reelSpin[2] + 2);
                             
                             break;
                     
@@ -1256,6 +927,7 @@ export class SlotsService {
                         virtSlot.style.borderRadius =  "none";
                     }, 2000)
                 }
+                this.updateSlotsAccount.emit(this.slotsAccount)
 
             })
 
@@ -1285,7 +957,7 @@ export class SlotsService {
 
     private visualizeQuestionmarks(amount) {
         if (amount < 3) {
-            this.allSlots.forEach((element, index) => {
+            this.slotsAccount.allSlots.forEach((element, index) => {
                 if (element === 11) {
                     document.getElementById('q' + index).classList.add('shine');
                 }
@@ -1294,7 +966,7 @@ export class SlotsService {
     }
 
     private cancelQuestionMarks() {
-        this.allSlots.forEach((element, index) => {
+        this.slotsAccount.allSlots.forEach((element, index) => {
             document.getElementById('q' + index).classList.remove('shine');
         });
     }
@@ -1313,7 +985,7 @@ export class SlotsService {
         if (amount === 0) {
             winBar.classList.remove('win-message');
             this.deleteWinMessage(amount);
-            this.spin = false;
+            this.slotsAccount.spin = false;
 
         } else {   
             setTimeout(() => {
@@ -1331,6 +1003,8 @@ export class SlotsService {
                 }
             }, 2000);
         }
+        this.updateSlotsAccount.emit(this.slotsAccount)
+
     }
 
     private deleteWinMessage(prize) {
@@ -1339,11 +1013,15 @@ export class SlotsService {
             winBar.classList.remove('throw-prize');
             winBar.innerText = "";
             this.addPrizeToAccount(prize);
-            this.spin = false;
+            this.slotsAccount.spin = false;
         }, 1000);
+        this.updateSlotsAccount.emit(this.slotsAccount)
+
     }
 
     private addPrizeToAccount(prize) {
         this.slotsAccount.currentAccount += prize;
+        this.updateSlotsAccount.emit(this.slotsAccount)
+
     }
 }

@@ -22,17 +22,9 @@ import { CvComponent } from './components/cv/cv.component';
 import { AboutComponent } from './components/about/about.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { MyformsComponent } from './components/projects/myforms/myforms.component';
-
-// services
-import { ContactService } from './services/contact.service';
-import { MybirdsComponent } from './components/projects/mybirds/mybirds.component';
-import { MatTableModule } from '@angular/material/table';
-import { MatPaginatorModule } from '@angular/material/paginator';
-import { MatSortModule } from '@angular/material/sort';
-import { MyBirdTableComponent } from './mat-components/my-bird-table/my-bird-table.component';
-import { ModalService } from './services/modal.service';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { HttpService } from './services/http.service';
+import { MemoryComponent } from './components/projects/memory/memory.component';
+import { SlotsComponent } from './components/projects/slots/slots.component';
+import { WheelsBelowComponent } from './components/projects/slots/wheels-below/wheels-below.component';
 import { ColorThemeComponent } from './components/color-theme/color-theme.component';
 import { GadgetsComponent } from './components/projects/gadgets/gadgets.component';
 import { CalculatorComponent } from './components/projects/gadgets/calculator/calculator.component';
@@ -40,9 +32,19 @@ import { UnitconvertorComponent } from './components/projects/gadgets/unitconver
 import { CoronaDashboardComponent } from './components/projects/coronaDashboard/coronaDashboard.component';
 import { WorldSituationComponent } from './components/projects/coronaDashboard/world-situation/world-situation.component';
 import { GraphSelectionComponent } from './components/projects/coronaDashboard/graphSelection/graphSelection.component';
+import { MybirdsComponent } from './components/projects/mybirds/mybirds.component';
+import { MyBirdTableComponent } from './mat-components/my-bird-table/my-bird-table.component';
+
+// services
+import { ContactService } from './services/contact.service';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
+import { ModalService } from './services/modal.service';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { HttpService } from './services/http.service';
+
 import { BarChartService } from './services/bar-chart.service';
-import { SlotsComponent } from './components/projects/slots/slots.component';
-import { WheelsBelowComponent } from './components/projects/slots/wheels-below/wheels-below.component';
 
 
 @NgModule({
@@ -71,6 +73,7 @@ import { WheelsBelowComponent } from './components/projects/slots/wheels-below/w
     GraphSelectionComponent,
     SlotsComponent,
     WheelsBelowComponent,
+    MemoryComponent
 
   ],
   imports: [

@@ -4,6 +4,19 @@
     height: 100%;
     min-height: 100vh;
     background-color: var(--backgroundColor1);
+
+    .button-container {
+        width: 100%;
+        text-align: center;
+
+        .portfolio-button {
+            border: 1px solid var(--global-secondary);
+            border-bottom: 2px solid var(--global-secondary);
+            background-color: var(--global-primary);
+            color: var(--buttonTextColor);
+            margin: 4px;
+        }
+    }
     
     .header {
         padding: 8px;
@@ -21,7 +34,7 @@
     }
     .info {
         font-size: 11px;
-        margin: 4px auto;
+        margin: 24px auto;
         padding: 4px 8px;
         max-width: 624px;
         text-align: center;
@@ -50,6 +63,7 @@
                     img {
                         width: 266px;
                         height: auto;
+                        max-height: 150px;
                         border-radius: 8px;
                         margin-bottom: 12px;
                     }

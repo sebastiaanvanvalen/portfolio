@@ -1,6 +1,6 @@
 .dashboard-wrapper {
     width: 100vw;
-    height: 100%;
+    height: auto;
     min-height: 100vh;
     background-color: var(--backgroundColor1);
     padding: 60px;
@@ -21,10 +21,13 @@
         }
     }
 
-    #app-world-situation {
-        // display: inline;
+    .portfolio-button {
+        border: 1px solid var(--global-secondary);
+        border-bottom: 2px solid var(--global-secondary);
+        background-color: var(--global-primary);
+        color: var(--buttonTextColor);
+        margin: 4px;
     }
-
 
     .current-numbers-container {
         display: flex;

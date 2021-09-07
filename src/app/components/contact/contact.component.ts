@@ -10,8 +10,9 @@ import {
     NgForm,
     FormGroupDirective,
 } from '@angular/forms';
-import { ContactService } from 'src/app/services/contact.service';
+// import { ContactService } from 'src/app/services/contact.service';
 import { HttpService } from 'src/app/services/http.service';
+import { ModalService } from 'src/app/services/modal.service';
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
     isErrorState(
@@ -33,6 +34,18 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
     styleUrls: ['./contact.component.scss'],
 })
 export class ContactComponent implements OnInit {
+
+    modalObject = {
+        email: {
+            title: "AWS email service",
+            body: "AWS provides an emailservice which helps you send emails and store them. In this case through a serverless Lambda function. It works for now but needs more styling and backend optimalisation"
+        },
+        form: {
+            title: "Angular Form",
+            body: "For this part of the portfolio I used different features of Angular forms like formbuilder and validators. At this point the messages are send to an emailadres and the sender can get a copy. Since the messages are not stored I use no encryption. UUID is used to give messages an ID."
+        }
+
+    }
     contactForm: FormGroup;
     disabledSubmitButton: boolean = true;
     optionsSelect: Array<any>;
@@ -48,12 +61,13 @@ export class ContactComponent implements OnInit {
 
     constructor(
         private TitleService: Title,
-        private formBuilder: FormBuilder,
-        private connectionService: HttpService
+        private FormBuilder: FormBuilder,
+        private HttpService: HttpService,
+        private ModalService: ModalService,
     ) {
         this.TitleService.setTitle('Contact - baxxie.nl');
 
-        this.contactForm = formBuilder.group({
+        this.contactForm = this.FormBuilder.group({
             name: ['', Validators.required],
             email: [
                 '',
@@ -79,10 +93,11 @@ export class ContactComponent implements OnInit {
             copy: this.contactForm.value.copy,
             sendDate: new Date().toISOString(),
         };
-        this.connectionService.makePostRequest(this.url, body).subscribe(
+        this.HttpService.makePostRequest(this.url, body).subscribe(
             (resp) => {
                 // alert('Your message has been sent.');
-                console.log(resp);
+                // console.log(resp);
+                
                 this.contactForm.reset();
                 this.disabledSubmitButton = true;
             },
@@ -90,7 +105,11 @@ export class ContactComponent implements OnInit {
                 console.log('Error', error);
             }
         );
+    }
 
-
+    showModal(type): void {
+        this.ModalService.setTitle(this.modalObject[type]['title']);
+        this.ModalService.setBody(this.modalObject[type]['body']);
+        this.ModalService.createModal()
     }
 }

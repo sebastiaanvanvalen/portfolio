@@ -1,5 +1,7 @@
 <div class="contact-wrapper">
     <div class="contact">
+        <button class="btn btn-sm portfolio-button" (click)="showModal('email')">Email</button>
+        <button class="btn btn-sm portfolio-button" (click)="showModal('form')">Form</button>
 
         <div class="personal-info">
             <div class="info-container">
@@ -15,7 +17,7 @@
                 </div>
             </div>
             <div class="photo">
-                <img src="../../../assets/pictures/Philip-J-Fry.png" alt="moi">
+                <img src="assets/contact/Philip-J-Fry.png" alt="moi">
             </div>
         </div>
 
@@ -23,39 +25,25 @@
 
             <p class="h4 mb-4">Contact me</p>
 
-            <input type="text" formControlName="name" id="defaultContactFormName" mdbInput class="form-control mb-4"
-                placeholder="Name">
-
-            <input type="email" formControlName="email" id="defaultContactFormEmail" mdbInput class="form-control mb-4"
-                placeholder="E-mail">
+            <input type="text" formControlName="name" id="defaultContactFormName" mdbInput class="form-control mb-4" placeholder="Name">
+            <input type="email" formControlName="email" id="defaultContactFormEmail" mdbInput class="form-control mb-4" placeholder="E-mail">
 
             <label>Subject</label>
             <select formControlName="subject" class="browser-default custom-select mb-4">
                 <option value="" disabled>Choose option</option>
                 <option value="feeback" selected>Feedback</option>
                 <option value="bugs">Report a bug</option>
-                <option value="message">Personl Message</option>
+                <option value="message">Personal Message</option>
 
             </select>
 
             <div class="form-group">
-                <textarea formControlName="message" class="form-control rounded-0" mdbInput
-                    id="exampleFormControlTextarea2" rows="3" placeholder="Message"></textarea>
+                <textarea formControlName="message" class="form-control rounded-0" mdbInput id="exampleFormControlTextarea2" rows="3" placeholder="Message"></textarea>
             </div>
 
             <mat-checkbox class="mb-4" formControlName="copy">Send a copy to your email</mat-checkbox>
 
-            <!-- <button class="btn btn-secondary" type="submit" [disabled]="disabledSubmitButton">Send</button> -->
             <button class="btn btn-secondary" type="submit">Send</button>
-
-
         </form>
-
-
-
-
-
-        <!-- <h3 class="info-message">Sending messages is under construction. Please feel free to send an email!</h3> -->
     </div>
-
 </div>

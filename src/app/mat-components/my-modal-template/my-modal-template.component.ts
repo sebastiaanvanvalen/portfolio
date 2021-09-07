@@ -2,35 +2,30 @@ import { Component, OnInit } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
-  selector: 'app-my-modal-template',
-  templateUrl: './my-modal-template.component.html',
-  styleUrls: ['./my-modal-template.component.scss']
+    selector: 'app-my-modal-template',
+    templateUrl: './my-modal-template.component.html',
+    styleUrls: ['./my-modal-template.component.scss'],
 })
 export class MyModalTemplateComponent implements OnInit {
+    public title = '';
+    public body = '';
 
+    constructor(public activeModal: NgbActiveModal) {}
 
-  
-  public title = '';
-  public body = '';
-//   public positive = null;
-//   public negative = null;
-//   public neutral = null;
+    buttons: any[] = [{ value: 'One' }, { value: 'Two' }, { value: 'Three' }];
 
-  constructor(public activeModal: NgbActiveModal) {}
+    ngOnInit() {}
 
-  buttons: any[] = [{ value: 'One' }, { value: 'Two' }, { value: 'Three' }];
+    setDialogProps(props: any) {
+        let body = document.getElementById('body')
 
-  ngOnInit() { }
+        this.title = props.title;
+        // this.body = props.body;
+        body.innerHTML = props.body;
+        'all info concerning: ' + props;
+    }
 
-  setDialogProps(props: any) {
-      this.title = props.title;
-      this.body = props.body;
-    "all info concerning: " + props
-  }
-
-  actionTaken(result: any) {
-
-    this.activeModal.close(JSON.stringify(result));
-  }
-
+    actionTaken(result: any) {
+        this.activeModal.close(JSON.stringify(result));
+    }
 }

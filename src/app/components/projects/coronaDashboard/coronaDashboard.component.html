@@ -4,6 +4,11 @@
 
 
     <h3 class="text">more features and better visualisations are comming soon</h3>
+    <div class="button-container">
+        <button class="btn btn-sm portfolio-button" (click)="showModal('D3')">D3 visualisation</button>
+        <button class="btn btn-sm portfolio-button" (click)="showModal('API')">API</button>
+
+    </div>
 
         <app-world-situation id="app-world-situation" (sendDate)="setDate($event)" *ngIf=!select></app-world-situation>
 
