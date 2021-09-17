@@ -1,7 +1,5 @@
 <div class="dashboard-wrapper">
     <h2>Under construction / not for mobile</h2>
-    * data provided by covid19api.com Will be looking for new dataSource for this one has gaps and incidental "0" values which changed overnight
-
 
     <h3 class="text">more features and better visualisations are comming soon</h3>
     <div class="button-container">
@@ -11,6 +9,7 @@
     </div>
 
         <app-world-situation id="app-world-situation" (sendDate)="setDate($event)" *ngIf=!select></app-world-situation>
+        <h5>* for now the datais provided by covid19api.com. A more reliable data source is needed for it turned out some data gets scambled. The recovered cases were being tracked but are now set to zero. Also some countries have huge gaps in data which causes flat lines in the graphes. Since this is my own dashboard I'll wait for a while to see if the data gets re-corrected.</h5>
 
         <div class="current-numbers-container">
             <div class="cont confirmed-container">

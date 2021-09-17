@@ -1,21 +1,20 @@
 <div class="container">
     <div class="explanation">
         <h2>Shifting Clock</h2>
-        Inspired by a real-life clock I tried to copy it to be suitable in a browser of application. For some reason I found the slow shifting numbers in this clock mezmarizing.
+        This is a clock I saw in real life a found very mezmarizing. It was a nice project to replicate it.
     </div>
     <div class="clock-container">
         <div class="clock">
             <div class="elem">
-                <div class='square active' id="year"></div>
+                <div class='square active' id="year">{{ this.myClock.year }}</div>
             </div>
             <div class="elem">
-                <div class='square active' id="month"></div>
+                <div class='square active' id="month">{{ this.myClock.convertedMonth }}</div>
             </div>
             <div class="elem">
-                <div class='square active' id="day"></div>
+                <div class='square active' id="day">{{ this.myClock.convertedDay }}</div>
+            </div>
 
-            </div>
-            <!-- seconds, minutes and hours not dynamicaly generated because css couldn't be added to elements afterwards -->
             <div class="elem" id="hour-wrapper" [style.transform]="seconds('hour')">
                 <div class='hour square'>00</div>
                 <div class='hour square'>01</div>

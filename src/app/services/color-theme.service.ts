@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ThemeInterface, light, dark } from '../components/color-theme/modals/themeInterface';
+import { ThemeInterface, light, dark } from '../components/color-theme/interfaces/themeInterface';
 
 @Injectable({
     providedIn: 'root',

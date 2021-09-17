@@ -1,5 +1,5 @@
 import { Injectable, Output, EventEmitter } from '@angular/core';
-import { DataModel } from '../components/projects/coronaDashboard/world-situation/modals/datamodel';
+import { DataModel } from '../components/projects/coronaDashboard/interfaces/datamodel';
 import * as d3 from 'd3';
 import { HttpService } from './http.service';
 
@@ -17,8 +17,8 @@ export class BarChartService {
     private xAxis;
     private yAxis;
     private margin = 70;
-    private width = 800 - this.margin * 2;
-    private height = 400 - this.margin * 2;
+    private width = 800 - this.margin *1.5;
+    private height = 400 - this.margin;
 
     worldSituationURL: string = 'https://api.covid19api.com/summary';
     countryURL: string = 'https://api.covid19api.com/country/';
@@ -38,7 +38,6 @@ export class BarChartService {
                 this.sortData();
                 
                 this.createGraph();
-                // this.dataModelChange.emit(this.dataModel);
             });
         } else {
             let URL = this.countryURL + this.dataModel.selectedCountry;

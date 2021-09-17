@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
     styleUrls: ['./clock02.component.scss'],
 })
 export class Clock02Component implements OnInit {
+    interval
     hourHand;
     minuteHand;
     secondHand;
@@ -17,7 +18,7 @@ export class Clock02Component implements OnInit {
     }
 
     setClock() {
-        setInterval(() => {
+        this.interval = setInterval(() => {
             const currentDate = new Date();
             const secondsRatio = currentDate.getSeconds() / 60;
             const minutesRatio = (secondsRatio + currentDate.getMinutes()) / 60;
@@ -26,5 +27,11 @@ export class Clock02Component implements OnInit {
             this.minuteHand =  minutesRatio * 360;
             this.hourHand =  hoursRatio * 360;
         }, 1000);
+    }
+
+    ngOnDestroy() {
+        if (this.interval) {
+            clearInterval(this.interval);
+        }
     }
 }

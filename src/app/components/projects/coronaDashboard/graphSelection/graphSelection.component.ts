@@ -1,7 +1,7 @@
 import { Component, OnInit, Output, Input, EventEmitter } from '@angular/core';
-import { DataModel } from '../world-situation/modals/datamodel';
+import { DataModel } from '../interfaces/datamodel';
 import { HttpService } from 'src/app/services/http.service';
-import { CovidCountries } from '../modals/covidCountries';
+import { CovidCountries } from '../interfaces/covidCountries';
 
 @Component({
     selector: 'app-graphSelection',

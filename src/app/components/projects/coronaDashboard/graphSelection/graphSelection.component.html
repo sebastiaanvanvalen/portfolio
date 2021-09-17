@@ -5,7 +5,7 @@
         <mat-form-field class="select" appearance="fill">
             <mat-label>Country</mat-label>
             <mat-select [(value)]="this.selectedCountry" (selectionChange)="setCountry($event.value)">
-                <mat-option>None</mat-option>
+                <mat-option value="world">None</mat-option>
                 <mat-option *ngFor="let country of covidCountries" [value]="country.Slug">{{ country.Slug }}
                 </mat-option>
 
@@ -16,7 +16,7 @@
             <!-- <img src="http://localhost/Sites/Baxxie-col" alt=""> -->
         </div>
 
-        <mat-form-field class="select" appearance="fill">
+        <mat-form-field *ngIf="this.dataModel.selectedCountry === 'world'" class="select" appearance="fill">
             <mat-label>Sort By: </mat-label>
             <select matNativeControl (change)="selectSortType($event.target.value)">
                 <!-- <option value=""></option> -->
@@ -27,7 +27,6 @@
         </mat-form-field>
     </div>
 
-
     <div id="graph-params">
         <div class="btn confirmed" [ngClass]="dataModel.dataParams[0].value === true ? 'checked' : 'unchecked'"
             (click)="processParam(dataModel.dataParams[0].param)">{{ dataModel.dataParams[0].name}}</div>
@@ -36,8 +35,5 @@
         <div class="btn deceased" [ngClass]="dataModel.dataParams[2].value === true ? 'checked' : 'unchecked'"
             (click)="processParam(dataModel.dataParams[2].param)">{{ dataModel.dataParams[2].name}}</div>
     </div>
-
-
-
 
 </div>

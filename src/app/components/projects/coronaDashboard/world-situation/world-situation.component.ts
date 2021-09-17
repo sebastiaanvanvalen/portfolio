@@ -2,7 +2,7 @@ import { Component, OnInit, Output, Input, EventEmitter } from '@angular/core';
 
 import * as d3 from 'd3';
 import { HttpService } from 'src/app/services/http.service';
-import { DataModel } from './modals/datamodel';
+import { DataModel } from '../interfaces/datamodel';
 import { BarChartService } from 'src/app/services/bar-chart.service';
 
 @Component({

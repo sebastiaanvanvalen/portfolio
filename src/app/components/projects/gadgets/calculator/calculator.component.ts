@@ -1,6 +1,7 @@
 import { Component, OnInit, HostListener } from '@angular/core';
-import { CalculatorService } from 'src/app/services/Calculator.service';
-import { Calculation } from 'src/app/components/projects/gadgets/calculator/modals/calculation';
+import { Calculation } from './interfaces/calculation';
+import { Calculator } from './classes/Calculator';
+import { ModalService } from 'src/app/services/modal.service';
 
 @Component({
     selector: 'app-calculator',
@@ -8,6 +9,7 @@ import { Calculation } from 'src/app/components/projects/gadgets/calculator/moda
     styleUrls: ['./calculator.component.scss'],
 })
 export class CalculatorComponent implements OnInit {
+    
     @HostListener('window:keyup', ['$event'])
     buttonEvent(event: KeyboardEvent) {
         this.pushButton(event.key);
@@ -19,12 +21,11 @@ export class CalculatorComponent implements OnInit {
         deepThought: false,
     };
 
-    constructor(private Calculator: CalculatorService) {}
+    constructor(private Calculator: Calculator, private ModalService:ModalService) {}
 
     ngOnInit(): void {}
 
     pushButton(btn) {
-        // console.log(btn)
         if (btn === '?' || btn === '') {
             return;
         }
@@ -32,11 +33,10 @@ export class CalculatorComponent implements OnInit {
         this.CalcData = this.Calculator.pushButton(btn);
 
         if (this.CalcData.deepThought === true) {
-            console.log('incomming answer from deepThought');
-            window.alert(
-                'the answer is 42, just as the answer to the question of Life, the Universe and Everything Else...'
-            );
-            // prompt modal with * wisdom
+            this.ModalService.setTitle("Deep Thought was inspirired by...")
+            this.ModalService.setBody(`“If I were a tree, I would have no reason to love a human.”
+            <br><span style="font-weight: bold;">― Maggie Stiefvater, The Raven Boys</span>`);
+            this.ModalService.createModal();
         }
     }
 }

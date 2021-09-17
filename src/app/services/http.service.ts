@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { MyBirdTableItem } from '../mat-components/my-bird-table/my-bird-table-datasource';
 import { HttpClient, HttpHeaders, HttpInterceptor } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
@@ -26,7 +25,6 @@ export class HttpService {
         
     constructor(private http: HttpClient) {}
 
-        
     makeGetRequest(url, headerId) {
         const headers = new HttpHeaders()
         .set('Content-Type', 'application/json')
@@ -37,9 +35,6 @@ export class HttpService {
             .get<any>(url, {headers})
             .pipe(retry(1), catchError(this.handleError));
     }
-
-
-
 
     makeGetAllRequest(url): Observable<any> {
         

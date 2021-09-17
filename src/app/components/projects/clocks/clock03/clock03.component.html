@@ -20,27 +20,27 @@
                 <div class="clock-wrapper">
 
                     <!-- <div class="clock-wrapper hour-wrapper flickr">14</div> -->
-                    <div class="clock-item hour-wrapper material">{{ hour }}</div>
+                    <div class="clock-item hour-wrapper material">{{ this.myClock.convertedHour }}</div>
                     <!-- <div class="clock-wrapper divider divider-1 flickr">:</div> -->
                     <div class="clock-item divider divider-1 material">:</div>
                     <!-- <div class="clock-wrapper minute-wrapper flickr">46</div> -->
-                    <div class="clock-item minute-wrapper material">{{ min }}</div>
+                    <div class="clock-item minute-wrapper material">{{ this.myClock.convertedMinute }}</div>
                     <!-- <div class="clock-wrapper divider divider-2 flickr">:</div> -->
                     <div class="clock-item divider divider-2 material">:</div>
                     <!-- <div class="clock-wrapper second-wrapper flickr">07</div> -->
-                    <div class="clock-item second-wrapper material">{{ sec }}</div>
+                    <div class="clock-item second-wrapper material">{{ this.myClock.convertedSecond }}</div>
                 </div>
             </div>
 
             <!-- <div class="date date-flickr"> -->
             <div class="date">
-                <div class="date-wrapper day-wrapper material">{{ day }}</div>
+                <div class="date-wrapper day-wrapper material">{{ this.myClock.dayName}}</div>
                 <div class="date-wrapper divider material">&nbsp;&nbsp;</div>
-                <div class="date-wrapper month01-wrapper material">{{ date }}</div>
+                <div class="date-wrapper month01-wrapper material">{{ this.myClock.convertedDay }}</div>
                 <div class="date-wrapper divider material">&nbsp;&nbsp;</div>
-                <div class="date-wrapper month02-wrapper material">{{ month }}</div>
+                <div class="date-wrapper month02-wrapper material">{{ this.myClock.monthName }}</div>
                 <div class="date-wrapper divider material">&nbsp;&nbsp;</div>
-                <div class="date-wrapper year-wrapper material">{{ year }}</div>
+                <div class="date-wrapper year-wrapper material">{{ this.myClock.year }}</div>
             </div>
 
         </div>

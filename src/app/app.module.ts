@@ -21,10 +21,8 @@ import { Clock03Component } from './components/projects/clocks/clock03/clock03.c
 import { CvComponent } from './components/cv/cv.component';
 import { AboutComponent } from './components/about/about.component';
 import { ContactComponent } from './components/contact/contact.component';
-import { MyformsComponent } from './components/projects/myforms/myforms.component';
 import { MemoryComponent } from './components/projects/memory/memory.component';
 import { SlotsComponent } from './components/projects/slots/slots.component';
-import { WheelsBelowComponent } from './components/projects/slots/wheels-below/wheels-below.component';
 import { ColorThemeComponent } from './components/color-theme/color-theme.component';
 import { GadgetsComponent } from './components/projects/gadgets/gadgets.component';
 import { CalculatorComponent } from './components/projects/gadgets/calculator/calculator.component';
@@ -36,15 +34,19 @@ import { MybirdsComponent } from './components/projects/mybirds/mybirds.componen
 import { MyBirdTableComponent } from './mat-components/my-bird-table/my-bird-table.component';
 
 // services
-import { ContactService } from './services/contact.service';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { ModalService } from './services/modal.service';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HttpService } from './services/http.service';
-
 import { BarChartService } from './services/bar-chart.service';
+
+// classes
+import { SlotsMachine } from './components/projects/slots/classes/SlotsMachine';
+import { Calculator } from './components/projects/gadgets/calculator/classes/Calculator';
+import { Clock } from './components/projects/clocks/classes/Clock';
+import { HappyBallsComponent } from './components/projects/gadgets/happyBalls/happyBalls.component';
 
 
 @NgModule({
@@ -63,7 +65,6 @@ import { BarChartService } from './services/bar-chart.service';
     MastermindComponent,
     MybirdsComponent,
     MyBirdTableComponent,
-    MyformsComponent,
     ColorThemeComponent,
     GadgetsComponent,
     CalculatorComponent,
@@ -72,8 +73,8 @@ import { BarChartService } from './services/bar-chart.service';
     WorldSituationComponent,
     GraphSelectionComponent,
     SlotsComponent,
-    WheelsBelowComponent,
-    MemoryComponent
+    MemoryComponent,
+    HappyBallsComponent
 
   ],
   imports: [
@@ -91,7 +92,7 @@ import { BarChartService } from './services/bar-chart.service';
     NgbModule,
     
   ],
-  providers: [ContactService, ModalService, HttpService, BarChartService],
+  providers: [Calculator, Clock, ModalService, HttpService, BarChartService, SlotsMachine],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

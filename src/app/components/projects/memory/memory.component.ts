@@ -1,6 +1,6 @@
 import { Component, OnInit, HostListener } from '@angular/core';
-import { MemoryAccount } from './modals/memoryAccount';
-import { MemoryThemes } from './modals/memoryTheme';
+import { MemoryAccount } from './interfaces/memoryAccount';
+import { MemoryThemes } from './interfaces/memoryTheme';
 import { Title } from '@angular/platform-browser';
 import { ModalService } from 'src/app/services/modal.service';
 
@@ -57,76 +57,76 @@ export class MemoryComponent implements OnInit {
         cards: [
             {
                 name: "2S",
-                src: '../assets/pictures/memoryThemes/theme2/2S.png'
+                src: 'assets/memorythemes/theme2/2S.png'
             },
             {
                 name: "4D",
-                src: '../assets/pictures/memoryThemes/theme2/4D.png'
+                src: 'assets/memorythemes/theme2/4D.png'
             },
             {
                 name: "5C",
-                src: '../assets/pictures/memoryThemes/theme2/5C.png'
+                src: 'assets/memorythemes/theme2/5C.png'
             },
             {
                 name: "7H",
-                src: '../assets/pictures/memoryThemes/theme2/7H.png'
+                src: 'assets/memorythemes/theme2/7H.png'
             },
             {
                 name: "8S",
-                src: '../assets/pictures/memoryThemes/theme2/8S.png'
+                src: 'assets/memorythemes/theme2/8S.png'
             },
             {
                 name: "10H",
-                src: '../assets/pictures/memoryThemes/theme2/10H.png'
+                src: 'assets/memorythemes/theme2/10H.png'
             },
             {
                 name: "JD",
-                src: '../assets/pictures/memoryThemes/theme2/JD.png'
+                src: 'assets/memorythemes/theme2/JD.png'
             },
             {
                 name: "KC",
-                src: '../assets/pictures/memoryThemes/theme2/KC.png'
+                src: 'assets/memorythemes/theme2/KC.png'
             },
         ],
-        cover: '../assets/pictures/memoryThemes/theme2/AS.png'
+        cover: 'assets/memorythemes/theme2/AS.png'
     },
     {
         name: "theme2",
         cards: [
             {
                 name: "alarm",
-                src: '../assets/pictures/memoryThemes/theme1/alarm.png'
+                src: 'assets/memorythemes/theme1/alarm.png'
             },
             {
                 name: "binoculars",
-                src: '../assets/pictures/memoryThemes/theme1/binoculars.png'
+                src: 'assets/memorythemes/theme1/binoculars.png'
             },
             {
                 name: "edit",
-                src: '../assets/pictures/memoryThemes/theme1/edit.png'
+                src: 'assets/memorythemes/theme1/edit.png'
             },
             {
                 name: "flag",
-                src: '../assets/pictures/memoryThemes/theme1/flag.png'
+                src: 'assets/memorythemes/theme1/flag.png'
             },
             {
                 name: "gift",
-                src: '../assets/pictures/memoryThemes/theme1/gift.png'
+                src: 'assets/memorythemes/theme1/gift.png'
             },
             {
                 name: "hourglass",
-                src: '../assets/pictures/memoryThemes/theme1/hourglass.png'
+                src: 'assets/memorythemes/theme1/hourglass.png'
             },
             {
                 name: "musicplayer",
-                src: '../assets/pictures/memoryThemes/theme1/musicplayer.png'
+                src: 'assets/memorythemes/theme1/musicplayer.png'
             },
             {
                 name: "umbrella",
-                src: '../assets/pictures/memoryThemes/theme1/umbrella.png'
+                src: 'assets/memorythemes/theme1/umbrella.png'
             }, 
         ],
-        cover: '../assets/pictures/memoryThemes/theme1/briefcase.png'
+        cover: 'assets/memorythemes/theme1/briefcase.png'
     }];
 
     constructor(private TitleService: Title, private ModalService: ModalService) {

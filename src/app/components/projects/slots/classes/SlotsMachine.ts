@@ -1,14 +1,8 @@
 import { Injectable, EventEmitter, Output } from '@angular/core';
-import { slotsAccount } from '../components/projects/slots/models/slotsAccount';
 
+import { slotsAccount } from '../interfaces/slotsAccount';
 
-@Injectable({
-    providedIn: 'root',
-})
-
-
-
-export class SlotsService {
+export class SlotsMachine {
     updateSlotsAccount: EventEmitter<slotsAccount> = new EventEmitter();
 
     slotsAccount: slotsAccount = {

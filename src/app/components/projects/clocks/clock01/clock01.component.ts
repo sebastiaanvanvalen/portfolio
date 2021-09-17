@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Clock } from '../classes/Clock';
+import { MyClock } from '../interfaces/MyClock';
 
 @Component({
     selector: 'app-clock01',
@@ -6,53 +8,47 @@ import { Component, OnInit } from '@angular/core';
     styleUrls: ['./clock01.component.scss'],
 })
 export class Clock01Component implements OnInit {
-    
+    myClock: MyClock;
     interval;
-    
-    constructor() {}
 
+    constructor(private Clock: Clock) {
+        this.myClock = this.Clock.getClock();
+    }
 
     ngOnInit(): void {
-        this.runClock();
+        this.setClock();
     }
+
     seconds(level) {
-        let clock = new Date();
         let unit;
-        let sec = clock.getSeconds();
-        let min = clock.getMinutes();
-        let hour = clock.getHours()
-        let node = document.getElementsByClassName(`${level} square active`)
-        
-        level === "second" ? unit = sec : level === "minute" ? unit = min : unit = hour
+        let node = document.getElementsByClassName(`${level} square active`);
+
+        level === 'second'
+            ? (unit = this.myClock.second)
+            : level === 'minute'
+            ? (unit = this.myClock.minute)
+            : (unit = this.myClock.hour);
         while (node[0]) {
-            node[0].classList.remove('active')
-          }
-        
-        document.querySelector(`#${level}-wrapper div:nth-child(${unit + 1})`).classList.add('active');
-
-        return `translateY(-${unit * 36}px)`
-    }
-
-    runClock() {
-        this.interval = setInterval(() => {
-            let clock = new Date();
-            
-            document.getElementById('year').innerText = `${this.convertNumber(clock.getFullYear())}`;
-            document.getElementById('month').innerText = `${this.convertNumber(clock.getMonth())}`;
-            document.getElementById('day').innerText = `${this.convertNumber(clock.getDate())}`;
-        }, 1000);
-    }
-
-    convertNumber(number) {
-        if (number <= 9) {
-            number = '0' + number;
+            node[0].classList.remove('active');
         }
-        return number;
+
+        document
+            .querySelector(`#${level}-wrapper div:nth-child(${unit + 1})`)
+            .classList.add('active');
+
+        return `translateY(-${unit * 36}px)`;
+    }
+
+    setClock() {
+        this.interval = setInterval(() => {
+            this.myClock = this.Clock.getClock();
+            
+        }, 1000);
     }
 
     ngOnDestroy() {
         if (this.interval) {
-          clearInterval(this.interval);
+            clearInterval(this.interval);
         }
-      }
+    }
 }

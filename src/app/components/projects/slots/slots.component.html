@@ -1,7 +1,313 @@
 <div class="slots-container">
 
+    <div class="lower-machine-container" id="lower-machine-container">
 
-    <app-wheels-below></app-wheels-below>
+        <div class="message-container">
+            <div class="info account">{{ slotsAccount.currency }}: {{ slotsAccount.currentAccount }}</div>
+            <div class="info win-message" id="win-message">
+                <div id="message"></div>
+            </div>
+        </div>
+    
+        <div class="score-reel-container">
+            <div class="score-container score-container-1">
+                <img id="diamonds" src="assets/slotsScores/diamonds.png" alt="">
+                <img id="melons" src="assets/slotsScores/melons.png" alt="">
+                <img id="grapes" src="assets/slotsScores/grapes.png" alt="">
+                <img id="bells" src="assets/slotsScores/bells.png" alt="">
+                <img id="plums" src="assets/slotsScores/plums.png" alt="">
+                <img id="plumBar" src="assets/slotsScores/plumBar.png" alt="">
+                <img id="peaches" src="assets/slotsScores/peaches.png" alt="">
+                <img id="peachBar" src="assets/slotsScores/peachBar.png" alt="">
+            </div>
+    
+            <div class="reels-container">
+                <div class="reel-cont reel-cont-1" id="reel-cont-1">
+                    <div class="reel" id="reel-1">
+                        <img id="0-0" src='assets/reelIcons/bell.png' alt="bell">
+                        <img id="0-1" src='assets/reelIcons/grapes.png' alt="grapes">
+                        <img id="0-2" src='assets/reelIcons/lemon.png' alt="lemon">
+                        <img id="0-3" src='assets/reelIcons/cherry.png' alt="cherry">
+                        <img id="0-4" src='assets/reelIcons/plum.png' alt="plum">
+                        <img id="0-5" src='assets/reelIcons/orange.png' alt="orange">
+                        <img id="0-6" src='assets/reelIcons/peach.png' alt="peach">
+                        <img id="0-7" src='assets/reelIcons/melon.png' alt="melon">
+                        <img id="0-8" src='assets/reelIcons/bell.png' alt="bell">
+                        <img id="0-9" src='assets/reelIcons/grapes.png' alt="grapes">
+                        <img id="0-10" src='assets/reelIcons/peach.png' alt="peach">
+                        <img id="0-11" src='assets/reelIcons/questionmark.png' alt="questionmark">
+                        <img id="0-12" src='assets/reelIcons/plum.png' alt="plum">
+                        <img id="0-13" src='assets/reelIcons/orange.png' alt="orange">
+                        <img id="0-14" src='assets/reelIcons/lemon.png' alt="lemon">
+                        <img id="0-15" src='assets/reelIcons/cherry.png' alt="cherry">
+                        <img id="0-16" src='assets/reelIcons/peach.png' alt="peach">
+                        <img id="0-17" src='assets/reelIcons/bell.png' alt="bell">
+                        <img id="0-18" src='assets/reelIcons/grapes.png' alt="grapes">
+                        <img id="0-19" src='assets/reelIcons/diamond.png' alt="diamond">
+                        <img id="0-20" src='assets/reelIcons/lemon.png' alt="lemon">
+                        <img id="0-21" src='assets/reelIcons/orange.png' alt="orange">
+                        <img id="0-23" src='assets/reelIcons/plum.png' alt="plum">
+                        <img id="0-23" src='assets/reelIcons/melon.png' alt="melon">
+                        <img id="0-24" src='assets/reelIcons/bell.png' alt="bell">
+                        <img id="0-25" src='assets/reelIcons/grapes.png' alt="grapes">
+                        <img id="0-26" src='assets/reelIcons/lemon.png' alt="lemon">
+                        <img id="0-27" src='assets/reelIcons/cherry.png' alt="cherry">
+                        <img id="0-28" src='assets/reelIcons/plum.png' alt="plum">
+                        <img id="0-29" src='assets/reelIcons/orange.png' alt="orange">
+                        <img id="0-30" src='assets/reelIcons/peach.png' alt="peach">
+                        <img id="0-31" src='assets/reelIcons/melon.png' alt="melon">
+                        <img id="0-32" src='assets/reelIcons/bell.png' alt="bell">
+                        <img id="0-33" src='assets/reelIcons/grapes.png' alt="grapes">
+                        <img id="0-34" src='assets/reelIcons/peach.png' alt="peach">
+                        <img id="0-35" src='assets/reelIcons/questionmark.png' alt="questionmark">
+                        <img id="0-36" src='assets/reelIcons/plum.png' alt="plum">
+                        <img id="0-37" src='assets/reelIcons/orange.png' alt="orange">
+                        <img id="0-38" src='assets/reelIcons/lemon.png' alt="lemon">
+                        <img id="0-39" src='assets/reelIcons/cherry.png' alt="cherry">
+                        <img id="0-40" src='assets/reelIcons/peach.png' alt="peach">
+                        <img id="0-41" src='assets/reelIcons/bell.png' alt="bell">
+                        <img id="0-42" src='assets/reelIcons/grapes.png' alt="grapes">
+                        <img id="0-43" src='assets/reelIcons/diamond.png' alt="diamond">
+                        <img id="0-44" src='assets/reelIcons/lemon.png' alt="lemon">
+                        <img id="0-45" src='assets/reelIcons/orange.png' alt="orange">
+                        <img id="0-46" src='assets/reelIcons/plum.png' alt="plum">
+                        <img id="0-47" src='assets/reelIcons/melon.png' alt="melon">
+                        <img id="0-48" src='assets/reelIcons/bell.png' alt="bell">
+                        <img id="0-49" src='assets/reelIcons/grapes.png' alt="grapes">
+                        <img id="0-50" src='assets/reelIcons/lemon.png' alt="lemon">
+                        <img id="0-51" src='assets/reelIcons/cherry.png' alt="cherry">
+                        <img id="0-52" src='assets/reelIcons/plum.png' alt="plum">
+                        <img id="0-53" src='assets/reelIcons/orange.png' alt="orange">
+                        <img id="0-54" src='assets/reelIcons/peach.png' alt="peach">
+                        <img id="0-55" src='assets/reelIcons/melon.png' alt="melon">
+                        <img id="0-56" src='assets/reelIcons/bell.png' alt="bell">
+                        <img id="0-57" src='assets/reelIcons/grapes.png' alt="grapes">
+                        <img id="0-58" src='assets/reelIcons/peach.png' alt="peach">
+                        <img id="0-59" src='assets/reelIcons/questionmark.png' alt="questionmark">
+                        <img id="0-60" src='assets/reelIcons/plum.png' alt="plum">
+                        <img id="0-61" src='assets/reelIcons/orange.png' alt="orange">
+                        <img id="0-62" src='assets/reelIcons/lemon.png' alt="lemon">
+                        <img id="0-63" src='assets/reelIcons/cherry.png' alt="cherry">
+                        <img id="0-64" src='assets/reelIcons/peach.png' alt="peach">
+                        <img id="0-65" src='assets/reelIcons/bell.png' alt="bell">
+                        <img id="0-66" src='assets/reelIcons/grapes.png' alt="grapes">
+                        <img id="0-67" src='assets/reelIcons/diamond.png' alt="diamond">
+                        <img id="0-68" src='assets/reelIcons/lemon.png' alt="lemon">
+                        <img id="0-69" src='assets/reelIcons/orange.png' alt="orange">
+                        <img id="0-70" src='assets/reelIcons/plum.png' alt="plum">
+                        <img id="0-71" src='assets/reelIcons/melon.png' alt="melon">
+                    </div>
+                </div>
+                <div class="reel-cont reel-cont-2" id="reel-cont-2">
+                    <div class="reel" id="reel-2">
+                        <img id="1-0" src='assets/reelIcons/lemon.png' alt="lemon">
+                        <img id="1-1" src='assets/reelIcons/cherry.png' alt="cherry">
+                        <img id="1-2" src='assets/reelIcons/grapes.png' alt="grapes">
+                        <img id="1-3" src='assets/reelIcons/questionmark.png' alt="questionmark">
+                        <img id="1-4" src='assets/reelIcons/lemon.png' alt="lemon">
+                        <img id="1-5" src='assets/reelIcons/cherry.png' alt="cherry">
+                        <img id="1-6" src='assets/reelIcons/bell.png' alt="bell">
+                        <img id="1-7" src='assets/reelIcons/orange.png' alt="orange">
+                        <img id="1-8" src='assets/reelIcons/peach.png' alt="peach">
+                        <img id="1-9" src='assets/reelIcons/cherry.png' alt="cherry">
+                        <img id="1-10" src='assets/reelIcons/plum.png' alt="plum">
+                        <img id="1-11" src='assets/reelIcons/melon.png' alt="melon">
+                        <img id="1-12" src='assets/reelIcons/peach.png' alt="peach">
+                        <img id="1-13" src='assets/reelIcons/cherry.png' alt="cherry">
+                        <img id="1-14" src='assets/reelIcons/orange.png' alt="orange">
+                        <img id="1-15" src='assets/reelIcons/diamond.png' alt="diamond">
+                        <img id="1-16" src='assets/reelIcons/lemon.png' alt="lemon">
+                        <img id="1-17" src='assets/reelIcons/cherry.png' alt="cherry">
+                        <img id="1-18" src='assets/reelIcons/orange.png' alt="orange">
+                        <img id="1-19" src='assets/reelIcons/plum.png' alt="plum">
+                        <img id="1-20" src='assets/reelIcons/peach.png' alt="peach">
+                        <img id="1-21" src='assets/reelIcons/cherry.png' alt="cherry">
+                        <img id="1-22" src='assets/reelIcons/bell.png' alt="bell">
+                        <img id="1-23" src='assets/reelIcons/plum.png' alt="plum">
+                        <img id="1-24" src='assets/reelIcons/lemon.png' alt="lemon">
+                        <img id="1-25" src='assets/reelIcons/cherry.png' alt="cherry">
+                        <img id="1-26" src='assets/reelIcons/grapes.png' alt="grapes">
+                        <img id="1-27" src='assets/reelIcons/questionmark.png' alt="questionmark">
+                        <img id="1-28" src='assets/reelIcons/lemon.png' alt="lemon">
+                        <img id="1-29" src='assets/reelIcons/cherry.png' alt="cherry">
+                        <img id="1-30" src='assets/reelIcons/bell.png' alt="bell">
+                        <img id="1-31" src='assets/reelIcons/orange.png' alt="orange">
+                        <img id="1-32" src='assets/reelIcons/peach.png' alt="peach">
+                        <img id="1-33" src='assets/reelIcons/cherry.png' alt="cherry">
+                        <img id="1-34" src='assets/reelIcons/plum.png' alt="plum">
+                        <img id="1-35" src='assets/reelIcons/melon.png' alt="melon">
+                        <img id="1-36" src='assets/reelIcons/peach.png' alt="peach">
+                        <img id="1-37" src='assets/reelIcons/cherry.png' alt="cherry">
+                        <img id="1-38" src='assets/reelIcons/orange.png' alt="orange">
+                        <img id="1-39" src='assets/reelIcons/diamond.png' alt="diamond">
+                        <img id="1-40" src='assets/reelIcons/lemon.png' alt="lemon">
+                        <img id="1-41" src='assets/reelIcons/cherry.png' alt="cherry">
+                        <img id="1-42" src='assets/reelIcons/orange.png' alt="orange">
+                        <img id="1-43" src='assets/reelIcons/plum.png' alt="plum">
+                        <img id="1-44" src='assets/reelIcons/peach.png' alt="peach">
+                        <img id="1-45" src='assets/reelIcons/cherry.png' alt="cherry">
+                        <img id="1-46" src='assets/reelIcons/bell.png' alt="bell">
+                        <img id="1-47" src='assets/reelIcons/plum.png' alt="plum">
+                        <img id="1-48" src='assets/reelIcons/lemon.png' alt="lemon">
+                        <img id="1-49" src='assets/reelIcons/cherry.png' alt="cherry">
+                        <img id="1-50" src='assets/reelIcons/grapes.png' alt="grapes">
+                        <img id="1-51" src='assets/reelIcons/questionmark.png' alt="questionmark">
+                        <img id="1-52" src='assets/reelIcons/lemon.png' alt="lemon">
+                        <img id="1-53" src='assets/reelIcons/cherry.png' alt="cherry">
+                        <img id="1-54" src='assets/reelIcons/bell.png' alt="bell">
+                        <img id="1-55" src='assets/reelIcons/orange.png' alt="orange">
+                        <img id="1-56" src='assets/reelIcons/peach.png' alt="peach">
+                        <img id="1-57" src='assets/reelIcons/cherry.png' alt="cherry">
+                        <img id="1-58" src='assets/reelIcons/plum.png' alt="plum">
+                        <img id="1-59" src='assets/reelIcons/melon.png' alt="melon">
+                        <img id="1-60" src='assets/reelIcons/peach.png' alt="peach">
+                        <img id="1-61" src='assets/reelIcons/cherry.png' alt="cherry">
+                        <img id="1-62" src='assets/reelIcons/orange.png' alt="orange">
+                        <img id="1-63" src='assets/reelIcons/diamond.png' alt="diamond">
+                        <img id="1-64" src='assets/reelIcons/lemon.png' alt="lemon">
+                        <img id="1-65" src='assets/reelIcons/cherry.png' alt="cherry">
+                        <img id="1-66" src='assets/reelIcons/orange.png' alt="orange">
+                        <img id="1-67" src='assets/reelIcons/plum.png' alt="plum">
+                        <img id="1-68" src='assets/reelIcons/peach.png' alt="peach">
+                        <img id="1-69" src='assets/reelIcons/cherry.png' alt="cherry">
+                        <img id="1-70" src='assets/reelIcons/bell.png' alt="bell">
+                        <img id="1-71" src='assets/reelIcons/plum.png' alt="plum">
+                    </div>
+                </div>
+                <div class="reel-cont reel-cont-3" id="reel-cont-3">
+                    <div class="reel" id="reel-3">
+                        <img id="2-0" src='assets/reelIcons/peach.png' alt="peach">
+                        <img id="2-1" src='assets/reelIcons/cherry.png' alt="cherry">
+                        <img id="2-2" src='assets/reelIcons/grapes.png' alt="grapes">
+                        <img id="2-3" src='assets/reelIcons/melon.png' alt="melon">
+                        <img id="2-4" src='assets/reelIcons/bar.png' alt="bar">
+                        <img id="2-5" src='assets/reelIcons/diamond.png' alt="diamond">
+                        <img id="2-6" src='assets/reelIcons/lemon.png' alt="lemon">
+                        <img id="2-7" src='assets/reelIcons/cherry.png' alt="cherry">
+                        <img id="2-8" src='assets/reelIcons/peach.png' alt="peach">
+                        <img id="2-9" src='assets/reelIcons/orange.png' alt="orange">
+                        <img id="2-10" src='assets/reelIcons/plum.png' alt="plum">
+                        <img id="2-11" src='assets/reelIcons/cherry.png' alt="cherry">
+                        <img id="2-12" src='assets/reelIcons/bell.png' alt="bell">
+                        <img id="2-13" src='assets/reelIcons/orange.png' alt="orange">
+                        <img id="2-14" src='assets/reelIcons/lemon.png' alt="lemon">
+                        <img id="2-15" src='assets/reelIcons/cherry.png' alt="cherry">
+                        <img id="2-16" src='assets/reelIcons/plum.png' alt="plum">
+                        <img id="2-17" src='assets/reelIcons/questionmark.png' alt="questionmark">
+                        <img id="2-18" src='assets/reelIcons/bell.png' alt="bell">
+                        <img id="2-19" src='assets/reelIcons/cherry.png' alt="cherry">
+                        <img id="2-20" src='assets/reelIcons/lemon.png' alt="lemon">
+                        <img id="2-21" src='assets/reelIcons/orange.png' alt="orange">
+                        <img id="2-22" src='assets/reelIcons/grapes.png' alt="grapes">
+                        <img id="2-23" src='assets/reelIcons/cherry.png' alt="cherry">
+                        <img id="2-24" src='assets/reelIcons/peach.png' alt="peach">
+                        <img id="2-25" src='assets/reelIcons/cherry.png' alt="cherry">
+                        <img id="2-26" src='assets/reelIcons/grapes.png' alt="grapes">
+                        <img id="2-27" src='assets/reelIcons/melon.png' alt="melon">
+                        <img id="2-28" src='assets/reelIcons/bar.png' alt="bar">
+                        <img id="2-29" src='assets/reelIcons/diamond.png' alt="diamond">
+                        <img id="2-30" src='assets/reelIcons/lemon.png' alt="lemon">
+                        <img id="2-31" src='assets/reelIcons/cherry.png' alt="cherry">
+                        <img id="2-32" src='assets/reelIcons/peach.png' alt="peach">
+                        <img id="2-33" src='assets/reelIcons/orange.png' alt="orange">
+                        <img id="2-34" src='assets/reelIcons/plum.png' alt="plum">
+                        <img id="2-35" src='assets/reelIcons/cherry.png' alt="cherry">
+                        <img id="2-36" src='assets/reelIcons/bell.png' alt="bell">
+                        <img id="2-37" src='assets/reelIcons/orange.png' alt="orange">
+                        <img id="2-38" src='assets/reelIcons/lemon.png' alt="lemon">
+                        <img id="2-39" src='assets/reelIcons/cherry.png' alt="cherry">
+                        <img id="2-40" src='assets/reelIcons/plum.png' alt="plum">
+                        <img id="2-41" src='assets/reelIcons/questionmark.png' alt="questionmark">
+                        <img id="2-42" src='assets/reelIcons/bell.png' alt="bell">
+                        <img id="2-43" src='assets/reelIcons/cherry.png' alt="cherry">
+                        <img id="2-44" src='assets/reelIcons/lemon.png' alt="lemon">
+                        <img id="2-45" src='assets/reelIcons/orange.png' alt="orange">
+                        <img id="2-46" src='assets/reelIcons/grapes.png' alt="grapes">
+                        <img id="2-47" src='assets/reelIcons/cherry.png' alt="cherry">
+                        <img id="2-48" src='assets/reelIcons/peach.png' alt="peach">
+                        <img id="2-49" src='assets/reelIcons/cherry.png' alt="cherry">
+                        <img id="2-50" src='assets/reelIcons/grapes.png' alt="grapes">
+                        <img id="2-51" src='assets/reelIcons/melon.png' alt="melon">
+                        <img id="2-52" src='assets/reelIcons/bar.png' alt="bar">
+                        <img id="2-53" src='assets/reelIcons/diamond.png' alt="diamond">
+                        <img id="2-54" src='assets/reelIcons/lemon.png' alt="lemon">
+                        <img id="2-55" src='assets/reelIcons/cherry.png' alt="cherry">
+                        <img id="2-56" src='assets/reelIcons/peach.png' alt="peach">
+                        <img id="2-57" src='assets/reelIcons/orange.png' alt="orange">
+                        <img id="2-58" src='assets/reelIcons/plum.png' alt="plum">
+                        <img id="2-59" src='assets/reelIcons/cherry.png' alt="cherry">
+                        <img id="2-60" src='assets/reelIcons/bell.png' alt="bell">
+                        <img id="2-61" src='assets/reelIcons/orange.png' alt="orange">
+                        <img id="2-62" src='assets/reelIcons/lemon.png' alt="lemon">
+                        <img id="2-63" src='assets/reelIcons/cherry.png' alt="cherry">
+                        <img id="2-64" src='assets/reelIcons/plum.png' alt="plum">
+                        <img id="2-65" src='assets/reelIcons/questionmark.png' alt="questionmark">
+                        <img id="2-66" src='assets/reelIcons/bell.png' alt="bell">
+                        <img id="2-67" src='assets/reelIcons/cherry.png' alt="cherry">
+                        <img id="2-68" src='assets/reelIcons/lemon.png' alt="lemon">
+                        <img id="2-69" src='assets/reelIcons/orange.png' alt="orange">
+                        <img id="2-70" src='assets/reelIcons/grapes.png' alt="grapes">
+                        <img id="2-71" src='assets/reelIcons/cherry.png' alt="cherry">
+                    </div>
+                </div>
+            </div>
+    
+            <div class="score-container score-container-2">
+                <img id="oranges" src="assets/slotsScores/oranges.png" alt="">
+                <img id="orangeBar" src="assets/slotsScores/orangeBar.png" alt="">
+                <img id="lemons" src="assets/slotsScores/lemons.png" alt="">
+                <img id="lemonBar" src="assets/slotsScores/lemonBar.png" alt="">
+                <img id="cherries" src="assets/slotsScores/cherries.png" alt="">
+                <img id="cherryBar" src="assets/slotsScores/cherryBar.png" alt="">
+                <img id="twoCherries" src="assets/slotsScores/twoCherries.png" alt="">
+                <img id="oneCherry" src="assets/slotsScores/oneCherry.png" alt="">
+            </div>
+    
+            <div class="message-board" id="message-board">
+                <div class="brand-container"></div>
+                <div class="question-prize" id="question-prize"></div>
+                <div class="questionmark-container">
+                    <div class="grid-container">
+                        <div class="qRow qRow-1">
+                            <img id="q0" src="assets/slotsScores/questionMark.png" alt="">
+                            <img id="q1" src="assets/slotsScores/questionMark.png" alt="">
+                            <img id="q2" src="assets/slotsScores/questionMark.png" alt="">
+                        </div>
+                        <div class="qRow qRow-2">
+                            <img id="q3" src="assets/slotsScores/questionMark.png" alt="">
+                            <img id="q4" src="assets/slotsScores/questionMark.png" alt="">
+                            <img id="q5" src="assets/slotsScores/questionMark.png" alt="">
+                        </div>
+                        <div class="qRow qRow-3">
+                            <img id="q6" src="assets/slotsScores/questionMark.png" alt="">
+                            <img id="q7" src="assets/slotsScores/questionMark.png" alt="">
+                            <img id="q8" src="assets/slotsScores/questionMark.png" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <div class="button-container">
+            <button class="btn cancel" (click)="cancel()">CANCEL</button>
+            <button class="btn hold btn-1" [ngClass]="slotsAccount.holdedReels[0] === false ? 'noHold' : 'onHold'" (click)="holdReel(0)">HOLD</button>
+            <button class="btn hold btn-2" [ngClass]="slotsAccount.holdedReels[1] === false ? 'noHold' : 'onHold'" (click)="holdReel(1)">HOLD</button>
+            <button class="btn hold btn-3" [ngClass]="slotsAccount.holdedReels[2] === false ? 'noHold' : 'onHold'" (click)="holdReel(2)">HOLD</button>
+            <button class="btn coin head" id="heads" (click)="gamble('heads')">HEADS</button>
+            <button class="btn coin tail" id="tails" (click)="gamble('tails')">TAILS</button>
+            <button class="btn play" (click)="play()">PLAY</button>
+        </div>
+        
+        <div class="button-container-2">
+            <button class="btn btn-sm portfolio-button" (click)="showModal('slots')">slots</button>
+            <button class="btn btn-sm portfolio-button" (click)="showModal('styling')">styling</button>
+            <button class="btn btn-sm portfolio-button" (click)="showModal('reels')">the reels</button>
+            <button class="btn btn-sm portfolio-button" (click)="showModal('rebuilding')">rebuilding</button>
+        </div>
+    
+    </div>
+    
+    
 
 
 </div>
