@@ -374,7 +374,7 @@ export class HappyBallsComponent implements OnInit {
                     }
                 }
             }
-            this.canvasObject.balls.push(new Ball(x, y, this.canvasObject.radius, color, this.canvasObject.collide, this.canvasObject.coloring));
+            this.canvasObject.balls.push(new Ball(x, y, this.canvasObject.radius, color, this.canvasObject.collide, this.canvasObject.coloring, this.canvasObject.style));
         }
     }
 

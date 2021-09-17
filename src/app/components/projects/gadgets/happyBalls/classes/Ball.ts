@@ -6,7 +6,7 @@ export class Ball {
     mass = 1;
     opacity = 0;
 
-    constructor(private x, private y, private radius, private color, private collide, private coloring) {}
+    constructor(private x, private y, private radius, private color, private collide, private coloring, private style) {}
 
     update = (c, mouseX, mouseY, balls, width, height) => {
         this.draw(c);
@@ -42,7 +42,7 @@ export class Ball {
     }
 
     runInterval = setInterval(() => {
-        if(this.coloring === true) {
+        if(this.style === "happy") {
             this.coloring = !this.coloring;
         }
     }, 4000)
