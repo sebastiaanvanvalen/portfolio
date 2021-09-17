@@ -42,7 +42,7 @@ export class Ball {
     }
 
     runInterval = setInterval(() => {
-        if(this.style === "happy") {
+        if(this.style !== "happy") {
             this.coloring = !this.coloring;
         }
     }, 4000)
