@@ -1,0 +1,13 @@
+<div class="canvas-container">
+    <div class="button-container">
+        <button class="btn btn-1" [ngClass]="{active : canvasObject.style === 'small'}" (click)="changeStyle('small')">Small</button>
+        <button class="btn btn-1"[ngClass]="{'active' : canvasObject.style === 'large'}" (click)="changeStyle('large')">Large</button>
+        <button class="btn btn-3"  [ngClass]="{'active' : canvasObject.style === 'happy'}"(click)="changeStyle('happy')">happy</button>
+        <button class="btn btn-2" *ngIf="this.canvasObject.style !== 'happy'" [ngClass]="{'active' : canvasObject.collide === false}" (click)="changeStyle('nobounce')">Toggle Bounce</button>
+    </div>
+    <div id="canvas-wrapper">
+        <canvas #canvas id="canvas"></canvas>
+    </div>
+    <!-- <canvas #canvas height="400" width='400' id="canvas"></canvas> -->
+</div>
+

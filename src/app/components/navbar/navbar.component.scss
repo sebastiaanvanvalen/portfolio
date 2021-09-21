@@ -135,7 +135,7 @@
                     // above page/content but below navbar
                     z-index: 5;
                     position: absolute;
-                    height: 230px;
+                    height: 100px;
                     width: 100%;
                     text-align: left;
                     top: 56px;
@@ -155,7 +155,7 @@
                     
                     a.dropdown-item {
                         z-index: 5;
-                        height: 11.5%;
+                        height: 33%;
                         color: white;
 
                         &:hover {

@@ -1,0 +1,70 @@
+.games-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    width: 100vw;
+    height: auto;
+    min-height: 100vh;
+    padding: 76px 0 0 ;
+    margin: 0 auto;
+    background-color: var(--backgroundColor1);
+
+
+    .game {
+        box-shadow: 0 0 6px 1px var(--global-primary);
+        height: 200px;
+        width: 250px;
+        margin: 0 12px;
+
+        .title-container {
+            height: 15%;
+            background-color: var(--global-primary);
+            color: white;
+            padding: 6px;
+            font-size: 18px;
+            text-align: center;
+            // border-bottom: 3px solid white;
+        }
+        
+        .picture-container {
+            cursor: grab;
+            height: 70%;
+            width: 100%;
+        }
+        
+        .button-container {
+            cursor: pointer;
+            height: 15%;
+            background-color: var(--global-primary);
+            color: white;
+            padding: 6px;
+            font-size: 18px;
+            text-align: center;
+        }
+    }
+
+    .mastermind-container {
+        .picture-container {
+            background: url('/assets/linkimages/games/mastermindLinkPic.jpg') no-repeat center;
+            background-size: cover;
+        }
+    }
+    .rps-container {
+        .picture-container {
+            background: url('/assets/linkimages/games/rpsLinkPic.jpg') no-repeat center;
+            background-size: contain;
+        }
+    }
+    .slots-container {
+        .picture-container {
+            background: url('/assets/linkimages/games/slotsLinkPic.jpg') no-repeat center;
+            background-size: contain;
+        }
+    }
+    .memory-container {
+        .picture-container {
+            background: url('/assets/linkimages/games/memoryLinkPic.jpg') no-repeat center;
+            background-size: contain;
+        }
+    }
+}

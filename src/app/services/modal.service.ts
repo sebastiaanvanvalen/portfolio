@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { MyModal } from '../models/my-modal';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { MyModalTemplateComponent } from '../mat-components/my-modal-template/my-modal-template.component';
 

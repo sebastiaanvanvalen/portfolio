@@ -1,5 +1,5 @@
 import { Injectable, Output, EventEmitter } from '@angular/core';
-import { DataModel } from '../components/projects/coronaDashboard/interfaces/datamodel';
+import { DataModel } from '../components/portfolio/gadgets/coronaDashboard/interfaces/datamodel';
 import * as d3 from 'd3';
 import { HttpService } from './http.service';
 

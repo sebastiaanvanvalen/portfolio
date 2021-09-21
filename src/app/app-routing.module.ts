@@ -1,33 +1,41 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { MainPageComponent } from './components/main-page/main-page.component';
-import { ContactComponent } from './components/contact/contact.component';
-import { RpsComponent } from './components/projects/rps/rps.component';
-import { ClocksComponent } from './components/projects/clocks/clocks.component';
-import { CvComponent } from './components/cv/cv.component';
 import { AboutComponent } from './components/about/about.component';
-import { MastermindComponent } from './components/projects/mastermind/mastermind.component';
-import { MybirdsComponent } from './components/projects/mybirds/mybirds.component';
-import { GadgetsComponent } from './components/projects/gadgets/gadgets.component';
-import { CoronaDashboardComponent } from './components/projects/coronaDashboard/coronaDashboard.component';
-import { SlotsComponent } from './components/projects/slots/slots.component';
-import { MemoryComponent } from './components/projects/memory/memory.component';
-import { HappyBallsComponent } from './components/projects/gadgets/happyBalls/happyBalls.component';
+
+import { MybirdsComponent } from './components/portfolio/mybirds/mybirds.component';
+import { ClocksComponent } from './components/portfolio/gadgets/clocks/clocks.component';
+
+import { GamesComponent } from './components/portfolio/games/games.component';
+import { MastermindComponent } from './components/portfolio/games/mastermind/mastermind.component';
+import { MemoryComponent } from './components/portfolio/games/memory/memory.component';
+import { SlotsComponent } from './components/portfolio/games/slots/slots.component';
+import { RpsComponent } from './components/portfolio/games/rps/rps.component';
+
+import { CoronaDashboardComponent } from './components/portfolio/gadgets/coronaDashboard/coronaDashboard.component';
+import { GadgetsComponent } from './components/portfolio/gadgets/gadgets.component';
+import { HappyBallsComponent } from './components/portfolio/gadgets/happyBalls/happyBalls.component';
+
+import { CvComponent } from './components/cv/cv.component';
+import { ContactComponent } from './components/contact/contact.component';
+import { CalculatorComponent } from './components/portfolio/gadgets/calculator/calculator.component';
 
 const routes: Routes = [
     { path: '', component: MainPageComponent },
-    { path: 'rps', component: RpsComponent },
-    { path: 'clocks', component: ClocksComponent },
-    { path: 'slots', component: SlotsComponent },
-    { path: 'cv', component: CvComponent },
     { path: 'about', component: AboutComponent },
-    { path: 'contact', component: ContactComponent },
-    { path: 'mastermind', component: MastermindComponent },
     { path: 'mybirds', component: MybirdsComponent },
+    { path: 'games', component: GamesComponent},
+    { path: 'mastermind', component: MastermindComponent },
+    { path: 'rps', component: RpsComponent },
+    { path: 'slots', component: SlotsComponent },
+    { path: 'clocks', component: ClocksComponent },
     { path: 'gadgets', component: GadgetsComponent},
     { path: 'coronaDashboard', component: CoronaDashboardComponent},
     { path: 'memory', component: MemoryComponent},
     { path: 'happyBalls', component: HappyBallsComponent},
+    { path: 'calculator', component: CalculatorComponent},
+    { path: 'contact', component: ContactComponent },
+    { path: 'cv', component: CvComponent },
 ];
 
 @NgModule({
