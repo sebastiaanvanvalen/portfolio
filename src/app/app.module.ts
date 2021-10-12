@@ -6,7 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ClickOutsideModule } from 'ng-click-outside';
-import { MaterialModule } from './modules/material/material.module';
+import { MaterialModule } from './modules/material.module';
 
 // components
 import { AppComponent } from './app.component';
@@ -47,6 +47,16 @@ import { Calculator } from './components/portfolio/gadgets/calculator/classes/Ca
 import { Clock } from './components/portfolio/gadgets/clocks/classes/Clock';
 import { HappyBallsComponent } from './components/portfolio/gadgets/happyBalls/happyBalls.component';
 import { GamesComponent } from './components/portfolio/games/games.component';
+import { GameBoardComponent } from './components/portfolio/games/doodlesMultiPlayer/gameBoard/gameBoard.component';
+import { PlayerComponent } from './components/portfolio/games/doodlesMultiPlayer/player/player.component';
+import { DiceBoardComponent } from './components/portfolio/games/doodlesMultiPlayer/diceBoard/diceBoard.component';
+import { TableTilesComponent } from './components/portfolio/games/doodlesMultiPlayer/tableTiles/tableTiles.component';
+import { TileComponent } from './components/portfolio/games/doodlesMultiPlayer/Tile/Tile.component';
+import { DieComponent } from './components/portfolio/games/doodlesMultiPlayer/die/die.component';
+import { DoodleLobbyComponent } from './components/portfolio/games/doodlesMultiPlayer/doodleLobby/doodleLobby.component';
+import { DoodlesMultiPlayerComponent } from './components/portfolio/games/doodlesMultiPlayer/doodlesMultiPlayer.component';
+import { SocketService } from './services/socket.service';
+import { SocketIoService } from './services/socketio.service';
 
 
 @NgModule({
@@ -75,6 +85,14 @@ import { GamesComponent } from './components/portfolio/games/games.component';
     MemoryComponent,
     HappyBallsComponent,
     GamesComponent,
+    DoodlesMultiPlayerComponent,
+    DoodleLobbyComponent,
+    GameBoardComponent,
+    PlayerComponent,
+    DiceBoardComponent,
+    TableTilesComponent,
+    TileComponent,
+    DieComponent,
 
   ],
   imports: [
@@ -92,7 +110,7 @@ import { GamesComponent } from './components/portfolio/games/games.component';
     NgbModule,
     
   ],
-  providers: [Calculator, Clock, ModalService, HttpService, BarChartService, SlotsMachine],
+  providers: [Calculator, Clock, ModalService, HttpService, BarChartService, SlotsMachine, SocketService, SocketIoService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

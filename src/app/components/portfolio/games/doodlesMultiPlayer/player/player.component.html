@@ -1,0 +1,19 @@
+<div class="player-container cont">
+    <div class="image-container" [ngClass]="this.user.userIndex === 0 ? 'comp' : 'user'"></div>
+    <div class="cont tile-container">
+        {{this.user.userName}}'s tiles:
+        <div class="tiles">
+            <app-Tile class="app-tile" [ngStyle]="{'left': i * 20 + 'px'}" *ngFor="let tile of this.Game.players[this.user.userIndex].playersTiles; let i = index" :key="tile.id" [tile]="tile" [user]="user" [Game]="Game"></app-Tile>
+        </div>
+    </div>
+    
+    <div class="cont info-container"></div>
+    
+    <div class="cont score-container">
+        diceScore: {{ this.Game.players[this.user.userIndex].fixedDiceScore || 0 }}<br>
+        <div class="playing-message" *ngIf="this.Game.players[this.user.userIndex].playing === true">
+            <span class="playing" >Playing </span><span class="dot dot-one">. </span><span class="dot dot-two">. </span><span class="dot dot-three">.</span>
+        </div>        
+    </div>
+
+</div>

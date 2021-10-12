@@ -1,0 +1,90 @@
+.tile {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Permanent Marker', cursive;
+    justify-content: space-between;
+    text-align: center;
+    font-weight: bold;
+    font-size: 18px;
+    color: black;
+    height: 80px;
+    width: 50px;
+    padding: 4px;
+    margin: 3px;
+    border-radius: 5px;
+    background-color: rgb(252, 248, 248);
+    background-image: linear-gradient(
+        hsla(0, 0%, 100%, 0.6), hsla(0, 3%, 86%, 0.3) 50%,
+        hsla(0, 3%, 86%, 0.3) 50%, hsla(0, 0%, 100%, 0.2)
+    );
+    box-shadow:
+        inset 0 -5px 3px hsla(0, 0%, 0%, 0.4),
+        inset 0 5px 3px hsla(0, 0%, 100%, 0.4),
+        -8px 8px 5px hsla(0, 0%, 0%, 0.15),
+        5px 18px 3px hsla(0, 0%, 0%, 0.2);
+
+    cursor: pointer;
+    transition: transform 0.1s, box-shadow 0.1s;
+
+    p {
+        margin: 0;
+        border-bottom: 4px solid black;
+    }
+
+    &:hover {
+        transform: scale(1.4);
+        z-index: 100;
+        background-color: rgb(255, 255, 255);
+        box-shadow:
+            inset 0 -5px 3px hsla(0, 0%, 49%, 0.4),
+            inset 0 5px 3px hsla(0, 0%, 100%, 0.212),
+                        -8px 8px 5px hsla(0, 0%, 0%, 0.15),
+        5px 18px 3px hsla(0, 0%, 0%, 0.2);
+    }
+}
+
+.tile:before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0%;
+    left: 0;
+    width: 100%;
+    height: 99%;
+    border-radius: 5px;
+    background: linear-gradient(
+    hsla(0, 0%, 100%, 0.185), hsla(0, 0%, 100%, 0.199) );
+}
+
+.player-tile {
+    position: absolute;
+
+    &:hover {
+        transform: scale(1.2);
+        top: -20px;
+    }
+}
+
+.back {
+    border-radius: 5px;
+    background-color: rgba(228, 228, 222, 0.918);
+    margin: 4px;
+    height: 80px;
+    width: 50px;
+    box-shadow:
+        inset 0 -5px 3px hsla(0, 0%, 49%, 0.4),
+        inset 0 5px 3px hsla(0, 0%, 100%, 0.212),
+            -3px 4px 5px hsla(0, 0%, 0%, 0.15),
+            2px 6px 3px hsla(0, 0%, 0%, 0.2);
+}
+@media screen and(max-width: 745px) {
+    .tile {
+        height: 70px;
+        width: 40px;
+    }
+    .back {
+        height: 70px;
+        width: 40px;
+    }
+}

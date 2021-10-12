@@ -1,0 +1,19 @@
+<div class="tile-container" (click)="this.pickTile()">
+    <div *ngIf="tile.active === false && tile.owner === 'table'" class="back"></div>
+
+    <div *ngIf="tile.active === true && tile.owner === 'table'" class="tile" [ngClass]="tile.owner === 'table' ? 'table-tile' : 'player-tile'">
+        <p>{{tile.value}}</p>
+        <img *ngIf="tile.doodleValue === 1" src="assets/doodles/doodle1.png" :key="this.tile.id" alt="d1" />
+        <img *ngIf="tile.doodleValue === 2" src="assets/doodles/doodle2.png" :key="this.tile.id" alt="d2" />
+        <img *ngIf="tile.doodleValue === 3" src="assets/doodles/doodle3.png" :key="this.tile.id" alt="d3" />
+        <img *ngIf="tile.doodleValue === 4" src="assets/doodles/doodle4.png" :key="this.tile.id" alt="d4" />
+    
+    </div>
+    <div *ngIf="tile.owner !=='table'" class="tile player-tile">
+        <p>{{tile.value}}</p>
+        <img *ngIf="tile.doodleValue === 1" src="assets/doodles/doodle1.png" :key="this.tile.id" alt="d1" />
+        <img *ngIf="tile.doodleValue === 2" src="assets/doodles/doodle2.png" :key="this.tile.id" alt="d2" />
+        <img *ngIf="tile.doodleValue === 3" src="assets/doodles/doodle3.png" :key="this.tile.id" alt="d3" />
+        <img *ngIf="tile.doodleValue === 4" src="assets/doodles/doodle4.png" :key="this.tile.id" alt="d4" />
+    </div>
+</div>

@@ -1,0 +1,46 @@
+.regenwormen-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    width: 100vw;
+    // height: auto;
+    height: calc(100vh- 56px);
+    padding: 56px 0 0;
+    margin: 0 auto;
+    background-color: var(--backgroundColor1);
+
+    header {
+        display: flex;
+        justify-content: left;
+        align-items: center;
+        width: 100%;
+        height: 60px;
+        background-color: #BBB;
+    
+        button {
+            width: 100px;
+            height: 40px;
+            background-color: green;
+            border: none;
+            cursor: pointer;
+            color: white;
+            font-size: 14px;
+            padding: 8px;
+            margin: 0 8px;
+        }
+    
+        .score-container {
+            display: flex;
+            width: 100%;
+            justify-content: space-between;
+            margin: 0 24px;
+    
+            .score {
+                color: white;
+                background-color: #666;
+                padding: 4px;
+                border-radius: 4px;
+            }
+        }
+    }
+}

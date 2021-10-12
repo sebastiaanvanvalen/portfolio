@@ -1,0 +1,10 @@
+<div class="game-board-container">
+    <div class="board-container">
+        <app-player class="app-player" [lonelyGame]="lonelyGame" [id]="0"></app-player>
+        <app-tableTiles [lonelyGame]="lonelyGame"></app-tableTiles>
+        <app-player class="app-player" [lonelyGame]="lonelyGame" [id]="1"></app-player>
+    </div>
+    <div class="dice-container">
+        <app-diceBoard [lonelyGame]="lonelyGame"></app-diceBoard>
+    </div>
+</div>

@@ -1,0 +1,272 @@
+.player-container {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    max-width: 100%;
+    padding: 12px;
+    border: 2px solid green;
+    border-radius: 5px;
+    background-color: rgb(134, 185, 219);
+    min-height: 100%;
+    
+    .image-container {
+        position: absolute;
+        left:0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        background-size: cover;
+        opacity: .3;
+    }
+    
+    .comp {
+        background: center url('/assets/doodles/doodleparty2.png');
+    }
+    
+    .user {
+        background: center url('/assets/doodles/doodleparty1.png');
+    }
+        
+    .cont {
+        z-index: 1;
+        width: 70%;
+    }
+    .tile-container {
+        font-family: "Permanent Marker", cursive;
+        font-size: 18px;
+        color: white;
+        .tiles {
+            position: relative;
+
+            .app-tile {
+                position: absolute;
+            }
+        }
+    }
+
+    .info-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        font-family: "Permanent Marker", cursive;
+        font-size: 18px;
+        color: white;
+    }
+
+    .score-container {
+        flex-direction: column;
+        justify-content: space-between;
+        font-family: "Permanent Marker", cursive;
+        font-size: 18px;
+        color: white;
+        
+        .playing-message {
+
+            
+            .playing{
+                font-size: 16px;
+                animation: playing 10s infinite;
+                
+            }
+
+            .dot {
+                display: inline-block;
+                margin: 0 2px;
+            }
+            
+            .dot-one {
+                animation: dot-one 10s infinite;
+            }
+            .dot-two {
+                visibility: visible;
+                animation: dot-two 10s infinite;
+            }
+            .dot-three {
+                visibility: visible;
+                animation: dot-three 10s infinite;
+            }
+        }
+    }
+
+    .button {
+        z-index: 1;
+        align-self: center;
+    }
+}
+
+@keyframes playing{
+    0% {
+        font-size: 16px;
+        color: white;
+    }
+    2% {
+        font-size: 22px;
+        color: yellow;
+    }
+    4% {
+        font-size: 16px;
+        color: white;
+    }
+    6% {
+        font-size: 22px;
+        color: rgb(167, 37, 37);
+    }
+    8% {
+        font-size: 16px;
+        
+        color: white;
+    }
+    10% {
+        font-size: 22px;
+        color: yellow;
+    }
+    12% {
+        font-size: 16px;
+        color: white;
+    }
+}
+
+@keyframes dot-one{
+    12% {
+        transform: translateY(0);
+    }
+    13% {
+        transform: translateY(-5px);
+    }
+    14% {
+        transform: translateY(0);
+    }
+    32% {
+        transform: translateY(0);
+    }
+    33% {
+        transform: translateY(-5px);
+    }
+    34% {
+        transform: translateY(0);
+    }
+    52% {
+        transform: translateY(0);
+    }
+    53% {
+        transform: translateY(-5px);
+    }
+    54% {
+        transform: translateY(0);
+    }
+    72% {
+        transform: translateY(0);
+    }
+    73% {
+        transform: translateY(-5px);
+    }
+    74% {
+        transform: translateY(0);
+    }
+    92% {
+        transform: translateY(0);
+    }
+    93% {
+        transform: translateY(-5px);
+    }
+    94% {
+        transform: translateY(0);
+    }
+
+}
+
+@keyframes dot-two{
+    13% {
+        transform: translateY(0);
+    }
+    14% {
+        transform: translateY(-5px);
+    }
+    15% {
+        transform: translateY(0);
+    }
+    33% {
+        transform: translateY(0);
+    }
+    34% {
+        transform: translateY(-5px);
+    }
+    35% {
+        transform: translateY(0);
+    }
+    53% {
+        transform: translateY(0);
+    }
+    54% {
+        transform: translateY(-5px);
+    }
+    55% {
+        transform: translateY(0);
+    }
+    73% {
+        transform: translateY(0);
+    }
+    74% {
+        transform: translateY(-5px);
+    }
+    75% {
+        transform: translateY(0);
+    }
+    93% {
+        transform: translateY(0);
+    }
+    94% {
+        transform: translateY(-5px);
+    }
+    95% {
+        transform: translateY(0);
+    }
+}
+
+@keyframes dot-three{
+    14% {
+        transform: translateY(0);
+    }
+    15% {
+        transform: translateY(-5px);
+    }
+    16% {
+        transform: translateY(0);
+    }
+    34% {
+        transform: translateY(0);
+    }
+    35% {
+        transform: translateY(-5px);
+    }
+    36% {
+        transform: translateY(0);
+    }
+    54% {
+        transform: translateY(0);
+    }
+    55% {
+        transform: translateY(-5px);
+    }
+    56% {
+        transform: translateY(0);
+    }
+    74% {
+        transform: translateY(0);
+    }
+    75% {
+        transform: translateY(-5px);
+    }
+    76% {
+        transform: translateY(0);
+    }
+    94% {
+        transform: translateY(0);
+    }
+    95% {
+        transform: translateY(-5px);
+    }
+    96% {
+        transform: translateY(0);
+    }
+}

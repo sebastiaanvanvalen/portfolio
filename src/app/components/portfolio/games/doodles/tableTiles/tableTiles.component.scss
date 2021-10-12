@@ -1,0 +1,34 @@
+.table-tiles-container {
+    width: 100%;
+    border-radius: 5px;
+    background-color: green;
+    max-width: 100%;
+    // height: 116px;
+
+    .tiles-container {
+        width: 100%;
+        padding: 8px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        height: auto;
+    }
+}
+
+@media screen and(max-width: 1380px) {
+    .container-wrapper {
+        .tiles-container {
+            margin: 0 auto; 
+            width: 500px;
+        }
+    }
+}
+@media screen and(max-width: 745px) {
+    .container-wrapper {
+        .tiles-container {
+            margin: 0 auto; 
+            width: 300px;
+        }
+    }
+}

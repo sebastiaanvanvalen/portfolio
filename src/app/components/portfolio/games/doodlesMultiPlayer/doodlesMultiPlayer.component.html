@@ -1,0 +1,16 @@
+<div class="doodle-container">
+    <header>
+        <button (click)="newGame()">New Game</button>
+        <div class="score-container">
+            <div *ngIf="gameStarted" class="score userScore">{{ this.user.userName }}'s score: {{ this.Game.players[user.userIndex].doodleScore || 0 }}</div>
+            <div *ngIf="!gameStarted" class="score userScore">{{ this.user.userName }}'s score: 0</div>
+
+            multiplayer route
+
+            <div *ngIf="gameStarted" class="score compScore">{{ this.opponent.userName }}'s' score: {{ this.Game.players[opponent.userIndex].doodleScore || 0}}</div>
+            <div *ngIf="!gameStarted" class="score compScore">opponents score: {{ 0}}</div>
+        </div>
+    </header>
+    
+    <app-gameBoard *ngIf="gameStarted" [opponent]="opponent" [user]="user" [Game]="Game"></app-gameBoard>
+</div>

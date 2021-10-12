@@ -1,0 +1,16 @@
+<div class="dice-container">
+
+    <div class="throwableDie" *ngIf="this.die.fixed === false">
+        <div class="die-cont" [ngClass]="this.Game.allDice[this.die.id].selected === true ? 'scaled' : ''"
+            (mouseOver)="this.selectDice()" (click)="fixDice()">
+            <div *ngIf="this.die.value !== 6" [ngStyle]="styleMe(this.die.value)" class="die"></div>
+            <div *ngIf="this.die.value === 6" class="doodle"><img src="/assets/doodles/doodle.png" alt=""></div>
+        </div>
+    </div>
+    <div class="throwableDie" *ngIf="this.die.fixed === true">
+        <div class="die-cont">
+            <div *ngIf="this.die.value !== 6" [ngStyle]="styleMe(this.die.value)" class="die"></div>
+            <div *ngIf="this.die.value === 6" class="doodle"><img src="/assets/doodles/doodle.png" alt=""></div>
+        </div>
+    </div>
+</div>

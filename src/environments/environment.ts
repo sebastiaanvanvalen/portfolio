@@ -3,7 +3,9 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  SOCKET_ENDPOINT: "http://localhost:3000",
+  SOCKET_ENDPOINT_AWS: "wss://cjzm4j5610.execute-api.eu-central-1.amazonaws.com/production"
 };
 
 /*

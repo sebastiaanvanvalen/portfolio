@@ -1,0 +1,10 @@
+<div class="game-board-container">
+    <div class="board-container">
+        <app-player class="app-player" [Game]="Game" [user]="opponent"></app-player>
+        <app-tableTiles [opponent]="opponent" [user]="user" [Game]="Game"></app-tableTiles>
+        <app-player class="app-player" [Game]="Game" [user]="user"></app-player>
+    </div>
+    <div class="dice-container">
+        <app-diceBoard [opponent]="opponent" [user]="user" [Game]="Game"></app-diceBoard>
+    </div>
+</div>

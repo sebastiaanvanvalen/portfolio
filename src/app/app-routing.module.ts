@@ -20,22 +20,34 @@ import { CvComponent } from './components/cv/cv.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { CalculatorComponent } from './components/portfolio/gadgets/calculator/calculator.component';
 
+// import { DoodlesComponent } from './components/portfolio/games/doodles/doodles.component';
+import { DoodlesMultiPlayerComponent } from './components/portfolio/games/doodlesMultiPlayer/doodlesMultiPlayer.component';
+import { DoodleLobbyComponent } from './components/portfolio/games/doodlesMultiPlayer/doodleLobby/doodleLobby.component';
+
+
 const routes: Routes = [
     { path: '', component: MainPageComponent },
     { path: 'about', component: AboutComponent },
     { path: 'mybirds', component: MybirdsComponent },
+
     { path: 'games', component: GamesComponent},
     { path: 'mastermind', component: MastermindComponent },
     { path: 'rps', component: RpsComponent },
     { path: 'slots', component: SlotsComponent },
-    { path: 'clocks', component: ClocksComponent },
-    { path: 'gadgets', component: GadgetsComponent},
-    { path: 'coronaDashboard', component: CoronaDashboardComponent},
     { path: 'memory', component: MemoryComponent},
+    // { path: 'doodles', component: DoodlesComponent },
+    { path: 'doodlesMultiPlayer', component: DoodlesMultiPlayerComponent},
+    { path: 'doodlesLobby', component: DoodleLobbyComponent},
+
+    { path: 'gadgets', component: GadgetsComponent},
+    { path: 'clocks', component: ClocksComponent },
+    { path: 'coronaDashboard', component: CoronaDashboardComponent},
     { path: 'happyBalls', component: HappyBallsComponent},
     { path: 'calculator', component: CalculatorComponent},
+
     { path: 'contact', component: ContactComponent },
     { path: 'cv', component: CvComponent },
+
 ];
 
 @NgModule({

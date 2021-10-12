@@ -1,0 +1,5 @@
+<div class="table-tiles-container">
+    <div class="tiles-container">
+        <app-Tile [opponent]="opponent" [user]="user" *ngFor="let tile of this.Game.tiles" :key="tile.id" [tile]="tile" [Game]="Game"></app-Tile>
+    </div>
+</div>
