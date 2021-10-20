@@ -1,10 +1,10 @@
 <div class="game-board-container">
     <div class="board-container">
-        <app-player class="app-player" [lonelyGame]="lonelyGame" [id]="0"></app-player>
-        <app-tableTiles [lonelyGame]="lonelyGame"></app-tableTiles>
-        <app-player class="app-player" [lonelyGame]="lonelyGame" [id]="1"></app-player>
+        <app-doodles-player class="app-player" [lonelyGame]="lonelyGame" [id]="0"></app-doodles-player>
+        <app-doodles-tableTiles [lonelyGame]="lonelyGame"></app-doodles-tableTiles>
+        <app-doodles-player class="app-player" [lonelyGame]="lonelyGame" [id]="1"></app-doodles-player>
     </div>
     <div class="dice-container">
-        <app-diceBoard [lonelyGame]="lonelyGame"></app-diceBoard>
+        <app-doodles-diceBoard [lonelyGame]="lonelyGame"></app-doodles-diceBoard>
     </div>
 </div>

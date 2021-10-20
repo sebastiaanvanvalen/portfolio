@@ -3,11 +3,11 @@ import { Die } from '../interface/die';
 import { LonelyGame } from '../classes/LonelyGame';
 
 @Component({
-    selector: 'app-die',
+    selector: 'app-doodles-die',
     templateUrl: './die.component.html',
     styleUrls: ['./die.component.scss'],
 })
-export class DieComponent implements OnInit {
+export class DoodlesDieComponent implements OnInit {
     @Input() lonelyGame: LonelyGame;
     @Input() die: Die;
 

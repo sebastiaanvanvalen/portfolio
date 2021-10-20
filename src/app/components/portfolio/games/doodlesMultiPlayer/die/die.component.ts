@@ -2,7 +2,10 @@ import { Component, OnInit, Input, OnChanges } from '@angular/core';
 import { Die } from '../interface/die';
 import { Game } from '../classes/Game';
 import { User } from '../interface/user';
-import { SocketIoService } from 'src/app/services/socketio.service';
+// import { SocketIoService } from 'src/app/services/socketio.service';
+import { SocketService } from 'src/app/services/socket.service';
+import { UpdateObject } from '../interface/updateObject';
+
 
 @Component({
     selector: 'app-die',
@@ -14,43 +17,47 @@ export class DieComponent implements OnInit {
     @Input() user: User;
     @Input() die: Die;
 
-    constructor(private SocketIoService:SocketIoService) {}
+    constructor(private SocketService:SocketService) {}
 
     ngOnInit() {}
 
     public selectDice(){
-        let message = "your opponent selected some dice";
         let validSelect = this.Game.selectDice(this.user.userIndex, this.die.value)
         if (validSelect === true) {
-            let updateObject = {
-                user: this.user,
-                message: message,
-                players: this.Game.players,
-                currentPlayerIndex: this.Game.currentPlayerIndex,
-                allDice: this.Game.allDice,
-                fixedDice: this.Game.fixedDice,
-                tiles: this.Game.tiles,
-                updatedOn: new Date().toString()
-            }
-            this.SocketIoService.sendGameUpdate(updateObject)
+            let updateObject:UpdateObject = {
+                sender: this.user,
+                type: "diceSelect",
+                game: {
+                    players: this.Game.players,
+                    currentPlayerIndex: this.Game.currentPlayerIndex,
+                    allDice: this.Game.allDice,
+                    fixedDice: this.Game.fixedDice,
+                    tiles: this.Game.tiles,
+                },
+                updatedOn: new Date().toString(),
+            };
+            let payload = JSON.stringify(updateObject)
+            this.SocketService.sendMessage({ action: 'gameUpdate', payload: payload })
         }
     }
 
     public fixDice() {
-        let message = "your opponent fixed some dice";
         let validFix = this.Game.fixDice(this.user.userIndex, this.die.value)
         if (validFix === true) {
-            let updateObject = {
-                user: this.user,
-                message: message,
-                players: this.Game.players,
-                currentPlayerIndex: this.Game.currentPlayerIndex,
-                allDice: this.Game.allDice,
-                fixedDice: this.Game.fixedDice,
-                tiles: this.Game.tiles,
-                updatedOn: new Date().toString()
-            }
-            this.SocketIoService.sendGameUpdate(updateObject)
+            let updateObject:UpdateObject = {
+                sender: this.user,
+                type: "diceFix",
+                game: {
+                    players: this.Game.players,
+                    currentPlayerIndex: this.Game.currentPlayerIndex,
+                    allDice: this.Game.allDice,
+                    fixedDice: this.Game.fixedDice,
+                    tiles: this.Game.tiles,
+                },
+                updatedOn: new Date().toString(),
+            };
+            let payload = JSON.stringify(updateObject)
+            this.SocketService.sendMessage({ action: 'gameUpdate', payload: payload })
         }
 
     }

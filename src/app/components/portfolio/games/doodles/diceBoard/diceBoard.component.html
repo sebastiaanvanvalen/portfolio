@@ -1,11 +1,11 @@
 <div class="dice-board-container">
     <p>dice board</p>
     <div class="area throw-area">
-        <app-die *ngFor="let die of lonelyGame.allDice" :key="die.id" [die]="die" [lonelyGame]="lonelyGame"></app-die>
+        <app-doodles-die *ngFor="let die of lonelyGame.allDice" :key="die.id" [die]="die" [lonelyGame]="lonelyGame"></app-doodles-die>
     </div>
     <div class="area empty-board"></div>
     <div class="area fixed-area">
-        <app-die *ngFor="let die of lonelyGame.fixedDice" :key="die.id" [die]="die"></app-die>
+        <app-doodles-die *ngFor="let die of lonelyGame.fixedDice" :key="die.id" [die]="die"></app-doodles-die>
     </div>
     <div class="area button-container">
         <button class="button active" (click)="this.lonelyGame.throwDice(this.lonelyGame.currentPlayerIndex)">throw!</button>

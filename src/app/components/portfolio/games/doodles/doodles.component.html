@@ -1,15 +1,15 @@
 <div class="doodle-container">
     <header>
         <button (click)="newGame()">New Game</button>
-        <button routerLink="/doodlesLobby">Create Room</button>
+        <button routerLink="/doodlesLobby">Enter Room</button>
         <div class="score-container">
-            <div class="score userScore">your score: {{ this.lonelyGame.players[0].doodleScore || 0 }}</div>
+            <div class="score userScore">{{ this.lonelyGame.players[1].name}}'s score: {{ this.lonelyGame.players[1].doodleScore || 0 }}</div>
 
             <!-- foreach opponent -->
 
-            <div class="score compScore">opponents score: {{ this.lonelyGame.players[1].doodleScore || 0}}</div>
+            <div class="score compScore">{{ this.lonelyGame.players[0].name}}'s score: {{ this.lonelyGame.players[0].doodleScore || 0}}</div>
         </div>
     </header>
     
-    <app-gameBoard [lonelyGame]="lonelyGame"></app-gameBoard>
+    <app-doodles-gameBoard [lonelyGame]="lonelyGame"></app-doodles-gameBoard>
 </div>

@@ -20,7 +20,7 @@ import { CvComponent } from './components/cv/cv.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { CalculatorComponent } from './components/portfolio/gadgets/calculator/calculator.component';
 
-// import { DoodlesComponent } from './components/portfolio/games/doodles/doodles.component';
+import { DoodlesComponent } from './components/portfolio/games/doodles/doodles.component';
 import { DoodlesMultiPlayerComponent } from './components/portfolio/games/doodlesMultiPlayer/doodlesMultiPlayer.component';
 import { DoodleLobbyComponent } from './components/portfolio/games/doodlesMultiPlayer/doodleLobby/doodleLobby.component';
 
@@ -35,7 +35,7 @@ const routes: Routes = [
     { path: 'rps', component: RpsComponent },
     { path: 'slots', component: SlotsComponent },
     { path: 'memory', component: MemoryComponent},
-    // { path: 'doodles', component: DoodlesComponent },
+    { path: 'doodles', component: DoodlesComponent },
     { path: 'doodlesMultiPlayer', component: DoodlesMultiPlayerComponent},
     { path: 'doodlesLobby', component: DoodleLobbyComponent},
 

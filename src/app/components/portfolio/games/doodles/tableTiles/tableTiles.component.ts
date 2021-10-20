@@ -3,11 +3,11 @@ import { LonelyGame } from '../classes/LonelyGame';
 import { Tile } from '../interface/tile';
 
 @Component({
-    selector: 'app-tableTiles',
+    selector: 'app-doodles-tableTiles',
     templateUrl: './tableTiles.component.html',
     styleUrls: ['./tableTiles.component.scss'],
 })
-export class TableTilesComponent implements OnInit {
+export class DoodlesTableTilesComponent implements OnInit {
     @Input() lonelyGame: LonelyGame;
     allTiles:Tile[];
 

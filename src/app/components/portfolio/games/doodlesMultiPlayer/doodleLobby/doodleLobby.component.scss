@@ -1,10 +1,38 @@
 .doodle-lobby-container {
     display: flex;
+    flex-direction: column;
     flex-wrap: wrap;
     justify-content: space-evenly;
     width: 100vw;
-    height: calc(100vh- 56px);
+
+    height: 100vh;
     padding: 56px 0 0;
-    margin: 0 auto;
     background-color: var(--backgroundColor1);
+    color: var(--textColor1);
+
+    .form-group {        
+        width: 400px;
+        margin: 32px auto;
+        border-bottom: 3px solid var(--global-secondary);
+
+        .create {
+            color: white;
+            background-color: var(--global-secondary);
+            margin: 4px 0;
+        }
+    }
+
+    .notification {
+        width: 400px;
+        margin: 0 auto;
+        border-bottom: 3px solid var(--global-primary);
+
+        
+        .back {
+            color: white;
+            background-color: var(--global-primary);
+            margin: 4px 0;
+        }
+    }
+
 }

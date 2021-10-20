@@ -31,7 +31,7 @@ export class SocketIoService {
     }
 
     sendGameUpdate(updateObject) {
-        this.socket.emit('gameUpdate', updateObject);
+        this.socket.emit('gameUpdate', updateObject); 
     }
     
     sendWinningMessage(messageBody) {

@@ -1,3 +1,49 @@
-This project is going to be a portfolio. The portfolio will be placed on a AWS server. First it will be static but I think it is interesting to add a database and funcitonality to leave messages and send confirmation emails to users.
+Having a lot of problems with the validation checks in the game. should you be able to do what you do...
 
-I will sharerock-paper-scissors project.
+The game needs:
+
+If you end up with board dice that contain only one value you dont have, but it's not a doodle and also you dont have a doodle in your stack
+
+* available tiles
+
+* fixed dice score
+* occassions (the available values(sets) that remains in the thrown dice)
+* valuesInPosession
+* valuesNotInPosession
+* distanceToDeath1 (you have a doodle in possession. The highest available tile value - diceScore)
+* distanceToDeath2 (you have no doodle in possession. The higest available tile value - 1 doodle)
+
+* distanceToSurvive (the lowest available tile value - fixed dice score)
+
+
+
+After throwing the dice:
+    - are you instantly dead?
+        - when you have a dice value and in combi with all the thrown value combinations you overtrow the highest available tilevalue
+
+    - are you inevetable dead?
+        - when you have a dicevalue but missing a doodle. There is no doodle in the thrown values and every combination of values - 1 doodleValue is higher then the highest available tilevalue
+        - your dicescore in combination with the highest possible throw is to low to match any available tile.
+
+
+    - are you forced to throw?
+    - can you, or can you not, pick a tile.
+
+After fixing dice:
+    - you cant pick a value you allready have
+    - you cant pick 
+
+
+
+
+
+    - Do you allready have this value?
+    - Are you dead with this value?
+    - did you pick values and
+
+maybe a new evaluation system that evaluates every situation
+situationcheck
+
+
+
+

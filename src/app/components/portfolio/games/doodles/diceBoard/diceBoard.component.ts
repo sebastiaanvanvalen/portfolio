@@ -2,11 +2,11 @@ import { Component, OnInit, Input } from '@angular/core';
 import { LonelyGame } from '../classes/LonelyGame';
 
 @Component({
-    selector: 'app-diceBoard',
+    selector: 'app-doodles-diceBoard',
     templateUrl: './diceBoard.component.html',
     styleUrls: ['./diceBoard.component.scss'],
 })
-export class DiceBoardComponent implements OnInit {
+export class DoodlesDiceBoardComponent implements OnInit {
 
     @Input() lonelyGame:LonelyGame
 

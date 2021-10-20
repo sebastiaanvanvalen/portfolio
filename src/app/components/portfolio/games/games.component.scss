@@ -69,9 +69,8 @@
     }
     .doodles-container {
         .picture-container {
-            background-color: red;
-            // background: url('/assets/linkimages/games/memoryLinkPic.jpg') no-repeat center;
-            // background-size: contain;
+            background: url('/assets/linkimages/games/doodleLinkPic.png') no-repeat center;
+            background-size: cover;
         }
     }
 }

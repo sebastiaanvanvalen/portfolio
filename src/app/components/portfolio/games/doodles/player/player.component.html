@@ -3,7 +3,7 @@
     <div class="cont tile-container">
         {{this.lonelyGame.players[this.id].name}}'s tiles:
         <div class="tiles">
-            <app-Tile class="app-tile" [ngStyle]="{'left': i * 20 + 'px'}" *ngFor="let tile of this.lonelyGame.players[this.id].playersTiles; let i = index" :key="tile.id" [tile]="tile" [lonelyGame]="lonelyGame"></app-Tile>
+            <app-doodles-Tile class="app-tile" [ngStyle]="{'left': i * 20 + 'px'}" *ngFor="let tile of this.lonelyGame.players[this.id].playersTiles; let i = index" :key="tile.id" [tile]="tile" [lonelyGame]="lonelyGame"></app-doodles-Tile>
         </div>
     </div>
     

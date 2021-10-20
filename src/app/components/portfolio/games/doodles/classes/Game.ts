@@ -58,7 +58,9 @@ export class Game {
             this.players[user.userIndex].playing === true &&
             this.players[user.userIndex].canThrowDice === false
         ) {
-            this.ModalService.setBody('You need to pick dice before you can do anything else');
+            this.ModalService.setBody(
+                'You need to pick dice before you can do anything else'
+            );
             this.ModalService.setTitle('Reminder');
             this.ModalService.createModal();
             return false;
@@ -117,14 +119,10 @@ export class Game {
 
     public fixDice(userIndex, value): boolean {
         let check = this.fixDiceCheck(value);
-        const activePlayer = this.players[this.currentPlayerIndex]
 
-        if (this.players[userIndex].playing === false) {
-            this.ModalService.setBody("It's not your turn!");
-            this.ModalService.setTitle("mind the rules please");
-            this.ModalService.createModal();
-        } else if (
-            check.passed === false
+        if (
+            check.passed === false ||
+            this.players[userIndex].playing === false
         ) {
             this.ModalService.setBody(check.messageBody);
             this.ModalService.setTitle(check.messageTitle);
@@ -138,17 +136,17 @@ export class Game {
                 if (element.value === value) {
                     // add fixed value to fixedDiceScore
                     if (element.value === 6) {
-                        activePlayer.fixedDiceScore += 5;
+                        this.players[userIndex].fixedDiceScore += 5;
                     } else {
-                        activePlayer.fixedDiceScore += element.value;
+                        this.players[userIndex].fixedDiceScore += element.value;
                     }
                     element.selected = false;
                     element.fixed = true;
                     this.fixedDice.push(element);
                 }
 
-                activePlayer.canFixDice = false;
-                activePlayer.canThrowDice = true;
+                this.players[userIndex].canFixDice = false;
+                this.players[userIndex].canThrowDice = true;
                 this.allDice = [];
             });
             return true;
@@ -157,7 +155,6 @@ export class Game {
 
     public pickTile(tile, user) {
         let check = this.tileCheck(tile, user);
-        const activePlayer = this.players[this.currentPlayerIndex]
         if (check.passed === false) {
             this.ModalService.setBody(check.messageBody);
             this.ModalService.setTitle(check.messageTitle);
@@ -167,10 +164,10 @@ export class Game {
             // picking a tile from the other player:
             if (
                 tile.owner !== 'table' &&
-                tile.owner !== activePlayer.name
+                tile.owner !== this.players[this.currentPlayerIndex].name
             ) {
                 // before adding a new top tile to the stack make all below inactive
-                activePlayer.playersTiles.forEach(
+                this.players[this.currentPlayerIndex].playersTiles.forEach(
                     (element) => {
                         element.active = false;
                     }
@@ -180,16 +177,19 @@ export class Game {
                     (player) => player.name === tile.owner
                 );
                 console.log(robbedPlayer);
-                tile.owner = activePlayer.name;
-                activePlayer.playersTiles.push(tile);
-                activePlayer.doodleScore += tile.doodleValue;
+                tile.owner = this.players[this.currentPlayerIndex].name;
+                this.players[this.currentPlayerIndex].playersTiles.push(tile);
+                this.players[this.currentPlayerIndex].doodleScore +=
+                    tile.doodleValue;
 
                 robbedPlayer[0].doodleScore -= tile.doodleValue;
                 robbedPlayer[0].playersTiles.pop();
 
                 // if robbedPlayer has remaining tiles => activate top tile
                 if (robbedPlayer[0].playersTiles.length > 0) {
-                    robbedPlayer[0].playersTiles[robbedPlayer[0].playersTiles.length - 1].active = true;
+                    robbedPlayer[0].playersTiles[
+                        robbedPlayer[0].playersTiles.length - 1
+                    ].active = true;
                 }
             } else {
                 // pick tile from table
@@ -198,20 +198,23 @@ export class Game {
                     .indexOf(tile.value);
                 const selectedTile = this.tiles[tileIndex];
 
-                selectedTile.owner = activePlayer.name;
+                selectedTile.owner = this.players[this.currentPlayerIndex].name;
                 this.tiles.splice(tileIndex, 1);
-                activePlayer.playersTiles.push(selectedTile);
-                activePlayer.doodleScore += tile.doodleValue;
+                this.players[this.currentPlayerIndex].playersTiles.push(
+                    selectedTile
+                );
+                this.players[this.currentPlayerIndex].doodleScore +=
+                    tile.doodleValue;
             }
 
-            activePlayer.playing = false;
-            activePlayer.canFixDice = false;
-            activePlayer.canThrowDice = false;
-            activePlayer.fixedDiceScore = 0;
+            this.players[this.currentPlayerIndex].playing = false;
+            this.players[this.currentPlayerIndex].canFixDice = false;
+            this.players[this.currentPlayerIndex].canThrowDice = false;
+            this.players[this.currentPlayerIndex].fixedDiceScore = 0;
 
             this.fixedDice = [];
 
-            this.setNextPlayer(activePlayer);
+            this.setNextPlayer(this.players[this.currentPlayerIndex]);
 
             return true;
         }
@@ -223,85 +226,86 @@ export class Game {
             messageBody: '',
             messageTitle: '',
         };
-        const fixedValues = this.getFixedValues();
-        const boardValues = this.getBoardValues();
-        const possessedValues = this.getPossessedValues();
-        const notPossessedValues = this.getNotPossessedValues();
-        const activeTiles = this.getActiveTiles();
-        const highestTile = this.getHigestTileValue();
-        const thrownDiceSets = this.getThrownDiceSets();
-        const overthrowChecker = this.checkOverThrow(thrownDiceSets, highestTile);
-        const hasDoodle = this.hasDoodle();
-        const distanceToOverThrow = this.getDistanceToOverThrow();
-        const activePlayer = this.players[this.currentPlayerIndex]
+        let fixedValues = this.fixedDice.map((die) => die.value);
+        let boardValues = this.allDice.map((die) => die.value);
+        let possessedValues = [];
+        let notPossessedValues = [];
+        let topTiles = [];
 
-        console.log('******** start *********');
-        console.log("*** thrown value sets:");
-        console.log(thrownDiceSets);
-        console.log('*** fixedValues :');
-        console.log(fixedValues);
-        console.log('*** boardValues :');
-        console.log(boardValues);
-        console.log('*** possessedValues :');
-        console.log(possessedValues);
-        console.log('*** notPossessedValues :');
-        console.log(notPossessedValues);
-        console.log('*** availableTiles :');
-        console.log(activeTiles);
-        console.log('*** overthrowChecker :');
-        console.log(overthrowChecker);
-        console.log('*** distance to Overthrow :');
-        console.log(distanceToOverThrow);
-        console.log('******** end *********');
+        let checker = (arr, target) => target.every((v) => arr.includes(v));
 
+        boardValues.forEach((value) => {
+            if (fixedValues.includes(value)) {
+                possessedValues.push(value);
+            } else {
+                notPossessedValues.push(value);
+            }
+        });
 
-        if (hasDoodle && distanceToOverThrow > 0) {
-            console.log("player threw an higher amount as the highest available tile")
-        }
-        if (hasDoodle && distanceToOverThrow === 0) {
-            console.log("player threw the same amount as the highest available tile")
-        }
+        this.players.forEach((player, index) => {
+            if (
+                index !== this.currentPlayerIndex &&
+                player.playersTiles.length > 0
+            ) {
+                topTiles.push(
+                    player.playersTiles[player.playersTiles.length - 1].value
+                );
+            }
+        });
 
-        if (hasDoodle && overthrowChecker && this.fixedDice.length === 8 ) {
-            // function in case a player hit "throw" by accident
-            activePlayer.canThrowDice = false;
-            returnObject = {
-                passed: null,
-                messageBody: 'no more dice. Take your tile!',
-                messageTitle: 'you earned it!',
-            };
+        const occurrences = notPossessedValues.reduce(function (acc, curr) {
+            return acc[curr] ? ++acc[curr] : (acc[curr] = 1), acc;
+        }, {});
 
-            return returnObject;
+        const overthrowChecker = (): boolean => {
+            let checks = 0;
+            let highestValue = Math.max.apply(
+                null,
+                this.tiles
+                    .map((tile) => (tile.active ? tile.value : 0))
+                    .concat(topTiles)
+            );
+            for (const times in occurrences) {
+                if (parseInt(times) !== 6) {
+                    let potentialValue =
+                        parseInt(times) * occurrences[times] +
+                        this.players[this.currentPlayerIndex].fixedDiceScore;
+                    if (potentialValue > highestValue) {
+                        checks++;
+                    }
+                } else {
+                    let potentialValue =
+                        5 * occurrences[times] +
+                        this.players[this.currentPlayerIndex].fixedDiceScore;
+                    if (potentialValue > highestValue) {
+                        checks++;
+                    }
+                }
+            }
 
-        } else if (!hasDoodle && distanceToOverThrow < 0) {
-            returnObject = {
-                passed: false,
-                messageBody:'you still need a doodle but you will also overthrow if you get one.:<br>' +
-                    this.getFixedDiceImage() +
-                    ' = (' +
-                    activePlayer.fixedDiceScore +
-                    ')' +
-                    '<br>and you threw:<br>' +
-                    this.getAllDiceImage(),
-                messageTitle: 'to bad...',
-            };
+            if (checks === Object.keys(occurrences).length) {
+                console.log('you overthrew');
+                return false;
+            } else {
+                console.log('you did not overthrow');
+                return true;
+            }
+        };
 
-            return returnObject;
-
-        } else if (!hasDoodle && !notPossessedValues.includes(6) && Object.keys(thrownDiceSets).length === 0) {
+        if (possessedValues.includes(6) && overthrowChecker() === true && this.fixedDice.length === 8) {
+            console.log(
+                'you have to pick something'
+            );
             returnObject = {
                 passed: false,
                 messageBody:
-                    'no more dice. No doodles. End of the world:<br>' +
-                    this.getFixedDiceImage() +
-                    '<br>and you threw:<br>' +
-                    this.getAllDiceImage(),
-                messageTitle: "it's not your fault",
+                    'no more dice. Take your tile!',
+                messageTitle: 'you earned it!',
             };
-
-            return returnObject;
-
-        } else  if (this.newValues()) {
+        }else if (checker(fixedValues, boardValues)) {
+            console.log(
+                'unfortunately, you threw only values that you allready collected'
+            );
             returnObject = {
                 passed: false,
                 messageBody:
@@ -313,15 +317,18 @@ export class Game {
             };
 
             return returnObject;
+        } else if (!overthrowChecker()) {
+            console.log(
+                'unfortinately you overthrew all available tile values'
+            );
 
-        } else if (overthrowChecker) {
             returnObject = {
                 passed: false,
                 messageBody:
-                    'unfortinately you overthrew all available tile values<br>You collected:<br>' +
+                    'unfortinately you overthrew all available tile values<br>You allready collected:<br>' +
                     this.getFixedDiceImage() +
                     ' = (' +
-                    activePlayer.fixedDiceScore +
+                    this.players[this.currentPlayerIndex].fixedDiceScore +
                     ')' +
                     '<br>and you threw:<br>' +
                     this.getAllDiceImage(),
@@ -329,8 +336,11 @@ export class Game {
             };
 
             return returnObject;
-
-        } else if (!hasDoodle && notPossessedValues.length === 0 && !notPossessedValues.includes(6)) {
+        } else if (
+            !possessedValues.includes(6) &&
+            notPossessedValues.length === 0 && !notPossessedValues.includes(6)
+        ) {
+            console.log('you dont have a doodle AND no dice left to use.');
             returnObject = {
                 passed: false,
                 messageBody:
@@ -342,8 +352,8 @@ export class Game {
             };
 
             return returnObject;
-
         } else if (notPossessedValues.length === 0) {
+            console.log('you threw values you allready have');
             returnObject = {
                 passed: false,
                 messageBody:
@@ -355,14 +365,12 @@ export class Game {
             };
 
             return returnObject;
-
         } else {
             returnObject = {
                 passed: true,
                 messageBody: '',
                 messageTitle: '',
             };
-
             return returnObject;
         }
     }
@@ -373,38 +381,46 @@ export class Game {
             messageBody: '',
             messageTitle: '',
         };
+        // in prodMode also the playerId should be used instead of th currentplayer index.
+        let checks = 0;
+        let relevantTiles = this.tiles.map((tile) =>
+            tile.active ? tile.value : 0
+        );
 
-        let possessedValues = this.getPossessedValues();
-        let thrownDiceSets = this.getThrownDiceSets();
-        let highestTileValue = this.getHigestTileValue();
-        const safeToFix = this.safeToFix();
-        const hasDoodle = this.hasDoodle();
-        const activeTiles = this.getActiveTiles();
+        this.players.forEach((player, index) => {
+            if (
+                index !== this.currentPlayerIndex &&
+                player.playersTiles.length > 0
+            ) {
+                relevantTiles.push(
+                    player.playersTiles[player.playersTiles.length - 1].value
+                );
+            }
+        });
 
-        let totalValueToFix = value * thrownDiceSets[value.toString()];
+        let tempScore = this.players[this.currentPlayerIndex].fixedDiceScore;
+        this.allDice.forEach((element) => {
+            if (element.value === value) {
+                if (element.value === 6) {
+                    tempScore += 5;
+                } else {
+                    tempScore += element.value;
+                }
+            }
+        });
 
-        // check if chosen values result in an inevitable death in the next round for not having a doodle yet
-        console.log(totalValueToFix + 5  + this.players[this.currentPlayerIndex].fixedDiceScore)
-        console.log(highestTileValue)
+        // check if value is allowed to be fixed
+        this.fixedDice.forEach((element) => {
+            element.selected = false;
+            if (element.fixed === true && element.value === value) {
+                console.log(
+                    'this value was allready selected, choose another dice'
+                );
+                checks++;
+            }
+        });
 
-        if (!hasDoodle && !safeToFix) {
-            console.log("check if chosen values result in an inevitable death in the next round");
-            returnObject = {
-                passed: false,
-                messageBody:
-                    "You can't choose these dice. Their value plus a minimum of one doodle, that you don't have yet, will result in a higher score than the highest tile available.",
-                messageTitle: 'friendly warning',
-            };
-            return returnObject;
-        } else if (hasDoodle && !safeToFix) {
-            returnObject = {
-                passed: false,
-                messageBody:
-                    "With these dice you have a higher value than the higest tile available.",
-                messageTitle: 'friendly warning',
-            };
-            return returnObject;
-        } else if (possessedValues.includes(value)) {
+        if (checks > 0) {
             returnObject = {
                 passed: false,
                 messageBody:
@@ -412,15 +428,7 @@ export class Game {
                 messageTitle: 'Ahyes, the rules!',
             };
             return returnObject;
-        } else if (this.players[this.currentPlayerIndex].canFixDice === false) {
-            returnObject = {
-                passed: false,
-                messageBody:
-                    'you are not allowed to fix these dice at this point',
-                messageTitle: 'Ahyes, the rules!',
-            };
-            return returnObject;
-        } else if (activeTiles.every((val) => val < this.players[this.currentPlayerIndex].fixedDiceScore)) {
+        } else if (relevantTiles.every((val) => val < tempScore)) {
             returnObject = {
                 passed: false,
                 messageBody:
@@ -445,9 +453,6 @@ export class Game {
             messageTitle: '',
         };
 
-        const activePlayer = this.players[this.currentPlayerIndex];
-        const hasDoodle = this.hasDoodle();
-
         if (user.userIndex !== this.currentPlayerIndex) {
             console.log("It's not your turn.");
             returnObject = {
@@ -459,44 +464,38 @@ export class Game {
             };
 
             return returnObject;
-
-        } else if (activePlayer.fixedDiceScore < 21) {
+        } else if (this.players[this.currentPlayerIndex].fixedDiceScore < 21) {
             returnObject = {
                 passed: false,
                 messageBody: 'you will have to throw a higher dice score',
                 messageTitle: 'Are you okay?',
             };
-
             return returnObject;
-
-        } else if (!hasDoodle) {
+        } else if (this.fixedDice.filter((tile) => tile.doodle).length === 0) {
             returnObject = {
                 passed: false,
                 messageBody:
                     'You need at least one doodle if you want to pick a tile',
                 messageTitle: 'ahYes, the rules!',
             };
-
             return returnObject;
-
         } else if (tile.active === false) {
             returnObject = {
                 passed: false,
                 messageBody: 'this tile is not available for you to take',
                 messageTitle: 'you can always try...',
             };
-
             return returnObject;
-
-        } else if (tile.owner === activePlayer.name) {
+        } else if (tile.owner === this.players[this.currentPlayerIndex].name) {
             returnObject = {
                 passed: false,
                 messageBody: "you can not take your own tile'",
                 messageTitle: 'Smart! or something',
             };
             return returnObject;
-
-        } else if (activePlayer.fixedDiceScore > tile.value) {
+        } else if (
+            this.players[this.currentPlayerIndex].fixedDiceScore > tile.value
+        ) {
             returnObject = {
                 passed: false,
                 messageBody:
@@ -504,24 +503,22 @@ export class Game {
                 messageTitle: 'ahYes, the Rules!',
             };
             return returnObject;
-
-        } else if (activePlayer.fixedDiceScore < tile.value) {
+        } else if (
+            this.players[this.currentPlayerIndex].fixedDiceScore < tile.value
+        ) {
             returnObject = {
                 passed: false,
                 messageBody:
                     "sorry, you will have to select a higher value tile'",
                 messageTitle: 'ahYes, the Rules!',
             };
-
             return returnObject;
-
         } else {
             returnObject = {
                 passed: true,
                 messageBody: "'you can not pick a tile at this point'",
                 messageTitle: 'Are you okay?',
             };
-
             return returnObject;
         }
     }
@@ -692,165 +689,6 @@ export class Game {
         } else {
             returnObject.passed = false;
             return returnObject;
-        }
-    }
-
-    // ***** checkVariables
-
-    private getThrownDiceSets () {
-        const occurrences = this.getNotPossessedValues().reduce(function (acc, curr) {
-            return acc[curr] ? ++acc[curr] : (acc[curr] = 1), acc;
-        }, {});
-
-        return occurrences
-    }
-
-    private getHigestTileValue() {
-        let activeTiles = this.getActiveTiles();
-        let highestTile = Math.max.apply(null, activeTiles);
-
-        return highestTile;
-    }
-
-    private getDistanceToOverThrow(){
-        let distanceValue;
-        distanceValue = this.getHigestTileValue() - this.players[this.currentPlayerIndex].fixedDiceScore;
-
-        return distanceValue;
-    }
-
-    private hasDoodle() {
-        if (this.getFixedValues().includes(6)) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    private threwDoodle() {
-        if (Object.keys(this.getThrownDiceSets()).includes("6")) {
-            return true
-        } else {
-            return false
-        }
-    }
-
-    private getFixedValues() {
-        const values = this.fixedDice.map(die => die.value);
-
-        return values;
-    }
-
-    private getBoardValues() {
-        const values = this.allDice.map(die => die.value);
-
-        return values
-    }
-
-    private getPossessedValues() {
-        let possessedValues = [];
-        this.getBoardValues().forEach((value) => {
-            if (this.getFixedValues().includes(value)) {
-                possessedValues.push(value);
-            } 
-        })
-
-        return possessedValues;
-    }
-    
-    private getNotPossessedValues() {
-        let notPossessedValues = [];
-        this.getBoardValues().forEach((value) => {
-            if (!this.getFixedValues().includes(value)) {
-                notPossessedValues.push(value);
-            } 
-        })
-        return notPossessedValues
-    }
-
-    private getActiveTiles() {
-        let activeTiles = [];
-
-        this.players.forEach((player, index) => {
-            if (
-                index !== this.currentPlayerIndex &&
-                player.playersTiles.length > 0
-            ) {
-                activeTiles.push(
-                    player.playersTiles[player.playersTiles.length - 1].value
-                );
-            }
-        });
-
-        this.tiles.forEach((tile) => {
-            if (tile.active === true) {
-                activeTiles.push(tile.value);
-            }
-        });
-
-        return activeTiles;
-    }
-
-    private newValues() {
-        let fixedValues = this.getFixedValues();
-        let boardValues = this.getBoardValues()
-        let checker = boardValues.every(v => fixedValues.includes(v))
-        console.log(checker)
-        return checker
-
-    }
-
-    private checkOverThrow(thrownDiceSets, highestTile) {
-        let checks = 0;
-
-        for (const times in thrownDiceSets) {
-            if (parseInt(times) !== 6) {
-                let potentialValue =
-                    parseInt(times) * thrownDiceSets[times] +
-                    this.players[this.currentPlayerIndex].fixedDiceScore;
-                if (potentialValue > highestTile) {
-                    checks++;
-                }
-            } else {
-                let potentialValue =
-                    5 * thrownDiceSets[times] +
-                    this.players[this.currentPlayerIndex].fixedDiceScore;
-                if (potentialValue > highestTile) {
-                    checks++;
-                }
-            }
-        }
-
-        if (checks === Object.keys(thrownDiceSets).length) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    private safeToFix(): boolean {
-        let options = 0;
-        for (const [key, value] of Object.entries(this.getThrownDiceSets())) {
-
-            let diceValue = value
-            if(value === 6){
-                diceValue = 5
-            }
-            console.log(key + " times " + value)
-            if (this.hasDoodle() && this.getNotPossessedValues().includes(Number(key)) && Number(key) * Number(diceValue) + this.players[this.currentPlayerIndex].fixedDiceScore < this.getHigestTileValue()) {
-                console.log(key + " times " + diceValue + " is an option with a collected Doodle")
-                options++
-            }
-            if (!this.hasDoodle() && this.getNotPossessedValues().includes(Number(key)) && Number(key) * Number(diceValue) + this.players[this.currentPlayerIndex].fixedDiceScore - 5 < this.getHigestTileValue()) {
-                console.log(key + " times " + diceValue + " is an option without a collected Doodle")
-                options++
-            }
-        }
-        console.log("options: " + options)
-        if (options > 0) {
-            return true
-        } else {
-            return false
         }
     }
 }

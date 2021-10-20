@@ -1,16 +1,17 @@
-import { User } from './user';
-import { GameVar } from '../../doodles/interface/gamevar';
-import { Player } from '../classes/Player';
-import { Die } from '../../doodles/interface/die';
-import { Tile } from './tile';
+import { User } from './user'
+import { Player } from '../../doodles/classes/Player'
+import { Die } from '../../doodles/interface/die'
+import { Tile } from '../../doodles/interface/tile'
 
 export interface UpdateObject {
-    user:User;
-    message: string;
-    players: Player[];
-    currentPlayerIndex: number;
-    allDice: Die[];
-    fixedDice: Die[];
-    tiles: Tile[];
+    sender: User;
+    type: string;
+    game: {
+        players: Player[]
+        currentPlayerIndex: number,
+        allDice: Die[]
+        fixedDice: Die[];
+        tiles: Tile[];
+    };
     updatedOn: string;
 }

@@ -1,12 +1,22 @@
 <div class="doodle-lobby-container">
-
     <div class="form-group">
-        <label for="name">Name</label>
+        <label for="name">Enter your name</label>
         <input type="text" class="form-control" id="name" required [(ngModel)]="this.user.userName" name="name">
 
-        <button class="button btn btn-primary" (keyup.enter)="createGame()" (click)="createGame()">Create Game</button>
-        <button class="button btn btn-success" (click)="emptyGame()">Empty Room</button>
+        <button class="button btn create" (keyup.enter)="createGame()" (click)="createGame()">Create Game</button>
+        <!-- <button class="button btn btn-success" (click)="emptyGame()">Empty Room</button> -->
     </div>
+    <div class="notification">
+        Dear user,<br>
+        For now it is only possible to propperly play Doodles in<br>
+        multiplayer if you received an invitation. But for the<br>
+        future a more open- and user friendly game is planned.<br>
+        <br>
+        Feel free to experiment with the "single player version" where<br>
+        you play against yourself and still see how the game works<br>
+        <button class="btn back" routerLink="/doodles">back to single player</button>
+    </div>
+
 
     <div class="rooms-container"></div>
 </div>

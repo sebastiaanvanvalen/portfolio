@@ -57,6 +57,13 @@ import { DoodleLobbyComponent } from './components/portfolio/games/doodlesMultiP
 import { DoodlesMultiPlayerComponent } from './components/portfolio/games/doodlesMultiPlayer/doodlesMultiPlayer.component';
 import { SocketService } from './services/socket.service';
 import { SocketIoService } from './services/socketio.service';
+import { DoodlesDiceBoardComponent } from './components/portfolio/games/doodles/diceBoard/diceBoard.component';
+import { DoodlesDieComponent } from './components/portfolio/games/doodles/die/die.component';
+import { DoodlesGameBoardComponent } from './components/portfolio/games/doodles/gameBoard/gameBoard.component';
+import { DoodlesPlayerComponent } from './components/portfolio/games/doodles/player/player.component';
+import { DoodlesTableTilesComponent } from './components/portfolio/games/doodles/tableTiles/tableTiles.component';
+import { DoodlesTileComponent } from './components/portfolio/games/doodles/Tile/Tile.component';
+import { DoodlesComponent } from './components/portfolio/games/doodles/doodles.component';
 
 
 @NgModule({
@@ -93,6 +100,13 @@ import { SocketIoService } from './services/socketio.service';
     TableTilesComponent,
     TileComponent,
     DieComponent,
+    DoodlesComponent,
+    DoodlesDiceBoardComponent,
+    DoodlesDieComponent,
+    DoodlesGameBoardComponent,
+    DoodlesPlayerComponent,
+    DoodlesTableTilesComponent,
+    DoodlesTileComponent,
 
   ],
   imports: [
