@@ -24,7 +24,6 @@ import { DoodlesComponent } from './components/portfolio/games/doodles/doodles.c
 import { DoodlesMultiPlayerComponent } from './components/portfolio/games/doodlesMultiPlayer/doodlesMultiPlayer.component';
 import { DoodleLobbyComponent } from './components/portfolio/games/doodlesMultiPlayer/doodleLobby/doodleLobby.component';
 
-
 const routes: Routes = [
     { path: '', component: MainPageComponent },
     { path: 'about', component: AboutComponent },
@@ -49,6 +48,8 @@ const routes: Routes = [
     { path: 'cv', component: CvComponent },
 
 ];
+
+// test line
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
